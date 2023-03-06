@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ALTMANN - Modelando Conocimiento</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" type="ico" href="favicon16x16.ico">
+    
+    
+</head>
+
+
+
+
+
+<body>
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+
+                <a href="/">
+                <img src="img/colresin-altmann.PNG" alt="Logotipo Altmann">
+                </a>
+
+                <nav class="navegacion">                    
+                    <a href="productos.html">Productos</a>
+                    <a href="soluciones.html">Soluciones</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="iniciosesion.html">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </div> <!-- Contenedor -->
+    </header>
+    <main>
+       
+<section id="formulario">
+    
+    <form id="nfo" name="nfo" method="POST" action="nfo.php">
+        <fieldset>
+            <center>
+            <H4>Seleccione proceso</H4>
+            <label>NFO<input type="checkbox" id="" value="NFO"></label>
+
+
+            <legend>Proceso NFO</legend><br>
+
+            
+            
+            <label for="NumeroLote">Número de lote:</label>
+            <input type="text" size="2" id="NumeroLote" placeholder="Número de Lote" required>
+
+            <h4>Equipos a Utilizar</h4>
+            <label> DeDietrich 2<input type="checkbox" id="Dietrich2" value="Dietrich2"></label>
+            <label> Filtro Lukas<input type="checkbox" id="FLukas" value="fLukas"> </label>
+            <label> Sistema de Control de Olor<input type="checkbox" id="ContOlor" value="ContOlor"> </label><br> <hr> 
+
+            <h4>Formulación</h4>
+           <b> Indique la cantidad utilizada de cada materia prima </b><br>
+
+
+
+            <label for="nan000">NAN000: </label>
+            <input type="number" id="nan000" placeholder="Kg" required  size="12px"   >
+            <label for="swf098">SWF098: </label>
+            <input type="number" id="swf098" placeholder="Garrafas" required>
+            <label for="stw000">STW000: </label>
+            <input type="number" id="stw000" placeholder="Kg" required>
+            <label for="fdo037">FDO037: </label>
+            <input type="number" id="fdo037" placeholder="Kg" required>
+            <label for="myo000">MYO000: </label>
+            <input type="number" id="myo000" placeholder="Kg" required>
+            <label for="fdo037">STW000: </label>
+            <input type="number" id="stw0002" placeholder="Kg" required>
+            <label for="csc050">CSC050: </label>
+            <input type="number" id="csc050" placeholder="Kg" required>
+            <label for="fdo037">STW000: </label>
+            <input type="number" id="stw0003" placeholder="Kg" required> <hr>
+
+            <h4>Formulación entregada por Bodega</h4>
+            ¿ Todas las materias primas están correctamente separadas en cantidad (Kg) segun el FP-04 ?<br>
+
+            <label for="yes">Si <input type="radio" id="yes" name="matprifp04" value="yes"></label>            
+            <label for="no">No <input type="radio" id="no" name="matprifp04" value="No"></label><br>
+            ¿ Todas las materias primas están correctamente marcadas y ubicadas en la zona de separacion?<br>
+            <label for="yes">Si <input type="radio" id="yes" name="matprizonasep" value="yes"></label>            
+            <label for="no">No <input type="radio" id="no" name="matprizonasep" value="No"></label> <br>
+            <i><u>Si la respuesta es negativa a cualquiera de las preguntas anteriores,  notifiquelo al area de Bodega para hacer la correccion correspondiente.</u></i>
+            <hr>
+
+             
+
+            <h4>Chequeo del Equipo</h4>
+            ¿ El reactor esta completamente limpio? <br><label for="yes">Si<input type="radio" id="yes" value="ReactorLimpio" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="ReactorLimpio" value="no"> </label>
+            <i>Si la respuesta en negativa, realizar limpieza nuevamente.</i><br>
+            ¿ Revisó la hermeticidad del reactor y líneas de traslado para evitar fugas de FDO035 y 700NAN000 sublimado?<br><label for="yes">Si<input type="radio" id="yes" value="HermeticidadReactor" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="HermeticidadReactor" value="no"> </label>
+            ¿ Revisó que el reactor funcione correctamente ? <br><label for="yes">Si<input type="radio" id="yes" value="ReactorFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="ReactorFunciona" value="no"> </label>
+            ¿ Funciona bien el sistema de vacío ? <br><label for="yes">Si<input type="radio" id="yes" value="VacioFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="VacioFunciona" value="no"> </label>
+            ¿ Funciona bien el sistema de vapor ? <br><label for="yes">Si<input type="radio" id="yes" value="VaporFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="VaporFunciona" value="no"> </label>
+            ¿ Funciona bien el sistema de enfriamiento ? <br><label for="yes">Si<input type="radio" id="yes" value="EnfriamientoFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="EnfriamientoFunciona" value="no"> </label>
+            ¿ Funciona bien el sistema de emisiones (TANAN, CSO050 Y SWF098)? <br><label for="yes">Si<input type="radio" id="yes" value="EmisionesFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="EmisionesFunciona" value="no"> </label>
+            <i>Si la respuesta en negativa a cualquiera de las preguntas anteriores, notifique al area de mantenimiento para realizar las correcpondientes mejoras o reparaciones.  Una vez realizadas continue con el proceso.</i> <br>
+            ¿ Reviso ph alcalino de la soda cáustica del tanque de emisiones? <br><label for="yes">Si<input type="radio" id="yes" value="phsodatanque" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="phsodatanque" value="no"> </label>
+            <i>Si la respuesta en negativa, realizar cambio de la soda caustica para continuar con el proceso</i><br>
+            ¿ El condensador no presenta escapes y funciona correctamente ? <br><label for="yes">Si<input type="radio" id="yes" value="CondensadorFunciona" value="yes"> </label>
+            <label for="no">No<input type="radio" id="no" value="CondensadorFunciona" value="no"> </label>
+            
+            
+            
+            <hr>
+
+            <b>¿Aprueba Inicio del Proceso?</b><br>
+            
+            
+            <label for="yes">Si <input type="radio" id="yes" name="ApruebaInicio" value="yes"></label>            
+            <label for="no">No <input type="radio" id="no" name="ApruebaInicio" value="No"></label>
+            En caso de respuesta negativa, indique las razones (contacte a mantenimiento y dejar el proceso en espera hasta dar solucion):
+            <input type="text" name="RazonesNoAprob">
+            
+            
+            <br>
+            
+            <br>
+            <hr>
+            <br>
+            <h4>Inicio del Proceso</h4><hr>
+
+            <h4>Carga del NAN000</h4>
+
+            <b>¿Leyó la ficha y hoja de seguridad (FS-01y FS-01-1) para este producto?</b><br>
+            <a href="img/FDS Naftaleno tecnico.pdf" target="popup" onclick="window.open('img/FDS Naftaleno tecnico.pdf','popup','width=888,height=600'); return false;">
+        Ver Ficha de Seguridad</a>
+            <br>
+
+            <label for="yes">Si <input type="radio" id="yes" name="SeguridadNaftaleno" value="yes"></label>
+            
+            
+            
+            <label for="no">No <input type="radio" id="no" name="SeguridadNaftaleno" value="No"></label>
+
+            <p style="color: red;"><i><u> CASO DE INCIDENTE CON 700NAN000 (Contacto con piel, ojos, inhalacion o derrame o incendio consulte la lista de contingencia)</i></u> </p>
+            <a href="img/ContingenciaNaftaleno.PNG" target="popup" onclick="window.open('img/ContingenciaNaftaleno.PNG','popup','width=883,height=260'); return false;"> Ver</a> <br>
+
+<br>
+
+
+            
+
+            <b>¿Cuenta con el equipo de seguridad adecuado para el manejo?</b>
+            <br>
+
+            
+            <label for="yes">Si <input type="radio" id="yes" name="EquipoNaftaleno" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="EquipoNaftaleno" value="No" /></label><br>
+            <i>En caso de respuesta negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP apropiado.</i> <br>
+
+        
+
+            <label> <b>¿Cerro el sistema de enfriamiento para evitar obstrucción de las lineas con 700NAN000 sublimado?</b> <input type="checkbox" id="enfcerrado" value="enfcerrado"></label><br>
+
+            <p style="color: red;"><i><u>NOTA: Para esta etapa el condensador y la torre debe estar sin enfriamiento, además SIN reflujo directo.	</i></u>	</p>					
+
+            
+
+            
+
+        <hr>
+
+        
+            <b>Cargue el  (1)700NAN000, triturando si es necesario los sacos</b>
+            <br>
+            <label for="horainiciocarganaf">Hora de Inicio:</label>
+            <input type="time" id="horainiciocarganaf" name="horainiciocarganaf" >
+            <label for="horafincarganaf">Hora de Fin:</label>
+            <input type="time" id="horafincarganaf" name="horafincarganaf" ><br>
+            <br>
+            <label> <b>Cierre todas las válvulas y bloquee el equipo</b> <input type="checkbox" id="valvbloqueo" value="valvbloqueo"></label><br>
+
+            
+            <label> <b>Abra el sistema de control de olores TANAN e inicie enfriamiento a su camisa.</b> <input type="checkbox" id="abrircontrololores" value="abrircontrololores"></label><br>
+
+
+            
+
+
+
+
+            
+            <b>Inicie Fusion del naftaleno calentando la camisa del reactor máximo a 60 psi hasta que la tempertura alcance T= 95-100°C.</b>             <br>
+            <label for="horainiciofusionnaf">Hora de Inicio:</label>
+            <input type="time" id="horainiciofusionnaf" name="horainiciofusionnaf" > 
+            <p style="color: red;"><i><u>IMPORTANTE: No sobrepasar esta temperatura, para evitar reacción violenta con (2)SWF098.</u></i></p>
+            <br>
+            
+            <label> <b>Dar estartazos inicialmente hasta que se pueda dejar encendido el agitador.</b> <input type="checkbox" id="estartazos" value="estartazos"></label>
+            <label for="temp1">Temperatura: </label>
+            <input type="number" id="temp1" placeholder="°C" required>
+            <label for="presion1">Presión: </label>
+            <input type="number" id="presion1" placeholder="" required>
+            <label for="horafinfusionnaf">Hora de Fin:</label>
+            <input type="time" id="horafinfusionnaf" name="horafinfusionnaf" > <br>
+
+            <b>¿ Cuando el 700NAN000 esta completamente fundido arrancó bien el agitador ?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="agitadorok" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="agitadorok" value="No" /></label>
+            <i>Si la respuesta en negativa, notifique al area de mantenimiento para realizar las correspondientes mejoras o reparaciones.  Una vez realizadas continue con el proceso.</i><br>
+            <b>¿ Se presento algún problema al cargar y fundir el naftaleno ?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="problemafund" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="problemafund" value="No" /></label><br>
+            <i>Si la respuesta es afirmativa, mencione lo ocurrido y notifique al area encargada para dar solucion.</i>
+            <input type="text" name="problemafundirnaf">
+
+
+            <hr>
+           
+            
+                <hr>
+            <h4>Carga del 710SWF098</h4>
+            <b>¿Leyó la ficha y hoja de seguridad (FS-01y FS-01-1) para este producto?</b><br>
+            <a href="img/SeguridadSulfurico.PNG" target="popup" onclick="window.open('img/SeguridadSulfurico.PNG','popup','width=889,height=522'); return false;">Ver Ficha de Seguridad</a><br>
+            <label for="yes">Si <input type="radio" id="yes" name="SeguridadSulfurico" value="yes"></label>
+            
+            
+            
+            <label for="no">No <input type="radio" id="no" name="SeguridadSulfurico" value="No"></label>
+            <p style="color: red;"><i><u>EN CASO DE INCIDENTE CON 710SWF098 (Contacto con piel, ojos, inhalacion o derrame o incendio consulte la lista de contingencia</u></i> </p>
+            <a href="img/ContingenciaSulfurico.PNG" target="popup" onclick="window.open('img/ContingenciaSulfurico.PNG','popup','width=881,height=347'); return false;">Ver</a> <br>
+            <b>¿Cuenta con el equipo de seguridad adecuado para el manejo?</b>
+            <br>
+
+            
+            <label for="yes">Si <input type="radio" id="yes" name="EquipoSulfurico" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="EquipoSulfurico" value="No" /></label>
+            <i>En caso de respuesta negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP apropiado.</i><br>
+            <b>Cargue al tanque de adición (2) SWF098  (garrafas) mediante vacío desde el 3 nivel del módulo. </b><br>
+            <label for="horainiciocargaswfo">Hora de Inicio:</label>
+            <input type="time" id="horainiciocargaswfo" name="horainiciocargaswfo" >
+            <label for="horafincargaswfo">Hora de Fin:</label>
+            <input type="time" id="horafincargaswfo" name="horafincargaswfo" ><br>
+            
+            <label> <b>Cierre sistema de control de olores TANAN.</b> <input type="checkbox" id="cierrecontrololores" value="cierrecontrololores"></label>
+            <b>Inicie adición de (2) SWF098 al reactor en 60 minutos aproximadamente.</b><br>
+            <label for="horainiciocargaswfo2">Hora de Inicio:</label>
+            <input type="time" id="horainiciocargaswfo2" name="horainiciocargaswfo2" >
+            <label for="horafincargaswfo2">Hora de Fin:</label>
+            <input type="time" id="horafincargaswfo2" name="horafincargaswfo2" >
+            <p style="color: red;"><i><u>Durante la adición se puede formar vacío dentro del equipo, controlar por medio del embudo.  Una vez se presente de nuevo presión y se note salida de vapor o gases cerrar el embudo y abrir el sistema de control para iniciar su lavado de gases.</u></i></p>
+            <b>Verificar temperatura de reacción, si esta no sube por sí sola a T=140-150°C máximo, suministrar vapor para alcanzarla. </b><br>
+            <label for="tempswfo1">Temperatura: </label>
+            <input type="number" id="tempswfo1" placeholder="°C" required>
+            <label for="presionswfo1">Presión: </label>
+            <input type="number" id="presionswfo1" placeholder="" required>
+            <b>Suministro Vapor</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="vapor" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="vapor" value="No" /></label><br>
+            <b>Sostener temperatura T = 140-150°C y reacción durante 3 horas.</b><br>
+            <label for="horainiciosostenertemp">Hora de Inicio:</label>
+            <input type="time" id="horainiciosostenertemp" name="horainiciosostenertemp" ><hr>
+            <b>Seguimiento de la Reacción</b><br>
+            <b>Hora 1</b><br>
+            <label for="temphr1">Temperatura: </label>
+            <input type="number" id="temphr1" placeholder="°C" required>
+            <label for="presionhr1">Presión:</label>
+            <input type="number" id="presionhr1" placeholder="" required><hr>
+            <b>Hora 2</b><br>
+            <label for="temphr2">Temperatura: </label>
+            <input type="number" id="temphr2" placeholder="°C" required>
+            <label for="presionhr2">Presión:</label>
+            <input type="number" id="presionhr2" placeholder="" required><hr>
+            <b>Hora 3</b><br>
+            <label for="temphr3">Temperatura: </label>
+            <input type="number" id="temphr3" placeholder="°C" required>
+            <label for="presiohr3">Presión: </label>
+            <input type="number" id="presionhr3" placeholder="" required><hr>
+            <label for="horafinsostenertemp">Hora de Fin:</label>
+            <input type="time" id="horafinsostenertemp" name="horafinsostenertemp" ><hr>
+            <b>¿ Se presento algún problema al adicionar el ácido sulfúrico ?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="problemaswfo" value="yes" /></label>
+            
+            <label for="no">No <input type="radio" id="no" name="problemaswfo" value="No" /></label><br>
+            <b>En caso de ser positiva la respuesta indique el problema presentado:</b>
+            <input type="text" size="2" id="problemaswfo" placeholder="" required> <br>
+            <b>Terminadas las 3 horas de reacción. Enfrie  a T = 100 - 110°C,  con reflujo directo y restablezca el suministro de agua en el condensador.</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="enfriarok" value="yes"></label>            
+            <label for="no">No <input type="radio" id="no" name="enfriarok" value="No"></label>
+
+            <label for="tempenfriado">Temperatura: </label>
+            <input type="number" id="tempenfriado" placeholder="°C" required>
+            <label for="presionenfriado">Presión: </label>
+            <input type="number" id="presionenfriado" placeholder="" required> <hr>
+            <h4>Carga del 700STW00</h4><br>
+            <b>Adicione (3) STW000 en 1 hora como tiempo maximo con reflujo directo y enfriar hasta conseguir una temperatura T = 85 - 90°C. </b><br>
+            <label for="tempadicionstw">Temperatura: </label>
+            <input type="number" id="tempadicionstw" placeholder="°C" required>
+            <label for="presionadicionstw">Presión: </label>
+            <input type="number" id="presionadicionstw" placeholder="" required><br>
+            
+            <label> <b>Evacue la camisa del reactor, para evitar que siga bajando la temperatura.</b> <input type="checkbox" id="evacuarcamisa" value="evacuarcamisa"></label>
+            <p style="color: red;"><i><u>Con la adición del agua la temperatura puede bajar aproximadamente entre T = 70-75°C. Subir con vapor si es necesario para obtener T=85-90°C.							
+            </u></i></p>
+            <b>¿Suministro Vapor?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="suministrovapor" value="yes"></label>            
+            <label for="no">No <input type="radio" id="no" name="suministrovapor" value="No"></label><br><hr>
+            <h4>Carga del 700FDO035 y 710MYO000</h4><br>
+            <b>¿Leyó la ficha y hoja de seguridad ( FS-01y FS-01-1) para estos productos?</b> <br>
+            <a href="img/FormolMetanolseguridad.PNG" target="popup" onclick="window.open('img/FormolMetanolseguridad.PNG','popup','width=861,height=317'); return false;">Ver Ficha de Seguridad</a>
+            <br>
+            <label for="yes">Si <input type="radio" id="yes" name="segformolmetanol" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="segformolmetanol" value="No"></label><br>
+            <p style="color: red;"><i><u>EN CASO DE INCIDENTE CON 700FDO037 Y 710MYO000 (Contacto con piel, ojos, inhalacion o derrame o incendio consulte la lista de contingencia</u></i></p>
+            <a href="img/contingenciamezcla.PNG" target="popup" onclick="window.open('img/contingenciamezcla.PNG','popup','width=660,height=655'); return false;">Ver</a> <br>
+            <b>¿Cuenta con el equipo de seguridad adecuado para el manejo de ambos productos?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="equipoformolmetanol" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="equipoformolmetanol" value="No"></label>
+            <i>En caso de respuesta negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP apropiado.</i><br>
+            
+            <label> <b>Reviso la conexión de línea a tierra en compañía de mantenimiento.</b> <input type="checkbox" id="lineatierraok" value="lineatierraok"></label>
+            <label> <b>Para el bombeo del 710MYO000 Y 700FDO035 (Inflamables) cuenta con una bomba neumatica o en su defecto una previamente revisada.</b> <input type="checkbox" id="bombaneumatica" value="bombaneumatica"></label>
+            <label> <b>Las conexiones eléctricas y acoples de manguera y tubería estén bien hechas.</b> <input type="checkbox" id="conexionok" value="conexionok"></label>
+            <label> <b>El tramo de manguera a usar en la carga se encuentra sin uniones, en buen estado y abrazaderas resistentes al bombeo</b> <input type="checkbox" id="mangueraok" value="mangueraok"></label>
+            <label> <b>La línea de carga se encuentra sin escapes.</b> <input type="checkbox" id="lineacargaok" value="lineacargaok"></label>
+            <label> <b>Las válvulas del tanque de adición al reactor estan cerradas para realizar carga.</b> <input type="checkbox" id="valvulascerradas" value="valvulascerradas"></label>
+            <label> <b>Conoce la capacidad del tanque de adición para que no haya rebose al momento de la carga.</b> <input type="checkbox" id="capacidadtanque" value="capacidadtanque"></label>
+            <i>Capacidad del tanque de adición: 500 Kilos</i>
+
+            
+            
+        
+            
+           <hr>
+            <h4>Inicio de la carga de 700FDO035 Y 710MYO000</h4><br>
+            <i><u>IMPORTANTE TENER EN CUENTA: En el cargue del FDO037 al tanque de adición, usar una barrera en el orificio de entrada al tambor o garrafa por donde entra la manguera o tubo, de manera que se evite la salida de los vapores del FDO037.  Así mismo se debe ubicar la persona que va a realizar el cargue en contra del viento para disminuir exposición.	</u></i><br>
+            <i><u>"SIN VAPOR y desde el tanque de adición, en 4 horas como tiempo mínimo (puede ser mayor según comportamiento de la reacción),  adicionar la mezcla (4) FDO037 y  (5) MYO000.  
+                Inicialmente sube la temperatura hasta T = 102°C y después baja lentamente hasta terminar la adición entre T = 98 - 100°C."</u></i><br>
+            
+            <hr>
+            <H4>Seguimiento de la Adición</H4>
+            
+            <label for="horainicioadc">Hora de Inicio:</label>
+            <input type="time" id="horainicioadc" name="horainicioadc" ><br>
+            <b>Hora 1</b><br>
+            <label for="tempadc1">Temperatura: </label>
+            <input type="number" id="tempadc1" placeholder="°C" required>
+            <label for="presionadc1">Presión:</label>
+            <input type="number" id="presionadc1" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioadc1"><hr>
+            <b>Hora 2</b><br>
+            <label for="tempadc2">Temperatura: </label>
+            <input type="number" id="tempadc2" placeholder="°C" required>
+            <label for="presionadc2">Presión:</label>
+            <input type="number" id="presionadc2" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioadc2"><hr>
+            <b>Hora 3</b><br>
+            <label for="tempadc3">Temperatura: </label>
+            <input type="number" id="tempadc3" placeholder="°C" required>
+            <label for="presionadc3">Presión: </label>
+            <input type="number" id="presionadc3" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioadc3"><hr>
+            <b>Hora 4</b><br>
+            <label for="tempadc4">Temperatura: </label>
+            <input type="number" id="tempadc4" placeholder="°C" required>
+            <label for="presionadc4">Presión:</label>
+            <input type="number" id="presionadc4" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioadc4"><hr>
+            <b>Hora 5</b><br>
+            <label for="tempadc5">Temperatura: </label>
+            <input type="number" id="tempadc5" placeholder="°C" required>
+            <label for="presionadc5">Presión: </label>
+            <input type="number" id="presionadc5" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioadc5">
+            <br>
+            <label for="horafinadc">Hora de Fin:</label>
+            <input type="time" id="horafinadc" name="horafinadc" ><hr>
+            <b>Sostener durante 7 horas a T = 98 - 102 °C.  Sin Vapor. Inicialmente sube la temperatura hasta T = 102°C y después baja lentamente hasta terminar la adición entre T = 95 - 100°C.  <i> <u>Si es necesario dar pase de vapor por poco tiempo para sostener la temperatura en el rango T = 98 - 102°C.</u></i></b>
+            <br><b><u>IMPORTANTE:</u> Cargar parte de (6)STW000 al tanque de adicion, como precaucion en caso que se observe alta viscosidad durante la reaccion de condensacion y asi evitar polimerizacion rapida del producto.  Si se presenta este caso adicionar y continuar hasta completar el tiempo de reacción.</b>  <hr>
+            <h4>Seguimiento de Reacción de Adición</h4><br>
+            <b>Hora de Inicio</b><br>
+            <label for="horainicioreac">Hora de Inicio:</label>
+            <input type="time" id="horainicioreac" name="horainicioreac" ><br>
+            <b>Hora 1</b><br>
+            <label for="tempreac1">Temperatura: </label>
+            <input type="number" id="tempreac1" placeholder="°C" required>
+            <label for="presionreac1">Presión:</label>
+            <input type="number" id="presionreac1" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac1"><hr>
+            <b>Hora 2</b><br>
+            <label for="tempreac2">Temperatura: </label>
+            <input type="number" id="tempreact2" placeholder="°C" required>
+            <label for="presionreact2">Presión:</label>
+            <input type="number" id="presionreact2" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac2"><hr>
+            <b>Hora 3</b><br>
+            <label for="tempreac3">Temperatura: </label>
+            <input type="number" id="tempreac3" placeholder="°C" required>
+            <label for="presionreac3">Presión: </label>
+            <input type="number" id="presionreac3" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac3"><hr>
+            <b>Hora 4</b><br>
+            <label for="tempreac4">Temperatura: </label>
+            <input type="number" id="tempreac4" placeholder="°C" required>
+            <label for="presionreac4">Presión:</label>
+            <input type="number" id="presionreac4" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac4"><hr>
+            <b>Hora 5</b><br>
+            <label for="tempreac5">Temperatura: </label>
+            <input type="number" id="tempreac5" placeholder="°C" required>
+            <label for="presionreac5">Presión: </label>
+            <input type="number" id="presionreac5" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac5">
+            <br>
+            <b>Hora 6</b><br>
+            <label for="tempreac6">Temperatura: </label>
+            <input type="number" id="tempreac6" placeholder="°C" required>
+            <label for="presionreac6">Presión:</label>
+            <input type="number" id="presionreac6" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac6"><hr>
+            <b>Hora 7</b><br>
+            <label for="tempreac7">Temperatura: </label>
+            <input type="number" id="tempreac7" placeholder="°C" required>
+            <label for="presionreac7">Presión: </label>
+            <input type="number" id="presionreac7" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioreac7"><br>
+            <label for="horafinreac">Hora de Fin:</label>
+            <input type="time" id="horafinreac" name="horafinreac" ><hr>
+            <b>¿ Se presento algún problema en el equipo en este punto de reacción ?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="problemareac" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="problemareac" value="No"></label><br>
+            <b>¿Cuál? (Si la respuesta es afirmativa)</b>
+            <input type="text" name="Problemareaccion"><br>
+            <b>Adicionar (6) STW000 a T = 85°C en 20 minutos como tiempo máximo.</b><br>
+            <label for="horainicioadcstw2">Hora de Inicio:</label>
+            <input type="time" id="horainicioadcstw2" name="horainicioadcstw2">
+            <label for="tempadcstw2">Temperatura: </label>
+            <input type="number" id="tempadcstw2" placeholder="°C" required>
+            <label for="presionadcstw2">Presión:</label>
+            <input type="number" id="presionadcstw2" placeholder="" required>
+            <label for="horafinadcstw2">Hora de Fin:</label>
+            <input type="time" id="horafinadcstw2" name="horafinadcstw2"><hr>
+            <h4>Adición de 710CSO050 Y 700STW000</h4><br>
+            <b>¿Leyó la ficha y hoja de seguridad ( FS-01y FS-01-1) para estos productos?</b><br>
+            <a href="img/Sodaseguridad.PNG" target="popup" onclick="window.open('img/Sodaseguridad.PNG','popup','width=859,height=230'); return false;">Ver Ficha de Seguridad</a><br>
+            <label for="yes">Si <input type="radio" id="yes" name="SeguridadSoda" value="yes"></label>
+            
+            
+            
+            <label for="no">No <input type="radio" id="no" name="SeguridadSoda" value="No"></label>
+            <p style="color: red;"><u><i>EN CASO DE INCIDENTE CON CSO050 (Contacto con piel, ojos, inhalacion o derrame o incendio consulte la lista de contingencia.</i></u></p>
+            <a href="img/Sodacontingencia.PNG" target="popup" onclick="window.open('img/Sodacontingencia.PNG','popup','width=883,height=409'); return false;">Ver</a> <br>
+            <b>¿Cuenta con el equipo de seguridad adecuado para el manejo del CSO050?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="EquipoSoda" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="EquipoSoda" value="No"></label><br>
+            <i>En caso de respuesta negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP apropiado.</i>
+            <b>Adicionar (7) CSC050 en 4 horas como tiempo máximo conservando T = 94 - 95 °C.</b><br>
+            <h4>Seguimiento de Reacción de Neutralización</h4><br>
+            <b>Hora de Inicio</b><br>
+            <label for="horainicioneut">Hora de Inicio:</label>
+            <input type="time" id="horainicioneut" name="horainicioneut" ><br>
+            <b>Hora 1</b><br>
+            <label for="tempneut1">Temperatura: </label>
+            <input type="number" id="tempneut1" placeholder="°C" required>
+            <label for="presionneut1">Presión:</label>
+            <input type="number" id="presionneut1" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioneut1"><hr>
+            <b>Hora 2</b><br>
+            <label for="tempneut2">Temperatura: </label>
+            <input type="number" id="tempneut2" placeholder="°C" required>
+            <label for="presionneut2">Presión:</label>
+            <input type="number" id="presionneut2" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioneut2"><hr>
+            <b>Hora 3</b><br>
+            <label for="tempneut3">Temperatura: </label>
+            <input type="number" id="tempneut3" placeholder="°C" required>
+            <label for="presionneut3">Presión: </label>
+            <input type="number" id="presionneut3" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioneut3"><hr>
+            <b>Hora 4</b><br>
+            <label for="tempneut4">Temperatura: </label>
+            <input type="number" id="tempneut4" placeholder="°C" required>
+            <label for="presionreac4">Presión:</label>
+            <input type="number" id="presionneut4" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentarioneut4"><hr>
+            <label for="horafinneut">Hora de Fin:</label>
+            <input type="time" id="horafinneut" name="horafinneut" ><hr>
+            <b>Homogeneizar por 3 horas. Si es necesario dar pase de vapor por poco tiempo para mantener temperatura.</b><br>
+            <h4>Seguimiento Homegenización</h4><br>
+            <b>Hora de Inicio</b><br>
+            <label for="horainiciohomoge">Hora de Inicio:</label>
+            <input type="time" id="horainiciohomoge" name="horainiciohomoge" ><br>
+            <b>Hora 1</b><br>
+            <label for="temphomoge1">Temperatura: </label>
+            <input type="number" id="temphomoge1" placeholder="°C" required>
+            <label for="presionhomoge1">Presión:</label>
+            <input type="number" id="presionhomoge1" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentariohomoge1"><hr>
+            <b>Hora 2</b><br>
+            <label for="temphomoge2">Temperatura: </label>
+            <input type="number" id="temphomoge2" placeholder="°C" required>
+            <label for="presionhomoge2">Presión:</label>
+            <input type="number" id="presionhomoge2" placeholder="" required>
+            <b>Observaciones/Comentarios</b>
+            <input type="text" name="comentariohomoge2"><hr>
+            <b>Hora 3</b><br>
+            <label for="temphomoge3">Temperatura: </label>
+            <input type="number" id="temphomoge3" placeholder="°C" required>
+            <label for="presionhomoge3">Presión: </label>
+            <input type="number" id="presionhomoge3" placeholder="" required><br>
+            <label for="horafinhomoge">Hora de Fin:</label>
+            <input type="time" id="horafinhomoge" name="horafinhomoge" ><hr>
+            <b>Evaluar presencia de olor a formol, si hay presencia adicionar CSC050.</b><br>
+            <b>Hay presencia de olor a FDO035? </b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="olorformol" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="olorformol" value="No"></label><br>
+            <i>Si la respuesta es afirmativa (Indique la cantidad de CSO050 adicionada en kilos)</i>
+            
+            <input type="number" id="csc050adicional" placeholder="Kg"><br>
+            <b>Enfrie a T=85°C</b><br>
+            <label for="temp85">Temperatura: </label>
+            <input type="number" id="temp85" placeholder="°C" required>
+            <b>Adicione (6)STW000 a 85°C</b>
+            <label for="horainciostw85">Hora de Inicio:</label>
+            <input type="time" id="horainiciostw85" name="horainiciostw85" ><br>
+            <label for="horafinstw85">Hora de Fin:</label>
+            <input type="time" id="horafinstw85" name="horafinstw85" ><br>
+            <b>Muestree y  ajuste pH(10%) = 7.8 - 8.0.  (CSC050 / SWF098).</b><br>
+            <label for="ph10">pH(10%): </label>
+            <input type="number" id="ph10" placeholder="pH"><br>
+            <b>Es necesario el ajuste? En caso se ser positiva la respuesta indique la cantidad total usada de CSO050 Y/O SWF098 en kilos:</b><br>
+            <label for="csc050aj">CSC050: </label>
+            <input type="number" id="csc050ajuste" placeholder="Kg" required>
+            <label for="stw000aj">STW000: </label>
+            <input type="number" id="stw00ajuste" placeholder="Kg" required>
+            <label for="ph10fin">pH(10%) Final: </label>
+            <input type="number" id="ph10fin" placeholder="pH"><br>
+            <b>El aspecto final del producto es brillante, sin sedimento y sin turbidez?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="productobrillante" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="productobrillante" value="No"></label><br>
+            <i>Si la respuesta es negativa, filtre por el Filtro lukas directamente desde el reactor</i></b>
+            <label for="horainiciolukas">Hora de Inicio:</label>
+            <input type="time" id="horainiciolukas" name="horainiciolukas" ><br>
+            <label for="horafinlukas">Hora de Fin:</label>
+            <input type="time" id="horafinlukas" name="horafinlukas" ><br>
+            <b>El aspecto final del producto  despues de la filtracion es brillante, sin sedimento y sin turbidez?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="productobrillante" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="productobrillante" value="No"></label><br>
+            <i>Si la respuesta es afirmativa, se da por terminado el proceso de produccion y se continua con la descarga del producto</i>
+            <label for="horafinproceso">Hora de Fin:</label>
+            <input type="time" id="horafinproceso" name="horafinproceso" ><br> <hr>
+            <h4>Proceso de descarga</h4>
+            <label> <b>¿Leyó la ficha y hoja de seguridad ( FS-01y FS-01-1) para eL 720NFO000?</b> <input type="checkbox" id="SegNFO" value="hojasegNFO"></label>
+            <a href="img/SeguridadFiltradoDescarga.PNG" target="popup" onclick="window.open('img/SeguridadFiltradoDescarga.PNG','popup','width=886,height=260'); return false;">Ver Ficha de Seguridad</a><br>
+            
+            <p style="color: red;"><u><i>EN CASO DE INCIDENTE CON 720NFO000 (Contacto con piel, ojos, inhalacion o derrame o incendio consulte la lista de contingencia.</i></u></p>
+            <a href="img/ContingenciaFiltradoDescarga.PNG" target="popup" onclick="window.open('img/ContingenciaFiltradoDescarga.PNG','popup','width=886,height=377'); return false;">Ver</a> <br>
+            <b>¿Cuenta con el equipo de seguridad adecuado para el manejo del 720NFO000?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="EquipoNFO" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="EquipoNFO" value="No"></label><br>
+            <i>En caso de respuesta negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP apropiado.</i><br>
+            <label> <b>¿Suspendió la agitación del equipo?</b> <input type="checkbox" id="agitacionoff" value="agitacionoff"></label>
+            <label> <b>¿Instalo talego de nylon para la descarga?</b> <input type="checkbox" id="talegodescarga" value="talegodescarga"></label>
+            <b>Realice la descarga a IBC (contenedores) para posterior proceso de secado</b><br>
+            <label for="horainiciodescarga">Hora de Inicio:</label>
+            <input type="time" id="horainiciodescarga" name="horainiciodescarga" ><br>
+            <label for="horafindescarga">Hora de Fin:</label>
+            <input type="time" id="horafindescarga" name="horafindescarga" ><br>
+            <b>¿El talego de nylon quedo con mucho residuo?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="residuostalego" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="residuostalego" value="No"></label><br>
+            <label> <b>Enviar muestra final al laboratorio</b> <input type="checkbox" id="enviarmuestrafinal" value="enviarmuestrafinal"></label><hr>
+            
+            <h4>Resultados</h4>
+            <b>Aspecto:</b>
+            <input type="text" name="aspecto">
+            <label for="solidosporcentaje">% Solidos </label>
+            <input type="number" id="solidosporcentaje" placeholder="%" required>
+            <label for="pH10fin">pH(10%): </label>
+            <input type="number" id="pH10fin" placeholder="pH" required>
+            <label for="solubilidad10">Solubilidad (10%): </label>
+            <input type="number" id="solubilidad10" placeholder="%" required>
+            <label for="solubilidad40">Solubilidad (40%): </label>
+            <input type="number" id="solubilidad40" placeholder="%" required>
+            <label for="rendimiento">Rendimiento: </label>
+            <input type="text" id="rendimiento" placeholder="" required>
+
+            <hr>
+            <h4>Proceso de Lavado</h4>
+            <b>¿El proceso a realizar en el reactor es diferente al 720NFO000, 720NFOB00, 180NFOCON?</b><br>
+            <label for="yes">Si <input type="radio" id="yes" name="procesodif" value="yes"></label>        
+                       
+            <label for="no">No <input type="radio" id="no" name="procesodif" value="No"></label>
+            <i><u>Si la respuesta es negativa lavar el reactor y sistema como sigue:</u></i><br>
+            <label for="horainiciolavado">Hora de Inicio:</label>
+            <input type="time" id="horainiciolavado" name="horainiciolavado" ><br>
+            <b>Enjuagar el vaso con agua, recoger en garrafa x 200 (Derivados del NFO) e identificar para ser usado este en el próximo proceso.</b>
+            <br>
+            <label for="kgenjuague">Kilos generados en el enjuague: </label>
+            <input type="number" id="kgenjuague" placeholder="Kg" required>
+            <b>Cargar 300 kilos de agua aprox., agregar jabón, calentar hasta ebullición y abrir todas la válvulas, para que el vapor lave las tuberías.</b><br>
+            <label for="kglavado">Kilos generados en de agua de lavado: </label>
+            <input type="number" id="kglavado" placeholder="Kg" required>
+            <label for="horafinlavado">Hora de Fin:</label>
+            <input type="time" id="horafinlavado" name="horafinlavado" ><br>
+
+
+        <div class="arriba">
+            <input type="submit" value="Guardar" class="boton boton-opcion">
+        </div>
+                       
+
+    </center>
+        </fieldset>
+        
+    
+    
+        
+    </form>
+
+</section>
+</main>
+</body>
+</html>

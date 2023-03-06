@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Colresin - Powered by ALTMANN</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" type="ico" href="../favicon16x16.ico">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#arrow-down").css("display","block");
+        
+            $("#arrow-up,#arrow-down").click(function () {
+                $("#contenido").slideToggle("slow");
+        
+                if($("#arrow-up").css("display") == "none")
+                {
+                    $("#arrow-up").css("display","none");
+                    $("#arrow-down").css("display","block");
+                }
+                else
+                {
+                    $("#arrow-up").css("display","block");
+                    $("#arrow-down").css("display","none");
+                }
+            });
+        });
+    </script>
+    
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+
+                <a href="/">
+                <img src="../img/colresin-altmann.PNG" alt="Logotipo Altmann">
+                </a>
+
+                <nav class="navegacion">
+                    <a href="documental-cliente.html">Productos</a>
+                    <a href="#">Soluciones</a>
+                    <a href="ayuda.html">Ayuda</a>
+                    <a href="iniciosesion.html">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </div> <!-- Contenedor -->
+    </header>
+    <!--<h1 class="fw-500 centrar-texto">F-C-01 Formato CRM</h1> -->
+    
+    <main class="contenedor seccion contenido-consulta vista-documento">
+        <form action="">
+            <fieldset>
+                <center><div id="titulo">
+                    Información del Documento
+                    <img src="../img/bajar.png" id="arrow-down" class="imgcolexp"/>
+                    <img src="../img/subir.png" id="arrow-up" class="imgcolexp"/>
+                    
+                </div>
+                <div id="contenido">
+                    Proceso:Gestión Comercial<BR>
+                    Fecha de Creación:28/02/2020   <br>                     
+                    Estado:Publicado <br>
+                    Descripción: Gestionar la relación con los clientes.<br>
+                    <a href="mailto:gestioncalidad@colresin.com?Subject=Sugerencia%20de%20Cambio%20-%20F-C-01" class="boton boton-cambio">Sugerir Cambios</a>
+                    
+                </div></center>
+                
+                
+                
+                
+                                
+
+                
+                <hr><br>
+                <iframe src="https://drive.google.com/open?id=1EmdX8_85RUC0OyYenWyMj5JoE2ETfHMBBdxTstTB7FA" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:700px;width:100%;border:none;overflow:hidden;"></iframe>
+
+                               
+            </fieldset>
+
+          
+
+            
+        </form>
+    </main>
+      
+    <!-- Sección Pie de página-->
+    <footer class="site-footer seccion"> 
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="documental-cliente.html">Productos</a>
+                <a href="#">Soluciones</a>
+                <a href="ayuda.html">Ayuda</a>
+                <a href="iniciosesion.html">Iniciar Sesión</a>
+            </nav>
+
+            <p class="copyright">Todos los derechos reservados 2020 &copy; </p>
+        </div>
+    </footer>
+
+       
+</body>
+
+</html>

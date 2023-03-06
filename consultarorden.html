@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ALTMANN - Modelando Conocimiento</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+
+                <a href="/">
+                <img src="img/logoaltmann19gris.PNG" alt="Logotipo Altmann">
+                </a>
+
+                <nav class="navegacion">
+                    <a href="productos.html">Productos</a>
+                    <a href="soluciones.html">Soluciones</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="iniciosesion.html">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </div> <!-- Contenedor -->
+    </header>
+    <h1 class="fw-300 centrar-texto">Consultar Orden</h1>
+    <main class="contenedor seccion contenido-centrado">
+        <form action="">
+            <fieldset>
+                <legend>Información de la Orden</legend>
+                <label for="numorden">Número de Orden:</label>
+                <input type="text" id="numorden" placeholder="# Orden">
+
+                <label for="cliente">Cliente:</label>
+                <select id="clientes">
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="Cliente1">Cliente 1</option>
+                    <option value="Cliente2">Cliente 2</option>
+                    <option value="Cliente3">Cliente 3</option>
+                    <option value="Cliente4">Cliente 4</option>
+                </select>
+
+                <label for="fecha">Fecha de Creación:</label>
+                <input type="date" id="fecha" placeholder="Fecha de Creación">
+
+                
+                <label for="estado">Estado:</label> 
+                <select id="estado">
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="Sin Iniciar">Sin Iniciar</option>
+                    <option value="En Proceso">En Proceso</option>
+                    <option value="Terminado">Terminado</option>
+                    <option value="Despachado">Despachado</option>
+                    
+                </select>
+
+                               
+            </fieldset>
+
+          
+
+            <input type="submit" value="Buscar" class="boton boton-opcion">
+        </form>
+    </main>
+      
+    <!-- Sección Pie de página-->
+    <footer class="site-footer seccion"> 
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="productos.html">Productos</a>
+                <a href="soluciones.html">Soluciones</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="iniciosesion.html">Iniciar Sesión</a>
+            </nav>
+
+            <p class="copyright">Todos los derechos reservados 2019 &copy; </p>
+        </div>
+    </footer>
+
+       
+</body>
+
+</html>

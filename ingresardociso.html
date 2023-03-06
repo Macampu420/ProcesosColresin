@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ALTMANN - Modelando Conocimiento</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function resizeIframe(obj) {
+          obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+      </script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+
+                <a href="/">
+                <img src="img/logoaltmann19gris.PNG" alt="Logotipo Altmann">
+                </a>
+
+                <nav class="navegacion">
+                    <a href="productos.html">Productos</a>
+                    <a href="soluciones.html">Soluciones</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="iniciosesion.html">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </div> <!-- Contenedor -->
+    </header>
+    <h1 class="fw-300 centrar-texto">Ingresar Documento ISO</h1>
+    <main class="contenedor seccion contenido-centrado">
+        <form action="">
+            <fieldset>
+                <legend>Información del Documento</legend>
+                <label for="procesos">Tipo de Documento: *</label>
+                <select id="procesos" required>
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="Bodega">Procedimiento</option>
+                    <option value="ControlCalidad">Instructivo</option>
+                    <option value="Despachos">Formato</option>
+                    <option value="Produccion">Registro</option>
+                    
+                </select>
+
+                <label for="nomdocumento">Código:*</label>
+                <input type="text" id="coddocumento" placeholder="Código Documento" required>
+
+                <label for="nomdocumento">Nombre Documento:*</label>
+                <input type="text" id="nomdocumento" placeholder="Nombre Documento" required>
+
+                <label for="procesos">Proceso: *</label>
+                <select id="procesos" required>
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="Bodega">Bodega</option>
+                    <option value="ControlCalidad">Control de Calidad</option>
+                    <option value="Despachos">Despachos</option>
+                    <option value="Produccion">Producción</option>
+                    <option value="Ventas">Ventas</option>
+                </select>
+
+                <label for="fecha">Fecha de Creación:</label>
+                <input type="date" id="fecha" placeholder="Fecha de Creación" required>
+
+                <label for="documentosenlazados">Enlazar documento:</label> 
+                <input type="url" name="documentosenlazados" placeholder="URL del documento">
+
+                <label for="estadosdocumentos">Estado:</label> 
+                <select id="estadosdocumento">
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="Nuevo">Nuevo</option>
+                    <option value="En Revisión">En Revisión</option>
+                    <option value="Publicado">Publicado</option>
+                    <option value="Obsoleto">Obsoleto</option>
+                    
+                </select>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion"></textarea>
+                
+            </fieldset>
+
+          
+
+            <input type="submit" value="Guardar" class="boton boton-opcion">
+        </form>
+    </main>
+      
+    <!-- Sección Pie de página-->
+    <footer class="site-footer seccion"> 
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="productos.html">Productos</a>
+                <a href="soluciones.html">Soluciones</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="iniciosesion.html">Iniciar Sesión</a>
+            </nav>
+
+            <p class="copyright">Todos los derechos reservados 2019 &copy; </p>
+        </div>
+    </footer>
+
+       
+</body>
+
+</html>

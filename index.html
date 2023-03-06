@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ALTMANN - Modelando Conocimiento</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+
+                <a href="/">
+                <img src="img/colresin-altmann.PNG" alt="Logotipo Altmann">
+                </a>
+
+                <!--<nav class="navegacion">
+                    <a href="productos.html">Productos</a>
+                    <a href="soluciones.html">Soluciones</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="iniciosesion.html">Iniciar Sesión</a>
+                </nav>-->
+            </div>
+        </div> <!-- Contenedor -->
+    </header>
+
+    
+    <main class="contenedor seccion contenido-centrado inicio-sesion">
+        <form action="php/login/login.php" method="POST">
+            <fieldset>
+                <legend>Iniciar Sesión</legend>
+                <label for="nombre">Nombre de usuario:</label>
+                <input type="text" id="nombre" name='nombre' placeholder="Nombre de Usuario" required>
+
+                <label for="email">Contraseña</label>
+                <input type="password" id="password" name='password' placeholder="Contraseña" required>
+
+                              
+            </fieldset>
+
+        
+            <center><input type="submit" value="Enviar" class="boton boton-opcion">
+            <a href="olvido.html"><h5>Olvidó su contraseña?</h5></a></center>
+        </form>
+    </main>
+         
+
+    <!-- Sección Pie de página-->
+    <footer class="site-footer seccion"> 
+        <div class="contenedor contenedor-footer">
+            <!--<nav class="navegacion">
+                <a href="productos.html">Productos</a>
+                <a href="soluciones.html">Soluciones</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="iniciosesion.html">Iniciar Sesión</a>
+            </nav>-->
+
+            
+        </div>
+        <center><p class="copyright">Todos los derechos reservados 2022 &copy; </p></center>
+    </footer>
+
+       
+</body>
+
+</html>
