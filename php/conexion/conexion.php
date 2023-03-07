@@ -8,7 +8,7 @@ class conection{
 	  $dbserver = "localhost";
 	  $dbuser = "root";
 	  $password = "";
-	  $dbname = "procesos";
+	  $dbname = "altmannc_procesos";
 	 
 	  $conex = new mysqli($dbserver, $dbuser, $password, $dbname);
 
