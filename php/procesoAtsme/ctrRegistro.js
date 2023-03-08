@@ -56,6 +56,7 @@ btnParte1.addEventListener('click', event => {
             aprobacionInicio: document.querySelector('input[name="aprobacionInicio"]:checked').value
         }
 
+        //valida que se hayan checkeado los inp de formulacionBodega para prender o apagar el sw
         for (let propiedad in datosPrimeraParte.formulacionBodega) {
             if (datosPrimeraParte.formulacionBodega[propiedad] == '') {
                 swContinuar = false;
@@ -65,6 +66,7 @@ btnParte1.addEventListener('click', event => {
             }
         }
 
+        //valida que se hayan checkeado los inp de estadoEquipo para prender o apagar el sw
         for (let propiedad in datosPrimeraParte.estadoEquipo) {
             if (datosPrimeraParte.estadoEquipo[propiedad] == '') {
                 swContinuar = false;
@@ -74,9 +76,8 @@ btnParte1.addEventListener('click', event => {
             }
         }
 
-        swContinuar ? console.log(datosPrimeraParte) : alert("No puedes dejar campos vacios");
-
-        // objRegistro.enviarPrimeraParte(event, datosPrimeraParte);
+        //envia la primera parte del registro si todos los inp están chequeados, sino pide que se registren
+        swContinuar ? objRegistro.enviarPrimeraParte(event, datosPrimeraParte) : alert("No puedes dejar campos vacios");
 
     }
 });

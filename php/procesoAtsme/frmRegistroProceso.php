@@ -144,6 +144,7 @@ if (!isset($_SESSION['login'])) {
 
                             <div class="row mt-5 pt-3">
                                 <p class="fs-4 text-center">¿El reactor esta completamente limpio?</p>
+                                <p class="fs-5 underline text-center">Si la respuesta en negativa, realizar limpieza nuevamente.</p>
                                 <div class="col-6 mx-auto">
                                     <label>Si <input type="radio" name="reactorLimpio" value="1">
                                 </div>
@@ -156,6 +157,7 @@ if (!isset($_SESSION['login'])) {
 
                             <div class="row mt-5 pt-3">
                                 <p class="fs-4 text-center">¿La bomba, mangueras y las lineas de carga esta completamente limpias?</p>
+                                <p class="fs-5 underline text-center">Si la respuesta en negativa, realizar limpieza nuevamente.</p>
                                 <div class="col-6 mx-auto">
                                     <label>Si <input type="radio" name="bombaMangueraLineasLimpias" value="1">
                                 </div>
