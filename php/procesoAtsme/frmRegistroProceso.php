@@ -18,23 +18,10 @@ if (!isset($_SESSION['login'])) {
     <title>ALTMANN - Modelando Conocimiento</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="shortcut icon" type="ico" href="favicon16x16.ico">
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <title>Document</title>
-    <script>
-        function valueChanged()
-        {
-            if($('#enfcerrado').is(":checked"))   
-                $("#TrituradoSaco2").show();
-            else
-                $("#TrituradoSaco2").hide();
-        }
-    </script>
+    <title>Proceso fabricación 800ATSME0</title>
 </head>
 
 <body>
@@ -59,83 +46,88 @@ if (!isset($_SESSION['login'])) {
         <main>       
             <section id="formulario">
                 
-                <form id="formNfo" name="formNfo" method="POST" action="nuevoFormulario.php">
+                <form id="formNfo" name="formNfo" method="POST" >
                     <fieldset>
                         <center>
                         <!-- Paso 1 -->
                         <div class="container" id="seleccioneProceso">
-                            <H4>Seleccione proceso</H4>
-                            <label>Nombre Proceso</label>
-                            <select name="nfo" id="nfo">
-                                <option value="720NFOB00">720NFOB00</option>
-                                <option value="190NFOCON">190NFOCON</option>
-                                <option value="4433QWE">4433QWE</option>
-                            </select>
+                            <H1 class="my-3">Proceso fabricación 800ATSME0</H1>
 
-                            <legend>Proceso NFO</legend><br />
+                            <label class="mt-5 fs-3" for="NumeroLote">Número de lote:</label>
+                            <input type="text" size="2" id="lote" placeholder="Número de Lote" name="lote" required />
 
-                            <label for="NumeroLote">Número de lote:</label>
-                            <input type="text" size="2" id="NumeroLote" placeholder="Número de Lote" name="numeroLote" required />
+                            <h3 class="mt-5 pt-5">Equipos a Utilizar:</h3>
 
-                            <h4>Equipos a Utilizar</h4>
-                            <table class="table">
-                                <tr>
-                                    <td style='width:35%;' align="center" >
-                                        <label>DeDietrich 2</label>
-                                        <input type="checkbox" id="Dietrich2" name="dietrich2" value="dietrich2">
-                                    </td>
-                                    <td style='width:30%;' align="center" >
-                                        <label>Filtro Lukas</label>
-                                        <input type="checkbox" id="FLukas" name="fLukas" value="fLukas">
-                                    </td>
-                                    <td style='width:35%;' align="center" >
-                                        <label>Sistema de Control de Olor</label>
-                                        <input type="checkbox" id="ContOlor" name="contOlor" value="contOlor">
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label>Dietrich 1</label>
+                                    <input type="checkbox" id="dietrich1" name="dietrich1" value="1">
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label>Escamador</label>
+                                    <input type="checkbox" id="escamador" name="escamador" value="1">
+                                </div>
+                            </div>
                         </div>
                         
                         <hr> 
 
-                        <div class="container">
-                            <h4>Formulación</h4>
-                            <b> Indique la cantidad utilizada de cada materia prima </b><br />
+                        <!-- container formulacion proceso -->
 
-                            <label for="nan000">NAN000: </label>
-                            <input type="number" id="nan000" placeholder="Kg"  name="nan000"  height="50" width="200" required />
-                            <label for="swf098">SWF098: </label>
-                            <input type="number" id="swf098" placeholder="Kg"  name="swf098" required />
-                            <label for="stw000">STW000: </label>
-                            <input type="number" id="stw000" placeholder="Kg"  name="stw000" required />
-                            <label for="fdo037">FDO037: </label>
-                            <input type="number" id="fdo037" placeholder="Kg"  name="fdo037" required />
-                            <label for="myo000">MYO000: </label>
-                            <input type="number" id="myo000" placeholder="Kg"  name="myo000" required />
-                            <label for="fdo037">STW000: </label>
-                            <input type="number" id="stw0002" placeholder="Kg"  name="stw0002" required />
-                            <label for="csc050">CSC050: </label>
-                            <input type="number" id="csc050" placeholder="Kg"  name="csc050" required />
-                            <label for="fdo037">STW000: </label>
-                            <input type="number" id="stw0003" placeholder="Kg"  name="stw0003" required />  
+                        <div class="container">
+                            <h3>Formulación del proceso:</h3>
+                            <b class="fs-4"> (Llenar con cantidades en Kilos, consignadas en el FP-04) </b><br />
+
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">TOO000: </label>
+                                    <input type="number" id="TOO00" placeholder="Kg" name="TOO00" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">TORECO: </label>
+                                    <input type="number" id="TORECO" placeholder="Kg" name="TORECO" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">SWF098: </label>
+                                    <input type="number" id="SWF098" placeholder="Kg" name="SWF098" required />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">STW000: </label>
+                                    <input type="number" id="STW000" placeholder="Kg" name="STW000" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">SSO000: </label>
+                                    <input type="number" id="SSO000" placeholder="Kg" name="SSO000" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label for="swf098">GLG000: </label>
+                                    <input type="number" id="GLG000" placeholder="Kg" name="GLG000" required />
+                                </div>
+                                <p id="pTotal"class="fs-4 text-center">Total:</p>
+                            </div>
                         </div>
                         
                         <hr>
+
+                        <!-- container formulacion entregada por bodega -->
                         <div class="container">
-                            <h4>Formulación entregada por Bodega</h4>
-                            <p>¿ Todas las materias primas están correctamente separadas en cantidad (Kg) segun el FP-04 ?</p>
+                            <h3>Formulación entregada por Bodega:</h3>
+                            <p class="fs-4">¿Todas las materias primas están correctamente separadas en cantidad (Kg) segun el FP-04 ?</p>
                             <table class="table" style="width:50%;">
                                 <tr>
-                                    <td align="center"><label>Si <input type="radio" name="MatPriFP04" value="1"></label></td>
-                                    <td align="center"><label>No <input type="radio" name="MatPriFP04" value="0"></label><br /></td>
+                                    <td align="center"><label>Si <input type="radio" name="separacionFp04" value="1"></label></td>
+                                    <td align="center"><label>No <input type="radio" name="separacionFp04" value="0"></label><br /></td>
                                 </tr>
                             </table>
                             
-                            <p>¿ Todas las materias primas están correctamente marcadas y ubicadas en la zona de separacion?</p>
+                            <p class="fs-4">¿ Todas las materias primas están correctamente marcadas y ubicadas en la zona de separacion?</p>
                             <table class="table" style="width:50%;">
                                 <tr>
-                                    <td align="center"><label>Si <input type="radio" name="MatPriSeparada" value="1"></label></td>
-                                    <td align="center"><label>No <input type="radio" name="MatPriSeparada" value="0"></label></td>
+                                    <td align="center"><label>Si <input type="radio" name="materiaPrimaSeparada" value="1"></label></td>
+                                    <td align="center"><label>No <input type="radio" name="materiaPrimaSeparada" value="0"></label></td>
                                 </tr>
                             </table>
                             <i>
@@ -144,8 +136,126 @@ if (!isset($_SESSION['login'])) {
                                 </u>
                             </i>
                         </div>
-                        <input type="submit" value="Guardar y Continuar" class="boton boton-opcion rounded-3">
                         <hr>
+
+                        <!-- container equipo -->
+                        <div class="container">
+                            <h3>Equipo:</h3>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿El reactor esta completamente limpio?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="reactorLimpio" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="reactorLimpio" value="0">
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿La bomba, mangueras y las lineas de carga esta completamente limpias?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="bombaMangueraLineasLimpias" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="bombaMangueraLineasLimpias" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Revisó la hermeticidad del reactor y líneas de traslado para evitar fugas de TOO000/TORECO y SWF098?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="hermeticidadReactorOk" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="hermeticidadReactorOk" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Revisó que el reactor funcione correctamente?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="reactorFuncionaOk" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="reactorFuncionaOk" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Funciona bien el sistema de vacío?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="sistemaVacioOk" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="sistemaVacioOk" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Funciona bien el sistema de vapor?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="sistemaVaporOk" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="sistemaVaporOk" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Funciona bien el sistema de enfriamiento?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="sistemaEnfiramientoOk" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="sistemaEnfiramientoOk" value="0">
+                                </div>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿El condensador no presenta escapes y funciona correctamente?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="condensadorSinFugas" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="condensadorSinFugas" value="0">
+                                </div>
+                            </div>
+
+                            <hr>
+                        </div>
+
+                        <!-- container aprobacion inicio -->
+                        <div class="container">
+                            <h3>Aprobacion final del inicio proceso:</h3>
+
+                            <div class="row mt-5 pt-3">
+                                <p class="fs-4 text-center">¿Aprueba el inicio del proceso?</p>
+                                <div class="col-6 mx-auto">
+                                    <label>Si <input type="radio" name="aprobacionInicio" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input type="radio" name="aprobacionInicio" value="0">
+                                </div>
+                            </div>
+                            
+                            <button id="btnPrimeraParteForm" class="boton boton-opcion rounded-3 p-3 mb-5">Guardar y Continuar</button>
+
+                        </div>
                     </center>
                 </fieldset>
             </form>
@@ -154,5 +264,7 @@ if (!isset($_SESSION['login'])) {
 </div>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="./Registro.js"></script>
+<script src="./ctrRegistro.js"></script>
 </body>
 </html>
