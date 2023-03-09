@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 12:25 AM
+-- Generation Time: Mar 09, 2023 at 03:43 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -1110,10 +1110,10 @@ INSERT INTO `procesos` (`IdProceso`, `NumLote`, `FechaInicial`, `FechaFinal`, `H
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_conversiontod100atoreco`
+-- Table structure for table `tbl_conversion_tod100atoreco`
 --
 
-CREATE TABLE `tbl_conversiontod100atoreco` (
+CREATE TABLE `tbl_conversion_tod100atoreco` (
   `idConversion` int(11) NOT NULL,
   `cargoTod100` tinyint(1) DEFAULT NULL,
   `adicionSso000yGlg000` tinyint(1) DEFAULT NULL,
@@ -1127,10 +1127,10 @@ CREATE TABLE `tbl_conversiontod100atoreco` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_destilaciontod100`
+-- Table structure for table `tbl_destilacion_tod100`
 --
 
-CREATE TABLE `tbl_destilaciontod100` (
+CREATE TABLE `tbl_destilacion_tod100` (
   `idDestilacion` int(11) NOT NULL,
   `inicioDestilacion` datetime DEFAULT NULL,
   `finDestilacion` datetime DEFAULT NULL,
@@ -1176,53 +1176,6 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_fasecargatoo000`
---
-
-CREATE TABLE `tbl_fasecargatoo000` (
-  `idCarga` int(11) NOT NULL,
-  `fichaLeída` tinyint(1) DEFAULT NULL,
-  `equipoSeguridad` tinyint(1) DEFAULT NULL,
-  `cargaBomba` tinyint(1) DEFAULT NULL,
-  `conexionesAcoplesTuberiasOk` tinyint(1) DEFAULT NULL,
-  `coloracionTOO` tinyint(1) DEFAULT NULL,
-  `cargaConVacio` tinyint(1) DEFAULT NULL,
-  `bloqueoAjusteVacio` tinyint(1) DEFAULT NULL,
-  `inicioCargaTOO000` datetime DEFAULT NULL,
-  `finCargaTOO000` datetime DEFAULT NULL,
-  `problemaCarga` tinyint(1) DEFAULT NULL,
-  `comentarioProblema` varchar(256) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_fasedescarga`
---
-
-CREATE TABLE `tbl_fasedescarga` (
-  `idCarga` int(11) NOT NULL,
-  `fichaLeída` tinyint(1) DEFAULT NULL,
-  `equipoSeguridad` tinyint(1) DEFAULT NULL,
-  `RPMCilindro` int(5) DEFAULT NULL,
-  `frecuenciaVariador` float(5,3) DEFAULT NULL,
-  `temperaturaAgua` float(5,3) DEFAULT NULL,
-  `telaFiltrante` tinyint(1) DEFAULT NULL,
-  `inicioVapor` datetime DEFAULT NULL,
-  `finVapor` datetime DEFAULT NULL,
-  `kgAtsme0` decimal(5,3) DEFAULT NULL,
-  `kgAtsxxx` decimal(5,3) DEFAULT NULL,
-  `problemaEscamado` tinyint(1) DEFAULT NULL,
-  `comentarioProblema` varchar(256) DEFAULT NULL,
-  `inicioDescarga` datetime DEFAULT NULL,
-  `finDescarga` datetime DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_fase_cargaswf098_atsme`
 --
 
@@ -1243,6 +1196,53 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `resultadoMuestra` int(5) DEFAULT NULL,
   `totalAguaDestilada` int(5) DEFAULT NULL,
   `muestraPasa` tinyint(1) DEFAULT NULL,
+  `idProceso` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_fase_carga_too000`
+--
+
+CREATE TABLE `tbl_fase_carga_too000` (
+  `idCarga` int(11) NOT NULL,
+  `fichaLeída` tinyint(1) DEFAULT NULL,
+  `equipoSeguridad` tinyint(1) DEFAULT NULL,
+  `cargaBomba` tinyint(1) DEFAULT NULL,
+  `conexionesAcoplesTuberiasOk` tinyint(1) DEFAULT NULL,
+  `coloracionTOO` tinyint(1) DEFAULT NULL,
+  `cargaConVacio` tinyint(1) DEFAULT NULL,
+  `bloqueoAjusteVacio` tinyint(1) DEFAULT NULL,
+  `inicioCargaTOO000` datetime DEFAULT NULL,
+  `finCargaTOO000` datetime DEFAULT NULL,
+  `problemaCarga` tinyint(1) DEFAULT NULL,
+  `comentarioProblema` varchar(256) DEFAULT NULL,
+  `idProceso` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_fase_descarga`
+--
+
+CREATE TABLE `tbl_fase_descarga` (
+  `idCarga` int(11) NOT NULL,
+  `fichaLeída` tinyint(1) DEFAULT NULL,
+  `equipoSeguridad` tinyint(1) DEFAULT NULL,
+  `RPMCilindro` int(5) DEFAULT NULL,
+  `frecuenciaVariador` float(5,3) DEFAULT NULL,
+  `temperaturaAgua` float(5,3) DEFAULT NULL,
+  `telaFiltrante` tinyint(1) DEFAULT NULL,
+  `inicioVapor` datetime DEFAULT NULL,
+  `finVapor` datetime DEFAULT NULL,
+  `kgAtsme0` decimal(5,3) DEFAULT NULL,
+  `kgAtsxxx` decimal(5,3) DEFAULT NULL,
+  `problemaEscamado` tinyint(1) DEFAULT NULL,
+  `comentarioProblema` varchar(256) DEFAULT NULL,
+  `inicioDescarga` datetime DEFAULT NULL,
+  `finDescarga` datetime DEFAULT NULL,
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1385,16 +1385,16 @@ ALTER TABLE `procesos`
   ADD UNIQUE KEY `IdProceso_UNIQUE` (`IdProceso`);
 
 --
--- Indexes for table `tbl_conversiontod100atoreco`
+-- Indexes for table `tbl_conversion_tod100atoreco`
 --
-ALTER TABLE `tbl_conversiontod100atoreco`
+ALTER TABLE `tbl_conversion_tod100atoreco`
   ADD PRIMARY KEY (`idConversion`),
   ADD KEY `faseConversionTod100ProcesoAtsme` (`idProceso`);
 
 --
--- Indexes for table `tbl_destilaciontod100`
+-- Indexes for table `tbl_destilacion_tod100`
 --
-ALTER TABLE `tbl_destilaciontod100`
+ALTER TABLE `tbl_destilacion_tod100`
   ADD PRIMARY KEY (`idDestilacion`),
   ADD KEY `destilacionTOD100ProcesoAtsme` (`idProceso`);
 
@@ -1413,25 +1413,25 @@ ALTER TABLE `tbl_estado_equipo_atsme`
   ADD KEY `estadoEquipoDeProcesoAtsme` (`idProceso`);
 
 --
--- Indexes for table `tbl_fasecargatoo000`
---
-ALTER TABLE `tbl_fasecargatoo000`
-  ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `faseCargaTOO000ProcesoAtsme` (`idProceso`);
-
---
--- Indexes for table `tbl_fasedescarga`
---
-ALTER TABLE `tbl_fasedescarga`
-  ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `faseDesargaProcesoAtsme` (`idProceso`);
-
---
 -- Indexes for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
   ADD PRIMARY KEY (`idCarga`),
   ADD KEY `procesoCargaSWF098Atsme` (`idProceso`);
+
+--
+-- Indexes for table `tbl_fase_carga_too000`
+--
+ALTER TABLE `tbl_fase_carga_too000`
+  ADD PRIMARY KEY (`idCarga`),
+  ADD KEY `faseCargaTOO000ProcesoAtsme` (`idProceso`);
+
+--
+-- Indexes for table `tbl_fase_descarga`
+--
+ALTER TABLE `tbl_fase_descarga`
+  ADD PRIMARY KEY (`idCarga`),
+  ADD KEY `faseDesargaProcesoAtsme` (`idProceso`);
 
 --
 -- Indexes for table `tbl_lavado_equipo_atsme`
@@ -1501,15 +1501,15 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Constraints for table `tbl_conversiontod100atoreco`
+-- Constraints for table `tbl_conversion_tod100atoreco`
 --
-ALTER TABLE `tbl_conversiontod100atoreco`
+ALTER TABLE `tbl_conversion_tod100atoreco`
   ADD CONSTRAINT `faseConversionTod100ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
 
 --
--- Constraints for table `tbl_destilaciontod100`
+-- Constraints for table `tbl_destilacion_tod100`
 --
-ALTER TABLE `tbl_destilaciontod100`
+ALTER TABLE `tbl_destilacion_tod100`
   ADD CONSTRAINT `destilacionTOD100ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
 
 --
@@ -1525,22 +1525,22 @@ ALTER TABLE `tbl_estado_equipo_atsme`
   ADD CONSTRAINT `estadoEquipoDeProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
 
 --
--- Constraints for table `tbl_fasecargatoo000`
---
-ALTER TABLE `tbl_fasecargatoo000`
-  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
-
---
--- Constraints for table `tbl_fasedescarga`
---
-ALTER TABLE `tbl_fasedescarga`
-  ADD CONSTRAINT `faseDesargaProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
-
---
 -- Constraints for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
   ADD CONSTRAINT `procesoCargaSWF098Atsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+
+--
+-- Constraints for table `tbl_fase_carga_too000`
+--
+ALTER TABLE `tbl_fase_carga_too000`
+  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+
+--
+-- Constraints for table `tbl_fase_descarga`
+--
+ALTER TABLE `tbl_fase_descarga`
+  ADD CONSTRAINT `faseDesargaProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
 
 --
 -- Constraints for table `tbl_lavado_equipo_atsme`
@@ -1564,7 +1564,7 @@ ALTER TABLE `tbl_seguimiento_cargaswf098`
 -- Constraints for table `tbl_seguimiento_desttod100`
 --
 ALTER TABLE `tbl_seguimiento_desttod100`
-  ADD CONSTRAINT `seguimientoDestilacionTOD100Atsme` FOREIGN KEY (`idDestilacion`) REFERENCES `tbl_destilaciontod100` (`idDestilacion`);
+  ADD CONSTRAINT `seguimientoDestilacionTOD100Atsme` FOREIGN KEY (`idDestilacion`) REFERENCES `tbl_destilacion_tod100` (`idDestilacion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
