@@ -22,39 +22,6 @@ img {
     margin: 0 auto;
 }
 
-h1 {
-    font-size: 3rem;
-}
-h2 {
-    font-size: 1.9rem;
-}
-h3 {
-    font-size: 1.7rem;
-}
-h4 {
-    font-size: 1.5rem;
-}
-
-.vista-documento h1{
-    font-size: 2.1rem;
-}
-.vista-documento h2{
-    font-size: 1.9rem;
-}
-.vista-documento h3{
-    font-size: 1.6rem;
-}
-.vista-documento h4{
-    font-size: 1.4rem;
-}
-.vista-documento h5{
-    font-size: 1.3rem;
-
-}
-.vista-documento p{
-    font-size: 1.3rem;
-}
-
 /** Utilidades **/
 .seccion {
     margin-top: 2rem;
