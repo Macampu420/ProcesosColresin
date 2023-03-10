@@ -20,8 +20,11 @@ frmPartarte1.addEventListener('submit', event => {
     document.getElementById('seccion2').classList.remove('d-none');
 
     document.getElementById('fichaLeidaFrm2').scrollIntoView({behavior: 'smooth', block:'center'});
-    // document.getElementById('fichaLeidaFrm2').focus();
+    setTimeout(() => {
+        document.getElementById('fichaLeidaFrm2').focus();
+    }, 1000);
+});
 
-
+document.getElementById('cargaConVacioToo000').addEventListener('input', event => {
 
 });
