@@ -37,7 +37,7 @@
                             <input type="number" id="TOO00" placeholder="Kg" name="TOO00" required />
                         </div>
                         <div class="col-4 mx-auto">
-                            <label for="swf098">TORECO: </label>
+                            <label for="swf098">TOREC0: </label>
                             <input type="number" id="TORECO" placeholder="Kg" name="TORECO" required />
                         </div>
                         <div class="col-4 mx-auto">
@@ -72,10 +72,9 @@
                         (Kg) segun el FP-04 ?</p>
                     <table class="table" style="width:50%;">
                         <tr>
-                            <td align="center"><label>Si <input type="radio" name="separacionFp04" value="1"></label>
+                            <td align="center"><label>Si <input type="radio" name="separacionFp04" value="1" required></label>
                             </td>
-                            <td align="center"><label>No <input type="radio" name="separacionFp04"
-                                        value="0"></label><br /></td>
+                            <td align="center"><label>No <input type="radio" name="separacionFp04" value="0" required></label><br /></td>
                         </tr>
                     </table>
 
@@ -217,7 +216,7 @@
                             negativa, indique las razones (contacte a mantenimiento y deje el proceso en
                             espera hasta dar solución)</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="aprobacionInicio" value="1" required>
+                            <label>Si <input type="radio" id="aprobacionInicio" name="aprobacionInicio" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="aprobacionInicio" value="0" required>

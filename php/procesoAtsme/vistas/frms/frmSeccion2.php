@@ -6,7 +6,7 @@
                             <hr>
                             <!-- container cargaTOO000 -->
                             <div class="container">
-                                <h2>Carga TOO000 / TOREC0:</h2>
+                                <h2 id="tituloSeccion2">Carga TOO000 / TOREC0:</h2>
 
                                 <!-- ficha seguridad -->
 
@@ -29,7 +29,7 @@
                                     </div>
 
                                     <div class="col-6 mx-auto">
-                                        <label>Si <input type="radio" name="fichaLeída" value="1" required>
+                                        <label>Si <input type="radio" id="fichaLeidaFrm2" name="fichaLeída" value="1" required>
                                     </div>
                                     <div class="col-6 mx-auto">
                                         <label>No<input type="radio" name="fichaLeída" value="0" required>
