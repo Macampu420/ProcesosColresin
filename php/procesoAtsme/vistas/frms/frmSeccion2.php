@@ -8,6 +8,8 @@
                             <div class="container">
                                 <h2>Carga TOO000 / TOREC0:</h2>
 
+                                <!-- ficha seguridad -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-danger">¿Leyó la ficha y hoja de seguridad ( FS-01 y FS-01-1)
                                         para el 700TOO000 / 720TOREC0?</p>
@@ -36,6 +38,8 @@
 
                                 <hr>
 
+                                <!-- equipo adecuado -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Cuenta con el equipo de seguridad adecuado para el
                                         manejo?</p>
@@ -52,6 +56,8 @@
 
                                 <hr>
 
+                                <!-- cargaBomba -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Realizara la carga con bomba a prueba de explosión o en
                                         su defecto una bomba de vacio o neumatica? </p>
@@ -64,6 +70,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- conexionesAcoplesTuberiasOk -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Verifico que las conexiones electricas, acoples de
@@ -83,6 +91,8 @@
 
                                 <hr>
 
+                                <!-- coloracionTorec -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿El TOO000 / TORECO presenta alguna coloracion?</p>
                                     <p class="fs-5 text-decoration-underline text-center fw-bold">En caso de respuesta
@@ -98,6 +108,8 @@
 
                                 <hr>
 
+                                <!-- cargaConVacio -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Cargara el TOO000 con vacio?</p>
                                     <div class="col-6 mx-auto">
@@ -109,6 +121,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- bloqueoAjusteVacio -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Bloquee el equipo y ajuste el vacio para que la carga se
@@ -122,6 +136,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- carga TOO000 TOREC0 -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Cargue el (1)700TOO00 / TORECO (reserve aproximadamente
@@ -138,6 +154,8 @@
 
                                 <hr>
 
+                                <!-- problemaCarga -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Se presento algún problema en la carga del TOO000 /
                                         TORECO?</p>
@@ -153,6 +171,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- comentarioProblema -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Indica el problema:</p>

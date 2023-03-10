@@ -8,6 +8,8 @@
                             <div class="container">
                                 <h2>Lavado equipo:</h2>
 
+                                <!-- enjuague equipo -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Enjuague con agua a presión y guardar el enjuague en la caneca destinada para derivados de ATS. </p>
                                     <div class="col-3 mt-5 mx-auto">
@@ -20,6 +22,8 @@
 
                                 <hr>
 
+                                <!-- tuberias drenadas -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Dejo drenadas y limpias todas las tuberías involucradas en el proceso.</p>
                                     <div class="col-6 mx-auto">
@@ -31,6 +35,8 @@
                                 </div>  
 
                                 <hr>
+
+                                <!-- kg agua lavado -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Kilos generados de agua de lavado</p>

@@ -8,6 +8,8 @@
                             <div class="container">
                                 <h2>Descarga:</h2>
 
+                                <!-- ficha seguridad -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-danger">¿Leyó la ficha y hoja de seguridad ( FS-01y FS-01-1) para el 800ATSME0?</p>
 
@@ -35,6 +37,8 @@
 
                                 <hr>
 
+                                <!-- equipo de seguridad apropiado -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Cuenta con el equipo de seguridad adecuado para el
                                         manejo?</p>
@@ -50,6 +54,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- inicio calentamiento -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">IMPORTANTE: A la par de inciar el calentaminendo realice la instalacion del Escamador para proceder con la decarga con las siguientes condiciones de operacion:</p>
@@ -69,6 +75,8 @@
 
                                 <hr>
 
+                                <!-- tela filtrante -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Instalo la tela filtrante en la tuberia de descarga</p>
                                     <div class="col-3 mt-5 mx-auto">
@@ -81,6 +89,8 @@
 
                                 <hr>
 
+                                <!-- vapor camisa -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Ponga vapor a la camisa para subir  T=133°c</p>
                                     <div class="col-3 mt-5 mx-auto">
@@ -92,6 +102,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- descarga -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Sin agitacion y una vez alcanzada la temperatura de T = 135°C, inicie la descarga mediante escamador</p>
@@ -106,6 +118,8 @@
 
                                 <hr>
 
+                                <!-- reporte rendimiento -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-3 text-center text-danger">Reporte el rendimiento final del producto, asi como si se genero algun residuo de ATSME0</p>
                                     <div class="col-3 mt-5 mx-auto">
@@ -117,6 +131,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- problema escamado -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿ Se presento algún problema en el proceso de escamado ?</p>
@@ -130,6 +146,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- problema escamado -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Indica el problema:</p>

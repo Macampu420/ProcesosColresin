@@ -9,6 +9,8 @@
                             <div class="container">
                                 <h2>Converision TOD100 a TOREC0:</h2>
 
+                                <!-- carga tod100 -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Cargo TOD100 e iniciar agitación.</p>
                                     <div class="col-6 mx-auto">
@@ -20,6 +22,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- adicion quimicos -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Adicionar (4) SSO000 y (5) GLG000.</p>
@@ -33,6 +37,8 @@
 
                                 <hr>
 
+                                <!-- homogenizacion... -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Homogenizo 15 minutos, suspendio agitación para dejar en reposo 12 horas para separar TOREC0 / STW000.</p>
                                     <div class="col-6 mx-auto">
@@ -45,6 +51,8 @@
 
                                 <hr>
 
+                                <!-- decarga -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Pasadas las 12 horas, descargue el STW000 separada (**Note un cambio de fases):</p>
                                     <div class="col-4 mt-5 mx-auto">
@@ -55,6 +63,8 @@
 
                                 <hr>
 
+                                <!-- kgtorec0 -->
+
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Continue descargando el TOREC0 hasta finalizar.</p>
                                     <div class="col-4 mt-5 mx-auto">
@@ -64,6 +74,8 @@
                                 </div>
 
                                 <hr>
+
+                                <!-- torec etiquetado -->
 
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Identifico el TORECO con numero de lote y fecha mediante una etiqueta?</p>

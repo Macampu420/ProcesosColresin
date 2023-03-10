@@ -2,6 +2,8 @@ const objRegistro = Object.create(RegistroForm);;
 
 const btnParte1 = document.getElementById('btnPrimeraParteForm');
 
+// objRegistro.construirNuevoFormulario();
+
 // btnParte1.addEventListener('click', event => {
 
 //     event.preventDefault();

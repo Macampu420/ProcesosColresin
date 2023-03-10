@@ -9,5 +9,13 @@ let RegistroForm = {
           .then(response => response.text())
           .then(data => console.log(data))
           .catch(error => console.error('Error al hacer la petición', error));
+    },
+
+    construirNuevoFormulario: () => {
+        let secciones = document.querySelectorAll('[id*="seccion"]');
+        secciones = Array.from(secciones);
+        secciones.shift();
+
+        secciones.forEach(seccion => seccion.classList.add('d-none'));
     }
 }
