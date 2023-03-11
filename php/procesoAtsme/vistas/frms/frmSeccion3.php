@@ -158,7 +158,7 @@
 
                     <!-- inicio reflujo -->
 
-                    <!-- <div id="divInicioReflujo" class="row mt-3 pt-3">
+                    <div id="divInicioReflujo" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Se dio inicio al reflujo?</p>
 
                         <div class="col-6 mx-auto">
@@ -167,15 +167,15 @@
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="inicioDestilacion" value="0" required>
                         </div>
-                    </div> -->
+                    </div>
 
                     <!-- seccion reflujo (inicio fin y seguimientos) -->
 
                     <div id="containerReflujo" class="d-none">
 
-                        <div id="containerInicioReflujo" class="row">
+                        <div class="row">
                             <div class="col-3 mx-auto">
-                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" >
+                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" required>
                             </div>
                         </div>
 
@@ -191,18 +191,18 @@
 
                         <!-- segumientos -->
 
-                        <div class="d-none" id="containerSeguimientosSWF098">
+                        <div id="containerSeguimientosSWF098">
 
                         </div>
 
                         <!-- fin reflujo -->
-                        <div id="containerFinReflujo" class="row mt-3 pt-3">
+                        <div class="row mt-3 pt-3">
                             <div class="col-3 mx-auto">
-                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" >
+                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" required>
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
-                                <input type="number" placeholder="" name="totalAguaDestilada" />
+                                <input type="number" placeholder="" name="totalAguaDestilada" required/>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
 
                     <div id="containerMuestra" class="d-none">
 
-                        <div id="confirmContainerMuestra" class="row mt-3 pt-3">
+                        <div class="row mt-3 pt-3">
                             <p class="fs-4 text-center">Segun la cantidad de agua destilada y el tiempo de reaccion
                                 acumulado es necesario retirar muesta para previa de % acido sulfurico libre?</p>
 
@@ -233,7 +233,7 @@
                                 </div>
                             </div>
 
-                            <div id="" class="row mt-3 pt-3">
+                            <div id="divMuestraNecesaria" class="row mt-3 pt-3">
                                 <p class="fs-4 text-center">¿Cumple?</p>
                                 <p class="text-danger">Si el valor está superior a 7%, continuar reacción y repetir
                                     análisis hasta que se complete la reacción.</p>
