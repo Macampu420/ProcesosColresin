@@ -45,22 +45,22 @@ frmParte2.addEventListener('submit', event => {
     objRegistro.deshabilitarForm(frmParte2);
 });
 
-// frmParte3.addEventListener('submit', event => {
+frmParte3.addEventListener('submit', event => {
 
-//     event.preventDefault();
+    event.preventDefault();
 
-//     console.log("parte 4 sigue");
+    console.log("parte 4 sigue");
 
-//     let datosParte1 = new FormData(frmParte1);
+    let datosParte1 = new FormData(frmParte1);
 
-//     // aca iria la peticion
+    // aca iria la peticion
 
-//     document.getElementById('seccion4').classList.remove('d-none');
+    document.getElementById('seccion4').classList.remove('d-none');
 
-//     objRegistro.deshabilitarForm(frmParte1);
+    objRegistro.deshabilitarForm(frmParte1);
 
-//     objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');   
-// });
+    objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');   
+});
 
 frmParte4.addEventListener('submit', event => {
 
@@ -138,16 +138,16 @@ document.getElementById('containerProblemaEscamado').addEventListener('input', e
 
 })
 
-// document.getElementById('divInicioReflujo').addEventListener('input', event => {
+document.getElementById('divInicioReflujo').addEventListener('input', event => {
 
-//     objRegistro.renderSegumientosReflujo();
-//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
-//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerSeguimientosSWF098");
-//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerInicioReflujo");
-//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerFinReflujo");
-//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
+    objRegistro.renderSegumientosReflujo();
+    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
+    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerSeguimientosSWF098");
+    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerInicioReflujo");
+    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerFinReflujo");
+    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
 
-// })
+})
 
 document.getElementById('confirmContainerMuestra').addEventListener('input', event => {
 
