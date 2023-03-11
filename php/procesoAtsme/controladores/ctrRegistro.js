@@ -1,16 +1,16 @@
 const objRegistro = Object.create(RegistroForm);;
 
-const frmPartarte1 = document.getElementById('frmSeccion1');
-const frmPartarte2 = document.getElementById('frmSeccion2');
-const frmPartarte3 = document.getElementById('frmSeccion3');
-const frmPartarte4 = document.getElementById('frmSeccion4');
-const frmPartarte5 = document.getElementById('frmSeccion5');
-const frmPartarte6 = document.getElementById('frmSeccion6');
-const frmPartarte7 = document.getElementById('frmSeccion7');
+const frmParte1 = document.getElementById('frmSeccion1');
+const frmParte2 = document.getElementById('frmSeccion2');
+const frmParte3 = document.getElementById('frmSeccion3');
+const frmParte4 = document.getElementById('frmSeccion4');
+const frmParte5 = document.getElementById('frmSeccion5');
+const frmParte6 = document.getElementById('frmSeccion6');
+const frmParte7 = document.getElementById('frmSeccion7');
 
 // objRegistro.construirNuevoFormulario();
 
-frmPartarte1.addEventListener('submit', event => {
+frmParte1.addEventListener('submit', event => {
 
     event.preventDefault();
 
@@ -19,117 +19,94 @@ frmPartarte1.addEventListener('submit', event => {
         return
     };
 
-    let datosParte1 = new FormData(frmPartarte1);
+    let datosParte1 = new FormData(frmParte1);
 
     // aca iria la peticion
 
     document.getElementById('seccion2').classList.remove('d-none');
 
-    document.getElementById('fichaLeidaFrm2').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('fichaLeidaFrm2').focus();
-    }, 1000);
+    objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');   
+
+    objRegistro.deshabilitarForm(frmParte1);
 });
 
-frmPartarte2.addEventListener('submit', event => {
+frmParte2.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmPartarte1);
+    let datosParte1 = new FormData(frmParte1);
 
     // aca iria la peticion
 
     document.getElementById('seccion3').classList.remove('d-none');
 
-    document.getElementById('fichaLeidaFrm3').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('fichaLeidaFrm3').focus();
-    }, 1000);
+    objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');   
+    
+    objRegistro.deshabilitarForm(frmParte2);
 });
 
-frmPartarte3.addEventListener('submit', event => {
+// frmParte3.addEventListener('submit', event => {
+
+//     event.preventDefault();
+
+//     console.log("parte 4 sigue");
+
+//     let datosParte1 = new FormData(frmParte1);
+
+//     // aca iria la peticion
+
+//     document.getElementById('seccion4').classList.remove('d-none');
+
+//     objRegistro.deshabilitarForm(frmParte1);
+
+//     objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');   
+// });
+
+frmParte4.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmPartarte1);
-
-    // aca iria la peticion
-
-    document.getElementById('seccion4').classList.remove('d-none');
-
-    document.getElementById('confirmInicioDestilacion').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('confirmInicioDestilacion').focus();
-    }, 1000);
-});
-
-frmPartarte4.addEventListener('submit', event => {
-
-    event.preventDefault();
-
-    let datosParte1 = new FormData(frmPartarte1);
+    let datosParte1 = new FormData(frmParte1);
 
     // aca iria la peticion
 
     document.getElementById('seccion5').classList.remove('d-none');
 
-    document.getElementById('fichaLeidaFrm5').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('fichaLeidaFrm5').focus();
-    }, 1000);
+    objRegistro.deshabilitarForm(frmParte4);
+    objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');   
 });
 
-frmPartarte5.addEventListener('submit', event => {
+frmParte5.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmPartarte1);
+    let datosParte1 = new FormData(frmParte1);
 
     // aca iria la peticion
 
     document.getElementById('seccion6').classList.remove('d-none');
 
-    document.getElementById('cargoTod100').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('cargoTod100').focus();
-    }, 1000);
+    objRegistro.deshabilitarForm(frmParte);
+
+    objRegistro.focoSiguienteSeccion('cargoTod100');  
 });
 
-frmPartarte6.addEventListener('submit', event => {
+frmParte6.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmPartarte1);
+    let datosParte1 = new FormData(frmParte1);
 
     // aca iria la peticion
 
     document.getElementById('seccion7').classList.remove('d-none');
 
-    document.getElementById('inicioEnjuague').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-    });
-    setTimeout(() => {
-        document.getElementById('inicioEnjuague').focus();
-    }, 1000);
+    objRegistro.deshabilitarForm(frmParte6);
+    objRegistro.focoSiguienteSeccion('inicioEnjuague');   
+
 });
 
-frmPartarte7.addEventListener('submit', event => {
+frmParte7.addEventListener('submit', event => {
 
     event.preventDefault();
 
@@ -161,18 +138,20 @@ document.getElementById('containerProblemaEscamado').addEventListener('input', e
 
 })
 
-document.getElementById('divInicioReflujo').addEventListener('input', event => {
+// document.getElementById('divInicioReflujo').addEventListener('input', event => {
 
-    objRegistro.renderSegumientosReflujo();
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
+//     objRegistro.renderSegumientosReflujo();
+//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
+//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerSeguimientosSWF098");
+//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerInicioReflujo");
+//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerFinReflujo");
+//     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
 
-})
+// })
 
-document.getElementById('containerMuestra').addEventListener('input', event => {
+document.getElementById('confirmContainerMuestra').addEventListener('input', event => {
 
     objRegistro.mostrarOcultarElemento(event, "confirmMuestraNecesaria", "divMuestraNecesaria");
-
 })
 
 document.getElementById('containerDestilacion').addEventListener('input', event => {

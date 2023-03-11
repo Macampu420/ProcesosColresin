@@ -2,13 +2,15 @@ let RegistroForm = {
     //metodo que envia la primera parte del formulario al servidor
     enviarPrimeraParte: (event, datosPrimeraParte) => {
         fetch('./registroFrm.php', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(datosPrimeraParte)
-          })
-          .then(response => response.text())
-          .then(data => console.log(data))
-          .catch(error => console.error('Error al hacer la petición', error));
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosPrimeraParte)
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error al hacer la petición', error));
     },
 
     construirNuevoFormulario: () => {
@@ -21,18 +23,20 @@ let RegistroForm = {
 
     mostrarOcultarElemento: (event, idDisparador, idOcultar) => {
         event.target.id == idDisparador ?
-        document.getElementById(idOcultar).classList.remove('d-none') :
-        document.getElementById(idOcultar).classList.add('d-none');
+            document.getElementById(idOcultar).classList.remove('d-none') :
+            document.getElementById(idOcultar).classList.add('d-none');
     },
 
     renderSegumientosReflujo: () => {
-        
+
         let divSeguimientos = document.getElementById('containerSeguimientosSWF098');
 
-        if(divSeguimientos.childElementCount == 0){
+        divSeguimientos.classList.remove('d-none');
+
+        if (divSeguimientos.childElementCount == 0) {
             for (let i = 1; i < 31; i++) {
-            
-                if((i == 10) || (i == 20) || (i == 30)){
+
+                if ((i == 10) || (i == 20) || (i == 30)) {
                     divSeguimientos.insertAdjacentHTML('beforeend', `
                     <div>
                         <div class="row text-center">
@@ -42,15 +46,15 @@ let RegistroForm = {
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Temperatura: </label>
-                                <input required type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}" required />
+                                <input  type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Presion: </label>
-                                <input required type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}" required />
+                                <input  type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada: </label>
-                                <input required type="number" id="SWF098DestilacionHora${i}" placeholder="Kg" name="kgAguaDestiladaDestilacionHora${i}" required />
+                                <input  type="number" id="SWF098DestilacionHora${i}" placeholder="Kg" name="kgAguaDestiladaDestilacionHora${i}"  />
                             </div>
                         </div>
                         <div class="row">
@@ -69,11 +73,11 @@ let RegistroForm = {
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Temperatura: </label>
-                                <input required type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}" required />
+                                <input  type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Presion: </label>
-                                <input required type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}" required />
+                                <input  type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
                             </div>
                         </div>
                         <div class="row">
@@ -83,7 +87,7 @@ let RegistroForm = {
                     <hr>
                 `)
                 }
-                
+
             }
         }
 
@@ -92,7 +96,7 @@ let RegistroForm = {
     renderSeguimientosDestilacion: () => {
         let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
 
-        if(divSeguimientos.childElementCount == 0){
+        if (divSeguimientos.childElementCount == 0) {
             for (let i = 1; i < 9; i++) {
 
                 if ((i == 5) || (i == 8)) {
@@ -175,5 +179,24 @@ let RegistroForm = {
             }
         }
 
+    },
+
+    deshabilitarForm: form => {
+        let camposFrm = form.querySelectorAll('input, textarea, button');
+
+        camposFrm.forEach((campo) => {
+            campo.disabled = true;
+        });
+    },
+
+    focoSiguienteSeccion: seccion => {
+        document.getElementById(seccion).scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+        setTimeout(() => {
+            document.getElementById(seccion).focus();
+        }, 1000);
     }
 }
