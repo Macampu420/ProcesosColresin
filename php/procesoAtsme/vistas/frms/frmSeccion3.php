@@ -117,24 +117,22 @@
 
                     <!-- problema solucion acido -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="problemaCargaSwf098" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿ Se presento algún problema al adicionar el ácido sulfúrico?</p>
                         <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta es
                             afirmativa, mencione lo ocurrido y notifique al area encargada para dar
                             solucion.</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Si <input type="radio" name="problemaAdicionAcido">
+                            <label>Si <input type="radio" id="siProblemaCargaSwf098" name="problemaAdicionAcido">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
                             <label>No<input type="radio" name="problemaAdicionAcido">
                         </div>
                     </div>
 
-                    <hr>
-
                     <!-- comentario problema -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="comentarioProblemaCargaSwf098" class="row mt-3 pt-3 d-none">
                         <p class="fs-4 text-center">Indica el problema:</p>
                         <div class="col-3 mt-5 mx-auto">
                             <input type="textarea" placeholder="Problema" name="comentarioProblema">
@@ -146,7 +144,8 @@
                     <!-- equipoEnReflujo -->
 
                     <div class="row mt-3 pt-3">
-                        <p class="fs-4 text-center">¿Puso a reflujo el equipo para retornar TOO000 a la reacción?</p>
+                        <p class="fs-4 text-center">¿Puso a reflujo el equipo para retornar TOO000 a la reacción?
+                        </p>
                         <div class="col-6 mx-auto">
                             <label>Si <input type="radio" name="equipoEnReflujo" value="1" required>
                         </div>
@@ -159,65 +158,95 @@
 
                     <!-- inicio reflujo -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="divInicioReflujo" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Se dio inicio al reflujo?</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="inicioDestilacion" value="1" required>
+                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioDestilacion" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="inicioDestilacion" value="0" required>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-3 mx-auto">
-                            <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo">
+                    <!-- seccion reflujo (inicio fin y seguimientos) -->
+
+                    <div id="containerReflujo" class="d-none">
+
+                        <div class="row">
+                            <div class="col-3 mx-auto">
+                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" required>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h2>Seguimiento de la reaccion</h2>
+                        <p class="fs-4 fw-bold">Con vapor sostener temperatura y reflujo T = 105 - 110°C </p>
+                        <p class="fs-4 text-danger">***IMPORTANTE: En caso de notarse alguna novedad, coloracion o que
+                            el
+                            destialdo tenga un aspecto diferente a liquido transparente incoloro indicar en la casilla
+                            de
+                            observaciones.</p>
+
+                        <!-- segumientos -->
+
+                        <div id="containerSeguimientosSWF098">
+
+                        </div>
+
+                        <!-- fin reflujo -->
+                        <div class="row mt-3 pt-3">
+                            <div class="col-3 mx-auto">
+                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" required>
+                            </div>
+                            <div class="col-4 mx-auto">
+                                <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
+                                <input type="number" placeholder="" name="totalAguaDestilada" required/>
+                            </div>
                         </div>
                     </div>
 
-                    <hr>
+                    <!-- muestra de acido sulfurico -->
 
-                    <h2>Seguimiento de la reaccion</h2>
-                    <p class="fs-4 fw-bold">Con vapor sostener temperatura y reflujo T = 105 - 110°C </p>
-                    <p class="fs-4 text-danger">***IMPORTANTE: En caso de notarse alguna novedad, coloracion o que el
-                        destialdo tenga un aspecto diferente a liquido transparente incoloro indicar en la casilla de
-                        observaciones.</p>
+                    <div id="containerMuestra" class="d-none">
 
-                    <hr>
+                        <div class="row mt-3 pt-3">
+                            <p class="fs-4 text-center">Segun la cantidad de agua destilada y el tiempo de reaccion
+                                acumulado es necesario retirar muesta para previa de % acido sulfurico libre?</p>
 
-                    <!-- segumientos -->
-
-                    <div id="containerSeguimientosSWF098">
-                        <div class="row text-center">
-                            <p class="fs-2 col-4">Hora 1:</p>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Temperatura: </label>
-                                <input type="number" id="TOO00" placeholder="°C" name="temperatura" required />
+                            <div class="col-6 mx-auto">
+                                <label>Si <input type="radio" id="confirmMuestraNecesaria"
+                                        name="muestraAcidoSulfNecesario" value="1" required>
                             </div>
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Presion: </label>
-                                <input type="number" id="TORECO" placeholder="DPI" name="presion" required />
-                            </div>
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Agua Destilada: </label>
-                                <input type="number" id="SWF098" placeholder="Kg" name="kgAguaDestilada" required />
+                            <div class="col-6 mx-auto">
+                                <label>No<input type="radio" name="muestraAcidoSulfNecesario" value="0" required>
                             </div>
                         </div>
-                        <div class="row">
-                            <textarea class="col-4 mx-auto h-50" name="observaciones"
-                                placeholder="Observaciones:"></textarea>
-                        </div>
-                    </div>
 
-                    <!-- fin reflujo -->
-                    <div class="row mt-3 pt-3">
-                        <div class="col-3 mt-5 mx-auto">
-                            <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
+                        <div id="divMuestraNecesaria" class="d-none">
+
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
+                                    <input type="number" placeholder="" name="resultadoMuestra" required/>
+                                </div>
+                            </div>
+
+                            <div id="divMuestraNecesaria" class="row mt-3 pt-3">
+                                <p class="fs-4 text-center">¿Cumple?</p>
+                                <p class="text-danger">Si el valor está superior a 7%, continuar reacción y repetir
+                                    análisis hasta que se complete la reacción.</p>
+
+                                <div class="col-6 mx-auto">
+                                    <label>Si<input required type="radio" name="muestraPasa" value="1">
+                                </div>
+                                <div class="col-6 mx-auto">
+                                    <label>No<input required type="radio" name="muestraPasa" value="0">
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                     <hr>

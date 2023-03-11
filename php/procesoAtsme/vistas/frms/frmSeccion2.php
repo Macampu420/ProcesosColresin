@@ -108,7 +108,7 @@
 
                     <!-- cargaConVacio -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="cargaConVacio" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Cargará el TOO000 con vacio?</p>
                         <div class="col-6 mx-auto">
                             <label>Si <input type="radio" id="cargaConVacioToo000" name="cargaConVacio" value="1" required>
@@ -118,11 +118,12 @@
                         </div>
                     </div>
 
-                    <hr>
-
                     <!-- bloqueoAjusteVacio -->
 
                     <div id="bloqueoAjusteVacio" class="row mt-3 pt-3 d-none">
+
+                        <hr>
+
                         <p class="fs-4 text-center">Bloquee el equipo y ajuste el vacio para que la carga se
                             realice por el condensador y el colector</p>
                         <div class="col-6 mx-auto">
@@ -131,6 +132,7 @@
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="bloqueoAjusteVacio" value="0">
                         </div>
+
                     </div>
 
                     <hr>
@@ -152,14 +154,14 @@
 
                     <!-- problemaCarga -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="problemaCargaToo100" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Se presento algún problema en la carga del TOO000 /
                             TORECO?</p>
                         <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta es
                             afirmativa, mencione lo ocurrido y notifique al area encargada para dar
                             solucion.</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Si <input type="radio" required name="problemaCarga">
+                            <label>Si <input type="radio" id="siProblemaCargaToo100" required name="problemaCarga">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
                             <label>No<input type="radio" required name="problemaCarga">
@@ -170,7 +172,7 @@
 
                     <!-- comentarioProblema -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="comentarioProblemaCargaToo" class="row mt-3 pt-3 d-none">
                         <p class="fs-4 text-center">Indica el problema:</p>
                         <div class="col-3 mt-5 mx-auto">
                             <input type="textarea" placeholder="Problema" name="comentarioProblema">
