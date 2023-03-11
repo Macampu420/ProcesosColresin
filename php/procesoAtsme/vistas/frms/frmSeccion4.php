@@ -9,67 +9,42 @@
 
                     <!-- inicio destilacion -->
 
-                    <div class="row mt-3 pt-3">
+                    <div id="containerDestilacion" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">Inicio destilación de TOD100 sin vacio, conservando presión y
                             temperatura maxima T=133°C.</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="confirmInicioDestilacion" value="1" required>
+                            <label>Si <input type="radio" id="confirmInicioDestilacion" name="confirmInicioDestilacion" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="confirmInicioDestilacion" value="0" required>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-3 mx-auto">
-                            <label>Inicio destilado:<input type="datetime-local" name="inicioDestilacion">
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <!-- seguimientos -->
-
-                    <div id="containerSeguimientosDestilacionTod100">
-                        <div class="row text-center">
-                            <p class="fs-2 col-4">Hora 1:</p>
-                        </div>
+                    <div id="containerSeguimientoDestilado" class="d-none">
 
                         <div class="row">
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Temperatura: </label>
-                                <input type="number" id="TOO00" placeholder="°C" name="temperatura" required />
-                            </div>
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Presion: </label>
-                                <input type="number" id="TORECO" placeholder="DPI" name="presion" required />
-                            </div>
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">TOD100: </label>
-                                <input type="number" id="SWF098" placeholder="Kg" name="kgTOD100" required />
+                            <div class="col-3 mx-auto">
+                                <label>Inicio destilado:<input type="datetime-local" name="inicioDestilacion">
                             </div>
                         </div>
 
-                        <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                            <p class="fs-4 text-center">¿Vacio?</p>
-                            <div class="col-2">
-                                <label>Si <input type="radio" name="vacio" value="1" required>
-                            </div>
-                            <div class="col-2">
-                                <label>No<input type="radio" name="vacio" value="0" required>
-                            </div>
+                        <hr>
+
+                        <!-- seguimientos -->
+
+                        <div id="containerSeguimientosDestilacionTod100">
+                            
                         </div>
 
-                        <div class="row">
-                            <textarea class="col-4 mx-auto h-50" name="observaciones"
-                                placeholder="Observaciones:"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mt-4 pt-2">
-                        <div class="col-3 mx-auto">
-                            <label>Fin destilado:<input type="datetime-local" name="finDestilacion">
+                        <div class="row mt-4 pt-2">
+                            <div class="col-3 mx-auto">
+                                <label>Fin destilado:<input type="datetime-local" name="finDestilacion">
+                            </div>
+                            <div class="col-4 mx-auto">
+                                <label>TOD100(kg): </label>
+                                <input type="number" placeholder="Kg" name="kgTOD100" required />
+                            </div>
                         </div>
                     </div>
 

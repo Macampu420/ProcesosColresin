@@ -87,5 +87,93 @@ let RegistroForm = {
             }
         }
 
+    },
+
+    renderSeguimientosDestilacion: () => {
+        let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
+
+        if(divSeguimientos.childElementCount == 0){
+            for (let i = 1; i < 9; i++) {
+
+                if ((i == 5) || (i == 8)) {
+                    divSeguimientos.insertAdjacentHTML('beforeend', `
+                        <div>
+                            <div class="row text-center">
+                                <p class="fs-2 col-4">Hora ${i}:</p>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4">Temperatura: </label>
+                                    <input type="number" placeholder="°C" name="temperaturaDestilacionHora${i}" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4" for="swf098">Presion: </label>
+                                    <input type="number" placeholder="DPI" name="presionDestilacionHora${i}" required />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4" for="swf098">TOD100: </label>
+                                    <input type="number" placeholder="Kg" name="kgTOD100DestilacionHora${i}" required />
+                                </div>
+                            </div>
+                        
+                            <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                                <p class="fs-4 text-center">¿Vacio?</p>
+                                <div class="col-2">
+                                    <label>Si <input type="radio" name="vacioDestilacionHora${i}" value="1" required>
+                                </div>
+                                <div class="col-2">
+                                    <label>No<input type="radio" name="vacioDestilacionHora${i}" value="0" required>
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
+                            </div>
+                        </div>
+
+                        <hr>
+                `)
+                } else {
+                    divSeguimientos.insertAdjacentHTML('beforeend', `
+                
+                <div>
+                    <div class="row text-center">
+                        <p class="fs-2 col-4">Hora ${i}:</p>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-4 mx-auto">
+                            <label class="fs4">Temperatura: </label>
+                            <input type="number" placeholder="°C" name="temperaturaDestilacionHora${i}" required />
+                        </div>
+                        <div class="col-4 mx-auto">
+                            <label class="fs4" for="swf098">Presion: </label>
+                            <input type="number" placeholder="DPI" name="presionDestilacionHora${i}" required />
+                        </div>
+                    </div>
+                
+                    <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                        <p class="fs-4 text-center">¿Vacio?</p>
+                        <div class="col-2">
+                            <label>Si <input type="radio" name="vacioDestilacionHora${i}" value="1" required>
+                        </div>
+                        <div class="col-2">
+                            <label>No<input type="radio" name="vacioDestilacionHora${i}" value="0" required>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
+                    </div>
+                </div>
+
+                <hr>
+
+                `)
+                }
+            }
+        }
+
     }
 }

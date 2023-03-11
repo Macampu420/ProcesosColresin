@@ -13,7 +13,7 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Enjuague con agua a presión y guardar el enjuague en la caneca destinada para derivados de ATS. </p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>Inicio Enjuague:<input type="datetime-local" name="inicioEnjuague">
+                                        <label>Inicio Enjuague:<input type="datetime-local" id="inicioEnjuague" name="inicioEnjuague">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
                                         <label>Fin Enjuague:<input type="datetime-local" name="finEnjuague">

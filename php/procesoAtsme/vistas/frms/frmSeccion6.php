@@ -14,7 +14,7 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Cargo TOD100 e iniciar agitación.</p>
                                     <div class="col-6 mx-auto">
-                                        <label>Si <input type="radio" name="cargoTod100" value="1" required>
+                                        <label>Si <input type="radio" id="cargoTod100" name="cargoTod100" value="1" required>
                                     </div>
                                     <div class="col-6 mx-auto">
                                         <label>No<input type="radio" name="cargoTod100" value="0" required>

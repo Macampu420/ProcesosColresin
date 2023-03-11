@@ -28,7 +28,7 @@
                                     </div>
 
                                     <div class="col-6 mx-auto">
-                                        <label>Si <input type="radio" name="fichaLeída" value="1" required>
+                                        <label>Si <input type="radio" id="fichaLeidaFrm5" name="fichaLeída" value="1" required>
                                     </div>
                                     <div class="col-6 mx-auto">
                                         <label>No<input type="radio" name="fichaLeída" value="0" required>
@@ -134,11 +134,11 @@
 
                                 <!-- problema escamado -->
 
-                                <div class="row mt-3 pt-3">
+                                <div id="containerProblemaEscamado" class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿ Se presento algún problema en el proceso de escamado ?</p>
                                     <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta es afirmativa, mencione lo ocurrido y notifique al area encargada para dar solucion.</p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>Si <input type="radio" name="problemaEscamado">
+                                        <label>Si <input type="radio" id="confirmProblemaEscamado" name="problemaEscamado">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
                                         <label>No<input type="radio" name="problemaEscamado">
@@ -149,7 +149,7 @@
 
                                 <!-- problema escamado -->
 
-                                <div class="row mt-3 pt-3">
+                                <div id="problemaEscamado" class="row mt-3 pt-3 d-none">
                                     <p class="fs-4 text-center">Indica el problema:</p>
                                     <div class="col-3 mt-5 mx-auto">
                                         <input type="textarea" placeholder="Problema" name="comentarioProblema">
