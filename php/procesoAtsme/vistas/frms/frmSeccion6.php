@@ -80,10 +80,10 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">¿Identifico el TORECO con numero de lote y fecha mediante una etiqueta?</p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>Si <input type="radio" name="torecoEtiquetado">
+                                        <label>Si <input value="1" type="radio" name="torecoEtiquetado">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>No<input type="radio" name="torecoEtiquetado">
+                                        <label>No<input value="2" type="radio" name="torecoEtiquetado">
                                     </div>
                                 </div>
 

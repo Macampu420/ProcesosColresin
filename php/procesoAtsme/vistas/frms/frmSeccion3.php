@@ -173,9 +173,9 @@
 
                     <div id="containerReflujo" class="d-none">
 
-                        <div class="row">
+                        <div id="containerInicioReflujo" class="row">
                             <div class="col-3 mx-auto">
-                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" required>
+                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" >
                             </div>
                         </div>
 
@@ -196,13 +196,13 @@
                         </div>
 
                         <!-- fin reflujo -->
-                        <div class="row mt-3 pt-3">
+                        <div id="containerFinReflujo" class="row mt-3 pt-3">
                             <div class="col-3 mx-auto">
-                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" required>
+                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" >
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
-                                <input type="number" placeholder="" name="totalAguaDestilada" required/>
+                                <input type="number" placeholder="" name="totalAguaDestilada" />
                             </div>
                         </div>
                     </div>
@@ -211,16 +211,16 @@
 
                     <div id="containerMuestra" class="d-none">
 
-                        <div class="row mt-3 pt-3">
+                        <div id="confirmContainerMuestra" class="row mt-3 pt-3">
                             <p class="fs-4 text-center">Segun la cantidad de agua destilada y el tiempo de reaccion
                                 acumulado es necesario retirar muesta para previa de % acido sulfurico libre?</p>
 
                             <div class="col-6 mx-auto">
                                 <label>Si <input type="radio" id="confirmMuestraNecesaria"
-                                        name="muestraAcidoSulfNecesario" value="1" required>
+                                        name="muestraAcidoSulfNecesario" value="1">
                             </div>
                             <div class="col-6 mx-auto">
-                                <label>No<input type="radio" name="muestraAcidoSulfNecesario" value="0" required>
+                                <label>No<input type="radio" name="muestraAcidoSulfNecesario" value="0">
                             </div>
                         </div>
 
@@ -229,20 +229,20 @@
                             <div class="row">
                                 <div class="col-4 mx-auto">
                                     <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
-                                    <input type="number" placeholder="" name="resultadoMuestra" required/>
+                                    <input type="number" placeholder="" name="resultadoMuestra"/>
                                 </div>
                             </div>
 
-                            <div id="divMuestraNecesaria" class="row mt-3 pt-3">
+                            <div id="" class="row mt-3 pt-3">
                                 <p class="fs-4 text-center">¿Cumple?</p>
                                 <p class="text-danger">Si el valor está superior a 7%, continuar reacción y repetir
                                     análisis hasta que se complete la reacción.</p>
 
                                 <div class="col-6 mx-auto">
-                                    <label>Si<input required type="radio" name="muestraPasa" value="1">
+                                    <label>Si<input type="radio" name="muestraPasa" value="1">
                                 </div>
                                 <div class="col-6 mx-auto">
-                                    <label>No<input required type="radio" name="muestraPasa" value="0">
+                                    <label>No<input type="radio" name="muestraPasa" value="0">
                                 </div>
                             </div>
                         </div>

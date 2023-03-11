@@ -80,10 +80,10 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Instalo la tela filtrante en la tuberia de descarga</p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>Si <input type="radio" name="telaFiltrante">
+                                        <label>Si <input value="1" type="radio" name="telaFiltrante">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>No<input type="radio" name="telaFiltrante">
+                                        <label>No<input value="0" type="radio" name="telaFiltrante">
                                     </div>
                                 </div>
 
@@ -138,10 +138,10 @@
                                     <p class="fs-4 text-center">¿ Se presento algún problema en el proceso de escamado ?</p>
                                     <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta es afirmativa, mencione lo ocurrido y notifique al area encargada para dar solucion.</p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>Si <input type="radio" id="confirmProblemaEscamado" name="problemaEscamado">
+                                        <label>Si <input value="1" type="radio" id="confirmProblemaEscamado" name="problemaEscamado">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>No<input type="radio" name="problemaEscamado">
+                                        <label>No<input value="0" type="radio" name="problemaEscamado">
                                     </div>
                                 </div>
 

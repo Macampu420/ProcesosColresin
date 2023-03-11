@@ -8,7 +8,7 @@ const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 
-// objRegistro.construirNuevoFormulario();
+objRegistro.construirNuevoFormulario();
 
 frmParte1.addEventListener('submit', event => {
 
@@ -21,28 +21,40 @@ frmParte1.addEventListener('submit', event => {
 
     let datosParte1 = new FormData(frmParte1);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte1
+        }).then(response => response.text())
+        .then(data => {
+            document.getElementById('seccion2').classList.remove('d-none');
 
-    document.getElementById('seccion2').classList.remove('d-none');
+            objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
 
-    objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');   
+            objRegistro.deshabilitarForm(frmParte1);
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
-    objRegistro.deshabilitarForm(frmParte1);
 });
 
 frmParte2.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmParte1);
+    let datosParte2 = new FormData(frmParte2);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte2
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
 
-    document.getElementById('seccion3').classList.remove('d-none');
+            document.getElementById('seccion3').classList.remove('d-none');
 
-    objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');   
-    
-    objRegistro.deshabilitarForm(frmParte2);
+            objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
+
+            objRegistro.deshabilitarForm(frmParte2);
+
+        })
 });
 
 frmParte3.addEventListener('submit', event => {
@@ -51,67 +63,100 @@ frmParte3.addEventListener('submit', event => {
 
     console.log("parte 4 sigue");
 
-    let datosParte1 = new FormData(frmParte1);
+    let datosParte3 = new FormData(frmParte3);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte3
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
+            document.getElementById('seccion4').classList.remove('d-none');
 
-    document.getElementById('seccion4').classList.remove('d-none');
+            objRegistro.deshabilitarForm(frmParte3);
 
-    objRegistro.deshabilitarForm(frmParte1);
+            objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+        })
 
-    objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');   
 });
 
 frmParte4.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmParte1);
+    let datosParte4 = new FormData(frmParte4);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte4
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
 
-    document.getElementById('seccion5').classList.remove('d-none');
-
-    objRegistro.deshabilitarForm(frmParte4);
-    objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');   
+            document.getElementById('seccion5').classList.remove('d-none');
+            objRegistro.deshabilitarForm(frmParte4);
+            objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
+        })
 });
 
 frmParte5.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmParte1);
+    let datosParte5 = new FormData(frmParte5);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte5
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
 
-    document.getElementById('seccion6').classList.remove('d-none');
+            document.getElementById('seccion6').classList.remove('d-none');
 
-    objRegistro.deshabilitarForm(frmParte);
+            objRegistro.deshabilitarForm(frmParte5);
 
-    objRegistro.focoSiguienteSeccion('cargoTod100');  
+            objRegistro.focoSiguienteSeccion('cargoTod100');
+        })
 });
 
 frmParte6.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    let datosParte1 = new FormData(frmParte1);
+    let datosParte6 = new FormData(frmParte6);
 
-    // aca iria la peticion
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte6
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
 
-    document.getElementById('seccion7').classList.remove('d-none');
+            document.getElementById('seccion7').classList.remove('d-none');
 
-    objRegistro.deshabilitarForm(frmParte6);
-    objRegistro.focoSiguienteSeccion('inicioEnjuague');   
+            objRegistro.deshabilitarForm(frmParte6);
 
+            objRegistro.focoSiguienteSeccion('inicioEnjuague');
+        })
 });
 
 frmParte7.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    alert("creo que todo bn jaja")
-    
+    let datosParte7 = new FormData(frmParte7);
+
+    fetch('./../controladores/registroFrm.php', {
+            method: 'POST',
+            body: datosParte7
+        }).then(response => response.text())
+        .then(response => {
+            console.log(response);
+
+            objRegistro.deshabilitarForm(frmParte7);
+            alert("creo que todo bn jaja")
+        })
 });
 
 document.getElementById('cargaConVacio').addEventListener('input', event => {
@@ -142,9 +187,6 @@ document.getElementById('divInicioReflujo').addEventListener('input', event => {
 
     objRegistro.renderSegumientosReflujo();
     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerSeguimientosSWF098");
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerInicioReflujo");
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerFinReflujo");
     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
 
 })

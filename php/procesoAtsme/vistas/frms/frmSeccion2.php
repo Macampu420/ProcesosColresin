@@ -161,10 +161,10 @@
                             afirmativa, mencione lo ocurrido y notifique al area encargada para dar
                             solucion.</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Si <input type="radio" id="siProblemaCargaToo100" required name="problemaCarga">
+                            <label>Si <input type="radio" value="1" id="siProblemaCargaToo100" required name="problemaCarga">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>No<input type="radio" required name="problemaCarga">
+                            <label>No<input type="radio" value="0" required name="problemaCarga">
                         </div>
                     </div>
 
