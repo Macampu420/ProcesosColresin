@@ -9,7 +9,7 @@ const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let idProceso;
 
-// objRegistro.construirNuevoFormulario();
+objRegistro.construirNuevoFormulario();
 
 frmParte1.addEventListener('submit', event => {
 
@@ -23,22 +23,24 @@ frmParte1.addEventListener('submit', event => {
     let datosParte1 = new FormData(frmParte1);
     datosParte1.append('seccion', 1);
 
-    console.log(datosParte1);
-
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte1
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(data => {
             idProceso = data;
 
-            if(data != null) {
-                document.getElementById('seccion2').classList.remove('d-none');
+            document.getElementById('seccion2').classList.remove('d-none');
 
-                objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
-    
-                // objRegistro.deshabilitarForm(frmParte1);
-            } else alert("ocurrió un error en el registro, por favor intentalo mas tarde");
+            objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
+
+            // objRegistro.deshabilitarForm(frmParte1);
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
@@ -58,17 +60,21 @@ frmParte2.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte2
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(response => {
-            console.log(response);
-
             document.getElementById('seccion3').classList.remove('d-none');
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
 
-            // objRegistro.deshabilitarForm(frmParte2);
+            objRegistro.deshabilitarForm(frmParte2);
 
-        })
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
 frmParte3.addEventListener('submit', event => {
@@ -82,15 +88,20 @@ frmParte3.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte3
-        }).then(response => response.text())
-        .then(response => {
-            console.log(response);
-            document.getElementById('seccion4').classList.remove('d-none');
-
-            objRegistro.deshabilitarForm(frmParte3);
-
-            objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
+        .then(response => {
+
+            document.getElementById('seccion4').classList.remove('d-none');
+            objRegistro.deshabilitarForm(frmParte3);
+            objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
 });
 
@@ -103,14 +114,20 @@ frmParte4.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte4
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(response => {
-            console.log(response);
 
             document.getElementById('seccion5').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte4);
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
-        })
+
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
 frmParte5.addEventListener('submit', event => {
@@ -124,16 +141,21 @@ frmParte5.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte5
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(response => {
             console.log(response);
 
             document.getElementById('seccion6').classList.remove('d-none');
-
-            // objRegistro.deshabilitarForm(frmParte5);
-
+            objRegistro.deshabilitarForm(frmParte5);
             objRegistro.focoSiguienteSeccion('cargoTod100');
-        })
+
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
 frmParte6.addEventListener('submit', event => {
@@ -141,22 +163,27 @@ frmParte6.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte6 = new FormData(frmParte6);
-    datosParte6.append('idProceso', 1);
+    datosParte6.append('idProceso', idProceso);
     datosParte6.append('seccion', 6);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte6
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(response => {
             console.log(response);
 
             document.getElementById('seccion7').classList.remove('d-none');
-
-            // objRegistro.deshabilitarForm(frmParte6);
-
+            objRegistro.deshabilitarForm(frmParte6);
             objRegistro.focoSiguienteSeccion('inicioEnjuague');
-        })
+
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
 frmParte7.addEventListener('submit', event => {
@@ -170,13 +197,19 @@ frmParte7.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte7
-        }).then(response => response.text())
+        }).then(response => {
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
+        })
         .then(response => {
-            console.log(response);
 
             objRegistro.deshabilitarForm(frmParte7);
             alert("creo que todo bn jaja")
-        })
+            
+        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
 document.getElementById('cargaConVacio').addEventListener('input', event => {

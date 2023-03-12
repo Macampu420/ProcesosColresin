@@ -44,6 +44,15 @@ if (isset($_POST)) {
                 echo "-1 seccion 6";
                 http_response_code(500);
             }
+            break;
+        case 7:
+            if($objRegistro->registrarSeccion7($_POST)){
+                echo 1;
+                http_response_code(200);
+            } else {
+                echo "-1 seccion 7";
+                http_response_code(500);
+            }
     }
   
     // Envía una respuesta con código de estado 200 (OK)

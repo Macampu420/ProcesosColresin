@@ -17,6 +17,9 @@ class RegistroFrm {
     // objeto mysqli_stmt que representa una consulta preparada para el registro de la seccion 5
     private $stmt7;
 
+    // objeto mysqli_stmt que representa una consulta preparada para el registro de la seccion 5
+    private $stmt8;
+
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
     public function __construct($host, $usuario, $contraseña, $bd) {
@@ -49,6 +52,9 @@ class RegistroFrm {
 
         $this ->stmt7 = $this->conexion->prepare("INSERT INTO `tbl_conversion_tod100atoreco`(`cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `idProceso`)
              VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        $this->stmt8 =  $this->conexion->prepare("INSERT INTO `tbl_lavado_equipo_atsme`(`inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `idProceso`)
+             VALUES (?, ?, ?, ?, ?)");
     }
 
     // Método para insertar datos en la tabla utilizando la consulta preparada
@@ -173,6 +179,19 @@ class RegistroFrm {
         $KgToreco, $torecoEtiquetado, $idProceso);
 
         return $this->stmt7->execute();
+    }
+
+    function registrarSeccion7($arrayDatos){
+
+        $inicioEnjuague = $arrayDatos['inicioEnjuague'] ? $arrayDatos['inicioEnjuague'] : 'NOW()';
+        $finEnjuague = $arrayDatos['finEnjuague'] ? $arrayDatos['finEnjuague'] : 'NOW()';
+        $tuberiasLimpias = $arrayDatos['tuberiasLimpias'] ? $arrayDatos['tuberiasLimpias'] : 0;
+        $kgAguaLavada = $arrayDatos['kgAguaLavada'] ? $arrayDatos['kgAguaLavada'] : 0;
+        $idProceso = $arrayDatos['idProceso'];
+
+        $this->stmt8->bind_param('ssidi', $inicioEnjuague, $finEnjuague, $tuberiasLimpias, $kgAguaLavada, $idProceso);
+
+        return $this->stmt8->execute();
     }
 }
 
