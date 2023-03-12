@@ -118,6 +118,8 @@ frmParte5.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte5 = new FormData(frmParte5);
+    datosParte5.append('idProceso', idProceso);
+    datosParte5.append('seccion', 5);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
@@ -128,7 +130,7 @@ frmParte5.addEventListener('submit', event => {
 
             document.getElementById('seccion6').classList.remove('d-none');
 
-            objRegistro.deshabilitarForm(frmParte5);
+            // objRegistro.deshabilitarForm(frmParte5);
 
             objRegistro.focoSiguienteSeccion('cargoTod100');
         })
@@ -139,6 +141,8 @@ frmParte6.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte6 = new FormData(frmParte6);
+    datosParte6.append('idProceso', 1);
+    datosParte6.append('seccion', 6);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
@@ -149,7 +153,7 @@ frmParte6.addEventListener('submit', event => {
 
             document.getElementById('seccion7').classList.remove('d-none');
 
-            objRegistro.deshabilitarForm(frmParte6);
+            // objRegistro.deshabilitarForm(frmParte6);
 
             objRegistro.focoSiguienteSeccion('inicioEnjuague');
         })
@@ -160,6 +164,8 @@ frmParte7.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte7 = new FormData(frmParte7);
+    datosParte7.append('idProceso', idProceso);
+    datosParte7.append('seccion', 7);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',

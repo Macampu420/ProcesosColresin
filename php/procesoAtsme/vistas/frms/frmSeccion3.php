@@ -202,7 +202,7 @@
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
-                                <input type="number" placeholder="" name="totalAguaDestilada" />
+                                <input type="number" step="0.01" placeholder="" name="totalAguaDestilada" />
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             <div class="row">
                                 <div class="col-4 mx-auto">
                                     <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
-                                    <input type="number" placeholder="" name="resultadoMuestra"/>
+                                    <input type="number" step="0.01" placeholder="" name="resultadoMuestra"/>
                                 </div>
                             </div>
 

@@ -60,15 +60,15 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">IMPORTANTE: A la par de inciar el calentaminendo realice la instalacion del Escamador para proceder con la decarga con las siguientes condiciones de operacion:</p>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>RPM (cilindro):<input class="w-75" type="number" placeholder="RPM cilindro:"
+                                        <label>RPM (cilindro):<input class="w-75" type="number" step="0.01" placeholder="RPM cilindro:"
                                                 name="RPMCilindro">
                                     </div>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>Frecuencia Variador: <input class="w-100" type="number" placeholder="Frecuencia variador:"
+                                        <label>Frecuencia Variador: <input class="w-100" type="number" step="0.01" placeholder="Frecuencia variador:"
                                                 name="frecuenciaVariador">
                                     </div>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>Temperatura agua(°C)<input class="w-100" type="number" placeholder="Temperatura agua:"
+                                        <label>Temperatura agua(°C)<input class="w-100" type="number" step="0.01" placeholder="Temperatura agua:"
                                                 name="temperaturaAgua">
                                     </div>
                                 </div>
@@ -123,10 +123,10 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-3 text-center text-danger">Reporte el rendimiento final del producto, asi como si se genero algun residuo de ATSME0</p>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>ATSME0(kg):<input type="number" class="w-75" name="kgAtsme0" placeholder="Kg Atsme0:">
+                                        <label>ATSME0(kg):<input type="number" step="0.01" class="w-75" name="kgAtsme0" placeholder="Kg Atsme0:">
                                     </div>
                                     <div class="col-3 mt-5 mx-auto">
-                                        <label>ATSXXX(kg):<input type="number" class="w-75" name="kgAtsxxx" placeholder="Kg Atsxxx:">
+                                        <label>ATSXXX(kg):<input type="number" step="0.01" class="w-75" name="kgAtsxxx" placeholder="Kg Atsxxx:">
                                     </div>
                                 </div>
 

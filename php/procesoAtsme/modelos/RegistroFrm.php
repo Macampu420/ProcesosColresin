@@ -8,8 +8,15 @@ class RegistroFrm {
     private $stmt3;
     private $stmt4; 
 
-    // objetos mysqli_stmt que representa una consulta preparada para el registro de la seccion 2
+    // objeto mysqli_stmt que representa una consulta preparada para el registro de la seccion 2
     private $stmt5;
+
+    // objeto mysqli_stmt que representa una consulta preparada para el registro de la seccion 5
+    private $stmt6;
+
+    // objeto mysqli_stmt que representa una consulta preparada para el registro de la seccion 5
+    private $stmt7;
+
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
     public function __construct($host, $usuario, $contraseña, $bd) {
@@ -23,19 +30,25 @@ class RegistroFrm {
 
         // Preparar consulta INSERT utilizando la función prepare del objeto de conexión y asignarla a $stmt1
         $this->stmt1 = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`lote`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `estado`, `seccion1`) 
-            VALUES (?, ?,?,?,'en Proceso', '1')");
+             VALUES (?, ?,?,?,'en Proceso', '1')");
 
         $this->stmt2 = $this->conexion->prepare("INSERT INTO `tbl_equipo_atsme`(`dietrich1`, `escamador`, `idProceso`)
-            VALUES (?, ?, ?)");
+             VALUES (?, ?, ?)");
         
         $this->stmt3 = $this->conexion->prepare("INSERT INTO `tbl_materia_prima_atsme`(`TOO00`, `TORECO`, `SWF098`, `STW000`, `SSO000`, `GLG000`, `idProceso`) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)");
+             VALUES (?, ?, ?, ?, ?, ?, ?)");
 
         $this -> stmt4 = $this->conexion->prepare("INSERT INTO `tbl_estado_equipo_atsme`(`reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `idProceso`)
              VALUES (?,?,?,?,?,?,?,?,?)");
 
         $this ->stmt5 = $this->conexion->prepare("INSERT INTO `tbl_fase_carga_too000`( `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `idProceso`) 
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            
+        $this ->stmt6 = $this->conexion->prepare("INSERT INTO `tbl_fase_descarga`(`fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `idProceso`) 
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        $this ->stmt7 = $this->conexion->prepare("INSERT INTO `tbl_conversion_tod100atoreco`(`cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `idProceso`)
+             VALUES (?, ?, ?, ?, ?, ?, ?)");
     }
 
     // Método para insertar datos en la tabla utilizando la consulta preparada
@@ -90,7 +103,7 @@ class RegistroFrm {
     }
 
      // Método para insertar datos en la tabla utilizando la consulta preparada
-     function registroSeccion2($arrayDatos) {
+    function registroSeccion2($arrayDatos) {
 
         $fichaLeída = $arrayDatos['fichaLeída'] ? $arrayDatos['fichaLeída'] : 0;
         $equipoSeguridad = $arrayDatos['equipoSeguridad'] ? $arrayDatos['equipoSeguridad'] : 0;
@@ -115,6 +128,52 @@ class RegistroFrm {
         // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
         // de lo contrario, devolver null
         return $resultado;
-     }
+    }
+
+     // Método para insertar datos en la tabla utilizando la consulta preparada
+    function registroSeccion5($arrayDatos){
+        
+        // Las siguientes líneas de código asignan los valores correspondientes a las variables. Si el valor no existe en $arrayDatos, se asigna un valor predeterminado de 0 o "NOW()".
+        $fichaLeída = $arrayDatos['fichaLeída'] ? $arrayDatos['fichaLeída'] : 0;
+        $equipoSeguridad = $arrayDatos['equipoSeguridad'] ? $arrayDatos['equipoSeguridad'] : 0;
+        $RPMCilindro = $arrayDatos['RPMCilindro'] ? $arrayDatos['RPMCilindro'] : 0;
+        $frecuenciaVariador = $arrayDatos['frecuenciaVariador'] ? $arrayDatos['frecuenciaVariador'] : 0;
+        $temperaturaAgua = $arrayDatos['temperaturaAgua'] ? $arrayDatos['temperaturaAgua'] : 0;
+        $telaFiltrante = $arrayDatos['telaFiltrante'] ? $arrayDatos['telaFiltrante'] : 0;
+        $inicioVapor = $arrayDatos['inicioVapor'] ? $arrayDatos['inicioVapor'] : "NOW()";
+        $finVapor = $arrayDatos['finVapor'] ? $arrayDatos['finVapor'] : "NOW()";
+        $inicioDescarga = $arrayDatos['inicioDescarga'] ? $arrayDatos['inicioDescarga'] : "NOW()";
+        $finDescarga = $arrayDatos["finDescarga"] ? $arrayDatos["finDescarga"] : "NOW()";
+        $kgAtsme0 = $arrayDatos['kgAtsme0'] ? $arrayDatos['kgAtsme0'] : 0;
+        $kgAtsxxx = $arrayDatos['kgAtsxxx'] ? $arrayDatos["kgAtsxxx"] : 0;
+        $problemaEscamado = $arrayDatos['problemaEscamado'] ? $arrayDatos['problemaEscamado'] : 0;
+        $comentarioProblema = $arrayDatos['comentarioProblema'] ? $arrayDatos['comentarioProblema'] : "";
+        $idProceso = $arrayDatos['idProceso'];
+
+        // El siguiente comando vincula los parámetros de la consulta preparada con los valores asignados a las variables.
+        $this->stmt6->bind_param('iiiiiissssiiisi', $fichaLeída, $equipoSeguridad, $RPMCilindro, $frecuenciaVariador, $temperaturaAgua, $telaFiltrante,
+        $inicioVapor, $finVapor, $inicioDescarga, $finDescarga, $kgAtsme0, $kgAtsxxx, $problemaEscamado, $comentarioProblema, $idProceso);
+
+         // El siguiente comando ejecuta la consulta preparada.
+        return $this->stmt6->execute();
+
+    }
+
+    function registrarSeccion6($arrayDatos){
+
+        $cargoTod100 = $arrayDatos['cargoTod100'] ? $arrayDatos['cargoTod100'] : 0;
+        $adicionSso000yGlg000 = $arrayDatos['adicionSso000yGlg000'] ? $arrayDatos['adicionSso000yGlg000'] : 0;
+        $homogenizarSuspenderReposar = $arrayDatos['homogenizarSuspenderReposar'] ? $arrayDatos['homogenizarSuspenderReposar'] : 0;
+        $kgStw000 = $arrayDatos['kgStw000'] ? $arrayDatos['kgStw000'] : 0;
+        $KgToreco = $arrayDatos['KgToreco'] ? $arrayDatos['KgToreco'] : 0;
+        $torecoEtiquetado = $arrayDatos['torecoEtiquetado'] ? $arrayDatos['torecoEtiquetado'] : 0;
+        $idProceso = $arrayDatos['idProceso'];
+
+        $this->stmt7->bind_param('iiiddii', $cargoTod100, $adicionSso000yGlg000, $homogenizarSuspenderReposar, $kgStw000,
+        $KgToreco, $torecoEtiquetado, $idProceso);
+
+        return $this->stmt7->execute();
+    }
 }
+
 ?>

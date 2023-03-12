@@ -34,30 +34,30 @@
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label for="swf098">TOO000: </label>
-                            <input type="number" id="TOO00" placeholder="Kg" name="TOO00" required />
+                            <input type="number" step="0.01" id="TOO00" placeholder="Kg" name="TOO00" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">TOREC0: </label>
-                            <input type="number" id="TORECO" placeholder="Kg" name="TORECO" required />
+                            <input type="number" step="0.01" id="TORECO" placeholder="Kg" name="TORECO" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">SWF098: </label>
-                            <input type="number" id="SWF098" placeholder="Kg" name="SWF098" required />
+                            <input type="number" step="0.01" id="SWF098" placeholder="Kg" name="SWF098" required />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label for="swf098">STW000: </label>
-                            <input type="number" id="STW000" placeholder="Kg" name="STW000" required />
+                            <input type="number" step="0.01" id="STW000" placeholder="Kg" name="STW000" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">SSO000: </label>
-                            <input type="number" id="SSO000" placeholder="Kg" name="SSO000" required />
+                            <input type="number" step="0.01" id="SSO000" placeholder="Kg" name="SSO000" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">GLG000: </label>
-                            <input type="number" id="GLG000" placeholder="Kg" name="GLG000" required />
+                            <input type="number" step="0.01" id="GLG000" placeholder="Kg" name="GLG000" required />
                         </div>
                     </div>
                 </div>

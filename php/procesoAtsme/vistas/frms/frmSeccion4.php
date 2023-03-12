@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-4 mx-auto">
                                 <label>TOD100(kg): </label>
-                                <input type="number" placeholder="Kg" name="kgTOD100" required />
+                                <input type="number" step="0.01" placeholder="Kg" name="kgTOD100" required />
                             </div>
                         </div>
                     </div>

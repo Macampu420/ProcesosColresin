@@ -41,7 +41,7 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Kilos generados de agua de lavado</p>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>Agua lavado(kg):<input class="w-75" type="number" placeholder="Kg agua:"
+                                        <label>Agua lavado(kg):<input class="w-75" type="number" step="0.01" placeholder="Kg agua:"
                                                 name="kgAguaLavada">
                                     </div>
                                 </div>

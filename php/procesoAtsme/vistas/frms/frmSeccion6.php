@@ -56,7 +56,7 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Pasadas las 12 horas, descargue el STW000 separada (**Note un cambio de fases):</p>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>STW000(kg):<input class="w-75" type="number" placeholder="Kg STW000:"
+                                        <label>STW000(kg):<input class="w-75" type="number" step="0.01" placeholder="Kg STW000:"
                                                 name="kgStw000">
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                 <div class="row mt-3 pt-3">
                                     <p class="fs-4 text-center">Continue descargando el TOREC0 hasta finalizar.</p>
                                     <div class="col-4 mt-5 mx-auto">
-                                        <label>TOREC0(kg):<input class="w-75" type="number" placeholder="Kg TOREC0:"
+                                        <label>TOREC0(kg):<input class="w-75" type="number" step="0.01" placeholder="Kg TOREC0:"
                                                 name="KgToreco">
                                     </div>
                                 </div>
