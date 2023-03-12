@@ -7,9 +7,9 @@ const frmParte4 = document.getElementById('frmSeccion4');
 const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
-let idRegistro;
+let idProceso;
 
-objRegistro.construirNuevoFormulario();
+// objRegistro.construirNuevoFormulario();
 
 frmParte1.addEventListener('submit', event => {
 
@@ -21,13 +21,14 @@ frmParte1.addEventListener('submit', event => {
     };
 
     let datosParte1 = new FormData(frmParte1);
+    datosParte1.append('seccion', 1);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte1
         }).then(response => response.text())
         .then(data => {
-            idRegistro = data;
+            idProceso = data;
 
             if(data != null) {
                 document.getElementById('seccion2').classList.remove('d-none');
@@ -45,7 +46,9 @@ frmParte2.addEventListener('submit', event => {
 
     event.preventDefault();
 
+    frmParte2.idRegistro = idRegistro;
     let datosParte2 = new FormData(frmParte2);
+    datosParte2.append('idProceso', idProceso);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
@@ -58,7 +61,7 @@ frmParte2.addEventListener('submit', event => {
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
 
-            objRegistro.deshabilitarForm(frmParte2);
+            // objRegistro.deshabilitarForm(frmParte2);
 
         })
 });
