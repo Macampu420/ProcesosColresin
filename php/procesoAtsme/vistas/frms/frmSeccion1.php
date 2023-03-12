@@ -59,7 +59,6 @@
                             <label for="swf098">GLG000: </label>
                             <input type="number" id="GLG000" placeholder="Kg" name="GLG000" required />
                         </div>
-                        <p id="pTotal" class="fs-4 text-center">Total:</p>
                     </div>
                 </div>
 

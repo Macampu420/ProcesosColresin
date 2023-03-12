@@ -1,8 +1,11 @@
 <?php
 
-// $json = file_get_contents('php://input');
-// $datos = json_decode($json, true);
+require_once './../modelos/RegistroFrm.php';
 
-var_dump($_POST);
+$objRegistro = new RegistroFrm('localhost', 'root', '', 'altmannc_procesos');
+
+$idRegistro = $objRegistro->registroSeccion1($_POST);
+
+echo $idRegistro;
 
 ?>

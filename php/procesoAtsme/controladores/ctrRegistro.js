@@ -7,6 +7,7 @@ const frmParte4 = document.getElementById('frmSeccion4');
 const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
+let idRegistro;
 
 objRegistro.construirNuevoFormulario();
 
@@ -26,11 +27,16 @@ frmParte1.addEventListener('submit', event => {
             body: datosParte1
         }).then(response => response.text())
         .then(data => {
-            document.getElementById('seccion2').classList.remove('d-none');
+            idRegistro = data;
 
-            objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
+            if(data != null) {
+                document.getElementById('seccion2').classList.remove('d-none');
 
-            objRegistro.deshabilitarForm(frmParte1);
+                objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
+    
+                // objRegistro.deshabilitarForm(frmParte1);
+            } else alert("ocurrió un error en el registro, por favor intentalo mas tarde");
+
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
 });
