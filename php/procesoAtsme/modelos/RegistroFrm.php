@@ -1,11 +1,15 @@
 <?php
 class RegistroFrm {
+    public $idProceso;
     private $conexion; // objeto mysqli que representa la conexión a la base de datos
-    // objetos mysqli_stmt que representa una consulta preparada
+    // objetos mysqli_stmt que representa una consulta preparada para el registro de la seccion 1
     private $stmt1; 
     private $stmt2;
     private $stmt3;
     private $stmt4; 
+
+    // objetos mysqli_stmt que representa una consulta preparada para el registro de la seccion 2
+    private $stmt5;
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
     public function __construct($host, $usuario, $contraseña, $bd) {
@@ -29,6 +33,9 @@ class RegistroFrm {
 
         $this -> stmt4 = $this->conexion->prepare("INSERT INTO `tbl_estado_equipo_atsme`(`reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `idProceso`)
              VALUES (?,?,?,?,?,?,?,?,?)");
+
+        $this ->stmt5 = $this->conexion->prepare("INSERT INTO `tbl_fase_carga_too000`( `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `idProceso`) 
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     }
 
     // Método para insertar datos en la tabla utilizando la consulta preparada
@@ -40,7 +47,7 @@ class RegistroFrm {
         $this->stmt1->bind_param("ssss", $arrayDatos["lote"], $arrayDatos["separacionFp04"], $arrayDatos["materiaPrimaSeparada"], $arrayDatos["aprobacionInicio"]);
         // Ejecutar la consulta preparada utilizando la función execute
         $resultado = $this->stmt1->execute();
-        $idProceso = $this->conexion->insert_id;
+        $this->idProceso = $this->conexion->insert_id;
 
         // registro equipo usado
 
@@ -79,20 +86,35 @@ class RegistroFrm {
 
         // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
         // de lo contrario, devolver null
-        return $resultado ? $idProceso : null;
+        return $resultado ? $this -> idProceso : null;
     }
 
      // Método para insertar datos en la tabla utilizando la consulta preparada
      function registroSeccion2($arrayDatos) {
+
+        $fichaLeída = $arrayDatos['fichaLeída'] ? $arrayDatos['fichaLeída'] : 0;
+        $equipoSeguridad = $arrayDatos['equipoSeguridad'] ? $arrayDatos['equipoSeguridad'] : 0;
+        $cargaBomba = $arrayDatos['cargaBomba'] ? $arrayDatos['cargaBomba'] : 0;
+        $conexionesAcoplesTuberiasOk = $arrayDatos['conexionesAcoplesTuberiasOk'] ? $arrayDatos['conexionesAcoplesTuberiasOk'] : 0;
+        $coloracionTOO = $arrayDatos['coloracionTOO'] ? $arrayDatos['coloracionTOO'] : 0;
+        $cargaConVacio = $arrayDatos['cargaConVacio'] ? $arrayDatos['cargaConVacio'] : 0;
+        $bloqueoAjusteVacio = $arrayDatos['bloqueoAjusteVacio'] ? $arrayDatos['bloqueoAjusteVacio'] : 0;
+        $inicioCargaTOO000 = $arrayDatos['inicioCargaTOO000'] ? $arrayDatos['inicioCargaTOO000'] : "NOW()";
+        $finCargaTOO000 = $arrayDatos['finCargaTOO000'] ? $arrayDatos['finCargaTOO000'] : "NOW()";
+        $problemaCarga = $arrayDatos['problemaCarga'] ? $arrayDatos['problemaCarga'] : 0;
+        $comentarioProblema = $arrayDatos['comentarioProblema'] ? $arrayDatos['comentarioProblema'] : "";
+        $idProceso = $arrayDatos['idProceso'];        
+
         // Unir los parámetros de la consulta preparada a los valores del array utilizando la función bind_param
-        $this->stmt1->bind_param("ssss", $arrayDatos["lote"], $arrayDatos["separacionFp04"], $arrayDatos["materiaPrimaSeparada"], $arrayDatos["aprobacionInicio"]);
+        $this->stmt5->bind_param("iiiiiiissisi", $fichaLeída, $equipoSeguridad, $cargaBomba, $conexionesAcoplesTuberiasOk,
+        $coloracionTOO, $cargaConVacio, $bloqueoAjusteVacio, $inicioCargaTOO000, $finCargaTOO000, $problemaCarga, $comentarioProblema, $idProceso);
     
         // Ejecutar la consulta preparada utilizando la función execute
-        $resultado = $this->stmt1->execute();
+        $resultado = $this->stmt5->execute();
 
         // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
         // de lo contrario, devolver null
-        return $resultado ? $this->conexion->insert_id : null;
-    }
+        return $resultado;
+     }
 }
 ?>

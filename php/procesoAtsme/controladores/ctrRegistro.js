@@ -23,6 +23,8 @@ frmParte1.addEventListener('submit', event => {
     let datosParte1 = new FormData(frmParte1);
     datosParte1.append('seccion', 1);
 
+    console.log(datosParte1);
+
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte1
@@ -46,9 +48,12 @@ frmParte2.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    frmParte2.idRegistro = idRegistro;
+    frmParte2.idProceso = idProceso;
     let datosParte2 = new FormData(frmParte2);
     datosParte2.append('idProceso', idProceso);
+    datosParte2.append('seccion', 2);
+
+    console.log(datosParte2);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
