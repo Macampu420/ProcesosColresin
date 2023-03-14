@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 03:43 AM
+-- Generation Time: Mar 12, 2023 at 07:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -1124,6 +1124,13 @@ CREATE TABLE `tbl_conversion_tod100atoreco` (
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_conversion_tod100atoreco`
+--
+
+INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `idProceso`) VALUES
+(1, 1, 1, 1, 50.6, 51, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1134,6 +1141,7 @@ CREATE TABLE `tbl_destilacion_tod100` (
   `idDestilacion` int(11) NOT NULL,
   `inicioDestilacion` datetime DEFAULT NULL,
   `finDestilacion` datetime DEFAULT NULL,
+  `kgTOD100` decimal(5,3) NOT NULL,
   `inicioEnfriamiento` datetime DEFAULT NULL,
   `finEnfriamiento` datetime DEFAULT NULL,
   `inicioSostener` datetime DEFAULT NULL,
@@ -1154,6 +1162,18 @@ CREATE TABLE `tbl_equipo_atsme` (
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_equipo_atsme`
+--
+
+INSERT INTO `tbl_equipo_atsme` (`idEquipo`, `dietrich1`, `escamador`, `idProceso`) VALUES
+(1, 1, 1, NULL),
+(2, 1, 1, NULL),
+(3, 1, 1, NULL),
+(4, 1, 0, NULL),
+(5, 1, 1, NULL),
+(6, 1, 1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1173,6 +1193,18 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_estado_equipo_atsme`
+--
+
+INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `idProceso`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
+(2, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
+(3, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
+(4, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
+(5, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
+(6, 1, 1, 1, 1, 1, 1, 1, 1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1190,6 +1222,7 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `inicioVapor` tinyint(1) NOT NULL,
   `problemaAdicionAcido` tinyint(1) NOT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
+  `equipoEnReflujo` tinyint(1) NOT NULL,
   `inicioReflujo` datetime NOT NULL,
   `finReflujo` datetime NOT NULL,
   `muestraAcidoSulfNecesario` tinyint(1) NOT NULL,
@@ -1221,6 +1254,15 @@ CREATE TABLE `tbl_fase_carga_too000` (
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_fase_carga_too000`
+--
+
+INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `idProceso`) VALUES
+(1, 1, 1, 1, 0, 0, 1, 1, '0000-00-00 00:00:00', '2023-03-12 10:01:00', 1, 'asdasd', NULL),
+(2, 0, 1, 1, 1, 0, 0, 1, '0000-00-00 00:00:00', '2023-03-12 10:30:00', 0, 'asdasd', 4),
+(3, 0, 1, 1, 1, 0, 0, 1, '2023-03-12 10:10:00', '2023-03-12 10:30:00', 0, 'asdasd', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -1237,14 +1279,22 @@ CREATE TABLE `tbl_fase_descarga` (
   `telaFiltrante` tinyint(1) DEFAULT NULL,
   `inicioVapor` datetime DEFAULT NULL,
   `finVapor` datetime DEFAULT NULL,
+  `inicioDescarga` datetime DEFAULT NULL,
+  `finDescarga` datetime DEFAULT NULL,
   `kgAtsme0` decimal(5,3) DEFAULT NULL,
   `kgAtsxxx` decimal(5,3) DEFAULT NULL,
   `problemaEscamado` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
-  `inicioDescarga` datetime DEFAULT NULL,
-  `finDescarga` datetime DEFAULT NULL,
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_fase_descarga`
+--
+
+INSERT INTO `tbl_fase_descarga` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `idProceso`) VALUES
+(1, 1, 1, 5, 60.000, 39.000, 1, '2023-03-12 12:12:00', '2023-03-12 15:15:00', '2023-03-12 16:16:00', '2023-03-12 20:00:00', '50.000', '40.000', 1, 'juan', 5),
+(2, 1, 1, 5, 60.000, 39.000, 1, '2023-03-12 12:12:00', '2023-03-12 15:15:00', '2023-03-12 16:16:00', '2023-03-12 20:00:00', '50.000', '40.000', 1, 'juan', 5);
 
 -- --------------------------------------------------------
 
@@ -1257,9 +1307,17 @@ CREATE TABLE `tbl_lavado_equipo_atsme` (
   `inicioEnjuague` datetime DEFAULT NULL,
   `finEnjuague` datetime DEFAULT NULL,
   `tuberiasLimpias` tinyint(1) DEFAULT NULL,
-  `kgAguaLavada` decimal(5,0) DEFAULT NULL,
+  `kgAguaLavada` decimal(5,3) DEFAULT NULL,
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_lavado_equipo_atsme`
+--
+
+INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `idProceso`) VALUES
+(1, '2023-03-12 11:00:00', '2023-03-13 12:12:00', 1, '21.000', 1),
+(2, '2023-03-12 11:00:00', '2023-03-13 12:12:00', 1, '20.600', 1);
 
 -- --------------------------------------------------------
 
@@ -1278,6 +1336,18 @@ CREATE TABLE `tbl_materia_prima_atsme` (
   `idProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_materia_prima_atsme`
+--
+
+INSERT INTO `tbl_materia_prima_atsme` (`idRegistro`, `TOO00`, `TORECO`, `SWF098`, `STW000`, `SSO000`, `GLG000`, `idProceso`) VALUES
+(1, 2, 1, 121, 21, 2121, 21, NULL),
+(2, 2, 1, 121, 21, 2121, 21, NULL),
+(3, 2, 1, 121, 21, 2121, 21, NULL),
+(4, 12121, 121, 2121, 121, 21, 2121, NULL),
+(5, 121, 121, 2121, 12121, 12121, 121, NULL),
+(6, 12, 21, 12, 21, 12, 21, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1290,8 +1360,27 @@ CREATE TABLE `tbl_proceso_atsme` (
   `separacionFp04` tinyint(1) DEFAULT NULL,
   `materiaPrimaSeparada` tinyint(1) DEFAULT NULL,
   `aprobacionInicio` tinyint(1) DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL
+  `estado` varchar(20) DEFAULT NULL,
+  `seccion1` tinyint(1) NOT NULL,
+  `seccion2` tinyint(1) NOT NULL DEFAULT 0,
+  `seccion3` tinyint(1) NOT NULL DEFAULT 0,
+  `seccion4` tinyint(1) NOT NULL DEFAULT 0,
+  `seccion5` tinyint(1) NOT NULL DEFAULT 0,
+  `seccion6` tinyint(1) NOT NULL DEFAULT 0,
+  `seccion7` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_proceso_atsme`
+--
+
+INSERT INTO `tbl_proceso_atsme` (`idProceso`, `lote`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `estado`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
+(1, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
+(2, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
+(3, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
+(4, 'CNF021', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
+(5, 'SADDS', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
+(6, '32hha', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1320,7 +1409,6 @@ CREATE TABLE `tbl_seguimiento_desttod100` (
   `nroHoraSeguimiento` int(3) DEFAULT NULL,
   `temperatura` decimal(5,3) DEFAULT NULL,
   `presion` decimal(5,3) DEFAULT NULL,
-  `kgTOD100` decimal(5,3) DEFAULT NULL,
   `vacio` tinyint(1) DEFAULT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
   `idDestilacion` int(11) DEFAULT NULL
@@ -1430,8 +1518,7 @@ ALTER TABLE `tbl_fase_carga_too000`
 -- Indexes for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
-  ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `faseDesargaProcesoAtsme` (`idProceso`);
+  ADD PRIMARY KEY (`idCarga`);
 
 --
 -- Indexes for table `tbl_lavado_equipo_atsme`
@@ -1491,6 +1578,54 @@ ALTER TABLE `procesos`
   MODIFY `IdProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT for table `tbl_conversion_tod100atoreco`
+--
+ALTER TABLE `tbl_conversion_tod100atoreco`
+  MODIFY `idConversion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_equipo_atsme`
+--
+ALTER TABLE `tbl_equipo_atsme`
+  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_estado_equipo_atsme`
+--
+ALTER TABLE `tbl_estado_equipo_atsme`
+  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_fase_carga_too000`
+--
+ALTER TABLE `tbl_fase_carga_too000`
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_fase_descarga`
+--
+ALTER TABLE `tbl_fase_descarga`
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_lavado_equipo_atsme`
+--
+ALTER TABLE `tbl_lavado_equipo_atsme`
+  MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_materia_prima_atsme`
+--
+ALTER TABLE `tbl_materia_prima_atsme`
+  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_proceso_atsme`
+--
+ALTER TABLE `tbl_proceso_atsme`
+  MODIFY `idProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -1535,12 +1670,6 @@ ALTER TABLE `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_carga_too000`
   ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
-
---
--- Constraints for table `tbl_fase_descarga`
---
-ALTER TABLE `tbl_fase_descarga`
-  ADD CONSTRAINT `faseDesargaProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
 
 --
 -- Constraints for table `tbl_lavado_equipo_atsme`

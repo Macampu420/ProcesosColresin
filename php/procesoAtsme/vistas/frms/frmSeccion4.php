@@ -53,7 +53,7 @@
                     <!-- enfriamiento  -->
 
                     <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                        <p class="fs-4 text-center">¿Puso enfriamento para bajar temperatura a 70°C?</p>
+                        <p class="fs-4 text-center">¿Puso enfriamento para bajar temperatura a 70 - 75°C?</p>
                         <div class="col-2 mt-3">
                             <label>Si <input type="radio" name="reactorEnEnfriamiento" value="1" required>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="row">
-                        <p class="text-center fs-4">Sin cerrar enfriamiento y alcanzada la T = 80°C, adicione (3)
+                        <p class="text-center fs-4">Sin cerrar enfriamiento y alcanzada la T = 70 - 75°C, adicione (3)
                             STW000.</p>
                         <div class="col-3 mt-5 mx-auto">
                             <label>Inicio enfriamiento:<input type="datetime-local" name="inicioEnfriamiento">
@@ -78,7 +78,7 @@
                     <!-- enfriamiento  -->
 
                     <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                        <p class="fs-4 text-center">Sostenga por XXX horas:</p>
+                        <p class="fs-4 text-center">Sostenga por 1 hora:</p>
 
                         <div class="col-3 mt-5 mx-auto">
                             <label>Inicio sostenimiento:<input type="datetime-local" name="inicioSostener">

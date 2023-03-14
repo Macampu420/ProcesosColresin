@@ -9,12 +9,12 @@ if (isset($_POST)) {
 
     switch ($_POST['seccion']) {
         case 1:
-            $idRegistro = $objRegistro -> registroSeccion1($_POST);
-            if (isset($idRegistro)) {
-                echo $idRegistro;
+            $resultadoRegistroSeccion1 = $objRegistro -> registroSeccion1($_POST);
+            if ($resultadoRegistroSeccion1 == true) {
+                echo "Registro realizado con exito";
                 http_response_code(200);
             } else {
-                echo "-1 seccion 1";
+                echo "Registro erroneo 500 ";
                 http_response_code(500);
             }
             break;
@@ -26,6 +26,9 @@ if (isset($_POST)) {
                 echo "-1 seccion 2";
                 http_response_code(500); 
             }
+            break;
+        case 3:
+            $objRegistro->registrarSeccion3($_POST);
             break;
         case 5:
             if($objRegistro->registroSeccion5($_POST)){

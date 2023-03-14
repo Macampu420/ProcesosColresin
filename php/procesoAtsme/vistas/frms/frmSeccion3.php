@@ -28,10 +28,10 @@
                         </div>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="fichaLeidaFrm3" name="fichaLeída" value="1" required>
+                            <label>Si <input type="radio" id="fichaLeidaFrm3" name="fichaLeida" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="fichaLeída" value="0" required>
+                            <label>No<input type="radio" name="fichaLeida" value="0" required>
                         </div>
                     </div>
 

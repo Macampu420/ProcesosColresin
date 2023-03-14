@@ -34,9 +34,9 @@ let RegistroForm = {
         divSeguimientos.classList.remove('d-none');
 
         if (divSeguimientos.childElementCount == 0) {
-            for (let i = 1; i < 31; i++) {
+            for (let i = 1; i < 11; i++) {
 
-                if ((i == 10) || (i == 20) || (i == 30)) {
+                if ((i == 3) || (i == 5) || (i == 9)) {
                     divSeguimientos.insertAdjacentHTML('beforeend', `
                     <div>
                         <div class="row text-center">
@@ -46,19 +46,19 @@ let RegistroForm = {
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Temperatura: </label>
-                                <input  type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
+                                <input  type="number"value="${i}" id="temperaturaDestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Presion: </label>
-                                <input  type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
+                                <input  type="number" value="${i}"id="presionDestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada: </label>
-                                <input  type="number" id="SWF098DestilacionHora${i}" placeholder="Kg" name="kgAguaDestiladaDestilacionHora${i}"  />
+                                <input  type="number" value="${i}"id="kgAguaDestiladaDestilacionHora${i}" placeholder="Kg" name="kgAguaDestiladaDestilacionHora${i}"  />
                             </div>
                         </div>
                         <div class="row">
-                            <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
+                            <textarea class="col-4 mx-auto h-50"value="${i}" id="observacionesDestilacionHora${i}" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
                         </div>
                     </div>
                     <hr>
@@ -73,15 +73,15 @@ let RegistroForm = {
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Temperatura: </label>
-                                <input  type="number" id="TOO00DestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
+                                <input  type="number" value="${i}"id="temperaturaDestilacionHora${i}" placeholder="°C" name="temperaturaDestilacionHora${i}"  />
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Presion: </label>
-                                <input  type="number" id="TORECODestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
+                                <input  type="number" value="${i}"id="presionDestilacionHora${i}" placeholder="DPI" name="presionDestilacionHora${i}"  />
                             </div>
                         </div>
                         <div class="row">
-                            <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
+                            <textarea class="col-4 mx-auto h-50" value="${i}"id="observacionesDestilacionHora${i}" name="observacionesDestilacionHora${i}" placeholder="Observaciones:"></textarea>
                         </div>
                     </div>
                     <hr>
@@ -94,7 +94,7 @@ let RegistroForm = {
     },
 
     renderSeguimientosDestilacion: () => {
-        let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
+        let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod3');
 
         if (divSeguimientos.childElementCount == 0) {
             for (let i = 1; i < 9; i++) {

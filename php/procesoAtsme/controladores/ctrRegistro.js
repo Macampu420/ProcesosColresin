@@ -9,7 +9,7 @@ const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let idProceso;
 
-objRegistro.construirNuevoFormulario();
+//objRegistro.construirNuevoFormulario();
 
 frmParte1.addEventListener('submit', event => {
 
@@ -27,11 +27,7 @@ frmParte1.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte1
         }).then(response => {
-            if (response.status === 200) {
-                return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            return response.text();
         })
         .then(data => {
             idProceso = data;
@@ -54,8 +50,6 @@ frmParte2.addEventListener('submit', event => {
     let datosParte2 = new FormData(frmParte2);
     datosParte2.append('idProceso', idProceso);
     datosParte2.append('seccion', 2);
-
-    console.log(datosParte2);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
@@ -81,9 +75,37 @@ frmParte3.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    console.log("parte 4 sigue");
-
     let datosParte3 = new FormData(frmParte3);
+    let arraySeguimientos = [];
+
+    for (let i = 1; i < 11; i++) {
+        let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
+        let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
+        let auxObs = document.getElementById(`observacionesDestilacionHora${i}`).value;
+
+        if ((i == 3) || (i == 5) || (i == 9)) {
+            let auxAguaDest = document.getElementById(`kgAguaDestiladaDestilacionHora${i}`).value;
+            arraySeguimientos.push({
+                auxTemp,
+                auxPres,
+                auxObs,
+                auxAguaDest
+            })
+        } else {
+            arraySeguimientos.push({
+                auxTemp,
+                auxPres,
+                auxObs,
+            })
+        }
+    }
+
+    datosParte3.append('seccion', 3);
+    datosParte3.append('idProceso', idProceso);
+
+    for (let i = 0; i < arraySeguimientos.length; i++) {
+        datosParte3.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
+    }
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
@@ -97,11 +119,13 @@ frmParte3.addEventListener('submit', event => {
         })
         .then(response => {
 
+            console.log(response);
+
             document.getElementById('seccion4').classList.remove('d-none');
-            objRegistro.deshabilitarForm(frmParte3);
+            // objRegistro.deshabilitarForm(frmParte3);
             objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
 
-        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
+        }).catch(err => console.log(err), alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
 });
 
@@ -149,7 +173,6 @@ frmParte5.addEventListener('submit', event => {
             }
         })
         .then(response => {
-            console.log(response);
 
             document.getElementById('seccion6').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte5);
@@ -177,7 +200,6 @@ frmParte6.addEventListener('submit', event => {
             }
         })
         .then(response => {
-            console.log(response);
 
             document.getElementById('seccion7').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte6);
@@ -208,7 +230,7 @@ frmParte7.addEventListener('submit', event => {
 
             objRegistro.deshabilitarForm(frmParte7);
             alert("creo que todo bn jaja")
-            
+
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
 
