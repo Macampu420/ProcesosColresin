@@ -7,7 +7,7 @@ const frmParte4 = document.getElementById('frmSeccion4');
 const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
-let idProceso;
+let lote;
 
 //objRegistro.construirNuevoFormulario();
 
@@ -21,16 +21,20 @@ frmParte1.addEventListener('submit', event => {
     };
 
     let datosParte1 = new FormData(frmParte1);
+    lote = document.getElementById("lote").value;
     datosParte1.append('seccion', 1);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte1
         }).then(response => {
-            return response.text();
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
         .then(data => {
-            idProceso = data;
 
             document.getElementById('seccion2').classList.remove('d-none');
 
@@ -46,27 +50,28 @@ frmParte2.addEventListener('submit', event => {
 
     event.preventDefault();
 
-    frmParte2.idProceso = idProceso;
     let datosParte2 = new FormData(frmParte2);
-    datosParte2.append('idProceso', idProceso);
+    datosParte2.append('lote', lote);
     datosParte2.append('seccion', 2);
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte2
         }).then(response => {
-            if (response.status === 200) {
-                return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            // if (response.status === 200) {
+            //     return response.text();
+            // } else {
+            //     throw new Error('La respuesta de la API no fue exitosa');
+            // }
+            return response.text();
         })
-        .then(response => {
+        .then(data => {
+            console.log(data);
             document.getElementById('seccion3').classList.remove('d-none');
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
 
-            objRegistro.deshabilitarForm(frmParte2);
+            // objRegistro.deshabilitarForm(frmParte2);
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
@@ -101,7 +106,7 @@ frmParte3.addEventListener('submit', event => {
     }
 
     datosParte3.append('seccion', 3);
-    datosParte3.append('idProceso', idProceso);
+    datosParte3.append('lote', lote);
 
     for (let i = 0; i < arraySeguimientos.length; i++) {
         datosParte3.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
@@ -159,7 +164,7 @@ frmParte5.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte5 = new FormData(frmParte5);
-    datosParte5.append('idProceso', idProceso);
+    datosParte5.append('lote', lote);
     datosParte5.append('seccion', 5);
 
     fetch('./../controladores/registroFrm.php', {
@@ -186,7 +191,7 @@ frmParte6.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte6 = new FormData(frmParte6);
-    datosParte6.append('idProceso', idProceso);
+    datosParte6.append('lote', lote);
     datosParte6.append('seccion', 6);
 
     fetch('./../controladores/registroFrm.php', {
@@ -213,7 +218,7 @@ frmParte7.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte7 = new FormData(frmParte7);
-    datosParte7.append('idProceso', idProceso);
+    datosParte7.append('lote', lote);
     datosParte7.append('seccion', 7);
 
     fetch('./../controladores/registroFrm.php', {
