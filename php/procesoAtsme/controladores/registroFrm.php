@@ -11,19 +11,19 @@ if (isset($_POST)) {
         case 1:
             $resultadoRegistroSeccion1 = $objRegistro -> registroSeccion1($_POST);
             if ($resultadoRegistroSeccion1 == true) {
-                echo "Registro realizado con exito";
+                echo "Registro seccion 1 realizado con exito";
                 http_response_code(200);
             } else {
-                echo "Registro erroneo 500 ";
+                echo "Registro encabezado erroneo 500 ";
                 http_response_code(500);
             }
             break;
         case 2:
             if($objRegistro->registroSeccion2($_POST)){
-              echo 1;
+                echo "Registro seccion 2 realizado con exito";
               http_response_code(200);
             } else {
-                echo "-1 seccion 2";
+                echo "Registro seccion 2erroneo 500 ";
                 http_response_code(500); 
             }
             break;
@@ -32,28 +32,28 @@ if (isset($_POST)) {
             break;
         case 5:
             if($objRegistro->registroSeccion5($_POST)){
-                echo 1;
+                echo "Registro seccion 5 realizado con exito";
                 http_response_code(200);
             } else {
-                echo "-1 seccion 5";
+                echo "Registro seccion 5 erroneo 500 ";
                 http_response_code(500);
             }
             break;
         case 6:
             if($objRegistro->registrarSeccion6($_POST)){
-                echo 1;
+                echo "Registro seccion 6 realizado con exito";
                 http_response_code(200);
             } else {
-                echo "-1 seccion 6";
+                echo "Registro seccion 6 erroneo 500 ";
                 http_response_code(500);
             }
             break;
         case 7:
             if($objRegistro->registrarSeccion7($_POST)){
-                echo 1;
+                echo "Registro seccion 7 realizado con exito";
                 http_response_code(200);
             } else {
-                echo "-1 seccion 7";
+                echo "Registro seccion 7 erroneo 500 ";
                 http_response_code(500);
             }
     }

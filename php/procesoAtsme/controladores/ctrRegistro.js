@@ -58,20 +58,18 @@ frmParte2.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte2
         }).then(response => {
-            // if (response.status === 200) {
-            //     return response.text();
-            // } else {
-            //     throw new Error('La respuesta de la API no fue exitosa');
-            // }
-            return response.text();
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
         .then(data => {
-            console.log(data);
             document.getElementById('seccion3').classList.remove('d-none');
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
 
-            // objRegistro.deshabilitarForm(frmParte2);
+            objRegistro.deshabilitarForm(frmParte2);
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });
@@ -225,15 +223,18 @@ frmParte7.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte7
         }).then(response => {
-            if (response.status === 200) {
-                return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            // if (response.status === 200) {
+            //     return response.text();
+            // } else {
+            //     throw new Error('La respuesta de la API no fue exitosa');
+            // }
+            return response.text();
+
         })
         .then(response => {
 
-            objRegistro.deshabilitarForm(frmParte7);
+            console.log(response);
+            // objRegistro.deshabilitarForm(frmParte7);
             alert("creo que todo bn jaja")
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
