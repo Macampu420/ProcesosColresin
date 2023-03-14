@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2023 at 07:33 PM
+-- Generation Time: Mar 14, 2023 at 11:19 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -28,53 +28,56 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `equipos` (
-  `IdProceso` int(11) NOT NULL,
-  `dietrich2` varchar(50) DEFAULT NULL,
-  `fLukas` varchar(45) DEFAULT NULL,
-  `contOlor` varchar(45) DEFAULT NULL
+  `IdEquipo` int(11) NOT NULL,
+  `dietrich2` varchar(50) DEFAULT '-1',
+  `fLukas` varchar(45) DEFAULT '-1',
+  `contOlor` varchar(45) DEFAULT '-1',
+  `dietrich1` tinyint(1) NOT NULL DEFAULT -1,
+  `escamador` tinyint(1) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `equipos`
 --
 
-INSERT INTO `equipos` (`IdProceso`, `dietrich2`, `fLukas`, `contOlor`) VALUES
-(1, '1', '1', '1'),
-(2, '1', '1', '1'),
-(3, '1', '1', '1'),
-(4, '1', '1', '1'),
-(5, '1', '1', '1'),
-(6, '1', '1', '1'),
-(7, '1', '1', '1'),
-(8, '1', '1', '1'),
-(9, '1', '1', '1'),
-(10, '1', '1', '1'),
-(11, '1', '1', '1'),
-(12, '1', '', '1'),
-(13, '1', '', '1'),
-(14, '1', '', ''),
-(15, '1', '', '1'),
-(16, '1', '', '1'),
-(17, '1', '', '1'),
-(18, '1', '', '1'),
-(19, '1', '', '1'),
-(20, '1', '', '1'),
-(21, '1', '', '1'),
-(22, '1', '', '1'),
-(23, '1', '', '1'),
-(24, '1', '', '1'),
-(25, '1', '', '1'),
-(26, '1', '', '1'),
-(27, '1', '', '1'),
-(28, '1', '', '1'),
-(29, '1', '', '1'),
-(30, '1', '', '1'),
-(31, '1', '1', '1'),
-(32, '1', '', '1'),
-(33, '1', '', '1'),
-(34, '', '', ''),
-(35, '1', '1', ''),
-(36, '1', '1', '');
+INSERT INTO `equipos` (`IdEquipo`, `dietrich2`, `fLukas`, `contOlor`, `dietrich1`, `escamador`) VALUES
+(1, '1', '1', '1', 0, 0),
+(2, '1', '1', '1', 0, 0),
+(3, '1', '1', '1', 0, 0),
+(4, '1', '1', '1', 0, 0),
+(5, '1', '1', '1', 0, 0),
+(6, '1', '1', '1', 0, 0),
+(7, '1', '1', '1', 0, 0),
+(8, '1', '1', '1', 0, 0),
+(9, '1', '1', '1', 0, 0),
+(10, '1', '1', '1', 0, 0),
+(11, '1', '1', '1', 0, 0),
+(12, '1', '', '1', 0, 0),
+(13, '1', '', '1', 0, 0),
+(14, '1', '', '', 0, 0),
+(15, '1', '', '1', 0, 0),
+(16, '1', '', '1', 0, 0),
+(17, '1', '', '1', 0, 0),
+(18, '1', '', '1', 0, 0),
+(19, '1', '', '1', 0, 0),
+(20, '1', '', '1', 0, 0),
+(21, '1', '', '1', 0, 0),
+(22, '1', '', '1', 0, 0),
+(23, '1', '', '1', 0, 0),
+(24, '1', '', '1', 0, 0),
+(25, '1', '', '1', 0, 0),
+(26, '1', '', '1', 0, 0),
+(27, '1', '', '1', 0, 0),
+(28, '1', '', '1', 0, 0),
+(29, '1', '', '1', 0, 0),
+(30, '1', '', '1', 0, 0),
+(31, '1', '1', '1', 0, 0),
+(32, '1', '', '1', 0, 0),
+(33, '1', '', '1', 0, 0),
+(34, '', '', '', 0, 0),
+(35, '1', '1', '', 0, 0),
+(36, '1', '1', '', 0, 0),
+(37, '-1', '-1', '-1', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -871,58 +874,63 @@ INSERT INTO `etapas` (`IdProceso`, `NombreEtapa`, `HoraInicio`, `HoraFin`, `Temp
 --
 
 CREATE TABLE `materiaprima` (
-  `IdProceso` int(11) NOT NULL,
-  `nan000` varchar(10) DEFAULT NULL,
-  `swf098` varchar(10) DEFAULT NULL,
-  `stw000` varchar(10) DEFAULT NULL,
-  `fdo037` varchar(10) DEFAULT NULL,
-  `myo000` varchar(10) DEFAULT NULL,
-  `stw0002` varchar(10) DEFAULT NULL,
-  `csc050` varchar(10) DEFAULT NULL,
-  `stw0003` varchar(10) DEFAULT NULL
+  `IdRegMateriaPrima` int(11) NOT NULL,
+  `nan000` varchar(10) DEFAULT '-1',
+  `fdo037` varchar(10) DEFAULT '''-1''',
+  `myo000` varchar(10) DEFAULT '''-1''',
+  `stw0002` varchar(10) DEFAULT '''-1''',
+  `csc050` varchar(10) DEFAULT '''-1''',
+  `stw0003` varchar(10) DEFAULT '''-1''',
+  `swf098` varchar(10) DEFAULT '-1',
+  `stw000` varchar(10) DEFAULT '-1',
+  `too00` float(5,2) NOT NULL DEFAULT -1.00,
+  `torec0` float(5,2) NOT NULL DEFAULT -1.00,
+  `sso000` float(5,2) NOT NULL DEFAULT -1.00,
+  `glg000` float(5,2) NOT NULL DEFAULT -1.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `materiaprima`
 --
 
-INSERT INTO `materiaprima` (`IdProceso`, `nan000`, `swf098`, `stw000`, `fdo037`, `myo000`, `stw0002`, `csc050`, `stw0003`) VALUES
-(1, '12', '2', '2', '2', '2', '2', '2', '2'),
-(2, '2', '3', '4', '5', '5', '6', '6', '6'),
-(3, '55', '5', '5', '5', '5', '5', '5', '5'),
-(4, '5', '5', '5', '5', '5', '5', '5', '5'),
-(5, '5', '5', '5', '5', '5', '5', '5', '5'),
-(6, '5', '5', '5', '5', '5', '5', '5', '5'),
-(7, '555', '6', '6', '6', '6', '6', '6', '6'),
-(8, '5', '5', '5', '5', '5', '5', '5', '5'),
-(9, '5', '5', '5', '5', '5', '5', '5', '5'),
-(10, '25', '55', '54', '54', '54', '54', '54', '54'),
-(11, '5', '5', '5', '5', '5', '5', '5', '5'),
-(12, '900', '840', '369', '630', '50', '81', '900', '322'),
-(13, '900', '840', '369', '630', '50', '81', '900', '322'),
-(14, '3', '3', '3', '3', '3', '3', '3', '3'),
-(15, '900', '840', '369', '630', '50', '81', '900', '322'),
-(16, '5', '5', '5', '5', '5', '5', '5', '5'),
-(17, '900', '840', '369', '630', '50', '81', '900', '322'),
-(18, '5', '5', '5', '5', '5', '5', '5', '5'),
-(19, '100', '100', '100', '100', '100', '100', '100', '100'),
-(20, '100', '100', '100', '100', '100', '100', '100', '100'),
-(21, '21', '12', '12', '121', '12', '12', '12', '21'),
-(22, '5', '5', '5', '5', '5', '5', '5', '5'),
-(23, '5', '5', '5', '5', '5', '5', '5', '5'),
-(24, '5', '5', '5', '5', '5', '5', '5', '5'),
-(25, '900', '840', '369', '630', '50', '81', '900', '322'),
-(26, '900', '840', '369', '630', '50', '81', '900', '322'),
-(27, '900', '840', '369', '630', '50', '81', '900', '322'),
-(28, '900', '840', '369', '630', '50', '81', '900', '322'),
-(29, '900', '840', '369', '630', '50', '81', '900', '322'),
-(30, '900', '840', '369', '630', '50', '81', '900', '322'),
-(31, '5454', '656', '5', '5', '5', '5', '5', '5'),
-(32, '1000', '700', '252', '528', '38', '69', '700', '520'),
-(33, '21', '21', '12', '12', '212', '12', '21', '12'),
-(34, '', '', '', '', '', '', '', ''),
-(35, '10', '10', '10', '10', '10', '10', '10', '10'),
-(36, '12', '12', '12', '12', '11', '12', '12', '12');
+INSERT INTO `materiaprima` (`IdRegMateriaPrima`, `nan000`, `fdo037`, `myo000`, `stw0002`, `csc050`, `stw0003`, `swf098`, `stw000`, `too00`, `torec0`, `sso000`, `glg000`) VALUES
+(1, '12', '2', '2', '2', '2', '2', '2', '2', -1.00, -1.00, -1.00, -1.00),
+(2, '2', '5', '5', '6', '6', '6', '3', '4', -1.00, -1.00, -1.00, -1.00),
+(3, '55', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(4, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(5, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(6, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(7, '555', '6', '6', '6', '6', '6', '6', '6', -1.00, -1.00, -1.00, -1.00),
+(8, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(9, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(10, '25', '54', '54', '54', '54', '54', '55', '54', -1.00, -1.00, -1.00, -1.00),
+(11, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(12, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(13, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(14, '3', '3', '3', '3', '3', '3', '3', '3', -1.00, -1.00, -1.00, -1.00),
+(15, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(16, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(17, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(18, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(19, '100', '100', '100', '100', '100', '100', '100', '100', -1.00, -1.00, -1.00, -1.00),
+(20, '100', '100', '100', '100', '100', '100', '100', '100', -1.00, -1.00, -1.00, -1.00),
+(21, '21', '121', '12', '12', '12', '21', '12', '12', -1.00, -1.00, -1.00, -1.00),
+(22, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(23, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(24, '5', '5', '5', '5', '5', '5', '5', '5', -1.00, -1.00, -1.00, -1.00),
+(25, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(26, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(27, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(28, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(29, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(30, '900', '630', '50', '81', '900', '322', '840', '369', -1.00, -1.00, -1.00, -1.00),
+(31, '5454', '5', '5', '5', '5', '5', '656', '5', -1.00, -1.00, -1.00, -1.00),
+(32, '1000', '528', '38', '69', '700', '520', '700', '252', -1.00, -1.00, -1.00, -1.00),
+(33, '21', '12', '212', '12', '21', '12', '21', '12', -1.00, -1.00, -1.00, -1.00),
+(34, '', '', '', '', '', '', '', '', -1.00, -1.00, -1.00, -1.00),
+(35, '10', '10', '10', '10', '10', '10', '10', '10', -1.00, -1.00, -1.00, -1.00),
+(36, '12', '12', '11', '12', '12', '12', '12', '12', -1.00, -1.00, -1.00, -1.00),
+(37, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '13.2', 10.00, 10.50, 9.80, 11.00);
 
 -- --------------------------------------------------------
 
@@ -1011,7 +1019,6 @@ CREATE TABLE `nfo` (
 --
 
 INSERT INTO `nfo` (`IdProceso`, `nfo`, `numeroLote`, `MatPriFP04`, `MatPriSeparada`, `MateriaPrimacol`, `ReactorLimpio`, `HermeticidadReactor`, `ReactorFunciona`, `VacioFunciona`, `VaporFunciona`, `EnfriamientoFunciona`, `EmisionesFunciona`, `phsodatanque`, `CondensadorFunciona`, `ApruebaInicio`, `RazonesNoAprob`, `SeguridadNaftaleno`, `EquipoNaftaleno`, `EnfriamientoCerrado`, `ValvBloqueo`, `AbrirControlOlores`, `Estartazos`, `AgitadorOk`, `ProblemaFund`, `ProblemaFundirNaf`, `SeguridadSulfurico`, `EquipoSulfurico`, `Vapor`, `ProblemaSWFO`, `TextoProblemaSWFO`, `CierreControlOlores`, `EvacuarCamisa`, `SuministroVapor`, `SeguridadFDO`, `EquipoFDO`, `LineaTierraOk`, `BombaNeumaticaOk`, `ConexionOk`, `MangueraOk`, `LineaCargaOk`, `ValvulasCerradas`, `CapacidadTanque`, `ProblemaCondensacion`, `TextoProblemaCondensacion`, `SeguridadCSO`, `EquipoCSO`, `OlorFormol`, `ph10`, `Csc050Ajuste`, `Stw00Ajuste`, `ph10Fin`, `ProductoBrillante`, `HoraInicioLukas`, `HoraFinLukas`, `ProductoBrillante2`, `NotificarLaboratorio`, `SegNFO`, `EquipoNFO`, `AgitacionOff`, `TalegoDescarga`, `ResiduoTalego`, `EnviarMuestraFinal`, `Aspecto`, `PorcentajeSolidos`, `pH10Final`, `Solubilidad10`, `Solubilidad40`, `Rendimiento`, `ProcesoDif`, `KgEnjuague`, `KgLavado`, `FechaMuestraLab`) VALUES
-(1, '720NFOB00', 'Prueba1', '1', '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00.000000'),
 (2, '720NFOB00', 'Prueba2', '1', '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '', '1', '1', '1', '1', '1', '1', '1', '0', '', '1', '1', '0', '0', '', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '', '1', '1', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '1', '1', '1', '0', '1', 're', '23', '', '9', '9', '88', '1', '56', '66', '0000-00-00 00:00:00.000000'),
 (3, '720NFOB00', '59565', '1', '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '', '1', '1', '1', '1', '1', '1', '0', '0', 'Problema prueba', '1', '1', '0', '0', '', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '', '1', '1', '1', '8.0', '5', '5', '8.0', '1', NULL, NULL, '', 'JJ', '1', '1', '1', '1', '0', '1', 'OK', '8', '', '8', '8', 'OK', '1', '85', '85', '0000-00-00 00:00:00.000000'),
 (4, '720NFOB00', 'Prueba3', '1', '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '', '1', '1', '1', '1', '1', '1', '1', '0', '', '1', '1', '1', '0', '', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '', '1', '1', '1', '8.5', '5', '5', '9.5', '1', NULL, NULL, '1', 'OK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00.000000'),
@@ -1121,15 +1128,19 @@ CREATE TABLE `tbl_conversion_tod100atoreco` (
   `kgStw000` float DEFAULT NULL,
   `KgToreco` tinyint(1) DEFAULT NULL,
   `torecoEtiquetado` tinyint(1) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_conversion_tod100atoreco`
 --
 
-INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `idProceso`) VALUES
-(1, 1, 1, 1, 50.6, 51, 1, 1);
+INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `loteProceso`) VALUES
+(1, 1, 1, 1, 43, 49, 1, '1'),
+(2, 1, 1, 1, 30, 45, 1, '3'),
+(3, 1, 0, 1, 10, 20, 1, '7'),
+(4, 0, 0, 0, 50, 90, 1, '8'),
+(8, 1, 0, 1, 10, 20, 1, 'L01');
 
 -- --------------------------------------------------------
 
@@ -1141,38 +1152,13 @@ CREATE TABLE `tbl_destilacion_tod100` (
   `idDestilacion` int(11) NOT NULL,
   `inicioDestilacion` datetime DEFAULT NULL,
   `finDestilacion` datetime DEFAULT NULL,
-  `kgTOD100` decimal(5,3) NOT NULL,
+  `kgTOD100` float(5,2) NOT NULL,
   `inicioEnfriamiento` datetime DEFAULT NULL,
   `finEnfriamiento` datetime DEFAULT NULL,
   `inicioSostener` datetime DEFAULT NULL,
   `finSostener` datetime DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_equipo_atsme`
---
-
-CREATE TABLE `tbl_equipo_atsme` (
-  `idEquipo` int(11) NOT NULL,
-  `dietrich1` tinyint(1) DEFAULT NULL,
-  `escamador` tinyint(1) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_equipo_atsme`
---
-
-INSERT INTO `tbl_equipo_atsme` (`idEquipo`, `dietrich1`, `escamador`, `idProceso`) VALUES
-(1, 1, 1, NULL),
-(2, 1, 1, NULL),
-(3, 1, 1, NULL),
-(4, 1, 0, NULL),
-(5, 1, 1, NULL),
-(6, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1190,20 +1176,17 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
   `sistemaVaporOk` tinyint(1) DEFAULT NULL,
   `sistemaEnfiramientoOk` tinyint(1) DEFAULT NULL,
   `condensadorSinFugas` tinyint(1) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_estado_equipo_atsme`
 --
 
-INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `idProceso`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
-(2, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
-(3, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
-(4, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
-(5, 1, 1, 1, 1, 1, 1, 1, 1, NULL),
-(6, 1, 1, 1, 1, 1, 1, 1, 1, NULL);
+INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `loteProceso`) VALUES
+(14, 1, 1, 1, 1, 1, 1, 1, 1, 'L01'),
+(15, 1, 0, 1, 0, 1, 0, 1, 0, 'l011'),
+(16, 1, 1, 0, 0, 1, 1, 1, 0, 'L01');
 
 -- --------------------------------------------------------
 
@@ -1229,8 +1212,17 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `resultadoMuestra` int(5) DEFAULT NULL,
   `totalAguaDestilada` int(5) DEFAULT NULL,
   `muestraPasa` tinyint(1) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_fase_cargaswf098_atsme`
+--
+
+INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `muestraAcidoSulfNecesario`, `resultadoMuestra`, `totalAguaDestilada`, `muestraPasa`, `loteProceso`) VALUES
+(1, 0, 0, 1, 1, '2023-03-12 12:21:00', '2023-03-12 12:12:00', 1, 0, 'dafads', 1, '2023-03-12 12:12:00', '2023-03-05 10:10:00', 0, 0, 10, 0, 1),
+(3, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, 0, 0, 7),
+(4, 1, 1, 1, 1, '2023-03-13 10:10:00', '2023-03-13 10:10:00', 1, 0, 'sdsgdsd', 1, '2023-03-13 10:10:00', '0000-00-00 00:00:00', 1, 0, 0, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -1251,17 +1243,19 @@ CREATE TABLE `tbl_fase_carga_too000` (
   `finCargaTOO000` datetime DEFAULT NULL,
   `problemaCarga` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_fase_carga_too000`
 --
 
-INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `idProceso`) VALUES
-(1, 1, 1, 1, 0, 0, 1, 1, '0000-00-00 00:00:00', '2023-03-12 10:01:00', 1, 'asdasd', NULL),
-(2, 0, 1, 1, 1, 0, 0, 1, '0000-00-00 00:00:00', '2023-03-12 10:30:00', 0, 'asdasd', 4),
-(3, 0, 1, 1, 1, 0, 0, 1, '2023-03-12 10:10:00', '2023-03-12 10:30:00', 0, 'asdasd', 4);
+INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `loteProceso`) VALUES
+(11, 1, 1, 0, 0, 1, 0, 0, '2023-03-14 11:11:00', '2023-03-14 11:11:00', 1, 'daf', 'L01'),
+(14, 1, 0, 1, 0, 1, 0, 0, '2023-03-14 12:01:00', '2023-01-07 12:12:00', 1, 'juan', 'L01'),
+(15, 1, 0, 1, 0, 1, 0, 0, '2023-03-14 12:01:00', '2023-01-07 12:12:00', 1, 'juan', 'L01'),
+(16, 1, 0, 1, 0, 1, 0, 0, '2023-03-14 12:01:00', '2023-01-07 12:12:00', 1, 'juan', 'L01'),
+(17, 1, 0, 1, 0, 1, 0, 0, '2023-03-14 12:01:00', '2023-01-07 12:12:00', 1, 'juan', 'L01');
 
 -- --------------------------------------------------------
 
@@ -1270,7 +1264,7 @@ INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`
 --
 
 CREATE TABLE `tbl_fase_descarga` (
-  `idCarga` int(11) NOT NULL,
+  `idDescarga` int(11) NOT NULL,
   `fichaLeída` tinyint(1) DEFAULT NULL,
   `equipoSeguridad` tinyint(1) DEFAULT NULL,
   `RPMCilindro` int(5) DEFAULT NULL,
@@ -1281,20 +1275,22 @@ CREATE TABLE `tbl_fase_descarga` (
   `finVapor` datetime DEFAULT NULL,
   `inicioDescarga` datetime DEFAULT NULL,
   `finDescarga` datetime DEFAULT NULL,
-  `kgAtsme0` decimal(5,3) DEFAULT NULL,
-  `kgAtsxxx` decimal(5,3) DEFAULT NULL,
+  `kgAtsme0` float(5,2) DEFAULT NULL,
+  `kgAtsxxx` float(5,2) DEFAULT NULL,
   `problemaEscamado` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `loteProceso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_fase_descarga`
 --
 
-INSERT INTO `tbl_fase_descarga` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `idProceso`) VALUES
-(1, 1, 1, 5, 60.000, 39.000, 1, '2023-03-12 12:12:00', '2023-03-12 15:15:00', '2023-03-12 16:16:00', '2023-03-12 20:00:00', '50.000', '40.000', 1, 'juan', 5),
-(2, 1, 1, 5, 60.000, 39.000, 1, '2023-03-12 12:12:00', '2023-03-12 15:15:00', '2023-03-12 16:16:00', '2023-03-12 20:00:00', '50.000', '40.000', 1, 'juan', 5);
+INSERT INTO `tbl_fase_descarga` (`idDescarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `loteProceso`) VALUES
+(9, 1, 0, 9500, 60.000, 90.000, 1, '2023-03-14 10:10:00', '2023-03-14 10:10:00', '2023-03-14 10:01:00', '2023-03-14 10:10:00', 20.00, 30.00, 1, 'ggg', 'L01'),
+(10, 1, 0, 9500, 60.000, 90.000, 1, '2023-03-14 10:10:00', '2023-03-14 10:10:00', '2023-03-14 10:01:00', '2023-03-14 10:10:00', 20.00, 30.00, 1, 'ggg', 'L01'),
+(11, 1, 0, 9500, 60.000, 90.000, 1, '2023-03-14 10:10:00', '2023-03-14 10:10:00', '2023-03-14 10:01:00', '2023-03-14 10:10:00', 20.00, 30.00, 1, 'ggg', 'L01'),
+(12, 1, 0, 9500, 60.000, 90.000, 1, '2023-03-14 10:10:00', '2023-03-14 10:10:00', '2023-03-14 10:01:00', '2023-03-14 10:10:00', 20.00, 30.00, 1, 'ggg', 'L01');
 
 -- --------------------------------------------------------
 
@@ -1307,46 +1303,16 @@ CREATE TABLE `tbl_lavado_equipo_atsme` (
   `inicioEnjuague` datetime DEFAULT NULL,
   `finEnjuague` datetime DEFAULT NULL,
   `tuberiasLimpias` tinyint(1) DEFAULT NULL,
-  `kgAguaLavada` decimal(5,3) DEFAULT NULL,
-  `idProceso` int(11) DEFAULT NULL
+  `kgAguaLavada` float(5,2) DEFAULT NULL,
+  `loteProceso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_lavado_equipo_atsme`
 --
 
-INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `idProceso`) VALUES
-(1, '2023-03-12 11:00:00', '2023-03-13 12:12:00', 1, '21.000', 1),
-(2, '2023-03-12 11:00:00', '2023-03-13 12:12:00', 1, '20.600', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_materia_prima_atsme`
---
-
-CREATE TABLE `tbl_materia_prima_atsme` (
-  `idRegistro` int(11) NOT NULL,
-  `TOO00` int(11) NOT NULL,
-  `TORECO` int(11) NOT NULL,
-  `SWF098` int(11) NOT NULL,
-  `STW000` int(11) NOT NULL,
-  `SSO000` int(11) NOT NULL,
-  `GLG000` int(11) NOT NULL,
-  `idProceso` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_materia_prima_atsme`
---
-
-INSERT INTO `tbl_materia_prima_atsme` (`idRegistro`, `TOO00`, `TORECO`, `SWF098`, `STW000`, `SSO000`, `GLG000`, `idProceso`) VALUES
-(1, 2, 1, 121, 21, 2121, 21, NULL),
-(2, 2, 1, 121, 21, 2121, 21, NULL),
-(3, 2, 1, 121, 21, 2121, 21, NULL),
-(4, 12121, 121, 2121, 121, 21, 2121, NULL),
-(5, 121, 121, 2121, 12121, 12121, 121, NULL),
-(6, 12, 21, 12, 21, 12, 21, NULL);
+INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `loteProceso`) VALUES
+(1, '2023-03-14 12:12:00', '2023-03-14 12:12:00', 0, 20.00, 'L01');
 
 -- --------------------------------------------------------
 
@@ -1355,13 +1321,13 @@ INSERT INTO `tbl_materia_prima_atsme` (`idRegistro`, `TOO00`, `TORECO`, `SWF098`
 --
 
 CREATE TABLE `tbl_proceso_atsme` (
-  `idProceso` int(11) NOT NULL,
-  `lote` varchar(10) DEFAULT NULL,
+  `loteProceso` varchar(30) NOT NULL,
   `separacionFp04` tinyint(1) DEFAULT NULL,
   `materiaPrimaSeparada` tinyint(1) DEFAULT NULL,
   `aprobacionInicio` tinyint(1) DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL,
-  `seccion1` tinyint(1) NOT NULL,
+  `IdEquipo` int(11) NOT NULL,
+  `IdRegMateriaPrima` int(11) NOT NULL,
+  `seccion1` tinyint(1) NOT NULL DEFAULT 1,
   `seccion2` tinyint(1) NOT NULL DEFAULT 0,
   `seccion3` tinyint(1) NOT NULL DEFAULT 0,
   `seccion4` tinyint(1) NOT NULL DEFAULT 0,
@@ -1374,13 +1340,8 @@ CREATE TABLE `tbl_proceso_atsme` (
 -- Dumping data for table `tbl_proceso_atsme`
 --
 
-INSERT INTO `tbl_proceso_atsme` (`idProceso`, `lote`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `estado`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
-(1, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
-(2, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
-(3, '45', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
-(4, 'CNF021', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
-(5, 'SADDS', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0),
-(6, '32hha', 1, 1, 1, 'en Proceso', 1, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tbl_proceso_atsme` (`loteProceso`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
+('L01', 1, 1, 1, 37, 37, 1, 1, 0, 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1391,12 +1352,38 @@ INSERT INTO `tbl_proceso_atsme` (`idProceso`, `lote`, `separacionFp04`, `materia
 CREATE TABLE `tbl_seguimiento_cargaswf098` (
   `idSeguimiento` int(11) NOT NULL,
   `nroHoraSeguimiento` int(3) DEFAULT NULL,
-  `temperatura` decimal(5,3) DEFAULT NULL,
-  `presion` decimal(5,3) DEFAULT NULL,
-  `kgAguaDestilada` decimal(5,3) DEFAULT NULL,
+  `temperatura` float(5,2) DEFAULT NULL,
+  `presion` float(5,2) DEFAULT NULL,
+  `kgAguaDestilada` float(5,2) DEFAULT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
-  `idCarga` int(11) DEFAULT NULL
+  `idCarga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_seguimiento_cargaswf098`
+--
+
+INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `idCarga`) VALUES
+(1, 1, 1.00, 1.00, 0.00, '', 1),
+(2, 2, 2.00, 2.00, 0.00, '', 1),
+(3, 3, 3.00, 3.00, 3.00, '', 1),
+(4, 4, 4.00, 4.00, 0.00, '', 1),
+(5, 5, 5.00, 5.00, 5.00, '', 1),
+(6, 6, 6.00, 6.00, 0.00, '', 1),
+(7, 7, 7.00, 7.00, 0.00, '', 1),
+(8, 8, 8.00, 8.00, 0.00, '', 1),
+(9, 9, 9.00, 9.00, 9.00, '9', 1),
+(10, 10, 10.00, 10.00, 0.00, '10', 1),
+(11, 1, 1.00, 1.00, 0.00, '1', 4),
+(12, 2, 2.00, 2.00, 0.00, '2', 4),
+(13, 3, 3.00, 3.00, 3.00, '3', 4),
+(14, 4, 4.00, 4.00, 0.00, '4', 4),
+(15, 5, 5.00, 5.00, 5.00, '5', 4),
+(16, 6, 6.00, 6.00, 0.00, '6', 4),
+(17, 7, 7.00, 7.00, 0.00, '7', 4),
+(18, 8, 8.00, 8.00, 0.00, '8', 4),
+(19, 9, 9.00, 9.00, 9.00, '9', 4),
+(20, 10, 10.00, 10.00, 0.00, '10', 4);
 
 -- --------------------------------------------------------
 
@@ -1407,8 +1394,8 @@ CREATE TABLE `tbl_seguimiento_cargaswf098` (
 CREATE TABLE `tbl_seguimiento_desttod100` (
   `idSeguimiento` int(11) NOT NULL,
   `nroHoraSeguimiento` int(3) DEFAULT NULL,
-  `temperatura` decimal(5,3) DEFAULT NULL,
-  `presion` decimal(5,3) DEFAULT NULL,
+  `temperatura` float(5,2) DEFAULT NULL,
+  `presion` float(5,2) DEFAULT NULL,
   `vacio` tinyint(1) DEFAULT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
   `idDestilacion` int(11) DEFAULT NULL
@@ -1459,6 +1446,18 @@ INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Cedula`, `CorreoElec
 --
 
 --
+-- Indexes for table `equipos`
+--
+ALTER TABLE `equipos`
+  ADD PRIMARY KEY (`IdEquipo`);
+
+--
+-- Indexes for table `materiaprima`
+--
+ALTER TABLE `materiaprima`
+  ADD PRIMARY KEY (`IdRegMateriaPrima`);
+
+--
 -- Indexes for table `nfo`
 --
 ALTER TABLE `nfo`
@@ -1477,68 +1476,57 @@ ALTER TABLE `procesos`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
   ADD PRIMARY KEY (`idConversion`),
-  ADD KEY `faseConversionTod100ProcesoAtsme` (`idProceso`);
+  ADD KEY `fk_tbl_conversion_tod100atoreco_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
   ADD PRIMARY KEY (`idDestilacion`),
-  ADD KEY `destilacionTOD100ProcesoAtsme` (`idProceso`);
-
---
--- Indexes for table `tbl_equipo_atsme`
---
-ALTER TABLE `tbl_equipo_atsme`
-  ADD PRIMARY KEY (`idEquipo`),
-  ADD KEY `equipoDeProcesoAtsme` (`idProceso`);
+  ADD KEY `destilacionTOD100ProcesoAtsme` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
   ADD PRIMARY KEY (`idEstado`),
-  ADD KEY `estadoEquipoDeProcesoAtsme` (`idProceso`);
+  ADD KEY `fk_tbl_estado_equipo_atsme_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
   ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `procesoCargaSWF098Atsme` (`idProceso`);
+  ADD KEY `procesoCargaSWF098Atsme` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
   ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `faseCargaTOO000ProcesoAtsme` (`idProceso`);
+  ADD KEY `fk_tbl_fase_carga_too000_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
-  ADD PRIMARY KEY (`idCarga`);
+  ADD PRIMARY KEY (`idDescarga`),
+  ADD KEY `fk_tbl_fase_descarga_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
   ADD PRIMARY KEY (`idLavado`),
-  ADD KEY `lavadoEquipoDeProcesoAtsme` (`idProceso`);
-
---
--- Indexes for table `tbl_materia_prima_atsme`
---
-ALTER TABLE `tbl_materia_prima_atsme`
-  ADD PRIMARY KEY (`idRegistro`),
-  ADD KEY `materiaPrimaDeAtsme` (`idProceso`) USING BTREE;
+  ADD KEY `fk_tbl_lavado_equipo_atsme_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_proceso_atsme`
 --
 ALTER TABLE `tbl_proceso_atsme`
-  ADD PRIMARY KEY (`idProceso`);
+  ADD PRIMARY KEY (`loteProceso`),
+  ADD KEY `fk_equipo_proceso` (`IdEquipo`),
+  ADD KEY `fk_tbl_proceso_atsme_materiaprima` (`IdRegMateriaPrima`);
 
 --
 -- Indexes for table `tbl_seguimiento_cargaswf098`
@@ -1566,6 +1554,18 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `equipos`
+--
+ALTER TABLE `equipos`
+  MODIFY `IdEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `materiaprima`
+--
+ALTER TABLE `materiaprima`
+  MODIFY `IdRegMateriaPrima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
 -- AUTO_INCREMENT for table `nfo`
 --
 ALTER TABLE `nfo`
@@ -1581,49 +1581,43 @@ ALTER TABLE `procesos`
 -- AUTO_INCREMENT for table `tbl_conversion_tod100atoreco`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
-  MODIFY `idConversion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_equipo_atsme`
---
-ALTER TABLE `tbl_equipo_atsme`
-  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idConversion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
-  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_fase_cargaswf098_atsme`
+--
+ALTER TABLE `tbl_fase_cargaswf098_atsme`
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idDescarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
-  MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_materia_prima_atsme`
+-- AUTO_INCREMENT for table `tbl_seguimiento_cargaswf098`
 --
-ALTER TABLE `tbl_materia_prima_atsme`
-  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_proceso_atsme`
---
-ALTER TABLE `tbl_proceso_atsme`
-  MODIFY `idProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tbl_seguimiento_cargaswf098`
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -1639,49 +1633,54 @@ ALTER TABLE `usuarios`
 -- Constraints for table `tbl_conversion_tod100atoreco`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
-  ADD CONSTRAINT `faseConversionTod100ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `faseConversionTod100ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
+  ADD CONSTRAINT `fk_tbl_conversion_tod100atoreco_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
-  ADD CONSTRAINT `destilacionTOD100ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
-
---
--- Constraints for table `tbl_equipo_atsme`
---
-ALTER TABLE `tbl_equipo_atsme`
-  ADD CONSTRAINT `equipoDeProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `destilacionTOD100ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
-  ADD CONSTRAINT `estadoEquipoDeProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `estadoEquipoDeProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
+  ADD CONSTRAINT `fk_tbl_estado_equipo_atsme_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
-  ADD CONSTRAINT `procesoCargaSWF098Atsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `procesoCargaSWF098Atsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
-  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
+  ADD CONSTRAINT `fk_tbl_fase_carga_too000_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+
+--
+-- Constraints for table `tbl_fase_descarga`
+--
+ALTER TABLE `tbl_fase_descarga`
+  ADD CONSTRAINT `fk_tbl_fase_descarga_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
-  ADD CONSTRAINT `lavadoEquipoDeProcesoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+  ADD CONSTRAINT `fk_tbl_lavado_equipo_atsme_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
+  ADD CONSTRAINT `lavadoEquipoDeProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
--- Constraints for table `tbl_materia_prima_atsme`
+-- Constraints for table `tbl_proceso_atsme`
 --
-ALTER TABLE `tbl_materia_prima_atsme`
-  ADD CONSTRAINT `procesoEquipoAtsme` FOREIGN KEY (`idProceso`) REFERENCES `tbl_proceso_atsme` (`idProceso`);
+ALTER TABLE `tbl_proceso_atsme`
+  ADD CONSTRAINT `fk_equipo_proceso` FOREIGN KEY (`IdEquipo`) REFERENCES `equipos` (`IdEquipo`),
+  ADD CONSTRAINT `fk_tbl_proceso_atsme_materiaprima` FOREIGN KEY (`IdRegMateriaPrima`) REFERENCES `materiaprima` (`IdRegMateriaPrima`);
 
 --
 -- Constraints for table `tbl_seguimiento_cargaswf098`

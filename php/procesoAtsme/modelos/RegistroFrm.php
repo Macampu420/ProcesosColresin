@@ -288,34 +288,18 @@ class RegistroFrm {
     }
 
     // Método para insertar datos en la tabla utilizando la consulta preparada
-    function registrarSeccion7($arrayDatos){
+    function registrarSeccion7($arrayDatos) {
 
-        $fichaLeida = isset($arrayDatos['fichaLeida']) ? $arrayDatos['fichaLeida'] : 0;
-        $equipoSeguirdad = isset($arrayDatos['equipoSeguridad']) ? $arrayDatos['equipoSeguridad'] : 0;
-        $swf098Transparente = isset($arrayDatos['swf098Transparente']) ? $arrayDatos['swf098Transparente'] : 0;
-        $reactorEnEnfriamiento = isset($arrayDatos['reactorEnEnfriamiento']) ? $arrayDatos['reactorEnEnfriamiento'] : 0;
-        $inicioCargaSWF098 = isset($arrayDatos['inicioCargaSWF098']) ? $arrayDatos['inicioCargaSWF098'] : "NOW()";
-        $finCargaSWF098 = isset($arrayDatos['finCargaSWF098']) ? $arrayDatos['finCargaSWF098'] : "NOW()";
-        $inicioVapor = isset($arrayDatos['inicioVapor']) ? $arrayDatos['inicioVapor'] : 0;        
-        $problemaAdicionAcido = isset($arrayDatos['problemaAdicionAcido']) ? $arrayDatos['problemaAdicionAcido'] : 0;
-        $comentarioProblema = isset($arrayDatos['comentarioProblema']) ? $arrayDatos['comentarioProblema'] : "";
-        $equipoEnReflujo = isset($arrayDatos['equipoEnReflujo']) ? $arrayDatos['equipoEnReflujo'] : 0;
-        $inicioReflujo = isset($arrayDatos['inicioReflujo']) ? $arrayDatos['inicioReflujo'] : "NOW()";
-        $finReflujo = isset($arrayDatos['finReflujo']) ? $arrayDatos['finReflujo'] : "NOW()";
-        $muestraAcidoSulfNecesario = isset($arrayDatos['muestraAcidoSulfNecesario']) ? $arrayDatos['muestraAcidoSulfNecesario'] : 0;
-        $resultadoMuestra = isset($arrayDatos['resultadoMuestra']) ? $arrayDatos['resultadoMuestra'] : 0;
-        $totalAguaDestilada = isset($arrayDatos['totalAguaDestilada']) ? $arrayDatos['totalAguaDestilada'] : 0;
-        $muestraPasa = isset($arrayDatos['muestraPasa']) ? $arrayDatos['muestraPasa'] : 0;
+
+        $inicioEnjuague = $arrayDatos['inicioEnjuague'] ? $arrayDatos['inicioEnjuague'] : 'NOW()';
+        $finEnjuague = $arrayDatos['finEnjuague'] ? $arrayDatos['finEnjuague'] : 'NOW()';
+        $tuberiasLimpias = $arrayDatos['tuberiasLimpias'] ? $arrayDatos['tuberiasLimpias'] : 0;
+        $kgAguaLavada = $arrayDatos['kgAguaLavada'] ? $arrayDatos['kgAguaLavada'] : 0;
         $lote = $arrayDatos['lote'];
-
-        $this->stmt9->bind_param('iiiissiisissiiiis', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
-         $inicioCargaSWF098, $finCargaSWF098, $inicioVapor, $problemaAdicionAcido, $comentarioProblema, $equipoEnReflujo, 
-         $inicioReflujo, $finReflujo, $muestraAcidoSulfNecesario, $resultadoMuestra, $totalAguaDestilada, $muestraPasa, 
-         $lote);
-
-        $resultado =  $this->stmt9->execute();
-
-        var_dump($this->stmt9->error);
+    
+        $this->stmt8->bind_param('ssids', $inicioEnjuague, $finEnjuague, $tuberiasLimpias, $kgAguaLavada, $lote);
+    
+        $resultado =  $this->stmt8->execute();
 
         if($resultado){
             $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion7`= 1 WHERE loteProceso = ?");
@@ -372,12 +356,12 @@ class RegistroFrm {
         $resultadoMuestra = isset($arrayDatos['resultadoMuestra']) ? $arrayDatos['resultadoMuestra'] : 0;
         $totalAguaDestilada = isset($arrayDatos['totalAguaDestilada']) ? $arrayDatos['totalAguaDestilada'] : 0;
         $muestraPasa = isset($arrayDatos['muestraPasa']) ? $arrayDatos['muestraPasa'] : 0;
-        $idProceso = $arrayDatos['idProceso'];
+        $lote = $arrayDatos['lote'];
 
-        $this->stmt9->bind_param('iiiissiisissiiiii', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
+        $this->stmt9->bind_param('iiiissiisissiiiis', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
          $inicioCargaSWF098, $finCargaSWF098, $inicioVapor, $problemaAdicionAcido, $comentarioProblema, $equipoEnReflujo, 
          $inicioReflujo, $finReflujo, $muestraAcidoSulfNecesario, $resultadoMuestra, $totalAguaDestilada, $muestraPasa, 
-         $idProceso);
+         $lote);
 
         $resultado =  $this->stmt9->execute();
 
