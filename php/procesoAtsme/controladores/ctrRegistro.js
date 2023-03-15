@@ -8,6 +8,7 @@ const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let lote;
+let swReflujo = 1;
 
 //objRegistro.construirNuevoFormulario();
 
@@ -81,6 +82,7 @@ frmParte3.addEventListener('submit', event => {
     let datosParte3 = new FormData(frmParte3);
     let arraySeguimientos = [];
 
+    //se capturan los datos de los seguimientos y segun el numero del segumiento se empuja en el array
     for (let i = 1; i < 11; i++) {
         let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
         let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
@@ -103,9 +105,12 @@ frmParte3.addEventListener('submit', event => {
         }
     }
 
+    //se agregan propiedades necesarias
     datosParte3.append('seccion', 3);
     datosParte3.append('lote', lote);
+    datosParte3.append('swReflujo', swReflujo);
 
+    //se agregan los valores de los inputs al formdata
     for (let i = 0; i < arraySeguimientos.length; i++) {
         datosParte3.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
     }
@@ -114,16 +119,17 @@ frmParte3.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte3
         }).then(response => {
-            if (response.status === 200) {
+            // if (response.status === 200) {
                 return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            // } else {
+            //     throw new Error('La respuesta de la API no fue exitosa');
+            // }
         })
         .then(response => {
 
             console.log(response);
 
+            swReflujo = 0;
             document.getElementById('seccion4').classList.remove('d-none');
             // objRegistro.deshabilitarForm(frmParte3);
             objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
@@ -219,25 +225,27 @@ frmParte7.addEventListener('submit', event => {
     datosParte7.append('lote', lote);
     datosParte7.append('seccion', 7);
 
-    fetch('./../controladores/registroFrm.php', {
+    let confirmFin = confirm("El enviar el formulario el proceso se dará por terminado");
+
+    if(confirmFin){
+        fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte7
         }).then(response => {
-            // if (response.status === 200) {
-            //     return response.text();
-            // } else {
-            //     throw new Error('La respuesta de la API no fue exitosa');
-            // }
-            return response.text();
-
+            if (response.status === 200) {
+                return response.text();
+            } else {
+                throw new Error('error servidor registro seccion 7');
+            }
         })
         .then(response => {
 
-            console.log(response);
-            // objRegistro.deshabilitarForm(frmParte7);
-            alert("creo que todo bn jaja")
+            objRegistro.deshabilitarForm(frmParte7);
+
+            alert("El proceso de registro de fabricacion de 800ATSME0 ha finalizado")
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
+    }
 });
 
 document.getElementById('cargaConVacio').addEventListener('input', event => {
