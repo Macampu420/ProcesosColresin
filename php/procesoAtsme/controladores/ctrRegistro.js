@@ -9,6 +9,7 @@ const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let lote;
 let swReflujo = 1;
+let numeroHoraSeguimSwf = 2;
 
 //objRegistro.construirNuevoFormulario();
 
@@ -83,7 +84,7 @@ frmParte3.addEventListener('submit', event => {
     let arraySeguimientos = [];
 
     //se capturan los datos de los seguimientos y segun el numero del segumiento se empuja en el array
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < numeroHoraSeguimSwf; i++) {
         let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
         let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
         let auxObs = document.getElementById(`observacionesDestilacionHora${i}`).value;
@@ -274,7 +275,6 @@ document.getElementById('containerProblemaEscamado').addEventListener('input', e
 
 document.getElementById('divInicioReflujo').addEventListener('input', event => {
 
-    objRegistro.renderSegumientosReflujo();
     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
 
@@ -291,3 +291,8 @@ document.getElementById('containerDestilacion').addEventListener('input', event 
     objRegistro.mostrarOcultarElemento(event, "confirmInicioDestilacion", "containerSeguimientoDestilado");
 
 })
+
+document.getElementById('btnAgraagrSeguimientoSwf').addEventListener('click', event => {
+    console.log(numeroHoraSeguimSwf);
+    numeroHoraSeguimSwf = objRegistro.renderSegumientoReflujo(numeroHoraSeguimSwf);
+});

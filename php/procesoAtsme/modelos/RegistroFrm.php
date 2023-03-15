@@ -232,20 +232,27 @@ class RegistroFrm {
         $nroHoraSeguimiento = 1;
         $resultado;
 
-        foreach($arraySeguimientos as $valor){
-            $data[] = json_decode($valor, true);
-        }
-
-        foreach($data as $clave => $valor){
-            $temperatura = isset($valor["auxTemp"]) ? $valor["auxTemp"] : 0;
-            $presion = isset($valor["auxPres"]) ? $valor["auxPres"] : 0;
-            $kgAguaDestilada = isset($valor["auxAguaDest"]) ? $valor["auxAguaDest"] : 0;
-            $observaciones = isset($valor["auxObs"]) ? $valor["auxObs"] : "";
-            
+        for($i = 1; $i < 11; $i++){
+            if (isset($arraySeguimientos[$i])) {
+                $json = $arraySeguimientos[$i]; // Obtenemos el objeto JSON de $arraySeguimientos
+                $datosSeguimiento = json_decode($json, true); // Decodificamos el objeto JSON a un array asociativo
+        
+                // Asignamos los valores a las variables auxiliares
+                $temperatura = isset($datosSeguimiento["auxTemp"]) ? $datosSeguimiento["auxTemp"] : 0;
+                $presion = isset($datosSeguimiento["auxPres"]) ? $datosSeguimiento["auxPres"] : 0;
+                $kgAguaDestilada = isset($datosSeguimiento["auxAguaDest"]) ? $datosSeguimiento["auxAguaDest"] : 0;
+                $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
+            } else {
+                // Si el índice no existe, asignamos valores predeterminados a las variables auxiliares
+                $temperatura = 0;
+                $presion = 0;
+                $kgAguaDestilada = 0;
+                $observaciones = "";
+            }
             $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso);
             $resultado = $this->stmtRegSeguimientoSwf->execute();
             $nroHoraSeguimiento++;
-        }
+        }        
 
         return $resultado;
 

@@ -162,7 +162,8 @@
                         <p class="fs-4 text-center">¿Se dio inicio al reflujo?</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioDestilacion" value="1" required>
+                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioDestilacion" value="1"
+                                    required>
                         </div>
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="inicioDestilacion" value="0" required>
@@ -175,7 +176,7 @@
 
                         <div id="containerInicioReflujo" class="row">
                             <div class="col-3 mx-auto">
-                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo" >
+                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo">
                             </div>
                         </div>
 
@@ -192,13 +193,38 @@
                         <!-- segumientos -->
 
                         <div id="containerSeguimientosSWF098">
+                            <div>
+                                <div class="row text-center">
+                                    <p class="fs-2 col-4">Hora 1:</p>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">Temperatura: </label>
+                                        <input required type="number" value="1" id="temperaturaDestilacionHora1"
+                                            placeholder="°C" name="temperaturaDestilacionHora1" />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">Presion: </label>
+                                        <input required type="number" value="1" id="presionDestilacionHora1"
+                                            placeholder="DPI" name="presionDestilacionHora1" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <textarea class="col-4 mx-auto h-50" value="1"
+                                        id="observacionesDestilacionHora1" name="observacionesDestilacionHora1"
+                                        placeholder="Observaciones:"></textarea>
+                                </div>
+                            </div>
+                            <hr>
                         </div>
+
+                        <button id="btnAgraagrSeguimientoSwf" class="boton boton-opcion rounded-3 p-3 mb-5" type="button">Agregar hora</button>
 
                         <!-- fin reflujo -->
                         <div id="containerFinReflujo" class="row mt-3 pt-3">
                             <div class="col-3 mx-auto">
-                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo" >
+                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
                             </div>
                             <div class="col-4 mx-auto">
                                 <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
@@ -229,7 +255,7 @@
                             <div class="row">
                                 <div class="col-4 mx-auto">
                                     <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
-                                    <input type="number" step="0.01" placeholder="" name="resultadoMuestra"/>
+                                    <input type="number" step="0.01" placeholder="" name="resultadoMuestra" />
                                 </div>
                             </div>
 
