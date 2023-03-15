@@ -29,6 +29,7 @@ if (isset($_POST)) {
             break;
         case 3:
             $objRegistro->registrarSeccion3($_POST);
+            http_response_code(200);
             break;
         case 5:
             if($objRegistro->registroSeccion5($_POST)){

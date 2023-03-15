@@ -129,12 +129,12 @@ frmParte3.addEventListener('submit', event => {
 
             console.log(response);
 
-            swReflujo = 0;
+            // swReflujo = 0;
             document.getElementById('seccion4').classList.remove('d-none');
             // objRegistro.deshabilitarForm(frmParte3);
             objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
 
-        }).catch(err => console.log(err), alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
+        }).catch(err => console.log(err), swReflujo = 1, alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
 });
 
