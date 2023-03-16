@@ -14,7 +14,8 @@
                             temperatura maxima T=133°C.</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="confirmInicioDestilacion" name="confirmInicioDestilacion" value="1" required>
+                            <label>Si <input type="radio" id="confirmInicioDestilacion" name="confirmInicioDestilacion"
+                                    value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
                             <label>No<input type="radio" name="confirmInicioDestilacion" value="0" required>
@@ -34,8 +35,55 @@
                         <!-- seguimientos -->
 
                         <div id="containerSeguimientosDestilacionTod100">
-                            
+                            <div>
+                                <div class="row text-center">
+                                    <p class="fs-2 col-4">Hora 1:</p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4">Temperatura: </label>
+                                        <input id="temperaturaDestilacionHora1" required type="number" placeholder="°C"
+                                            name="temperaturaDestilacionHora1" />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">Presion: </label>
+                                        <input id="presionDestilacionHora1" required type="number" placeholder="DPI"
+                                            name="presionDestilacionHora1" />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">TOD100: </label>
+                                        <input id="kgTOD100DestilacionHora1" required type="number" placeholder="Kg"
+                                            name="kgTOD100DestilacionHora1" />
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                                    <p class="fs-4 text-center">¿Vacio?</p>
+                                    <div class="col-2">
+                                        <label>Si <input required type="radio" name="vacioDestilacionHora1"
+                                                value="1">
+                                    </div>
+                                    <div class="col-2">
+                                        <label>No<input required type="radio" name="vacioDestilacionHora1"
+                                                value="0">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <textarea id="observacionesDestilacionHora1" class="col-4 mx-auto h-50"
+                                        name="observacionesDestilacionHora1"
+                                        placeholder="Observaciones:"></textarea>
+                                </div>
+                            </div>
+
+                            <hr>
+
                         </div>
+
+                        <button id="btnAgregarSeguimientoDest" class="boton boton-opcion rounded-3 p-3 mb-5" type="button">Agregar hora</button>
+
+                        <!-- destilacion y kg tod100 -->
 
                         <div class="row mt-4 pt-2">
                             <div class="col-3 mx-auto">

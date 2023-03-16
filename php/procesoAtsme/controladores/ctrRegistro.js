@@ -8,8 +8,9 @@ const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let lote;
-let swReflujo = 1;
-let numeroHoraSeguimSwf = 2;
+let swReflujo = swDest = 1;
+let numeroHoraSeguimSwf = nroHoraDest = 2;
+
 
 //objRegistro.construirNuevoFormulario();
 
@@ -85,12 +86,12 @@ frmParte3.addEventListener('submit', event => {
 
     //se capturan los datos de los seguimientos y segun el numero del segumiento se empuja en el array
     for (let i = 1; i < numeroHoraSeguimSwf; i++) {
-        let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
-        let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
-        let auxObs = document.getElementById(`observacionesDestilacionHora${i}`).value;
+        let auxTemp = document.getElementById(`temperaturaCargaHora${i}`).value;
+        let auxPres = document.getElementById(`presionCargaHora${i}`).value;
+        let auxObs = document.getElementById(`observacionesCargaHora${i}`).value;
 
         if ((i == 3) || (i == 5) || (i == 9)) {
-            let auxAguaDest = document.getElementById(`kgAguaDestiladaDestilacionHora${i}`).value;
+            let auxAguaDest = document.getElementById(`kgAguaDestiladaCargaHora${i}`).value;
             arraySeguimientos.push({
                 auxTemp,
                 auxPres,
@@ -120,17 +121,15 @@ frmParte3.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte3
         }).then(response => {
-            // if (response.status === 200) {
+            if (response.status === 200) {
                 return response.text();
-            // } else {
-            //     throw new Error('La respuesta de la API no fue exitosa');
-            // }
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
-        .then(response => {
+        .then(() => {
 
-            console.log(response);
-
-            // swReflujo = 0;
+            swReflujo = 0;
             document.getElementById('seccion4').classList.remove('d-none');
             // objRegistro.deshabilitarForm(frmParte3);
             objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
@@ -144,21 +143,63 @@ frmParte4.addEventListener('submit', event => {
     event.preventDefault();
 
     let datosParte4 = new FormData(frmParte4);
+    let arraySeguimientos = [];
+
+    //se capturan los datos de los seguimientos y segun el numero del segumiento se empuja en el array
+    for (let i = 1; i < nroHoraDest; i++) {
+        
+        let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
+        let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
+        let auxObs = document.getElementById(`observacionesDestilacionHora${i}`).value;
+        let inpVacio = document.querySelector(`input[name="vacioDestilacionHora${i}"]:checked`);
+
+        let auxVacio = inpVacio ? inpVacio.value : 0;
+
+        if ((i == 5) || (i == 8)) {
+            let auxKgTod100 = document.getElementById(`kgTOD100DestilacionHora${i}`).value;
+            arraySeguimientos.push({
+                auxTemp,
+                auxPres,
+                auxObs,
+                auxKgTod100,
+                auxVacio
+            })
+        } else {
+            arraySeguimientos.push({
+                auxTemp,
+                auxPres,
+                auxObs,
+                auxVacio
+            })
+        }
+    }
+
+    //se agregan propiedades necesarias
+    datosParte4.append('seccion', 4);
+    datosParte4.append('lote', lote);
+    datosParte4.append('swDest', swDest);
+
+    //se agregan los valores de los inputs al formdata
+    for (let i = 0; i < arraySeguimientos.length; i++) {
+        datosParte4.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
+    }
 
     fetch('./../controladores/registroFrm.php', {
             method: 'POST',
             body: datosParte4
         }).then(response => {
-            if (response.status === 200) {
+            // if (response.status === 200) {
                 return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            // } else {
+            //     throw new Error('La respuesta de la API no fue exitosa');
+            // }
         })
         .then(response => {
 
+            console.log(response);
+
             document.getElementById('seccion5').classList.remove('d-none');
-            objRegistro.deshabilitarForm(frmParte4);
+            // objRegistro.deshabilitarForm(frmParte4);
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
@@ -287,12 +328,14 @@ document.getElementById('confirmContainerMuestra').addEventListener('input', eve
 
 document.getElementById('containerDestilacion').addEventListener('input', event => {
 
-    objRegistro.renderSeguimientosDestilacion();
     objRegistro.mostrarOcultarElemento(event, "confirmInicioDestilacion", "containerSeguimientoDestilado");
 
 })
 
-document.getElementById('btnAgraagrSeguimientoSwf').addEventListener('click', event => {
-    console.log(numeroHoraSeguimSwf);
+document.getElementById('btnAgregarSeguimientoSwf').addEventListener('click', () => {
     numeroHoraSeguimSwf = objRegistro.renderSegumientoReflujo(numeroHoraSeguimSwf);
+});
+
+document.getElementById('btnAgregarSeguimientoDest').addEventListener('click', () => {
+    nroHoraDest = objRegistro.renderSeguimientosDestilacion(nroHoraDest);
 });

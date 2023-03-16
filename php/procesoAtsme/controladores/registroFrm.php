@@ -31,6 +31,10 @@ if (isset($_POST)) {
             $objRegistro->registrarSeccion3($_POST);
             http_response_code(200);
             break;
+        case 4:
+            // var_dump($_POST);
+            $objRegistro->registrarSeccion4($_POST);
+            break;
         case 5:
             if($objRegistro->registroSeccion5($_POST)){
                 echo "Registro seccion 5 realizado con exito";

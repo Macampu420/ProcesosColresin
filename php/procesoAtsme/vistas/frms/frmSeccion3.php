@@ -162,11 +162,11 @@
                         <p class="fs-4 text-center">¿Se dio inicio al reflujo?</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioDestilacion" value="1"
+                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioCarga" value="1"
                                     required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="inicioDestilacion" value="0" required>
+                            <label>No<input type="radio" name="inicioCarga" value="0" required>
                         </div>
                     </div>
 
@@ -201,25 +201,25 @@
                                 <div class="row">
                                     <div class="col-4 mx-auto">
                                         <label class="fs4" for="swf098">Temperatura: </label>
-                                        <input required type="number" value="1" id="temperaturaDestilacionHora1"
-                                            placeholder="°C" name="temperaturaDestilacionHora1" />
+                                        <input required type="number" value="1" id="temperaturaCargaHora1"
+                                            placeholder="°C" name="temperaturaCargaHora1" />
                                     </div>
                                     <div class="col-4 mx-auto">
                                         <label class="fs4" for="swf098">Presion: </label>
-                                        <input required type="number" value="1" id="presionDestilacionHora1"
-                                            placeholder="DPI" name="presionDestilacionHora1" />
+                                        <input required type="number" value="1" id="presionCargaHora1"
+                                            placeholder="DPI" name="presionCargaHora1" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <textarea class="col-4 mx-auto h-50" value="1"
-                                        id="observacionesDestilacionHora1" name="observacionesDestilacionHora1"
+                                        id="observacionesCargaHora1" name="observacionesCargaHora1"
                                         placeholder="Observaciones:"></textarea>
                                 </div>
                             </div>
                             <hr>
                         </div>
 
-                        <button id="btnAgraagrSeguimientoSwf" class="boton boton-opcion rounded-3 p-3 mb-5" type="button">Agregar hora</button>
+                        <button id="btnAgregarSeguimientoSwf" class="boton boton-opcion rounded-3 p-3 mb-5" type="button">Agregar hora</button>
 
                         <!-- fin reflujo -->
                         <div id="containerFinReflujo" class="row mt-3 pt-3">

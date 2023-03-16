@@ -41,15 +41,15 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaDestilacionHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionDestilacionHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesDestilacionHora${numeroHoraSeguimSwf}" name="observacionesDestilacionHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             <hr>`);
@@ -64,19 +64,19 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaDestilacionHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionDestilacionHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Agua Destilada: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="kgAguaDestiladaDestilacionHora${numeroHoraSeguimSwf}" placeholder="Kg" name="kgAguaDestiladaDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" value="${numeroHoraSeguimSwf}"id="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}" placeholder="Kg" name="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesDestilacionHora${numeroHoraSeguimSwf}" name="observacionesDestilacionHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             <hr>`);
@@ -94,15 +94,15 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaDestilacionHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionDestilacionHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesDestilacionHora${numeroHoraSeguimSwf}" name="observacionesDestilacionHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             <hr>`);
@@ -110,89 +110,89 @@ let RegistroForm = {
         };
     },
 
-    renderSeguimientosDestilacion: () => {
-        let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod3');
+    renderSeguimientosDestilacion: (nroHoraSeguimDest) => {
+        let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
 
-        if (divSeguimientos.childElementCount == 0) {
-            for (let i = 1; i < 9; i++) {
-
-                if ((i == 5) || (i == 8)) {
-                    divSeguimientos.insertAdjacentHTML('beforeend', `
+        if(nroHoraSeguimDest >= 9){
+            alert("El limite de horas (8) ha sido alcanzado");
+            return 9;
+        } else {
+            if ((nroHoraSeguimDest == 5) || (nroHoraSeguimDest == 8)) {
+                divSeguimientos.insertAdjacentHTML('beforeend', `
                         <div>
                             <div class="row text-center">
-                                <p class="fs-2 col-4">Hora ${numeroHoraSeguimSwf}:</p>
+                                <p class="fs-2 col-4">Hora ${nroHoraSeguimDest}:</p>
                             </div>
                         
                             <div class="row">
                                 <div class="col-4 mx-auto">
                                     <label class="fs4">Temperatura: </label>
-                                    <input type="number" placeholder="°C" name="temperaturaDestilacionHora${numeroHoraSeguimSwf}"  />
+                                    <input id="temperaturaDestilacionHora${nroHoraSeguimDest}" type="number" placeholder="°C" name="temperaturaDestilacionHora${nroHoraSeguimDest}"  />
                                 </div>
                                 <div class="col-4 mx-auto">
                                     <label class="fs4" for="swf098">Presion: </label>
-                                    <input type="number" placeholder="DPI" name="presionDestilacionHora${numeroHoraSeguimSwf}"  />
+                                    <input id="presionDestilacionHora${nroHoraSeguimDest}" type="number" placeholder="DPI" name="presionDestilacionHora${nroHoraSeguimDest}"  />
                                 </div>
                                 <div class="col-4 mx-auto">
                                     <label class="fs4" for="swf098">TOD100: </label>
-                                    <input type="number" placeholder="Kg" name="kgTOD100DestilacionHora${numeroHoraSeguimSwf}"  />
+                                    <input id="kgTOD100DestilacionHora${nroHoraSeguimDest}" type="number" placeholder="Kg" name="kgTOD100DestilacionHora${nroHoraSeguimDest}"  />
                                 </div>
                             </div>
                         
                             <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
                                 <p class="fs-4 text-center">¿Vacio?</p>
                                 <div class="col-2">
-                                    <label>Si <input type="radio" name="vacioDestilacionHora${numeroHoraSeguimSwf}" value="1" >
+                                    <label>Si <input  type="radio" name="vacioDestilacionHora${nroHoraSeguimDest}" value="1" >
                                 </div>
                                 <div class="col-2">
-                                    <label>No<input type="radio" name="vacioDestilacionHora${numeroHoraSeguimSwf}" value="0" >
+                                    <label>No<input  type="radio" name="vacioDestilacionHora${nroHoraSeguimDest}" value="0" >
                                 </div>
                             </div>
                         
                             <div class="row">
-                                <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                                <textarea id="observacionesDestilacionHora${nroHoraSeguimDest}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${nroHoraSeguimDest}" placeholder="Observaciones:"></textarea>
                             </div>
                         </div>
-
+    
                         <hr>
                 `)
-                } else {
+                return nroHoraSeguimDest + 1;
+            } else {
                     divSeguimientos.insertAdjacentHTML('beforeend', `
-                
-                <div>
-                    <div class="row text-center">
-                        <p class="fs-2 col-4">Hora ${numeroHoraSeguimSwf}:</p>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-4 mx-auto">
-                            <label class="fs4">Temperatura: </label>
-                            <input type="number" placeholder="°C" name="temperaturaDestilacionHora${numeroHoraSeguimSwf}"  />
+                        <div>
+                            <div class="row text-center">
+                                <p class="fs-2 col-4">Hora ${nroHoraSeguimDest}:</p>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4">Temperatura: </label>
+                                    <input id="temperaturaDestilacionHora${nroHoraSeguimDest}" type="number" placeholder="°C" name="temperaturaDestilacionHora${nroHoraSeguimDest}"  />
+                                </div>
+                                <div class="col-4 mx-auto">
+                                    <label class="fs4" for="swf098">Presion: </label>
+                                    <input id="presionDestilacionHora${nroHoraSeguimDest}" type="number" placeholder="DPI" name="presionDestilacionHora${nroHoraSeguimDest}"  />
+                                </div>
+                            </div>
+                        
+                            <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                                <p class="fs-4 text-center">¿Vacio?</p>
+                                <div class="col-2">
+                                    <label>Si <input id="vacioDestilacionHora${nroHoraSeguimDest}" type="radio" name="vacioDestilacionHora${nroHoraSeguimDest}" value="1" >
+                                </div>
+                                <div class="col-2">
+                                    <label>No<input id="vacioDestilacionHora${nroHoraSeguimDest}" type="radio" name="vacioDestilacionHora${nroHoraSeguimDest}" value="0" >
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <textarea id="observacionesDestilacionHora${nroHoraSeguimDest}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${nroHoraSeguimDest}" placeholder="Observaciones:"></textarea>
+                            </div>
                         </div>
-                        <div class="col-4 mx-auto">
-                            <label class="fs4" for="swf098">Presion: </label>
-                            <input type="number" placeholder="DPI" name="presionDestilacionHora${numeroHoraSeguimSwf}"  />
-                        </div>
-                    </div>
-                
-                    <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                        <p class="fs-4 text-center">¿Vacio?</p>
-                        <div class="col-2">
-                            <label>Si <input type="radio" name="vacioDestilacionHora${numeroHoraSeguimSwf}" value="1" >
-                        </div>
-                        <div class="col-2">
-                            <label>No<input type="radio" name="vacioDestilacionHora${numeroHoraSeguimSwf}" value="0" >
-                        </div>
-                    </div>
-                
-                    <div class="row">
-                        <textarea class="col-4 mx-auto h-50" name="observacionesDestilacionHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
-                    </div>
-                </div>
-
-                <hr>
-
-                `)
-                }
+    
+                        <hr>
+                    `)
+                return nroHoraSeguimDest + 1;
             }
         }
 
