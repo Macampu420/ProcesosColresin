@@ -7,8 +7,13 @@ class RegistroFrm {
 
     private $stmtRegCargaToo000;
     
-    private $stmtFaseDescarga, $stmtConversion, $stmtLavadoEquipo, $stmtRegSeguimientoSwf, $stmtActualizSeguimientoSwf,
-     $stmtRegDest, $stmtRegSeguimientoDest, $stmtActualizSegsDest;
+    private $stmtFaseDescarga;
+    
+    private $stmtConversion, $stmtLavadoEquipo;
+    
+    private $stmtCargaSwf, $stmtRegSeguimientoSwf, $stmtActualizSeguimientoSwf;
+
+    private $stmtRegDest, $stmtRegSeguimientoDest, $stmtActualizSegsDest;
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
     //tambien prepara todas las consultas a realizar
@@ -58,7 +63,9 @@ class RegistroFrm {
              VALUES (?,?,?,?,?,?,?,?,?,?)");
 
         $this->stmtRegSeguimientoDest = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_desttod100`(`nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `loteProceso`) 
-             VALUES ()");
+             VALUES (?,'','','','','',?)");
+
+        $this->stmtActualizSegsDest = $this->conexion->prepare("UPDATE `tbl_seguimiento_desttod100` SET `temperatura`=?,`presion`=?,`vacio`=?,`kgTOD100`=?,`observaciones`=? WHERE `loteProceso` =? && `nroHoraSeguimiento`=? ");
     }
 
     function actualizarSeccionProceso($nroSeccion, $arrayDatos){
@@ -316,41 +323,40 @@ class RegistroFrm {
     }
 
 
-    // Método para insertar datos de la seccion 4 utilizando la consulta preparada     
-    function registrarSegumientosTOD100($loteProceso, $arraySeguimientos){
+    // Método para insertar los seguimientos de la destilacion vacios para despues actualizarlos    
+    function registrarSegumientosDest($loteProceso){
         $data = array();
         $nroHoraSeguimiento = 1;
         $resultado;
 
-        for($i = 0; $i < 8; $i++){
-            if (isset($arraySeguimientos[$i])) {
-                $json = $arraySeguimientos[$i]; // Obtenemos el objeto JSON de $arraySeguimientos
-                $datosSeguimiento = json_decode($json, true); // Decodificamos el objeto JSON a un array asociativo
-        
-                // Asignamos los valores a las variables auxiliares
-                $temperatura = isset($datosSeguimiento["auxTemp"]) ? $datosSeguimiento["auxTemp"] : 0;
-                $presion = isset($datosSeguimiento["auxPres"]) ? $datosSeguimiento["auxPres"] : 0;
-                $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
-                $kgTOD100 = isset($datosSeguimiento["auxKgTod100"]) ? $datosSeguimiento["auxKgTod100"] : 0;
-                $vacio = isset($datosSeguimiento["auxVacio"]) ? $datosSeguimiento["auxVacio"] : 0;
-            } else {
-                // Si el índice no existe, asignamos valores predeterminados a las variables auxiliares
-                $temperatura = 0;
-                $presion = 0;
-                $kgTOD100 = 0;
-                $observaciones = "";
-                $vacio = 0;
-            }
+        for($index = 1; $index<11; $index++){
+            $this->stmtRegSeguimientoDest->bind_param('is', $index, $loteProceso);
 
-            echo "hora $nroHoraSeguimiento";
-            var_dump($temperatura, $presion, $kgTOD100, $vacio, $observaciones);
-            // $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso);
-            // $resultado = $this->stmtRegSeguimientoSwf->execute();
-            $nroHoraSeguimiento++;
-        }  
-
-        return $swTodoOk;
+            $resultado = $this->stmtRegSeguimientoDest->execute();
+        }
+        return $resultado;
     }
+    function actualizarSeguimientosDest($arraySeguimientos, $loteProceso){
+        $nroHoraSeguimiento = 1;
+        for ($i = 0; $i < count($arraySeguimientos); $i++){
+            $jsonStringed = $arraySeguimientos[$i]; // Obtenemos el objeto JSON de $arraySeguimientos como string
+            $datosSeguimiento = json_decode($jsonStringed, true); // Decodificamos el objeto JSON a un array asociativo
+
+            // Asignamos los valores a las variables auxiliares
+            $temperatura = isset($datosSeguimiento["auxTemp"]) ? $datosSeguimiento["auxTemp"] : 0;
+            $presion = isset($datosSeguimiento["auxPres"]) ? $datosSeguimiento["auxPres"] : 0;
+            $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
+            $kgTOD100 = isset($datosSeguimiento["auxKgTod100"]) ? $datosSeguimiento["auxKgTod100"] : 0;
+            $vacio = isset($datosSeguimiento["auxVacio"]) ? $datosSeguimiento["auxVacio"] : 0;
+
+            $this->stmtActualizSegsDest->bind_param("ddidssi", $temperatura, $presion, $vacio, $kgTOD100, $observaciones, $loteProceso, $nroHoraSeguimiento);
+            $resultado = $this->stmtActualizSegsDest->execute();
+            $nroHoraSeguimiento++;
+        } 
+
+        return $resultado;
+    }
+
     function registrarSeccion4($arrayDatos){
 
         $confirmInicioDestilacion = isset($arrayDatos['confirmInicioDestilacion']) ? $arrayDatos['confirmInicioDestilacion'] : 0;
@@ -376,20 +382,35 @@ class RegistroFrm {
 
         $resRegDest = false;
 
+        //sw == 1 registrar segs vacios sw == 0 actualizar segs
         if($swDest == 1){
             $this->stmtRegDest->bind_param("issiisssss", $confirmInicioDestilacion, $inicioDestilacion, $finDestilacion, $kgTOD100, 
             $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $loteProceso);
             $resRegDest = $this->stmtRegDest->execute();
 
+            //si el destilado registro bien procede a registrar los seguimientos
             if(!$resRegDest){
-                echo "Error reg destilacion ";
-                var_dump($this->stmtRegDest->error);
+                echo "Error reg destilacion ".$this->stmtRegDest->error;
             } else {
-                // $this->conexion->commit();
-
-                $this->registrarSegumientosTOD100($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
-
-                return $resRegDest;
+                $resCrearSegs = $this->registrarSegumientosDest($arrayDatos['lote']);
+                $resultadoSeguimientos = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
+                if(!$resCrearSegs && $resultadoSeguimientos){
+                    echo "Error crear seguimientos destilacion ".$this->stmtRegDest->error;
+                    echo "Error reg seguimientos destilacion ".$this->stmtActualizSegsDest->error;"";
+                    $this->conexion->rollback();
+                } else {
+                    $this->conexion->commit();
+                }
+                return $resCrearSegs;
+            }
+        } else {
+            $resultRegSegs = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
+            if(!$resultRegSegs){
+                echo "err actualizar ". $this->stmtActualizSegsDest->error;
+                $this->conexion->rollback();
+            } else {
+                echo "registro segs destilacion exitoso";
+                $this->conexion->commit();
             }
         }
 
