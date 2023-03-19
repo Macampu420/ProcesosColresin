@@ -374,7 +374,6 @@ class RegistroFrm {
 
         return $resultado;
     }
-
     function registrarSeccion4($arrayDatos){
 
         $confirmInicioDestilacion = isset($arrayDatos['confirmInicioDestilacion']) ? $arrayDatos['confirmInicioDestilacion'] : 0;
