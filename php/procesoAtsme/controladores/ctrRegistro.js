@@ -12,7 +12,7 @@ let swReflujo = swDest = 1;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-//objRegistro.construirNuevoFormulario();
+objRegistro.construirNuevoFormulario();
 
 frmParte1.addEventListener('submit', event => {
 
@@ -43,7 +43,7 @@ frmParte1.addEventListener('submit', event => {
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
 
-            // objRegistro.deshabilitarForm(frmParte1);
+            objRegistro.deshabilitarForm(frmParte1);
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
@@ -118,24 +118,25 @@ frmParte3.addEventListener('submit', event => {
     }
 
     fetch('./../controladores/registroFrm.php', {
-            method: 'POST',
-            body: datosParte3
-        }).then(response => {
-            if (response.status === 200) {
-                return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
-        })
-        .then(() => {
-
-            swReflujo = 0;
-            document.getElementById('seccion4').classList.remove('d-none');
-            // objRegistro.deshabilitarForm(frmParte3);
-            objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
-
-        }).catch(err => console.log(err), swReflujo = 1, alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
-
+        method: 'POST',
+        body: datosParte3
+      }).then(response => {
+        if (response.status === 200) {
+          return response.text();
+        } else {
+          throw new Error('La respuesta de la API no fue exitosa');
+        }
+      }).then(() => {
+        swReflujo = 0;
+        document.getElementById('seccion4').classList.remove('d-none');
+        objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+      }).catch(err => {
+        console.log(err);
+        swReflujo = 1;
+       alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
+        
+      });
+      
 });
 
 frmParte4.addEventListener('submit', event => {
@@ -147,7 +148,7 @@ frmParte4.addEventListener('submit', event => {
 
     //se capturan los datos de los seguimientos y segun el numero del segumiento se empuja en el array
     for (let i = 1; i < nroHoraDest; i++) {
-        
+
         let auxTemp = document.getElementById(`temperaturaDestilacionHora${i}`).value;
         let auxPres = document.getElementById(`presionDestilacionHora${i}`).value;
         let auxObs = document.getElementById(`observacionesDestilacionHora${i}`).value;
@@ -188,18 +189,16 @@ frmParte4.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte4
         }).then(response => {
-            // if (response.status === 200) {
+            if (response.status === 200) {
                 return response.text();
-            // } else {
-            //     throw new Error('La respuesta de la API no fue exitosa');
-            // }
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
         .then(response => {
 
-            console.log(response);
-
+            swDest = 0;
             document.getElementById('seccion5').classList.remove('d-none');
-            // objRegistro.deshabilitarForm(frmParte4);
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
@@ -269,24 +268,24 @@ frmParte7.addEventListener('submit', event => {
 
     let confirmFin = confirm("El enviar el formulario el proceso se dará por terminado");
 
-    if(confirmFin){
+    if (confirmFin) {
         fetch('./../controladores/registroFrm.php', {
-            method: 'POST',
-            body: datosParte7
-        }).then(response => {
-            if (response.status === 200) {
-                return response.text();
-            } else {
-                throw new Error('error servidor registro seccion 7');
-            }
-        })
-        .then(response => {
+                method: 'POST',
+                body: datosParte7
+            }).then(response => {
+                if (response.status === 200) {
+                    return response.text();
+                } else {
+                    throw new Error('error servidor registro seccion 7');
+                }
+            })
+            .then(response => {
 
-            objRegistro.deshabilitarForm(frmParte7);
+                objRegistro.deshabilitarForm(frmParte7);
 
-            alert("El proceso de registro de fabricacion de 800ATSME0 ha finalizado")
+                alert("El proceso de registro de fabricacion de 800ATSME0 ha finalizado")
 
-        }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
+            }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
     }
 });
 

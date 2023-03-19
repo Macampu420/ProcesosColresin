@@ -68,11 +68,11 @@ class RegistroFrm {
         $this->stmtActualizSegsDest = $this->conexion->prepare("UPDATE `tbl_seguimiento_desttod100` SET `temperatura`=?,`presion`=?,`vacio`=?,`kgTOD100`=?,`observaciones`=? WHERE `loteProceso` =? && `nroHoraSeguimiento`=? ");
     }
 
-    function actualizarSeccionProceso($nroSeccion, $arrayDatos){
+    function actualizarSeccionProceso($nroSeccion, $loteProceso){
         $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion".$nroSeccion."`= 1 WHERE loteProceso = ?");
 
-        $this->stmtActualizarSeccion->bind_param('s', $arrayDatos['lote']);
-        $this->stmtActualizarSeccion->execute();
+        $this->stmtActualizarSeccion->bind_param('s', $loteProceso);
+        return $this->stmtActualizarSeccion->execute();
     }
 
     function verificarConexion(){
@@ -191,14 +191,28 @@ class RegistroFrm {
         $this->stmtRegCargaToo000->bind_param("iiiiiiississ", $fichaLeída, $equipoSeguridad, $cargaBomba, $conexionesAcoplesTuberiasOk,
         $coloracionTOO, $cargaConVacio, $bloqueoAjusteVacio, $inicioCargaTOO000, $finCargaTOO000, $problemaCarga, $comentarioProblema, $lote);
     
+        //empieza la transaccion
+        $this->conexion->autocommit(false);
+        $this->conexion->begin_transaction();
+
         // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
         // de lo contrario, devolver null
         $resultado = $this->stmtRegCargaToo000->execute();
+        $resultadoActualizar = $this->actualizarSeccionProceso(2, $lote);
 
-        if($resultado){
-            $actualizarSeccion(2, $arrayDatos);
+        if(!$resultado){
+           $this->conexion->rollback();
+           echo "error reg seccion 2".$this->stmtRegCargaToo000->error;
+           return;
         }
 
+        if(!$resultadoActualizar){
+            $this->conexion->rollback();
+            echo "error actualizar estado seccion 2".$this->stmtActualizarSeccion->error;
+            return; 
+        }
+
+        $this->conexion->commit();
         return $resultado;
 
     }
@@ -287,38 +301,43 @@ class RegistroFrm {
         //se setea la consulta para el registro
         $this->stmtCargaSwf->bind_param('iiiissiisissiiiis', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
         $inicioCargaSWF098, $finCargaSWF098, $inicioVapor, $problemaAdicionAcido, $comentarioProblema, $equipoEnReflujo, 
-        $inicioReflujo, $finReflujo, $muestraAcidoSulfNecesario, $resultadoMuestra, $totalAguaDestilada, $muestraPasa, $lote);
-
-        $resultadoRegSWF =  $this->stmtCargaSwf->execute();
+        $inicioReflujo, $finReflujo, $muestraAcidoSulfNecesario, $resultadoMuestra, $totalAguaDestilada, $muestraPasa, $lote);        
 
         //si el sw es 1 registra todos los seguimientos del proceso sino actualiza los que se envien
         if($arrayDatos['swReflujo'] == 1){
-            //se registran los seguimientos si la carga registró bien
-            if($resultadoRegSWF){
-                $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
-                //si el registro de los seguimientos sale bien se comprometen si es erroneo hace rollback
-                if($resultadoSeguimientos){
-                    echo "todo se registro bn";
-                    $this->conexion->commit();
-                    return $resultadoSeguimientos;
-                }else{
-                    $this->conexion->rollback();
-                    echo "error registro seguimientos".$this->stmtRegSeguimientoSwf->error;
-                }
-            } else{
-                echo "error registro carga: ".$this->stmtCargaSwf->error;
+            $resultadoRegSWF =  $this->stmtCargaSwf->execute();
+            $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
+            $resultadoActualizar = $this->actualizarSeccionProceso(3, $lote);
+
+            if(!$resultadoRegSWF){
                 $this->conexion->rollback();
+                echo "error reg seccion 3".$this->stmtCargaSwf->error;
+                return false;
+            }
+            if(!$resultadoSeguimientos){
+                $this->conexion->rollback();
+                echo "error reg seguims vacios seccion 3".$this->stmtRegSeguimientoSwf->error;
+                return false;
+            }
+            if(!$resultadoActualizar){
+                $this->conexion->rollback();
+                echo "error actualizar estado seccion 3".$this->stmtActualizarSeccion->error;
+                return false; 
             }
 
+            $this->conexion->commit();
+            return $resultadoRegSWF;
+
         } else {
-            $resultadoSeguimientos = $this->actualizarSeguimientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
-            if($resultadoSeguimientos){
-                echo "todo se actualizó bn";
-                $this->conexion->commit();
-            }else{
+            $resultadoActualizarSeguimientos = $this->actualizarSeguimientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
+            if(!$resultadoActualizarSeguimientos){
                 $this->conexion->rollback();
                 echo "error actualizar seguimientos".$this->stmtActualizSeguimientoSwf->error;
+                return false;
             }
+            echo "todo se actualizó bn";
+            $this->conexion->commit();
+            return $resultadoActualizarSeguimientos;
         }
     }
 
@@ -326,10 +345,9 @@ class RegistroFrm {
     // Método para insertar los seguimientos de la destilacion vacios para despues actualizarlos    
     function registrarSegumientosDest($loteProceso){
         $data = array();
-        $nroHoraSeguimiento = 1;
         $resultado;
 
-        for($index = 1; $index<11; $index++){
+        for($index = 1; $index<9; $index++){
             $this->stmtRegSeguimientoDest->bind_param('is', $index, $loteProceso);
 
             $resultado = $this->stmtRegSeguimientoDest->execute();
@@ -386,31 +404,49 @@ class RegistroFrm {
         if($swDest == 1){
             $this->stmtRegDest->bind_param("issiisssss", $confirmInicioDestilacion, $inicioDestilacion, $finDestilacion, $kgTOD100, 
             $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $loteProceso);
+            
             $resRegDest = $this->stmtRegDest->execute();
+            $resCrearSegs = $this->registrarSegumientosDest($arrayDatos['lote']);
+            $resultadoSeguimientos = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
+            $resultadoActualizar = $this->actualizarSeccionProceso(4, $loteProceso);
 
-            //si el destilado registro bien procede a registrar los seguimientos
             if(!$resRegDest){
-                echo "Error reg destilacion ".$this->stmtRegDest->error;
-            } else {
-                $resCrearSegs = $this->registrarSegumientosDest($arrayDatos['lote']);
-                $resultadoSeguimientos = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
-                if(!$resCrearSegs && $resultadoSeguimientos){
-                    echo "Error crear seguimientos destilacion ".$this->stmtRegDest->error;
-                    echo "Error reg seguimientos destilacion ".$this->stmtActualizSegsDest->error;"";
-                    $this->conexion->rollback();
-                } else {
-                    $this->conexion->commit();
-                }
-                return $resCrearSegs;
+                echo "Error reg destilacion: ".$this->stmtRegDest->error;
+                $this->conexion->rollback();
+                return false;
             }
+
+            if(!$resCrearSegs){
+                echo "Error crear seguimientos destilacion: ".$this->stmtRegDest->error;
+                $this->conexion->rollback();
+                return false;
+            } 
+
+            if(!$resultadoSeguimientos){
+                echo "Error reg seguimientos destilacion: ".$this->stmtActualizSegsDest->error;"";
+                $this->conexion->rollback();
+                return false;
+            }
+
+            if(!$resultadoActualizar){
+                echo "Error actualiz estado seccion 4: ".$this->stmtActualizarSeccion->error;"";
+                $this->conexion->rollback();
+                return false;
+            }
+            
+            $this->conexion->commit();
+            return true;
+            
         } else {
             $resultRegSegs = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
             if(!$resultRegSegs){
                 echo "err actualizar ". $this->stmtActualizSegsDest->error;
                 $this->conexion->rollback();
+                return false;
             } else {
                 echo "registro segs destilacion exitoso";
                 $this->conexion->commit();
+                return true;
             }
         }
 

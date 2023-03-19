@@ -28,12 +28,22 @@ if (isset($_POST)) {
             }
             break;
         case 3:
-            $objRegistro->registrarSeccion3($_POST);
-            http_response_code(200);
+            if($objRegistro->registrarSeccion3($_POST)){
+                echo "Registro seccion 3 realizado con exito";
+                http_response_code(200);
+            } else {
+                echo "Registro seccion 3 erroneo 500 ";
+                http_response_code(500);
+            }
             break;
         case 4:
-            // var_dump($_POST);
-            $objRegistro->registrarSeccion4($_POST);
+            if($objRegistro->registrarSeccion4($_POST)){
+                echo "Registro seccion 4 realizado con exito";
+                http_response_code(200);
+            } else {
+                echo "Registro seccion 4 erroneo 500 ";
+                http_response_code(500);
+            }
             break;
         case 5:
             if($objRegistro->registroSeccion5($_POST)){
