@@ -102,7 +102,23 @@ frmParte3.addEventListener('submit', event => {
             })
         } 
         else if(i >= 10 && i <= 15){
+            let muestraNecesaria = document.querySelector(`input[name="muestraNecesaria${i}"]:checked`);
+            let resultadoMuestra = document.querySelector(`input[name="resultadoMuestra${i}"]`).value;
+            let muestraCumple = document.querySelector(`input[name="muestraCumple${i}"]:checked`);
 
+            muestraNecesaria = muestraNecesaria ? muestraNecesaria.value : 0;
+            muestraCumple = muestraCumple ? muestraCumple.value : 0;
+
+            arraySeguimientos.push({
+                auxTemp,
+                auxPres,
+                auxObs,
+                muestra: {
+                    muestraNecesaria,
+                    resultadoMuestra,
+                    muestraCumple
+                }
+            })
         } 
         else {
             arraySeguimientos.push({
@@ -123,25 +139,27 @@ frmParte3.addEventListener('submit', event => {
         datosParte3.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
     }
 
-    fetch('./../controladores/registroFrm.php', {
-        method: 'POST',
-        body: datosParte3
-      }).then(response => {
-        if (response.status === 200) {
-          return response.text();
-        } else {
-          throw new Error('La respuesta de la API no fue exitosa');
-        }
-      }).then(() => {
-        swReflujo = 0;
-        document.getElementById('seccion4').classList.remove('d-none');
-        objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
-      }).catch(err => {
-        console.log(err);
-        swReflujo = 1;
-       alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
+    // fetch('./../controladores/registroFrm.php', {
+    //     method: 'POST',
+    //     body: datosParte3
+    //   }).then(response => {
+    //     if (response.status === 200) {
+    //       return response.text();
+    //     } else {
+    //       throw new Error('La respuesta de la API no fue exitosa');
+    //     }
+    //   }).then(() => {
+    //     swReflujo = 0;
+    //     document.getElementById('seccion4').classList.remove('d-none');
+    //     objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+    //   }).catch(err => {
+    //     console.log(err);
+    //     swReflujo = 1;
+    //    alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
         
-      });
+    //   });
+
+    console.log(datosParte3);
       
 });
 
