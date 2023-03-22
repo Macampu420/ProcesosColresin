@@ -184,11 +184,7 @@
 
                         <h2>Seguimiento de la reaccion</h2>
                         <p class="fs-4 fw-bold">Con vapor sostener temperatura y reflujo T = 105 - 110°C </p>
-                        <p class="fs-4 text-danger">***IMPORTANTE: En caso de notarse alguna novedad, coloracion o que
-                            el
-                            destialdo tenga un aspecto diferente a liquido transparente incoloro indicar en la casilla
-                            de
-                            observaciones.</p>
+                        <p class="fs-4 text-danger">***IMPORTANTE: En caso de notarse alguna novedad, coloracion o que el destialdo tenga un aspecto diferente a liquido transparente incoloro indicar en la casilla de observaciones.</p>
 
                         <!-- segumientos -->
 
@@ -206,75 +202,33 @@
                                     </div>
                                     <div class="col-4 mx-auto">
                                         <label class="fs4" for="swf098">Presion: </label>
-                                        <input required type="number" value="1" id="presionCargaHora1"
-                                            placeholder="DPI" name="presionCargaHora1" />
+                                        <input required type="number" value="1" id="presionCargaHora1" placeholder="DPI"
+                                            name="presionCargaHora1" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea class="col-4 mx-auto h-50" value="1"
-                                        id="observacionesCargaHora1" name="observacionesCargaHora1"
-                                        placeholder="Observaciones:"></textarea>
+                                    <textarea class="col-4 mx-auto h-50" value="1" id="observacionesCargaHora1"
+                                        name="observacionesCargaHora1" placeholder="Observaciones:"></textarea>
                                 </div>
                             </div>
                             <hr>
                         </div>
 
-                        <button id="btnAgregarSeguimientoSwf" class="boton boton-opcion rounded-3 p-3 mb-5" type="button">Agregar hora</button>
-
-                        <!-- fin reflujo -->
-                        <div id="containerFinReflujo" class="row mt-3 pt-3">
-                            <div class="col-3 mx-auto">
-                                <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
-                            </div>
-                            <div class="col-4 mx-auto">
-                                <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
-                                <input type="number" step="0.01" placeholder="" name="totalAguaDestilada" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- muestra de acido sulfurico -->
-
-                    <div id="containerMuestra" class="d-none">
-
-                        <div id="confirmContainerMuestra" class="row mt-3 pt-3">
-                            <p class="fs-4 text-center">Segun la cantidad de agua destilada y el tiempo de reaccion
-                                acumulado es necesario retirar muesta para previa de % acido sulfurico libre?</p>
-
-                            <div class="col-6 mx-auto">
-                                <label>Si <input type="radio" id="confirmMuestraNecesaria"
-                                        name="muestraAcidoSulfNecesario" value="1">
-                            </div>
-                            <div class="col-6 mx-auto">
-                                <label>No<input type="radio" name="muestraAcidoSulfNecesario" value="0">
-                            </div>
-                        </div>
-
-                        <div id="divMuestraNecesaria" class="d-none">
-
-                            <div class="row">
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
-                                    <input type="number" step="0.01" placeholder="" name="resultadoMuestra" />
-                                </div>
-                            </div>
-
-                            <div id="" class="row mt-3 pt-3">
-                                <p class="fs-4 text-center">¿Cumple?</p>
-                                <p class="text-danger">Si el valor está superior a 7%, continuar reacción y repetir
-                                    análisis hasta que se complete la reacción.</p>
-
-                                <div class="col-6 mx-auto">
-                                    <label>Si<input type="radio" name="muestraPasa" value="1">
-                                </div>
-                                <div class="col-6 mx-auto">
-                                    <label>No<input type="radio" name="muestraPasa" value="0">
-                                </div>
-                            </div>
-                        </div>
+                        <button id="btnAgregarSeguimientoSwf" class="boton boton-opcion rounded-3 p-3 mb-5"
+                            type="button">Agregar hora</button>
 
                     </div>
 
+                    <!-- fin reflujo -->
+                    <div id="containerFinReflujo" class="row mt-3 pt-3 d-none">
+                        <div class="col-3 mx-auto">
+                            <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
+                        </div>
+                        <div class="col-4 mx-auto">
+                            <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
+                            <input type="number" step="0.01" placeholder="" name="totalAguaDestilada" />
+                        </div>
+                    </div>
                     <hr>
 
                     <button type="submit" id="btnPrimeraParteForm" class="boton boton-opcion rounded-3 p-3 mb-5">Guardar

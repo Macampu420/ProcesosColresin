@@ -12,7 +12,9 @@ let swReflujo = swDest = 1;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-objRegistro.construirNuevoFormulario();
+// objRegistro.construirNuevoFormulario();
+
+// control de formularios
 
 frmParte1.addEventListener('submit', event => {
 
@@ -98,7 +100,11 @@ frmParte3.addEventListener('submit', event => {
                 auxObs,
                 auxAguaDest
             })
-        } else {
+        } 
+        else if(i >= 10 && i <= 15){
+
+        } 
+        else {
             arraySeguimientos.push({
                 auxTemp,
                 auxPres,
@@ -289,6 +295,8 @@ frmParte7.addEventListener('submit', event => {
     }
 });
 
+// fin control formularios
+
 document.getElementById('cargaConVacio').addEventListener('input', event => {
 
     objRegistro.mostrarOcultarElemento(event, "cargaConVacioToo000", "bloqueoAjusteVacio");
@@ -316,13 +324,7 @@ document.getElementById('containerProblemaEscamado').addEventListener('input', e
 document.getElementById('divInicioReflujo').addEventListener('input', event => {
 
     objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerReflujo");
-    objRegistro.mostrarOcultarElemento(event, "confirmInicioReflujo", "containerMuestra");
 
-})
-
-document.getElementById('confirmContainerMuestra').addEventListener('input', event => {
-
-    objRegistro.mostrarOcultarElemento(event, "confirmMuestraNecesaria", "divMuestraNecesaria");
 })
 
 document.getElementById('containerDestilacion').addEventListener('input', event => {
@@ -331,10 +333,19 @@ document.getElementById('containerDestilacion').addEventListener('input', event 
 
 })
 
-document.getElementById('btnAgregarSeguimientoSwf').addEventListener('click', () => {
+document.getElementById('btnAgregarSeguimientoSwf').addEventListener('click', (event) => {
     numeroHoraSeguimSwf = objRegistro.renderSegumientoReflujo(numeroHoraSeguimSwf);
 });
 
 document.getElementById('btnAgregarSeguimientoDest').addEventListener('click', () => {
     nroHoraDest = objRegistro.renderSeguimientosDestilacion(nroHoraDest);
 });
+
+document.getElementById('containerSeguimientosSWF098').addEventListener('input', (event) => {
+        if(event.target.id.includes('confirmMuestraNecesaria')){
+            event.target.parentElement.parentElement.nextElementSibling.classList.remove('d-none');
+        } 
+        else if(event.target.id.includes('noMuestraNecesaria')){
+            event.target.parentElement.parentElement.nextElementSibling.classList.add('d-none');
+        }
+})

@@ -31,30 +31,8 @@ let RegistroForm = {
 
         let divSeguimientos = document.getElementById('containerSeguimientosSWF098');
 
-        if (numeroHoraSeguimSwf == 2) {
-            divSeguimientos.insertAdjacentHTML('beforeend', `
-            <div>
-                <div class="row text-center">
-                    <p class="fs-2 col-4">Hora ${numeroHoraSeguimSwf}:</p>
-                </div>
-            
-                <div class="row">
-                    <div class="col-4 mx-auto">
-                        <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
-                    </div>
-                    <div class="col-4 mx-auto">
-                        <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
-                    </div>
-                </div>
-                <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
-                </div>
-            </div>
-            <hr>`);
-            return numeroHoraSeguimSwf + 1;
-        } else if ((numeroHoraSeguimSwf == 3) || (numeroHoraSeguimSwf == 5) || (numeroHoraSeguimSwf == 9)) {
+        //renderiza el seguimiento con temperatura, presion y kg agua destilada
+        if ((numeroHoraSeguimSwf == 3) || (numeroHoraSeguimSwf == 5) || (numeroHoraSeguimSwf == 9)) {
             divSeguimientos.insertAdjacentHTML('beforeend', `
             <div>
                 <div class="row text-center">
@@ -81,10 +59,83 @@ let RegistroForm = {
             </div>
             <hr>`);
             return numeroHoraSeguimSwf + 1;
-        } else if (numeroHoraSeguimSwf >= 11) {
-            alert('El limite de horas (10) ha sido alcanzado');
-            return 11
-        } else {
+        }
+        //renderiza el seguimiento con pregunta sobre la muestra
+        else if(numeroHoraSeguimSwf >= 10 && numeroHoraSeguimSwf <=15){
+            divSeguimientos.insertAdjacentHTML('beforeend', `
+            <div>
+                <div class="row text-center">
+                    <p class="fs-2 col-4">Hora ${numeroHoraSeguimSwf}:</p>
+                </div>
+            
+                <div class="row">
+                    <div class="col-4 mx-auto">
+                        <label class="fs4" for="swf098">Temperatura: </label>
+                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
+                    </div>
+                    <div class="col-4 mx-auto">
+                        <label class="fs4" for="swf098">Presion: </label>
+                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
+                    </div>
+                </div>
+                <div class="row">
+                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                </div>
+            </div>
+            
+            <!-- muestra de acido sulfurico -->
+
+            <div id="containerMuestra" class="">
+
+                <div id="confirmContainerMuestra" class="row mt-3 pt-3">
+                    <p class="fs-4 text-center">Segun la cantidad de agua destilada y el tiempo de reaccion
+                        acumulado es necesario retirar muesta para previa de % acido sulfurico libre?</p>
+
+                    <div class="col-6 mx-auto">
+                        <label for="confirmMuestraNecesaria${numeroHoraSeguimSwf}">Si</label>
+                        <input type="radio" id="confirmMuestraNecesaria${numeroHoraSeguimSwf}" name="muestraNecesaria${numeroHoraSeguimSwf}" value="1">
+                    </div>
+                    <div class="col-6 mx-auto">
+                        <label for="noMuestraNecesaria${numeroHoraSeguimSwf}">No</label>
+                        <input type="radio" id="noMuestraNecesaria${numeroHoraSeguimSwf}" name="muestraNecesaria${numeroHoraSeguimSwf}" value="0">
+                    </div>
+                      
+                </div>
+
+                <div id="divMuestraNecesaria" class="d-none">
+
+                    <div class="row">
+                        <div class="col-4 mx-auto">
+                            <label class="fs4" for="swf098"> %sulfúrico libre (7 max): </label>
+                            <input type="number" step="0.01" placeholder="" name="resultadoMuestra${numeroHoraSeguimSwf}" />
+                        </div>
+                    </div>
+
+                    <div id="" class="row mt-3 pt-3">
+                        <p class="fs-4 text-center">¿Cumple?</p>
+                        <p class="text-danger">Si el valor está superior a 7%, continuar reacción y repetir
+                            análisis hasta que se complete la reacción.</p>
+
+                        <div class="col-6 mx-auto">
+                            <label>Si<input type="radio" name="muestraCumple${numeroHoraSeguimSwf}" value="1">
+                        </div>
+                        <div class="col-6 mx-auto">
+                            <label>No<input type="radio" name="muestraCumple${numeroHoraSeguimSwf}" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            `);
+            return numeroHoraSeguimSwf + 1;
+        }
+        //alerta sobre fin seguimientos
+        else if (numeroHoraSeguimSwf >= 16) {
+            alert('El limite de horas (15) ha sido alcanzado');
+            return 16
+        } 
+        //renderiza el seguimiento "sencillo" (solo con temperatura y presion)
+        else {
             divSeguimientos.insertAdjacentHTML('beforeend', `
             <div>
                 <div class="row text-center">
