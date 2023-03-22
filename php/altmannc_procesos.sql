@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 10:59 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Mar 23, 2023 at 12:23 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `equipos` (
   `contOlor` varchar(45) DEFAULT '-1',
   `dietrich1` tinyint(1) NOT NULL DEFAULT -1,
   `escamador` tinyint(1) NOT NULL DEFAULT -1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `equipos`
@@ -96,7 +96,7 @@ CREATE TABLE `etapas` (
   `Presion` varchar(50) DEFAULT NULL,
   `HoraToma` varchar(50) DEFAULT NULL,
   `Comentario` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `etapas`
@@ -889,7 +889,7 @@ CREATE TABLE `materiaprima` (
   `torec0` float(5,2) NOT NULL DEFAULT -1.00,
   `sso000` float(5,2) NOT NULL DEFAULT -1.00,
   `glg000` float(5,2) NOT NULL DEFAULT -1.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `materiaprima`
@@ -1016,7 +1016,7 @@ CREATE TABLE `nfo` (
   `KgEnjuague` varchar(45) DEFAULT NULL,
   `KgLavado` varchar(45) DEFAULT NULL,
   `FechaMuestraLab` datetime(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `nfo`
@@ -1066,7 +1066,6 @@ INSERT INTO `nfo` (`IdProceso`, `nfo`, `numeroLote`, `MatPriFP04`, `MatPriSepara
 --
 
 CREATE TABLE `procesos` (
-  `IdProceso` int(11) NOT NULL,
   `NumLote` varchar(30) NOT NULL,
   `FechaInicial` date NOT NULL,
   `FechaFinal` date DEFAULT NULL,
@@ -1074,49 +1073,49 @@ CREATE TABLE `procesos` (
   `HoraFinal` time DEFAULT NULL,
   `Estado` int(11) NOT NULL,
   `Cedula` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `procesos`
 --
 
-INSERT INTO `procesos` (`IdProceso`, `NumLote`, `FechaInicial`, `FechaFinal`, `HoraInicial`, `HoraFinal`, `Estado`, `Cedula`) VALUES
-(1, 'Prueba1', '2022-10-25', NULL, '15:53:59', NULL, 3, '112233'),
-(2, 'Prueba2', '2022-10-25', '2022-10-25', '16:05:16', '17:49:41', 2, '414525'),
-(3, '59565', '2022-10-26', '2022-10-26', '10:20:33', '10:56:44', 2, '112233'),
-(4, 'Prueba3', '2022-10-26', NULL, '13:55:12', NULL, 3, '112233'),
-(5, 'Prueba4', '2022-10-28', '2022-10-28', '09:52:32', '10:28:53', 2, '112233'),
-(6, '111', '2022-10-28', NULL, '16:09:39', NULL, 3, '112233'),
-(7, '111222', '2022-10-28', NULL, '16:57:15', NULL, 3, '112233'),
-(8, '4444', '2022-10-28', NULL, '17:18:22', NULL, 3, '112233'),
-(9, 'Prueba5', '2022-10-31', NULL, '11:09:38', NULL, 3, '112233'),
-(10, 'L1245', '2022-11-23', '2022-11-23', '15:25:35', '17:05:02', 2, '112233'),
-(11, 'L72128', '2022-11-29', '2023-01-30', '11:37:28', '13:45:15', 2, '112233'),
-(12, '72424', '2023-01-30', '2023-01-30', '10:21:13', '12:40:39', 2, '1001463673'),
-(13, '72424', '2023-01-30', '2023-01-30', '13:37:56', '14:37:07', 2, '1001463673'),
-(14, '222', '2023-01-30', '2023-01-30', '14:41:26', '14:48:44', 2, '1041326457'),
-(15, '72423', '2023-01-30', '2023-01-30', '14:46:41', '15:14:01', 2, '1001463673'),
-(16, '565', '2023-01-30', '2023-01-30', '15:16:13', '15:22:27', 2, '1001463673'),
-(17, '72350', '2023-01-30', '2023-01-30', '15:28:32', '16:09:34', 2, '1001463673'),
-(18, '1515151', '2023-01-30', '2023-01-30', '16:18:11', '16:29:21', 2, '1001463673'),
-(19, 'Ensayo#1', '2023-01-31', '2023-01-31', '08:11:05', '08:36:56', 2, '1001463673'),
-(20, 'Ensayo#2', '2023-01-31', '2023-01-31', '08:45:10', '09:09:41', 2, '1001463673'),
-(21, 'Ensayo#3', '2023-01-31', '2023-01-31', '09:12:39', '09:23:51', 2, '1001463673'),
-(22, 'Prueba1222', '2023-01-31', NULL, '16:24:47', NULL, 3, '112233'),
-(23, 'Prueba Feb1', '2023-02-01', NULL, '10:25:18', NULL, 1, '112233'),
-(24, 'Prueba Feb 1', '2023-02-01', NULL, '10:25:50', NULL, 3, '112233'),
-(25, '72479', '2023-02-01', NULL, '10:46:26', NULL, 3, '1001463673'),
-(26, '72479', '2023-02-01', NULL, '14:09:13', NULL, 3, '1001463673'),
-(27, '72349', '2023-02-07', NULL, '11:34:31', NULL, 3, '1001463673'),
-(28, '72350', '2023-02-07', NULL, '16:15:45', NULL, 3, '1001463673'),
-(29, '72423', '2023-02-07', NULL, '16:40:47', NULL, 3, '1001463673'),
-(30, '72424', '2023-02-07', NULL, '16:45:18', NULL, 3, '1001463673'),
-(31, '1234', '2023-02-28', NULL, '15:13:57', NULL, 3, '112233'),
-(32, '72448', '2023-03-01', '2023-03-01', '11:26:24', '12:35:27', 2, '1001463673'),
-(33, 'Ensayo #4', '2023-03-01', '2023-03-01', '14:12:25', '14:21:34', 2, '1001463673'),
-(34, '', '2023-03-04', NULL, '15:16:27', NULL, 3, '112233'),
-(35, '10', '2023-03-06', '2023-03-06', '16:56:23', '17:15:36', 2, '1019983876'),
-(36, '23123', '2023-03-06', NULL, '19:18:58', NULL, 3, '1019983876');
+INSERT INTO `procesos` (`NumLote`, `FechaInicial`, `FechaFinal`, `HoraInicial`, `HoraFinal`, `Estado`, `Cedula`) VALUES
+('Prueba1', '2022-10-25', NULL, '15:53:59', NULL, 3, '112233'),
+('Prueba2', '2022-10-25', '2022-10-25', '16:05:16', '17:49:41', 2, '414525'),
+('59565', '2022-10-26', '2022-10-26', '10:20:33', '10:56:44', 2, '112233'),
+('Prueba3', '2022-10-26', NULL, '13:55:12', NULL, 3, '112233'),
+('Prueba4', '2022-10-28', '2022-10-28', '09:52:32', '10:28:53', 2, '112233'),
+('111', '2022-10-28', NULL, '16:09:39', NULL, 3, '112233'),
+('111222', '2022-10-28', NULL, '16:57:15', NULL, 3, '112233'),
+('4444', '2022-10-28', NULL, '17:18:22', NULL, 3, '112233'),
+('Prueba5', '2022-10-31', NULL, '11:09:38', NULL, 3, '112233'),
+('L1245', '2022-11-23', '2022-11-23', '15:25:35', '17:05:02', 2, '112233'),
+('L72128', '2022-11-29', '2023-01-30', '11:37:28', '13:45:15', 2, '112233'),
+('72424', '2023-01-30', '2023-01-30', '10:21:13', '12:40:39', 2, '1001463673'),
+('72424', '2023-01-30', '2023-01-30', '13:37:56', '14:37:07', 2, '1001463673'),
+('222', '2023-01-30', '2023-01-30', '14:41:26', '14:48:44', 2, '1041326457'),
+('72423', '2023-01-30', '2023-01-30', '14:46:41', '15:14:01', 2, '1001463673'),
+('565', '2023-01-30', '2023-01-30', '15:16:13', '15:22:27', 2, '1001463673'),
+('72350', '2023-01-30', '2023-01-30', '15:28:32', '16:09:34', 2, '1001463673'),
+('1515151', '2023-01-30', '2023-01-30', '16:18:11', '16:29:21', 2, '1001463673'),
+('Ensayo#1', '2023-01-31', '2023-01-31', '08:11:05', '08:36:56', 2, '1001463673'),
+('Ensayo#2', '2023-01-31', '2023-01-31', '08:45:10', '09:09:41', 2, '1001463673'),
+('Ensayo#3', '2023-01-31', '2023-01-31', '09:12:39', '09:23:51', 2, '1001463673'),
+('Prueba1222', '2023-01-31', NULL, '16:24:47', NULL, 3, '112233'),
+('Prueba Feb1', '2023-02-01', NULL, '10:25:18', NULL, 1, '112233'),
+('Prueba Feb 1', '2023-02-01', NULL, '10:25:50', NULL, 3, '112233'),
+('72479', '2023-02-01', NULL, '10:46:26', NULL, 3, '1001463673'),
+('72479', '2023-02-01', NULL, '14:09:13', NULL, 3, '1001463673'),
+('72349', '2023-02-07', NULL, '11:34:31', NULL, 3, '1001463673'),
+('72350', '2023-02-07', NULL, '16:15:45', NULL, 3, '1001463673'),
+('72423', '2023-02-07', NULL, '16:40:47', NULL, 3, '1001463673'),
+('72424', '2023-02-07', NULL, '16:45:18', NULL, 3, '1001463673'),
+('1234', '2023-02-28', NULL, '15:13:57', NULL, 3, '112233'),
+('72448', '2023-03-01', '2023-03-01', '11:26:24', '12:35:27', 2, '1001463673'),
+('Ensayo #4', '2023-03-01', '2023-03-01', '14:12:25', '14:21:34', 2, '1001463673'),
+('', '2023-03-04', NULL, '15:16:27', NULL, 3, '112233'),
+('10', '2023-03-06', '2023-03-06', '16:56:23', '17:15:36', 2, '1019983876'),
+('23123', '2023-03-06', NULL, '19:18:58', NULL, 3, '1019983876');
 
 -- --------------------------------------------------------
 
@@ -1133,7 +1132,7 @@ CREATE TABLE `tbl_conversion_tod100atoreco` (
   `KgToreco` tinyint(1) DEFAULT NULL,
   `torecoEtiquetado` tinyint(1) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_conversion_tod100atoreco`
@@ -1162,7 +1161,7 @@ CREATE TABLE `tbl_destilacion_tod100` (
   `inicioSostener` datetime DEFAULT NULL,
   `finSostener` datetime DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_destilacion_tod100`
@@ -1190,7 +1189,7 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
   `sistemaEnfiramientoOk` tinyint(1) DEFAULT NULL,
   `condensadorSinFugas` tinyint(1) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_estado_equipo_atsme`
@@ -1224,21 +1223,18 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `inicioReflujo` datetime NOT NULL,
   `finReflujo` datetime NOT NULL,
   `totalAguaDestilada` int(5) DEFAULT NULL,
-  `muestraAcidoSulfNecesario` tinyint(1) NOT NULL,
-  `resultadoMuestra` int(5) DEFAULT NULL,
-  `muestraPasa` tinyint(1) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_cargaswf098_atsme`
 --
 
-INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `swReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `muestraAcidoSulfNecesario`, `resultadoMuestra`, `muestraPasa`, `loteProceso`) VALUES
-(1, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 0, 0, 0, 'L01'),
-(2, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 0, 0, 0, 'L01'),
-(3, 1, 1, 1, 1, '2023-03-19 12:12:00', '2023-03-12 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1212, 0, 0, 0, 'L02'),
-(4, 1, 1, 1, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 0, '', 1, 1, '2023-03-21 12:12:00', '2023-03-21 12:12:00', 20, 0, 0, 1, 'L03');
+INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `swReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`) VALUES
+(1, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
+(2, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
+(3, 1, 1, 1, 1, '2023-03-19 12:12:00', '2023-03-12 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1212, 'L02'),
+(4, 1, 1, 1, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 0, '', 1, 1, '2023-03-21 12:12:00', '2023-03-21 12:12:00', 20, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1260,7 +1256,7 @@ CREATE TABLE `tbl_fase_carga_too000` (
   `problemaCarga` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_carga_too000`
@@ -1294,7 +1290,7 @@ CREATE TABLE `tbl_fase_descarga` (
   `problemaEscamado` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_descarga`
@@ -1318,7 +1314,7 @@ CREATE TABLE `tbl_lavado_equipo_atsme` (
   `tuberiasLimpias` tinyint(1) DEFAULT NULL,
   `kgAguaLavada` float(5,2) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_lavado_equipo_atsme`
@@ -1328,6 +1324,33 @@ INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuagu
 (1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L01'),
 (2, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L02'),
 (3, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 10.00, 'L03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_muestra_segs_swf`
+--
+
+CREATE TABLE `tbl_muestra_segs_swf` (
+  `idMuestra` int(11) NOT NULL,
+  `nroHora` tinyint(3) NOT NULL,
+  `muestraNecesaria` tinyint(1) NOT NULL,
+  `resultadoMuestra` float(7,3) DEFAULT NULL,
+  `muestraCumple` tinyint(1) DEFAULT NULL,
+  `loteProceso` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_muestra_segs_swf`
+--
+
+INSERT INTO `tbl_muestra_segs_swf` (`idMuestra`, `nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `loteProceso`) VALUES
+(1, 10, 1, 15.000, 0, 'L03'),
+(2, 11, 1, 10.000, 0, 'L03'),
+(3, 12, 1, 9.500, 0, 'L03'),
+(4, 13, 1, 8.000, 0, 'L03'),
+(5, 14, 1, 7.800, 0, 'L03'),
+(6, 15, 1, 7.000, 1, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1349,7 +1372,7 @@ CREATE TABLE `tbl_proceso_atsme` (
   `seccion5` tinyint(1) NOT NULL DEFAULT 0,
   `seccion6` tinyint(1) NOT NULL DEFAULT 0,
   `seccion7` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_proceso_atsme`
@@ -1374,33 +1397,28 @@ CREATE TABLE `tbl_seguimiento_cargaswf098` (
   `kgAguaDestilada` float(5,2) DEFAULT NULL,
   `observaciones` varchar(256) DEFAULT '',
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_seguimiento_cargaswf098`
 --
 
 INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `loteProceso`) VALUES
-(1, 1, 1.00, 1.00, 0.00, '', 'L02'),
-(2, 2, 2.00, 2.00, 0.00, '', 'L02'),
-(3, 3, 3.00, 3.00, 3.00, '', 'L02'),
-(4, 4, 4.00, 4.00, 0.00, '', 'L02'),
-(5, 5, 5.00, 5.00, 5.00, '', 'L02'),
-(6, 6, 6.00, 6.00, 0.00, '', 'L02'),
-(7, 7, 7.00, 7.00, 0.00, 'flush', 'L02'),
-(8, 8, 8.00, 8.00, 0.00, 'wuazaaa', 'L02'),
-(9, 9, 9.00, 9.00, 9.00, 'aaa', 'L02'),
-(10, 10, 10.00, 10.00, 0.00, 'aaa', 'L02'),
-(11, 1, 1.00, 1.00, 0.00, '1', 'L03'),
-(12, 2, 2.00, 2.00, 0.00, '2', 'L03'),
-(13, 3, 3.00, 3.00, 3.00, '3', 'L03'),
-(14, 4, 4.00, 4.00, 0.00, '4', 'L03'),
-(15, 5, 5.00, 5.00, 5.00, '5', 'L03'),
-(16, 6, 6.00, 6.00, 0.00, '66', 'L03'),
-(17, 7, 7.00, 7.00, 0.00, '7', 'L03'),
-(18, 8, 8.00, 8.00, 0.00, '8', 'L03'),
-(19, 9, 9.00, 9.00, 9.00, '9', 'L03'),
-(20, 10, 10.00, 10.00, 0.00, '10', 'L03');
+(2, 1, 1.00, 1.00, 0.00, '', 'L03'),
+(3, 2, 2.00, 2.00, 0.00, '', 'L03'),
+(4, 3, 3.00, 3.00, 3.00, '', 'L03'),
+(5, 4, 4.00, 4.00, 0.00, '', 'L03'),
+(6, 5, 5.00, 5.00, 5.00, '', 'L03'),
+(7, 6, 6.00, 6.00, 0.00, '', 'L03'),
+(8, 7, 7.00, 7.00, 0.00, '', 'L03'),
+(9, 8, 8.00, 8.00, 0.00, '', 'L03'),
+(10, 9, 9.00, 9.00, 9.00, '', 'L03'),
+(11, 10, 10.00, 10.00, 0.00, '', 'L03'),
+(12, 11, 11.00, 11.00, 0.00, '', 'L03'),
+(13, 12, 12.00, 12.00, 0.00, '', 'L03'),
+(14, 13, 13.00, 13.00, 0.00, '', 'L03'),
+(15, 14, 14.00, 14.00, 0.00, '', 'L03'),
+(16, 15, 15.00, 15.00, 0.00, '', 'L03');
 
 -- --------------------------------------------------------
 
@@ -1417,7 +1435,7 @@ CREATE TABLE `tbl_seguimiento_desttod100` (
   `kgTOD100` float(5,2) NOT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
   `loteProceso` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_seguimiento_desttod100`
@@ -1464,7 +1482,7 @@ CREATE TABLE `usuarios` (
   `Contrasena` varchar(50) NOT NULL,
   `Estado` int(11) NOT NULL DEFAULT 1,
   `Rol` int(2) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `usuarios`
@@ -1511,12 +1529,6 @@ ALTER TABLE `materiaprima`
 ALTER TABLE `nfo`
   ADD PRIMARY KEY (`IdProceso`),
   ADD UNIQUE KEY `IdProceso_UNIQUE` (`IdProceso`);
-
---
--- Indexes for table `procesos`
---
-ALTER TABLE `procesos`
-  ADD PRIMARY KEY (`IdProceso`);
 
 --
 -- Indexes for table `tbl_conversion_tod100atoreco`
@@ -1566,6 +1578,13 @@ ALTER TABLE `tbl_fase_descarga`
 ALTER TABLE `tbl_lavado_equipo_atsme`
   ADD PRIMARY KEY (`idLavado`),
   ADD KEY `fk_tbl_lavado_equipo_atsme_loteProceso` (`loteProceso`);
+
+--
+-- Indexes for table `tbl_muestra_segs_swf`
+--
+ALTER TABLE `tbl_muestra_segs_swf`
+  ADD PRIMARY KEY (`idMuestra`),
+  ADD KEY `fk_muestraSegSwf_loteProceso` (`loteProceso`);
 
 --
 -- Indexes for table `tbl_proceso_atsme`
@@ -1619,12 +1638,6 @@ ALTER TABLE `nfo`
   MODIFY `IdProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `procesos`
---
-ALTER TABLE `procesos`
-  MODIFY `IdProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
 -- AUTO_INCREMENT for table `tbl_conversion_tod100atoreco`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
@@ -1667,10 +1680,16 @@ ALTER TABLE `tbl_lavado_equipo_atsme`
   MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_muestra_segs_swf`
+--
+ALTER TABLE `tbl_muestra_segs_swf`
+  MODIFY `idMuestra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_seguimiento_cargaswf098`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_desttod100`
@@ -1737,6 +1756,12 @@ ALTER TABLE `tbl_fase_descarga`
 ALTER TABLE `tbl_lavado_equipo_atsme`
   ADD CONSTRAINT `fk_tbl_lavado_equipo_atsme_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
   ADD CONSTRAINT `lavadoEquipoDeProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+
+--
+-- Constraints for table `tbl_muestra_segs_swf`
+--
+ALTER TABLE `tbl_muestra_segs_swf`
+  ADD CONSTRAINT `fk_muestraSegSwf_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
 
 --
 -- Constraints for table `tbl_proceso_atsme`

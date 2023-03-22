@@ -220,7 +220,7 @@
                     </div>
 
                     <!-- fin reflujo -->
-                    <div id="containerFinReflujo" class="row mt-3 pt-3 d-none">
+                    <div id="containerFinReflujo" class="row mt-3 pt-3">
                         <div class="col-3 mx-auto">
                             <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
                         </div>

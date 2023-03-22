@@ -139,27 +139,26 @@ frmParte3.addEventListener('submit', event => {
         datosParte3.append('arraySeguimientos[]', JSON.stringify(arraySeguimientos[i]));
     }
 
-    // fetch('./../controladores/registroFrm.php', {
-    //     method: 'POST',
-    //     body: datosParte3
-    //   }).then(response => {
-    //     if (response.status === 200) {
-    //       return response.text();
-    //     } else {
-    //       throw new Error('La respuesta de la API no fue exitosa');
-    //     }
-    //   }).then(() => {
-    //     swReflujo = 0;
-    //     document.getElementById('seccion4').classList.remove('d-none');
-    //     objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
-    //   }).catch(err => {
-    //     console.log(err);
-    //     swReflujo = 1;
-    //    alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
+    fetch('./../controladores/registroFrm.php', {
+        method: 'POST',
+        body: datosParte3
+      }).then(response => {
+        // if (response.status === 200) {
+          return response.text();
+        // } else {
+        //   throw new Error('La respuesta de la API no fue exitosa');
+        // }
+      }).then((data) => {
+        console.log(data);
+        swReflujo = 0;
+        document.getElementById('seccion4').classList.remove('d-none');
+        // objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+      }).catch(err => {
+        console.log(err);
+        swReflujo = 1;
+       alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
         
-    //   });
-
-    console.log(datosParte3);
+      });
       
 });
 

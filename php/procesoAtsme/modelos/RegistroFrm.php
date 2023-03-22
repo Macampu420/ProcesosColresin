@@ -4,15 +4,10 @@ class RegistroFrm {
     private $conexion; // objeto mysqli que representa la conexión a la base de datos
 
     private $stmtActualizarSeccion, $stmtRegProcesoAtsme, $stmtRegEquipo, $stmtRegMatPrima, $stmtRegEstadoEquipo; 
-
     private $stmtRegCargaToo000;
-    
     private $stmtFaseDescarga;
-    
     private $stmtConversion, $stmtLavadoEquipo;
-    
-    private $stmtCargaSwf, $stmtRegSeguimientoSwf, $stmtActualizSeguimientoSwf;
-
+    private $stmtCargaSwf, $stmtRegSeguimientoSwf, $stmtActualizSeguimientoSwf, $stmtPivoteSegsSwf;
     private $stmtRegDest, $stmtRegSeguimientoDest, $stmtActualizSegsDest;
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
@@ -25,6 +20,8 @@ class RegistroFrm {
         if ($this->conexion->connect_error) {
             throw new Exception("Error al conectar a la base de datos: " . $this->conexion->connect_error);
         }
+
+        $this->pivoteSegsSwf = 1;
 
         // Preparar consulta INSERT utilizando la función prepare del objeto de conexión y asignarla a $stmtRegProcesoAtsme
         $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`loteProceso`,`separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
@@ -51,8 +48,8 @@ class RegistroFrm {
         $this->stmtLavadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_lavado_equipo_atsme`(`inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `loteProceso`)
              VALUES (?, ?, ?, ?, ?)");
 
-        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme` (`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `muestraAcidoSulfNecesario`, `resultadoMuestra`, `totalAguaDestilada`, `muestraPasa`, `loteProceso`)
-             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme`(`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `swReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`)
+             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $this->stmtRegSeguimientoSwf = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_cargaswf098`( `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `loteProceso`) 
             VALUES (?,?,?,?,?,?)");
@@ -220,31 +217,62 @@ class RegistroFrm {
 
     // Métodos para insertar datos de la seccion 3 utilizando las consultas preparadas
     function registrarSegumientosSWF($loteProceso, $arraySeguimientos){
-        $data = array();
-        $nroHoraSeguimiento = 1;
+        $pivoteSeguimiento = 0;
         $resultado;
+        $swReflujo = 1;
+        $nroHoraSeguimiento;
 
-        for($i = 0; $i < 10; $i++){
-            if (isset($arraySeguimientos[$i])) {
-                $json = $arraySeguimientos[$i]; // Obtenemos el objeto JSON de $arraySeguimientos
-                $datosSeguimiento = json_decode($json, true); // Decodificamos el objeto JSON a un array asociativo
-        
-                // Asignamos los valores a las variables auxiliares
-                $temperatura = isset($datosSeguimiento["auxTemp"]) ? $datosSeguimiento["auxTemp"] : 0;
-                $presion = isset($datosSeguimiento["auxPres"]) ? $datosSeguimiento["auxPres"] : 0;
-                $kgAguaDestilada = isset($datosSeguimiento["auxAguaDest"]) ? $datosSeguimiento["auxAguaDest"] : 0;
-                $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
-            } else {
-                // Si el índice no existe, asignamos valores predeterminados a las variables auxiliares
-                $temperatura = 0;
-                $presion = 0;
-                $kgAguaDestilada = 0;
-                $observaciones = "";
-            }
+        // condicion para definir pivote registro
+        if($swReflujo == 1){
+            $this->stmtPivoteSegsSwf = $this->conexion->prepare("SELECT `nroHoraSeguimiento` FROM `tbl_seguimiento_cargaswf098` WHERE loteProceso = ? ORDER BY nroHoraSeguimiento DESC LIMIT 1");
+            $this->stmtPivoteSegsSwf->bind_param('s', $loteProceso);
+            // Ejecutar consulta
+            $this->stmtPivoteSegsSwf->execute();
+
+            // Vincular resultado
+            $this->stmtPivoteSegsSwf->bind_result($pivoteSeguimiento);
+
+            // Recuperar resultado
+            $this->stmtPivoteSegsSwf->fetch();
+
+            $this->stmtPivoteSegsSwf->free_result();
+            var_dump($pivoteSeguimiento);
+        }
+
+        $resultados = array();
+
+        for($pivoteSeguimiento; $pivoteSeguimiento < count($arraySeguimientos); $pivoteSeguimiento++){
+
+            $json = $arraySeguimientos[$pivoteSeguimiento]; // Obtenemos el json del seguimiento (codificado como string) de $arraySeguimientos
+            $datosSeguimiento = json_decode($json, true); // Decodificamos el json del seguimiento a un array asociativo
+            $nroHoraSeguimiento = $pivoteSeguimiento + 1;
+
+            // Asignamos los valores a las variables auxiliares
+            $temperatura = isset($datosSeguimiento["auxTemp"]) ? $datosSeguimiento["auxTemp"] : 0;
+            $presion = isset($datosSeguimiento["auxPres"]) ? $datosSeguimiento["auxPres"] : 0;
+            $kgAguaDestilada = isset($datosSeguimiento["auxAguaDest"]) ? $datosSeguimiento["auxAguaDest"] : 0;
+            $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
+            
             $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso);
             $resultado = $this->stmtRegSeguimientoSwf->execute();
-            $nroHoraSeguimiento++;
-        }        
+            
+            if(isset($datosSeguimiento['muestra'])){
+                //registro carga
+                $this->stmtRegMuestraSwf = $this->conexion->prepare("INSERT INTO `tbl_muestra_segs_swf`(`nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `loteProceso`) 
+                VALUES (?,?,?,?,?)");
+
+                $muestra = $datosSeguimiento['muestra'];
+                $muestraNecesaria = isset($muestra['muestraNecesaria']) ? $muestra['muestraNecesaria'] : 0;
+                $resultadoMuestra = isset($muestra['resultadoMuestra']) ? $muestra['resultadoMuestra'] : 0;
+                $muestraCumple = isset($muestra['muestraCumple']) ? $muestra['muestraCumple'] : 0;
+
+                $this->stmtRegMuestraSwf->bind_param('iidis', $nroHoraSeguimiento, $muestraNecesaria, $resultadoMuestra, $muestraCumple, $loteProceso);
+
+                $resultadoMuestras = $this->stmtRegMuestraSwf->execute();
+
+                var_dump($resultadoMuestras);
+            } 
+        }     
 
         return $resultado;
 
