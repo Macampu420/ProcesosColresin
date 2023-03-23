@@ -8,7 +8,8 @@ const frmParte5 = document.getElementById('frmSeccion5');
 const frmParte6 = document.getElementById('frmSeccion6');
 const frmParte7 = document.getElementById('frmSeccion7');
 let lote;
-let swReflujo = swDest = 1;
+let swDest = 1;
+let swReflujo = 0;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
@@ -100,8 +101,7 @@ frmParte3.addEventListener('submit', event => {
                 auxObs,
                 auxAguaDest
             })
-        } 
-        else if(i >= 10 && i <= 15){
+        } else if (i >= 10 && i <= 15) {
             let muestraNecesaria = document.querySelector(`input[name="muestraNecesaria${i}"]:checked`);
             let resultadoMuestra = document.querySelector(`input[name="resultadoMuestra${i}"]`).value;
             let muestraCumple = document.querySelector(`input[name="muestraCumple${i}"]:checked`);
@@ -119,8 +119,7 @@ frmParte3.addEventListener('submit', event => {
                     muestraCumple
                 }
             })
-        } 
-        else {
+        } else {
             arraySeguimientos.push({
                 auxTemp,
                 auxPres,
@@ -142,24 +141,30 @@ frmParte3.addEventListener('submit', event => {
     fetch('./../controladores/registroFrm.php', {
         method: 'POST',
         body: datosParte3
-      }).then(response => {
+    }).then(response => {
         // if (response.status === 200) {
-          return response.text();
+        return response.text();
         // } else {
         //   throw new Error('La respuesta de la API no fue exitosa');
         // }
-      }).then((data) => {
+    }).then((data) => {
         console.log(data);
-        swReflujo = 0;
-        document.getElementById('seccion4').classList.remove('d-none');
-        // objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
-      }).catch(err => {
-        console.log(err);
+
         swReflujo = 1;
-       alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
-        
-      });
-      
+
+        let finReflujo = document.getElementById('finReflujo');
+        let totalAguaDestilada = document.getElementById('totalAguaDestilada');
+
+        if (finReflujo.value && totalAguaDestilada.value) {
+            document.getElementById('seccion4').classList.remove('d-none');
+            objRegistro.focoSiguienteSeccion('confirmInicioDestilacion');
+        }
+    }).catch(err => {
+        console.log(err);
+        alert(`ocurrió un error en el registro, por favor intentalo mas tarde`);
+
+    });
+
 });
 
 frmParte4.addEventListener('submit', event => {
@@ -359,10 +364,9 @@ document.getElementById('btnAgregarSeguimientoDest').addEventListener('click', (
 });
 
 document.getElementById('containerSeguimientosSWF098').addEventListener('input', (event) => {
-        if(event.target.id.includes('confirmMuestraNecesaria')){
-            event.target.parentElement.parentElement.nextElementSibling.classList.remove('d-none');
-        } 
-        else if(event.target.id.includes('noMuestraNecesaria')){
-            event.target.parentElement.parentElement.nextElementSibling.classList.add('d-none');
-        }
+    if (event.target.id.includes('confirmMuestraNecesaria')) {
+        event.target.parentElement.parentElement.nextElementSibling.classList.remove('d-none');
+    } else if (event.target.id.includes('noMuestraNecesaria')) {
+        event.target.parentElement.parentElement.nextElementSibling.classList.add('d-none');
+    }
 })

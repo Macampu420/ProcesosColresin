@@ -7,7 +7,7 @@ class RegistroFrm {
     private $stmtRegCargaToo000;
     private $stmtFaseDescarga;
     private $stmtConversion, $stmtLavadoEquipo;
-    private $stmtCargaSwf, $stmtRegSeguimientoSwf, $stmtActualizSeguimientoSwf, $stmtPivoteSegsSwf;
+    private $stmtCargaSwf, $stmtRegSeguimientoSwf, $stmtPivoteSegsSwf, $stmtActualizarFinReflujo;
     private $stmtRegDest, $stmtRegSeguimientoDest, $stmtActualizSegsDest;
 
     // Constructor que recibe los parámetros necesarios para conectarse a la base de datos y preparar la consulta
@@ -20,8 +20,6 @@ class RegistroFrm {
         if ($this->conexion->connect_error) {
             throw new Exception("Error al conectar a la base de datos: " . $this->conexion->connect_error);
         }
-
-        $this->pivoteSegsSwf = 1;
 
         // Preparar consulta INSERT utilizando la función prepare del objeto de conexión y asignarla a $stmtRegProcesoAtsme
         $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`loteProceso`,`separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
@@ -48,13 +46,11 @@ class RegistroFrm {
         $this->stmtLavadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_lavado_equipo_atsme`(`inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `loteProceso`)
              VALUES (?, ?, ?, ?, ?)");
 
-        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme`(`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `swReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`)
-             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme`(`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`)
+             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $this->stmtRegSeguimientoSwf = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_cargaswf098`( `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `loteProceso`) 
             VALUES (?,?,?,?,?,?)");
-
-        $this->stmtActualizSeguimientoSwf = $this->conexion->prepare("UPDATE `tbl_seguimiento_cargaswf098` SET `temperatura`=?, `presion`=?, `kgAguaDestilada`=?, `observaciones`=? WHERE `loteProceso` = ? AND `nroHoraSeguimiento` = ?");
     
         $this->stmtRegDest = $this->conexion->prepare("INSERT INTO `tbl_destilacion_tod100`( `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `loteProceso`)
              VALUES (?,?,?,?,?,?,?,?,?,?)");
@@ -79,6 +75,11 @@ class RegistroFrm {
     }
 
     function registroSeccion1($arrayDatos) {
+
+        if (isset($_SESSION['cedula'])){
+
+            $cedula = $_SESSION['cedula'];
+        }
 
         // registro materia prima
         try {
@@ -216,10 +217,9 @@ class RegistroFrm {
 
 
     // Métodos para insertar datos de la seccion 3 utilizando las consultas preparadas
-    function registrarSegumientosSWF($loteProceso, $arraySeguimientos){
+    function registrarSegumientosSWF($loteProceso, $arraySeguimientos, $swReflujo){
         $pivoteSeguimiento = 0;
-        $resultado;
-        $swReflujo = 1;
+        $resultado  = false;
         $nroHoraSeguimiento;
 
         // condicion para definir pivote registro
@@ -236,10 +236,7 @@ class RegistroFrm {
             $this->stmtPivoteSegsSwf->fetch();
 
             $this->stmtPivoteSegsSwf->free_result();
-            var_dump($pivoteSeguimiento);
         }
-
-        $resultados = array();
 
         for($pivoteSeguimiento; $pivoteSeguimiento < count($arraySeguimientos); $pivoteSeguimiento++){
 
@@ -253,9 +250,11 @@ class RegistroFrm {
             $kgAguaDestilada = isset($datosSeguimiento["auxAguaDest"]) ? $datosSeguimiento["auxAguaDest"] : 0;
             $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
             
+            //vinculacion de parametros
             $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso);
             $resultado = $this->stmtRegSeguimientoSwf->execute();
             
+            //si el seguimiento tiene muestra se hace el registro de esta
             if(isset($datosSeguimiento['muestra'])){
                 //registro carga
                 $this->stmtRegMuestraSwf = $this->conexion->prepare("INSERT INTO `tbl_muestra_segs_swf`(`nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `loteProceso`) 
@@ -268,37 +267,10 @@ class RegistroFrm {
 
                 $this->stmtRegMuestraSwf->bind_param('iidis', $nroHoraSeguimiento, $muestraNecesaria, $resultadoMuestra, $muestraCumple, $loteProceso);
 
-                $resultadoMuestras = $this->stmtRegMuestraSwf->execute();
-
-                var_dump($resultadoMuestras);
+                $resultado = $this->stmtRegMuestraSwf->execute();
             } 
         }     
-
         return $resultado;
-
-    }
-    function actualizarSeguimientosSWF($loteProceso, $arraySeguimientos){
-        $data = array();
-        $nroHoraSeguimiento = 1;
-        $resultado;
-
-        foreach($arraySeguimientos as $valor){
-            $data[] = json_decode($valor, true);
-        }
-
-        foreach($data as $clave => $valor){
-            $temperatura = isset($valor["auxTemp"]) ? $valor["auxTemp"] : 0;
-            $presion = isset($valor["auxPres"]) ? $valor["auxPres"] : 0;
-            $kgAguaDestilada = isset($valor["auxAguaDest"]) ? $valor["auxAguaDest"] : 0;
-            $observaciones = isset($valor["auxObs"]) ? $valor["auxObs"] : "";
-
-            $this->stmtActualizSeguimientoSwf->bind_param("dddssi", $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso, $nroHoraSeguimiento);
-            $resultado = $this->stmtActualizSeguimientoSwf->execute();
-            $nroHoraSeguimiento++;
-
-        }
-
-        return $resultado; 
     }
     function registrarSeccion3($arrayDatos){
 
@@ -314,10 +286,7 @@ class RegistroFrm {
         $equipoEnReflujo = isset($arrayDatos['equipoEnReflujo']) ? $arrayDatos['equipoEnReflujo'] : 0;
         $inicioReflujo = isset($arrayDatos['inicioReflujo']) ? $arrayDatos['inicioReflujo'] : "NOW()";
         $finReflujo = isset($arrayDatos['finReflujo']) ? $arrayDatos['finReflujo'] : "NOW()";
-        $muestraAcidoSulfNecesario = isset($arrayDatos['muestraAcidoSulfNecesario']) ? $arrayDatos['muestraAcidoSulfNecesario'] : 0;
-        $resultadoMuestra = isset($arrayDatos['resultadoMuestra']) ? $arrayDatos['resultadoMuestra'] : 0;
         $totalAguaDestilada = isset($arrayDatos['totalAguaDestilada']) ? $arrayDatos['totalAguaDestilada'] : 0;
-        $muestraPasa = isset($arrayDatos['muestraPasa']) ? $arrayDatos['muestraPasa'] : 0;
         $lote = $arrayDatos['lote'];
 
         $this->verificarConexion();
@@ -327,46 +296,34 @@ class RegistroFrm {
         $this->conexion->begin_transaction();
 
         //se setea la consulta para el registro
-        $this->stmtCargaSwf->bind_param('iiiissiisissiiiis', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
+        $this->stmtCargaSwf->bind_param('iiiissiisissds', $fichaLeida, $equipoSeguirdad, $swf098Transparente, $reactorEnEnfriamiento,
         $inicioCargaSWF098, $finCargaSWF098, $inicioVapor, $problemaAdicionAcido, $comentarioProblema, $equipoEnReflujo, 
-        $inicioReflujo, $finReflujo, $muestraAcidoSulfNecesario, $resultadoMuestra, $totalAguaDestilada, $muestraPasa, $lote);        
+        $inicioReflujo, $finReflujo, $totalAguaDestilada, $lote);        
 
         //si el sw es 1 registra todos los seguimientos del proceso sino actualiza los que se envien
-        if($arrayDatos['swReflujo'] == 1){
-            $resultadoRegSWF =  $this->stmtCargaSwf->execute();
-            $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
-            $resultadoActualizar = $this->actualizarSeccionProceso(3, $lote);
+        $resultadoRegSWF =  $this->stmtCargaSwf->execute();
+        $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos'], $arrayDatos['swReflujo']);
+        $resultadoActualizar = $this->actualizarSeccionProceso(3, $lote);
 
-            if(!$resultadoRegSWF){
-                $this->conexion->rollback();
-                echo "error reg seccion 3".$this->stmtCargaSwf->error;
-                return false;
-            }
-            if(!$resultadoSeguimientos){
-                $this->conexion->rollback();
-                echo "error reg seguims vacios seccion 3".$this->stmtRegSeguimientoSwf->error;
-                return false;
-            }
-            if(!$resultadoActualizar){
-                $this->conexion->rollback();
-                echo "error actualizar estado seccion 3".$this->stmtActualizarSeccion->error;
-                return false; 
-            }
-
-            $this->conexion->commit();
-            return $resultadoRegSWF;
-
-        } else {
-            $resultadoActualizarSeguimientos = $this->actualizarSeguimientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos']);
-            if(!$resultadoActualizarSeguimientos){
-                $this->conexion->rollback();
-                echo "error actualizar seguimientos".$this->stmtActualizSeguimientoSwf->error;
-                return false;
-            }
-            echo "todo se actualizó bn";
-            $this->conexion->commit();
-            return $resultadoActualizarSeguimientos;
+        if(!$resultadoRegSWF){
+            $this->conexion->rollback();
+            echo "error reg seccion 3".$this->stmtCargaSwf->error;
+            return false;
         }
+        if(!$resultadoSeguimientos){
+            $this->conexion->rollback();
+            echo "error reg seguims seccion 3".$this->stmtRegSeguimientoSwf->error;
+            return false;
+        }
+        if(!$resultadoActualizar){
+            $this->conexion->rollback();
+            echo "error actualizar estado seccion 3".$this->stmtActualizarSeccion->error;
+            return false; 
+        }
+
+        $this->conexion->commit();
+        return $resultadoRegSWF;
+
     }
 
 

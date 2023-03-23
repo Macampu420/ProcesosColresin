@@ -28,15 +28,13 @@ if (isset($_POST)) {
             }
             break;
         case 3:
-            // var_dump($_POST);
-            $objRegistro->registrarSegumientosSWF($_POST['lote'], $_POST['arraySeguimientos']);
-            // if($objRegistro->registrarSeccion3($_POST)){
-            //     echo "Registro seccion 3 realizado con exito";
-            //     http_response_code(200);
-            // } else {
-            //     echo "Registro seccion 3 erroneo 500 ";
-            //     http_response_code(500);
-            // }
+            if($objRegistro->registrarSeccion3($_POST)){
+                echo "Registro seccion 3 realizado con exito";
+                http_response_code(200);
+            } else {
+                echo "Registro seccion 3 erroneo 500 ";
+                http_response_code(500);
+            }
             break;
         case 4:
             if($objRegistro->registrarSeccion4($_POST)){

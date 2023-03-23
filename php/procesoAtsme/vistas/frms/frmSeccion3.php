@@ -222,11 +222,11 @@
                     <!-- fin reflujo -->
                     <div id="containerFinReflujo" class="row mt-3 pt-3">
                         <div class="col-3 mx-auto">
-                            <label>Fin reflujo:<input type="datetime-local" name="finReflujo">
+                            <label>Fin reflujo:<input id="finReflujo" type="datetime-local" name="finReflujo">
                         </div>
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Agua Destilada (Kg):</label>
-                            <input type="number" step="0.01" placeholder="" name="totalAguaDestilada" />
+                            <input id="totalAguaDestilada" type="number" step="0.01" placeholder="" name="totalAguaDestilada" />
                         </div>
                     </div>
                     <hr>
