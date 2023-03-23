@@ -27,7 +27,7 @@ frmParte1.addEventListener('submit', event => {
     };
 
     let datosParte1 = new FormData(frmParte1);
-    lote = document.getElementById("lote").value;
+    lote = document.getElementById("NumLote").value;
     datosParte1.append('seccion', 1);
 
     fetch('./../controladores/registroFrm.php', {
@@ -46,7 +46,7 @@ frmParte1.addEventListener('submit', event => {
 
             document.getElementById('seccion2').classList.remove('d-none');
 
-            objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
+            objRegistro.focoSiguienteSeccion('fichaLeidaToo');
 
             // objRegistro.deshabilitarForm(frmParte1);
 

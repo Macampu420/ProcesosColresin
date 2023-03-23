@@ -6,8 +6,16 @@
                 <div class="container" id="seleccioneProceso">
                     <H1 class="my-3">Proceso fabricación 800ATSME0</H1>
 
-                    <label class="mt-5 fs-3" for="NumeroLote">Número de lote:</label>
-                    <input type="text" size="2" id="lote" placeholder="Número de Lote" name="lote" required />
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="mt-5 fs-3" for="NumeroLote">Número de lote:</label>
+                            <input type="text" size="2" id="NumLote" placeholder="Número de Lote" name="lote" required />
+                        </div>
+                        <div class="col-6">
+                            <label class="mt-5 fs-3" for="NumeroLote">Nombre proceso:</label>
+                            <input type="text" id="NombreProceso" value="800ATSME0" disabled />
+                        </div>
+                    </div>
 
                     <h3 class="mt-5 pt-5">Equipos a Utilizar:</h3>
 
@@ -34,30 +42,30 @@
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label for="swf098">TOO000: </label>
-                            <input type="number" step="0.01" id="TOO00" placeholder="Kg" name="TOO00" required />
+                            <input id="too00" type="number" step="0.01" id="TOO00" placeholder="Kg" name="TOO00" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">TOREC0: </label>
-                            <input type="number" step="0.01" id="TORECO" placeholder="Kg" name="TORECO" required />
+                            <input id="torec0" type="number" step="0.01" id="TORECO" placeholder="Kg" name="TORECO" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">SWF098: </label>
-                            <input type="number" step="0.01" id="SWF098" placeholder="Kg" name="SWF098" required />
+                            <input id="swf098" type="number" step="0.01" id="SWF098" placeholder="Kg" name="SWF098" required />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label for="swf098">STW000: </label>
-                            <input type="number" step="0.01" id="STW000" placeholder="Kg" name="STW000" required />
+                            <input id="stw000" type="number" step="0.01" id="STW000" placeholder="Kg" name="STW000" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">SSO000: </label>
-                            <input type="number" step="0.01" id="SSO000" placeholder="Kg" name="SSO000" required />
+                            <input id="sso000" type="number" step="0.01" id="SSO000" placeholder="Kg" name="SSO000" required />
                         </div>
                         <div class="col-4 mx-auto">
                             <label for="swf098">GLG000: </label>
-                            <input type="number" step="0.01" id="GLG000" placeholder="Kg" name="GLG000" required />
+                            <input id="glg000" type="number" step="0.01" id="GLG000" placeholder="Kg" name="GLG000" required />
                         </div>
                     </div>
                 </div>
@@ -71,9 +79,9 @@
                         (Kg) segun el FP-04 ?</p>
                     <table class="table" style="width:50%;">
                         <tr>
-                            <td align="center"><label>Si <input type="radio" name="separacionFp04" value="1" required></label>
+                            <td align="center"><label>Si <input id="separacionFp04" type="radio" name="separacionFp04" value="1" required></label>
                             </td>
-                            <td align="center"><label>No <input type="radio" name="separacionFp04" value="0" required></label><br /></td>
+                            <td align="center"><label>No <input id="separacionFp04" type="radio" name="separacionFp04" value="0" required></label><br /></td>
                         </tr>
                     </table>
 
@@ -81,9 +89,9 @@
                         la zona de separacion?</p>
                     <table class="table" style="width:50%;">
                         <tr>
-                            <td align="center"><label>Si <input type="radio" name="materiaPrimaSeparada"
+                            <td align="center"><label>Si <input id="materiaPrimaSeparada" type="radio" name="materiaPrimaSeparada"
                                         value="1"></label></td>
-                            <td align="center"><label>No <input type="radio" name="materiaPrimaSeparada"
+                            <td align="center"><label>No <input id="materiaPrimaSeparada" type="radio" name="materiaPrimaSeparada"
                                         value="0"></label></td>
                         </tr>
                     </table>
@@ -105,10 +113,10 @@
                         <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta en
                             negativa, realizar limpieza nuevamente.</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="reactorLimpio" value="1" required>
+                            <label>Si <input id="reactorLimpio" type="radio" name="reactorLimpio" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="reactorLimpio" value="0" required>
+                            <label>No<input id="reactorLimpio" type="radio" name="reactorLimpio" value="0" required>
                         </div>
                     </div>
 
@@ -121,10 +129,10 @@
                         <p class="fs-5 text-decoration-underline text-center fw-bold">Si la respuesta en
                             negativa, realizar limpieza nuevamente.</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="bombaMangueraLineasLimpias" value="1" required>
+                            <label>Si <input id="bombaMangueraLineasLimpias" type="radio" name="bombaMangueraLineasLimpias" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="bombaMangueraLineasLimpias" value="0" required>
+                            <label>No<input id="bombaMangueraLineasLimpias" type="radio" name="bombaMangueraLineasLimpias" value="0" required>
                         </div>
                     </div>
 
@@ -134,10 +142,10 @@
                         <p class="fs-4 text-center">¿Revisó la hermeticidad del reactor y líneas de traslado
                             para evitar fugas de TOO000/TORECO y SWF098?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="hermeticidadReactorOk" value="1" required>
+                            <label>Si <input id="hermeticidadReactorOk" type="radio" name="hermeticidadReactorOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="hermeticidadReactorOk" value="0" required>
+                            <label>No<input id="hermeticidadReactorOk" type="radio" name="hermeticidadReactorOk" value="0" required>
                         </div>
                     </div>
 
@@ -146,10 +154,10 @@
                     <div class="row mt-5 pt-3">
                         <p class="fs-4 text-center">¿Revisó que el reactor funcione correctamente?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="reactorFuncionaOk" value="1" required>
+                            <label>Si <input id="reactorFuncionaOk" type="radio" name="reactorFuncionaOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="reactorFuncionaOk" value="0" required>
+                            <label>No<input id="reactorFuncionaOk" type="radio" name="reactorFuncionaOk" value="0" required>
                         </div>
                     </div>
 
@@ -158,10 +166,10 @@
                     <div class="row mt-5 pt-3">
                         <p class="fs-4 text-center">¿Funciona bien el sistema de vacío?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="sistemaVacioOk" value="1" required>
+                            <label>Si <input id="sistemaVacioOk" type="radio" name="sistemaVacioOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="sistemaVacioOk" value="0" required>
+                            <label>No<input id="sistemaVacioOk" type="radio" name="sistemaVacioOk" value="0" required>
                         </div>
                     </div>
 
@@ -170,10 +178,10 @@
                     <div class="row mt-5 pt-3">
                         <p class="fs-4 text-center">¿Funciona bien el sistema de vapor?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="sistemaVaporOk" value="1" required>
+                            <label>Si <input id="sistemaVaporOk" type="radio" name="sistemaVaporOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="sistemaVaporOk" value="0" required>
+                            <label>No<input id="sistemaVaporOk" type="radio" name="sistemaVaporOk" value="0" required>
                         </div>
                     </div>
 
@@ -182,10 +190,10 @@
                     <div class="row mt-5 pt-3">
                         <p class="fs-4 text-center">¿Funciona bien el sistema de enfriamiento?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="sistemaEnfiramientoOk" value="1" required>
+                            <label>Si <input id="sistemaEnfiramientoOk" type="radio" name="sistemaEnfiramientoOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="sistemaEnfiramientoOk" value="0" required>
+                            <label>No<input id="sistemaEnfiramientoOk" type="radio" name="sistemaEnfiramientoOk" value="0" required>
                         </div>
                     </div>
 
@@ -195,10 +203,10 @@
                         <p class="fs-4 text-center">¿El condensador no presenta escapes y funciona
                             correctamente?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="condensadorSinFugas" value="1" required>
+                            <label>Si <input id="condensadorSinFugas" type="radio" name="condensadorSinFugas" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="condensadorSinFugas" value="0" required>
+                            <label>No<input id="condensadorSinFugas" type="radio" name="condensadorSinFugas" value="0" required>
                         </div>
                     </div>
 
@@ -215,10 +223,10 @@
                             negativa, indique las razones (contacte a mantenimiento y deje el proceso en
                             espera hasta dar solución)</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="aprobacionInicio" name="aprobacionInicio" value="1" required>
+                            <label>Si <input id="aprobacionInicio" id="reactorLimpio" type="radio" id="aprobacionInicio" name="aprobacionInicio" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="aprobacionInicio" value="0" required>
+                            <label>No<input id="aprobacionInicio" id="reactorLimpio" type="radio" name="aprobacionInicio" value="0" required>
                         </div>
                     </div>
 

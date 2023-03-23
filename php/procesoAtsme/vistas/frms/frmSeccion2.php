@@ -29,10 +29,10 @@
                         </div>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="fichaLeidaFrm2" name="fichaLeída" value="1" required>
+                            <label>Si <input id="fichaLeidaToo" type="radio" name="fichaLeída" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="fichaLeída" value="0" required>
+                            <label>No<input id="fichaLeidaToo" type="radio" name="fichaLeída" value="0" required>
                         </div>
                     </div>
 
@@ -47,10 +47,10 @@
                             negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP
                             apropiado.</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="equipoSeguridad" value="1" required>
+                            <label>Si <input id="equipoSeguridadToo" type="radio" name="equipoSeguridad" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="equipoSeguridad" value="0" required>
+                            <label>No<input id="equipoSeguridadToo" type="radio" name="equipoSeguridad" value="0" required>
                         </div>
                     </div>
 
@@ -62,10 +62,10 @@
                         <p class="fs-4 text-center">¿Realizara la carga con bomba a prueba de explosión o en
                             su defecto una bomba de vacio o neumatica? </p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="cargaBomba" value="1" required>
+                            <label>Si <input id="cargaBomba" type="radio" name="cargaBomba" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="cargaBomba" value="0" required>
+                            <label>No<input id="cargaBomba" type="radio" name="cargaBomba" value="0" required>
                         </div>
                     </div>
 
@@ -80,10 +80,10 @@
                             negativa, contactar a natentenimiento para hacer las correcciones necesarias.
                         </p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="conexionesAcoplesTuberiasOk" value="1" required>
+                            <label>Si <input id="conexionesAcoplesTuberiasOk" type="radio" name="conexionesAcoplesTuberiasOk" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="conexionesAcoplesTuberiasOk" value="0" required>
+                            <label>No<input id="conexionesAcoplesTuberiasOk" type="radio" name="conexionesAcoplesTuberiasOk" value="0" required>
                         </div>
                     </div>
 
@@ -97,10 +97,10 @@
                             negativa, contactar a control calidad / I+D para su correspondiente revision.
                         </p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="coloracionTOO" value="1" required>
+                            <label>Si <input id="coloracionTOO" type="radio" name="coloracionTOO" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="coloracionTOO" value="0" required>
+                            <label>No<input id="coloracionTOO" type="radio" name="coloracionTOO" value="0" required>
                         </div>
                     </div>
 
@@ -111,10 +111,10 @@
                     <div id="cargaConVacio" class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Cargará el TOO000 con vacio?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="cargaConVacioToo000" name="cargaConVacio" value="1" required>
+                            <label>Si <input id="cargaConVacioToo000" type="radio" name="cargaConVacio" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="cargaConVacio" value="0" required>
+                            <label>No<input id="cargaBomba" type="radio" name="cargaConVacio" value="0" required>
                         </div>
                     </div>
 
@@ -143,10 +143,10 @@
                         <p class="fs-4 text-center">Cargue el (1)700TOO00 / TORECO (reserve aproximadamente
                             500 kilos para lavar la linea despues de la carga del SWF098)</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Inicio carga:<input type="datetime-local" placeholder="inicioCarga" required name="inicioCargaTOO000">
+                            <label>Inicio carga:<input id="cargaBomba" type="datetime-local" placeholder="inicioCarga" required name="inicioCargaTOO000">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Fin carga:<input type="datetime-local" placeholder="finCarga" required name="finCargaTOO000">
+                            <label>Fin carga:<input id="cargaBomba" type="datetime-local" placeholder="finCarga" required name="finCargaTOO000">
                         </div>
                     </div>
 
@@ -161,10 +161,10 @@
                             afirmativa, mencione lo ocurrido y notifique al area encargada para dar
                             solucion.</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Si <input type="radio" value="1" id="siProblemaCargaToo100" required name="problemaCarga">
+                            <label>Si <input id="cargaBomba" type="radio" value="1" id="siProblemaCargaToo100" required name="problemaCarga">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>No<input type="radio" value="0" required name="problemaCarga">
+                            <label>No<input id="cargaBomba" type="radio" value="0" required name="problemaCarga">
                         </div>
                     </div>
 
@@ -175,7 +175,7 @@
                     <div id="comentarioProblemaCargaToo" class="row mt-3 pt-3 d-none">
                         <p class="fs-4 text-center">Indica el problema:</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <input type="textarea" placeholder="Problema" name="comentarioProblema">
+                            <input id="cargaBomba" type="textarea" placeholder="Problema" name="comentarioProblema">
                         </div>
                     </div>
 
