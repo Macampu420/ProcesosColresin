@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 12:23 AM
+-- Generation Time: Mar 23, 2023 at 02:11 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -1131,14 +1131,14 @@ CREATE TABLE `tbl_conversion_tod100atoreco` (
   `kgStw000` float DEFAULT NULL,
   `KgToreco` tinyint(1) DEFAULT NULL,
   `torecoEtiquetado` tinyint(1) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_conversion_tod100atoreco`
 --
 
-INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `loteProceso`) VALUES
+INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `NumLote`) VALUES
 (1, 1, 1, 1, 24, 18, 1, 'L01'),
 (2, 1, 1, 1, 30, 32, 1, 'L02'),
 (3, 1, 1, 1, 20, 25, 1, 'L03');
@@ -1160,14 +1160,14 @@ CREATE TABLE `tbl_destilacion_tod100` (
   `finEnfriamiento` datetime DEFAULT NULL,
   `inicioSostener` datetime DEFAULT NULL,
   `finSostener` datetime DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_destilacion_tod100`
 --
 
-INSERT INTO `tbl_destilacion_tod100` (`idDestilacion`, `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `loteProceso`) VALUES
+INSERT INTO `tbl_destilacion_tod100` (`idDestilacion`, `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `NumLote`) VALUES
 (1, 1, '2023-03-19 12:12:00', '2023-03-26 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L01'),
 (2, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L02'),
 (3, 1, '0000-00-00 00:00:00', '2023-03-21 12:12:00', 10.00, 1, '2023-03-21 12:12:00', '2023-03-21 10:10:00', '2023-03-21 12:12:00', '2023-03-21 01:00:00', 'L03');
@@ -1188,14 +1188,14 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
   `sistemaVaporOk` tinyint(1) DEFAULT NULL,
   `sistemaEnfiramientoOk` tinyint(1) DEFAULT NULL,
   `condensadorSinFugas` tinyint(1) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_estado_equipo_atsme`
 --
 
-INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `loteProceso`) VALUES
+INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `NumLote`) VALUES
 (1, 1, 0, 1, 0, 1, 1, 1, 1, 'L01'),
 (2, 1, 0, 1, 0, 1, 1, 1, 1, 'L01'),
 (3, 1, 1, 1, 1, 1, 1, 1, 1, 'L02'),
@@ -1219,22 +1219,29 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `problemaAdicionAcido` tinyint(1) NOT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
   `equipoEnReflujo` tinyint(1) NOT NULL,
-  `swReflujo` tinyint(1) NOT NULL DEFAULT 1,
   `inicioReflujo` datetime NOT NULL,
   `finReflujo` datetime NOT NULL,
   `totalAguaDestilada` int(5) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_cargaswf098_atsme`
 --
 
-INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `swReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`) VALUES
-(1, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
-(2, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
-(3, 1, 1, 1, 1, '2023-03-19 12:12:00', '2023-03-12 12:12:00', 1, 0, '', 1, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1212, 'L02'),
-(4, 1, 1, 1, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 0, '', 1, 1, '2023-03-21 12:12:00', '2023-03-21 12:12:00', 20, 'L03');
+INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `NumLote`) VALUES
+(1, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
+(2, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
+(3, 1, 1, 1, 1, '2023-03-19 12:12:00', '2023-03-12 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1212, 'L02'),
+(4, 1, 1, 1, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 0, '', 1, '2023-03-21 12:12:00', '2023-03-21 12:12:00', 20, 'L03'),
+(5, 1, 1, 1, 1, '2023-03-22 12:12:00', '2023-03-22 12:12:00', 1, 0, 'ww', 1, '2023-03-22 12:12:00', '2023-03-22 11:11:00', 20, 'L03'),
+(12, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
+(15, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
+(26, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
+(27, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
+(28, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
+(29, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03'),
+(30, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1255,14 +1262,14 @@ CREATE TABLE `tbl_fase_carga_too000` (
   `finCargaTOO000` datetime DEFAULT NULL,
   `problemaCarga` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_carga_too000`
 --
 
-INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `loteProceso`) VALUES
+INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `NumLote`) VALUES
 (1, 1, 1, 1, 0, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 'Se puso verde', 'L01'),
 (2, 1, 1, 1, 1, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 0, '', 'L02'),
 (3, 1, 1, 1, 1, 0, 0, 0, '2023-03-21 12:12:00', '2023-03-21 13:12:00', 0, '', 'L03');
@@ -1289,14 +1296,14 @@ CREATE TABLE `tbl_fase_descarga` (
   `kgAtsxxx` float(5,2) DEFAULT NULL,
   `problemaEscamado` tinyint(1) DEFAULT NULL,
   `comentarioProblema` varchar(256) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_fase_descarga`
 --
 
-INSERT INTO `tbl_fase_descarga` (`idDescarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `loteProceso`) VALUES
+INSERT INTO `tbl_fase_descarga` (`idDescarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `NumLote`) VALUES
 (1, 1, 1, 6000, 90.000, 63.000, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 26.00, 16.00, 0, '', 'L01'),
 (2, 1, 1, 6900, 87.000, 62.000, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-12 12:12:00', '2023-03-19 12:12:00', 50.00, 60.00, 0, '', 'L02'),
 (3, 1, 1, 6000, 90.000, 65.000, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', '2023-03-21 12:12:00', '2023-03-21 01:12:00', 20.00, 25.00, 1, 'era verde', 'L03');
@@ -1313,14 +1320,14 @@ CREATE TABLE `tbl_lavado_equipo_atsme` (
   `finEnjuague` datetime DEFAULT NULL,
   `tuberiasLimpias` tinyint(1) DEFAULT NULL,
   `kgAguaLavada` float(5,2) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_lavado_equipo_atsme`
 --
 
-INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `loteProceso`) VALUES
+INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `NumLote`) VALUES
 (1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L01'),
 (2, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L02'),
 (3, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 10.00, 'L03');
@@ -1337,20 +1344,25 @@ CREATE TABLE `tbl_muestra_segs_swf` (
   `muestraNecesaria` tinyint(1) NOT NULL,
   `resultadoMuestra` float(7,3) DEFAULT NULL,
   `muestraCumple` tinyint(1) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_muestra_segs_swf`
 --
 
-INSERT INTO `tbl_muestra_segs_swf` (`idMuestra`, `nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `loteProceso`) VALUES
+INSERT INTO `tbl_muestra_segs_swf` (`idMuestra`, `nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `NumLote`) VALUES
 (1, 10, 1, 15.000, 0, 'L03'),
 (2, 11, 1, 10.000, 0, 'L03'),
 (3, 12, 1, 9.500, 0, 'L03'),
 (4, 13, 1, 8.000, 0, 'L03'),
 (5, 14, 1, 7.800, 0, 'L03'),
-(6, 15, 1, 7.000, 1, 'L03');
+(6, 15, 1, 7.000, 1, 'L03'),
+(7, 10, 1, 12.000, 0, 'L03'),
+(8, 10, 1, 4545.000, 0, 'L03'),
+(9, 11, 1, 0.130, 1, 'L03'),
+(10, 12, 1, 44.000, 1, 'L03'),
+(11, 13, 1, 11.000, 1, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1359,7 +1371,7 @@ INSERT INTO `tbl_muestra_segs_swf` (`idMuestra`, `nroHora`, `muestraNecesaria`, 
 --
 
 CREATE TABLE `tbl_proceso_atsme` (
-  `loteProceso` varchar(30) NOT NULL,
+  `NumLote` varchar(30) NOT NULL,
   `separacionFp04` tinyint(1) DEFAULT NULL,
   `materiaPrimaSeparada` tinyint(1) DEFAULT NULL,
   `aprobacionInicio` tinyint(1) DEFAULT NULL,
@@ -1378,7 +1390,7 @@ CREATE TABLE `tbl_proceso_atsme` (
 -- Dumping data for table `tbl_proceso_atsme`
 --
 
-INSERT INTO `tbl_proceso_atsme` (`loteProceso`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
+INSERT INTO `tbl_proceso_atsme` (`NumLote`, `separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
 ('L01', 1, 1, 1, 38, 38, 1, 1, 1, 1, 1, 1, 1),
 ('L02', 1, 1, 1, 39, 39, 1, 1, 1, 1, 1, 1, 1),
 ('L03', 1, 1, 1, 40, 40, 1, 1, 1, 1, 1, 1, 1);
@@ -1396,29 +1408,27 @@ CREATE TABLE `tbl_seguimiento_cargaswf098` (
   `presion` float(5,2) DEFAULT NULL,
   `kgAguaDestilada` float(5,2) DEFAULT NULL,
   `observaciones` varchar(256) DEFAULT '',
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_seguimiento_cargaswf098`
 --
 
-INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `loteProceso`) VALUES
-(2, 1, 1.00, 1.00, 0.00, '', 'L03'),
-(3, 2, 2.00, 2.00, 0.00, '', 'L03'),
-(4, 3, 3.00, 3.00, 3.00, '', 'L03'),
-(5, 4, 4.00, 4.00, 0.00, '', 'L03'),
-(6, 5, 5.00, 5.00, 5.00, '', 'L03'),
-(7, 6, 6.00, 6.00, 0.00, '', 'L03'),
-(8, 7, 7.00, 7.00, 0.00, '', 'L03'),
-(9, 8, 8.00, 8.00, 0.00, '', 'L03'),
-(10, 9, 9.00, 9.00, 9.00, '', 'L03'),
-(11, 10, 10.00, 10.00, 0.00, '', 'L03'),
-(12, 11, 11.00, 11.00, 0.00, '', 'L03'),
-(13, 12, 12.00, 12.00, 0.00, '', 'L03'),
-(14, 13, 13.00, 13.00, 0.00, '', 'L03'),
-(15, 14, 14.00, 14.00, 0.00, '', 'L03'),
-(16, 15, 15.00, 15.00, 0.00, '', 'L03');
+INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `NumLote`) VALUES
+(1, 1, 1.00, 1.00, 0.00, '', 'L03'),
+(2, 2, 2.00, 2.00, 0.00, '', 'L03'),
+(3, 3, 3.00, 3.00, 3.00, '', 'L03'),
+(4, 4, 4.00, 4.00, 0.00, '', 'L03'),
+(5, 5, 5.00, 5.00, 5.00, '', 'L03'),
+(6, 6, 6.00, 6.00, 0.00, '', 'L03'),
+(7, 7, 7.00, 7.00, 0.00, '', 'L03'),
+(8, 8, 8.00, 8.00, 0.00, '', 'L03'),
+(9, 9, 9.00, 9.00, 9.00, '', 'L03'),
+(10, 10, 10.00, 10.00, 0.00, '', 'L03'),
+(11, 11, 11.00, 11.00, 0.00, '', 'L03'),
+(12, 12, 12.00, 12.00, 0.00, '', 'L03'),
+(13, 13, 13.00, 13.00, 0.00, '', 'L03');
 
 -- --------------------------------------------------------
 
@@ -1434,14 +1444,14 @@ CREATE TABLE `tbl_seguimiento_desttod100` (
   `vacio` tinyint(1) DEFAULT NULL,
   `kgTOD100` float(5,2) NOT NULL,
   `observaciones` varchar(256) DEFAULT NULL,
-  `loteProceso` varchar(30) NOT NULL
+  `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_seguimiento_desttod100`
 --
 
-INSERT INTO `tbl_seguimiento_desttod100` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `loteProceso`) VALUES
+INSERT INTO `tbl_seguimiento_desttod100` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `NumLote`) VALUES
 (1, 1, 1.00, 1.00, 1, 0.00, '1', 'L01'),
 (2, 2, 2.00, 2.00, 1, 0.00, '2', 'L01'),
 (3, 3, 3.00, 3.00, 1, 0.00, '3', 'L01'),
@@ -1535,62 +1545,62 @@ ALTER TABLE `nfo`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
   ADD PRIMARY KEY (`idConversion`),
-  ADD KEY `fk_tbl_conversion_tod100atoreco_loteProceso` (`loteProceso`);
+  ADD KEY `fk_tbl_conversion_tod100atoreco_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
   ADD PRIMARY KEY (`idDestilacion`),
-  ADD KEY `fk_tbl_destilacion_tod100_tbl_proceso_atsme` (`loteProceso`);
+  ADD KEY `fk_tbl_destilacion_tod100_tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Indexes for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
   ADD PRIMARY KEY (`idEstado`),
-  ADD KEY `fk_tbl_estado_equipo_atsme_loteProceso` (`loteProceso`);
+  ADD KEY `fk_tbl_estado_equipo_atsme_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
   ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `fk_loteProcesoCargaSwfAtsme` (`loteProceso`);
+  ADD KEY `fk_NumLoteCargaSwfAtsme` (`NumLote`);
 
 --
 -- Indexes for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
   ADD PRIMARY KEY (`idCarga`),
-  ADD KEY `fk_tbl_fase_carga_too000_loteProceso` (`loteProceso`);
+  ADD KEY `fk_tbl_fase_carga_too000_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
   ADD PRIMARY KEY (`idDescarga`),
-  ADD KEY `fk_tbl_fase_descarga_loteProceso` (`loteProceso`);
+  ADD KEY `fk_tbl_fase_descarga_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
   ADD PRIMARY KEY (`idLavado`),
-  ADD KEY `fk_tbl_lavado_equipo_atsme_loteProceso` (`loteProceso`);
+  ADD KEY `fk_tbl_lavado_equipo_atsme_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_muestra_segs_swf`
 --
 ALTER TABLE `tbl_muestra_segs_swf`
   ADD PRIMARY KEY (`idMuestra`),
-  ADD KEY `fk_muestraSegSwf_loteProceso` (`loteProceso`);
+  ADD KEY `fk_muestraSegSwf_NumLote` (`NumLote`);
 
 --
 -- Indexes for table `tbl_proceso_atsme`
 --
 ALTER TABLE `tbl_proceso_atsme`
-  ADD PRIMARY KEY (`loteProceso`),
+  ADD PRIMARY KEY (`NumLote`),
   ADD KEY `fk_equipo_proceso` (`IdEquipo`),
   ADD KEY `fk_tbl_proceso_atsme_materiaprima` (`IdRegMateriaPrima`);
 
@@ -1599,14 +1609,14 @@ ALTER TABLE `tbl_proceso_atsme`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
   ADD PRIMARY KEY (`idSeguimiento`),
-  ADD KEY `seguimientoDestilacionSWF098Atsme` (`loteProceso`);
+  ADD KEY `seguimientoDestilacionSWF098Atsme` (`NumLote`);
 
 --
 -- Indexes for table `tbl_seguimiento_desttod100`
 --
 ALTER TABLE `tbl_seguimiento_desttod100`
   ADD PRIMARY KEY (`idSeguimiento`),
-  ADD KEY `fk_tbl_seguimiento_desttod100_procesoAtsme` (`loteProceso`);
+  ADD KEY `fk_tbl_seguimiento_desttod100_procesoAtsme` (`NumLote`);
 
 --
 -- Indexes for table `usuarios`
@@ -1659,7 +1669,7 @@ ALTER TABLE `tbl_estado_equipo_atsme`
 -- AUTO_INCREMENT for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_carga_too000`
@@ -1683,13 +1693,13 @@ ALTER TABLE `tbl_lavado_equipo_atsme`
 -- AUTO_INCREMENT for table `tbl_muestra_segs_swf`
 --
 ALTER TABLE `tbl_muestra_segs_swf`
-  MODIFY `idMuestra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idMuestra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_cargaswf098`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_desttod100`
@@ -1711,57 +1721,57 @@ ALTER TABLE `usuarios`
 -- Constraints for table `tbl_conversion_tod100atoreco`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
-  ADD CONSTRAINT `faseConversionTod100ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_tbl_conversion_tod100atoreco_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `faseConversionTod100ProcesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_tbl_conversion_tod100atoreco_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
-  ADD CONSTRAINT `destilacionTOD100ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_tbl_destilacion_tod100_tbl_proceso_atsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `destilacionTOD100ProcesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_tbl_destilacion_tod100_tbl_proceso_atsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
-  ADD CONSTRAINT `estadoEquipoDeProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_tbl_estado_equipo_atsme_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `estadoEquipoDeProcesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_tbl_estado_equipo_atsme_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
-  ADD CONSTRAINT `fk_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_loteProcesoCargaSwf` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_loteProcesoCargaSwfAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `procesoCargaSWF098Atsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `fk_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_NumLoteCargaSwf` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_NumLoteCargaSwfAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `procesoCargaSWF098Atsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
-  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `fk_tbl_fase_carga_too000_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `faseCargaTOO000ProcesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `fk_tbl_fase_carga_too000_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
-  ADD CONSTRAINT `fk_tbl_fase_descarga_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `fk_tbl_fase_descarga_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
-  ADD CONSTRAINT `fk_tbl_lavado_equipo_atsme_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`),
-  ADD CONSTRAINT `lavadoEquipoDeProcesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `fk_tbl_lavado_equipo_atsme_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`),
+  ADD CONSTRAINT `lavadoEquipoDeProcesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_muestra_segs_swf`
 --
 ALTER TABLE `tbl_muestra_segs_swf`
-  ADD CONSTRAINT `fk_muestraSegSwf_loteProceso` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `fk_muestraSegSwf_NumLote` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_proceso_atsme`
@@ -1774,13 +1784,13 @@ ALTER TABLE `tbl_proceso_atsme`
 -- Constraints for table `tbl_seguimiento_cargaswf098`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
-  ADD CONSTRAINT `seguimientoDestilacionSWF098Atsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `seguimientoDestilacionSWF098Atsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 
 --
 -- Constraints for table `tbl_seguimiento_desttod100`
 --
 ALTER TABLE `tbl_seguimiento_desttod100`
-  ADD CONSTRAINT `fk_tbl_seguimiento_desttod100_procesoAtsme` FOREIGN KEY (`loteProceso`) REFERENCES `tbl_proceso_atsme` (`loteProceso`);
+  ADD CONSTRAINT `fk_tbl_seguimiento_desttod100_procesoAtsme` FOREIGN KEY (`NumLote`) REFERENCES `tbl_proceso_atsme` (`NumLote`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

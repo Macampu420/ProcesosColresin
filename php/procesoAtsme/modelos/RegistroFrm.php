@@ -3,7 +3,7 @@ class RegistroFrm {
     public $idProceso;
     private $conexion; // objeto mysqli que representa la conexión a la base de datos
 
-    private $stmtActualizarSeccion, $stmtRegProcesoAtsme, $stmtRegEquipo, $stmtRegMatPrima, $stmtRegEstadoEquipo; 
+    private $stmtActualizarSeccion, $stmtRegProcesoAtsme, $stmtRegProceso, $stmtRegEquipo, $stmtRegMatPrima, $stmtRegEstadoEquipo; 
     private $stmtRegCargaToo000;
     private $stmtFaseDescarga;
     private $stmtConversion, $stmtLavadoEquipo;
@@ -22,7 +22,7 @@ class RegistroFrm {
         }
 
         // Preparar consulta INSERT utilizando la función prepare del objeto de conexión y asignarla a $stmtRegProcesoAtsme
-        $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`loteProceso`,`separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
+        $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`NumLote`,`separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
              VALUES (?,?,?,?,?,?)");
 
         $this->stmtRegEquipo = $this->conexion->prepare("INSERT INTO equipos (dietrich1, escamador)
@@ -31,40 +31,40 @@ class RegistroFrm {
         $this->stmtRegMatPrima = $this->conexion->prepare("INSERT INTO materiaprima (too00, torec0, swf098, stw000, sso000, glg000)
              VALUES (?, ?, ?, ?, ?, ?)");
 
-        $this -> stmtRegEstadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_estado_equipo_atsme`(`reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `loteProceso`)
+        $this -> stmtRegEstadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_estado_equipo_atsme`(`reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `NumLote`)
              VALUES (?,?,?,?,?,?,?,?,?)");
 
-        $this ->stmtRegCargaToo000 = $this->conexion->prepare("INSERT INTO `tbl_fase_carga_too000`(`fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `loteProceso`) 
+        $this ->stmtRegCargaToo000 = $this->conexion->prepare("INSERT INTO `tbl_fase_carga_too000`(`fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `NumLote`) 
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
-        $this ->stmtFaseDescarga = $this->conexion->prepare("INSERT INTO `tbl_fase_descarga`(`fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `loteProceso`) 
+        $this ->stmtFaseDescarga = $this->conexion->prepare("INSERT INTO `tbl_fase_descarga`(`fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `NumLote`) 
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $this ->stmtConversion = $this->conexion->prepare("INSERT INTO `tbl_conversion_tod100atoreco`(`cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `loteProceso`)
+        $this ->stmtConversion = $this->conexion->prepare("INSERT INTO `tbl_conversion_tod100atoreco`(`cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `NumLote`)
              VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-        $this->stmtLavadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_lavado_equipo_atsme`(`inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `loteProceso`)
+        $this->stmtLavadoEquipo = $this->conexion->prepare("INSERT INTO `tbl_lavado_equipo_atsme`(`inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `NumLote`)
              VALUES (?, ?, ?, ?, ?)");
 
-        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme`(`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `loteProceso`)
+        $this->stmtCargaSwf = $this->conexion->prepare("INSERT INTO `tbl_fase_cargaswf098_atsme`(`fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `NumLote`)
              VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-        $this->stmtRegSeguimientoSwf = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_cargaswf098`( `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `loteProceso`) 
+        $this->stmtRegSeguimientoSwf = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_cargaswf098`( `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `NumLote`) 
             VALUES (?,?,?,?,?,?)");
     
-        $this->stmtRegDest = $this->conexion->prepare("INSERT INTO `tbl_destilacion_tod100`( `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `loteProceso`)
+        $this->stmtRegDest = $this->conexion->prepare("INSERT INTO `tbl_destilacion_tod100`( `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `NumLote`)
              VALUES (?,?,?,?,?,?,?,?,?,?)");
 
-        $this->stmtRegSeguimientoDest = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_desttod100`(`nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `loteProceso`) 
+        $this->stmtRegSeguimientoDest = $this->conexion->prepare("INSERT INTO `tbl_seguimiento_desttod100`(`nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `NumLote`) 
              VALUES (?,'','','','','',?)");
 
-        $this->stmtActualizSegsDest = $this->conexion->prepare("UPDATE `tbl_seguimiento_desttod100` SET `temperatura`=?,`presion`=?,`vacio`=?,`kgTOD100`=?,`observaciones`=? WHERE `loteProceso` =? && `nroHoraSeguimiento`=? ");
+        $this->stmtActualizSegsDest = $this->conexion->prepare("UPDATE `tbl_seguimiento_desttod100` SET `temperatura`=?,`presion`=?,`vacio`=?,`kgTOD100`=?,`observaciones`=? WHERE `NumLote` =? && `nroHoraSeguimiento`=? ");
     }
 
-    function actualizarSeccionProceso($nroSeccion, $loteProceso){
-        $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion".$nroSeccion."`= 1 WHERE loteProceso = ?");
+    function actualizarSeccionProceso($nroSeccion, $NumLote){
+        $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion".$nroSeccion."`= 1 WHERE NumLote = ?");
 
-        $this->stmtActualizarSeccion->bind_param('s', $loteProceso);
+        $this->stmtActualizarSeccion->bind_param('s', $NumLote);
         return $this->stmtActualizarSeccion->execute();
     }
 
@@ -76,11 +76,9 @@ class RegistroFrm {
 
     function registroSeccion1($arrayDatos) {
 
-        if (isset($_SESSION['cedula'])){
 
-            $cedula = $_SESSION['cedula'];
-        }
-
+        $cedula = isset($_SESSION['cedula']) ? $_SESSION['cedula'] : 0;
+    
         // registro materia prima
         try {
             // Verificar la conexión a la base de datos
@@ -103,7 +101,9 @@ class RegistroFrm {
             // Vincular los parámetros
             $this->stmtRegEquipo->bind_param("ii", $dietrich, $escamador);
             $this->stmtRegMatPrima->bind_param("dddddd", $TOO00, $TORECO, $SWF098, $STW000, $SSO000, $GLG000);
-
+            $this->stmtRegProceso = $this->conexion->prepare("INSERT INTO `procesos`(`NumLote`, `FechaInicial`, `Estado`, `Cedula`) VALUES (?,CURDATE(),1,?)");
+            $this->stmtRegProceso->bind_param('si', $arrayDatos['lote'], $cedula);
+    
             // Iniciar la transacción
             $this->conexion->autocommit(false);
             $this->conexion->begin_transaction();
@@ -111,9 +111,16 @@ class RegistroFrm {
             // Ejecutar las consultas
             $resultadoEquipo = $this->stmtRegEquipo->execute();
             $idEquipo = $this->conexion->insert_id;
+            $resultadoRegProceso = $this->stmtRegProceso->execute();
 
             $resultadoRegMatPrima = $this -> stmtRegMatPrima -> execute();
             $idMatPrima = $this -> conexion -> insert_id;
+
+            if(!$resultadoRegProceso){
+                echo "Error reg proceso: " . $this->stmtRegProceso->error;
+                $this->conexion->rollback();
+                return;
+            }
 
             // Verificar si ocurrió un error en la transacción
             if (!$resultadoEquipo || !$resultadoRegMatPrima) {
@@ -217,15 +224,15 @@ class RegistroFrm {
 
 
     // Métodos para insertar datos de la seccion 3 utilizando las consultas preparadas
-    function registrarSegumientosSWF($loteProceso, $arraySeguimientos, $swReflujo){
+    function registrarSegumientosSWF($NumLote, $arraySeguimientos, $swReflujo){
         $pivoteSeguimiento = 0;
         $resultado  = false;
         $nroHoraSeguimiento;
 
         // condicion para definir pivote registro
         if($swReflujo == 1){
-            $this->stmtPivoteSegsSwf = $this->conexion->prepare("SELECT `nroHoraSeguimiento` FROM `tbl_seguimiento_cargaswf098` WHERE loteProceso = ? ORDER BY nroHoraSeguimiento DESC LIMIT 1");
-            $this->stmtPivoteSegsSwf->bind_param('s', $loteProceso);
+            $this->stmtPivoteSegsSwf = $this->conexion->prepare("SELECT `nroHoraSeguimiento` FROM `tbl_seguimiento_cargaswf098` WHERE NumLote = ? ORDER BY nroHoraSeguimiento DESC LIMIT 1");
+            $this->stmtPivoteSegsSwf->bind_param('s', $NumLote);
             // Ejecutar consulta
             $this->stmtPivoteSegsSwf->execute();
 
@@ -251,13 +258,13 @@ class RegistroFrm {
             $observaciones = isset($datosSeguimiento["auxObs"]) ? $datosSeguimiento["auxObs"] : "";
             
             //vinculacion de parametros
-            $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $loteProceso);
+            $this->stmtRegSeguimientoSwf->bind_param("idddss", $nroHoraSeguimiento, $temperatura, $presion, $kgAguaDestilada, $observaciones, $NumLote);
             $resultado = $this->stmtRegSeguimientoSwf->execute();
             
             //si el seguimiento tiene muestra se hace el registro de esta
             if(isset($datosSeguimiento['muestra'])){
                 //registro carga
-                $this->stmtRegMuestraSwf = $this->conexion->prepare("INSERT INTO `tbl_muestra_segs_swf`(`nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `loteProceso`) 
+                $this->stmtRegMuestraSwf = $this->conexion->prepare("INSERT INTO `tbl_muestra_segs_swf`(`nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `NumLote`) 
                 VALUES (?,?,?,?,?)");
 
                 $muestra = $datosSeguimiento['muestra'];
@@ -265,9 +272,10 @@ class RegistroFrm {
                 $resultadoMuestra = isset($muestra['resultadoMuestra']) ? $muestra['resultadoMuestra'] : 0;
                 $muestraCumple = isset($muestra['muestraCumple']) ? $muestra['muestraCumple'] : 0;
 
-                $this->stmtRegMuestraSwf->bind_param('iidis', $nroHoraSeguimiento, $muestraNecesaria, $resultadoMuestra, $muestraCumple, $loteProceso);
+                $this->stmtRegMuestraSwf->bind_param('iidis', $nroHoraSeguimiento, $muestraNecesaria, $resultadoMuestra, $muestraCumple, $NumLote);
 
                 $resultado = $this->stmtRegMuestraSwf->execute();
+                var_dump($resultado);
             } 
         }     
         return $resultado;
@@ -288,6 +296,7 @@ class RegistroFrm {
         $finReflujo = isset($arrayDatos['finReflujo']) ? $arrayDatos['finReflujo'] : "NOW()";
         $totalAguaDestilada = isset($arrayDatos['totalAguaDestilada']) ? $arrayDatos['totalAguaDestilada'] : 0;
         $lote = $arrayDatos['lote'];
+        $swReflujo = $arrayDatos['swReflujo'];
 
         $this->verificarConexion();
         
@@ -300,46 +309,63 @@ class RegistroFrm {
         $inicioCargaSWF098, $finCargaSWF098, $inicioVapor, $problemaAdicionAcido, $comentarioProblema, $equipoEnReflujo, 
         $inicioReflujo, $finReflujo, $totalAguaDestilada, $lote);        
 
-        //si el sw es 1 registra todos los seguimientos del proceso sino actualiza los que se envien
-        $resultadoRegSWF =  $this->stmtCargaSwf->execute();
-        $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos'], $arrayDatos['swReflujo']);
-        $resultadoActualizar = $this->actualizarSeccionProceso(3, $lote);
+        //registra todos los seguimientos del proceso que se envien
+        if($swReflujo == 0){
+            $resultadoRegSWF =  $this->stmtCargaSwf->execute();
+            $resultadoActualizar = $this->actualizarSeccionProceso(3, $lote);
 
-        if(!$resultadoRegSWF){
-            $this->conexion->rollback();
-            echo "error reg seccion 3".$this->stmtCargaSwf->error;
-            return false;
+            if(!$resultadoRegSWF){
+                $this->conexion->rollback();
+                echo "error reg seccion 3".$this->stmtCargaSwf->error;
+                return false;
+            }
+            if(!$resultadoActualizar){
+                $this->conexion->rollback();
+                echo "error actualizar estado seccion 3".$this->stmtActualizarSeccion->error;
+                return false; 
+            }
+        } else {
+            $this->stmtActualizarFinReflujo = $this->conexion->prepare("UPDATE `tbl_fase_cargaswf098_atsme` SET `finReflujo`= ?, `totalAguaDestilada`= ? WHERE `NumLote` = ?");
+            $this->stmtActualizarFinReflujo->bind_param('sss', $finReflujo, $totalAguaDestilada, $lote);
+    
+            $resAcutializarFinReflujo = $this->stmtActualizarFinReflujo->execute();
+    
+            var_dump( $this->conexion->affected_rows );
+    
+            if(!$resAcutializarFinReflujo){
+                $this->conexion->rollback();
+                echo "error actualizar fin reflujo: ".$this->stmtActualizarFinReflujo->error;
+                return false;
+            }
         }
+
+        $resultadoSeguimientos = $this->registrarSegumientosSWF($arrayDatos['lote'], $arrayDatos['arraySeguimientos'], $arrayDatos['swReflujo']);
+
         if(!$resultadoSeguimientos){
             $this->conexion->rollback();
             echo "error reg seguims seccion 3".$this->stmtRegSeguimientoSwf->error;
             return false;
         }
-        if(!$resultadoActualizar){
-            $this->conexion->rollback();
-            echo "error actualizar estado seccion 3".$this->stmtActualizarSeccion->error;
-            return false; 
-        }
 
         $this->conexion->commit();
-        return $resultadoRegSWF;
+        return $resultadoSeguimientos;
 
     }
 
 
     // Método para insertar los seguimientos de la destilacion vacios para despues actualizarlos    
-    function registrarSegumientosDest($loteProceso){
+    function registrarSegumientosDest($NumLote){
         $data = array();
         $resultado;
 
         for($index = 1; $index<9; $index++){
-            $this->stmtRegSeguimientoDest->bind_param('is', $index, $loteProceso);
+            $this->stmtRegSeguimientoDest->bind_param('is', $index, $NumLote);
 
             $resultado = $this->stmtRegSeguimientoDest->execute();
         }
         return $resultado;
     }
-    function actualizarSeguimientosDest($arraySeguimientos, $loteProceso){
+    function actualizarSeguimientosDest($arraySeguimientos, $NumLote){
         $nroHoraSeguimiento = 1;
         for ($i = 0; $i < count($arraySeguimientos); $i++){
             $jsonStringed = $arraySeguimientos[$i]; // Obtenemos el objeto JSON de $arraySeguimientos como string
@@ -352,7 +378,7 @@ class RegistroFrm {
             $kgTOD100 = isset($datosSeguimiento["auxKgTod100"]) ? $datosSeguimiento["auxKgTod100"] : 0;
             $vacio = isset($datosSeguimiento["auxVacio"]) ? $datosSeguimiento["auxVacio"] : 0;
 
-            $this->stmtActualizSegsDest->bind_param("ddidssi", $temperatura, $presion, $vacio, $kgTOD100, $observaciones, $loteProceso, $nroHoraSeguimiento);
+            $this->stmtActualizSegsDest->bind_param("ddidssi", $temperatura, $presion, $vacio, $kgTOD100, $observaciones, $NumLote, $nroHoraSeguimiento);
             $resultado = $this->stmtActualizSegsDest->execute();
             $nroHoraSeguimiento++;
         } 
@@ -370,7 +396,7 @@ class RegistroFrm {
         $finEnfriamiento = isset($arrayDatos['finEnfriamiento']) ? $arrayDatos['finEnfriamiento'] : ""; 
         $inicioSostener = isset($arrayDatos['inicioSostener']) ? $arrayDatos['inicioSostener'] : ""; 
         $finSostener = isset($arrayDatos['finSostener']) ? $arrayDatos['finSostener'] : ""; 
-        $loteProceso = $arrayDatos['lote'];
+        $NumLote = $arrayDatos['lote'];
         $swDest = $arrayDatos['swDest'];
 
         // Verificar la conexión a la base de datos
@@ -387,12 +413,12 @@ class RegistroFrm {
         //sw == 1 registrar segs vacios sw == 0 actualizar segs
         if($swDest == 1){
             $this->stmtRegDest->bind_param("issiisssss", $confirmInicioDestilacion, $inicioDestilacion, $finDestilacion, $kgTOD100, 
-            $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $loteProceso);
+            $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $NumLote);
             
             $resRegDest = $this->stmtRegDest->execute();
             $resCrearSegs = $this->registrarSegumientosDest($arrayDatos['lote']);
             $resultadoSeguimientos = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
-            $resultadoActualizar = $this->actualizarSeccionProceso(4, $loteProceso);
+            $resultadoActualizar = $this->actualizarSeccionProceso(4, $NumLote);
 
             if(!$resRegDest){
                 echo "Error reg destilacion: ".$this->stmtRegDest->error;
@@ -464,7 +490,7 @@ class RegistroFrm {
         $resultado = $this->stmtFaseDescarga->execute();
 
         if($resultado){
-            $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion5`= 1 WHERE loteProceso = ?");
+            $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion5`= 1 WHERE NumLote = ?");
 
             $this->stmtActualizarSeccion->bind_param('s', $arrayDatos['lote']);
             $this->stmtActualizarSeccion->execute();
@@ -491,7 +517,7 @@ class RegistroFrm {
         $resultado = $this->stmtConversion->execute();
 
         if($resultado){
-            $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion6`= 1 WHERE loteProceso = ?");
+            $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion6`= 1 WHERE NumLote = ?");
 
             $this->stmtActualizarSeccion->bind_param('s', $arrayDatos['lote']);
             $this->stmtActualizarSeccion->execute();
@@ -509,20 +535,35 @@ class RegistroFrm {
         $kgAguaLavada = $arrayDatos['kgAguaLavada'] ? $arrayDatos['kgAguaLavada'] : 0;
         $lote = $arrayDatos['lote'];
     
-        $this->stmtLavadoEquipo->bind_param('ssids', $inicioEnjuague, $finEnjuague, $tuberiasLimpias, $kgAguaLavada, $lote);
     
+        $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion7`= 1 WHERE NumLote = ?");
+        $this->stmtActualizarProceso = $this->conexion->prepare("UPDATE `procesos` SET `FechaFinal`=CURDATE(),`HoraFinal`=CURTIME(),`Estado`= 2 WHERE `NumLote` = ?");
+        
+        $this->stmtLavadoEquipo->bind_param('ssids', $inicioEnjuague, $finEnjuague, $tuberiasLimpias, $kgAguaLavada, $lote);
+        $this->stmtActualizarSeccion->bind_param('s', $arrayDatos['lote']);
+        $this->stmtActualizarProceso->bind_param('s', $lote);
+
         $resultado =  $this->stmtLavadoEquipo->execute();
+        $resActualizarSeccion = $this->stmtActualizarSeccion->execute();
+        $resActualizarProceso = $this->stmtActualizarProceso->execute();
 
-        if($resultado){
-            $this->stmtActualizarSeccion = $this->conexion->prepare("UPDATE `tbl_proceso_atsme` SET `seccion7`= 1 WHERE loteProceso = ?");
-
-            $this->stmtActualizarSeccion->bind_param('s', $arrayDatos['lote']);
-            $this->stmtActualizarSeccion->execute();
-        } else {
-            var_dump($this->stmtLavadoEquipo->error);
+        if(!$resultado){
+            echo "error reg lavado equipo: ".$this->stmtLavadoEquipo->error;
+            $this->conexion->rollback();
+            return false;
+        }
+        if(!$resActualizarSeccion){
+            echo "error actualizar seccion 7: ".$this->stmtActualizarSeccion->error;
+            $this->conexion->rollback();
+            return false;
+        }
+        if(!$resActualizarProceso){
+            echo "error actualizar proceso: ".$this->stmtActualizarProceso->error;
+            $this->conexion->rollback();
+            return false;
         }
 
-        return $resultado;
+        return $resActualizarProceso;
     }
 }
 

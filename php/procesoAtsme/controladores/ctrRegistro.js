@@ -34,19 +34,21 @@ frmParte1.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte1
         }).then(response => {
-            if (response.status === 200) {
+            // if (response.status === 200) {
                 return response.text();
-            } else {
-                throw new Error('La respuesta de la API no fue exitosa');
-            }
+            // } else {
+            //     throw new Error('La respuesta de la API no fue exitosa');
+            // }
         })
         .then(data => {
+
+            console.log(data);
 
             document.getElementById('seccion2').classList.remove('d-none');
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm2');
 
-            objRegistro.deshabilitarForm(frmParte1);
+            // objRegistro.deshabilitarForm(frmParte1);
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 
