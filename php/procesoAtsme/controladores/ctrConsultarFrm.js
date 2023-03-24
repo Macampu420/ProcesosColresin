@@ -13,13 +13,11 @@ fetchDatos = async () => {
         const responseSegs = await fetch(`./../controladores/registroFrm.php?muestras=${NumLote}`);
         const jsonSegs = await responseSegs.json();
 
-        console.log(jsonProceso, jsonSegs);
+        console.log(jsonProceso, jsonSegs.seguimientos);
 
         for (let clave in jsonProceso[0]) {
             // verifica que el input y su valor existan
             if (jsonProceso[0][clave] != null) {
-                console.log(`la claves es ${clave } y el valor es: ${jsonProceso[0][clave]} y el elemento es:`, document.getElementById(clave));
-
                 objConsulta.prepararFrm(jsonProceso[0]);
                 objConsulta.llenarSeccion1(clave, jsonProceso[0]);
                 objConsulta.llenarSeccion2(clave, jsonProceso[0]);
@@ -30,6 +28,8 @@ fetchDatos = async () => {
                 objConsulta.llenarSeccion7(clave, jsonProceso[0]);
             }
         }
+        objConsulta.renderSegsSwf(jsonSegs.seguimientos.segsSwf, jsonSegs.seguimientos.muestrasSwf);
+        objConsulta.renderSegsDest(jsonSegs.seguimientos.segsDest);
     } catch (error) {
         console.error(error);
     }
