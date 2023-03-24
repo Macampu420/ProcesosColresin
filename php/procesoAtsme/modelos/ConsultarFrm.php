@@ -33,8 +33,6 @@ class ConsultarFrm{
 
     }
 
-
-
     function consultarSeguimientos($numLote){
         $this->stmtTraerMuestrasSwf = $this->conexion->prepare("SELECT `nroHora`,`muestraNecesaria`,`resultadoMuestra`,`muestraCumple` FROM `tbl_muestra_segs_swf` WHERE `NumLote` = ?");
         $this->stmtTraerSegsSwf = $this->conexion->prepare("SELECT `nroHoraSeguimiento`,`temperatura`,`presion`,`kgAguaDestilada`,`observaciones` FROM `tbl_seguimiento_cargaswf098` WHERE `NumLote` = ?");
@@ -67,7 +65,6 @@ class ConsultarFrm{
     
         return json_encode($arraySegs);
     }
-    
 
 }
 ?>

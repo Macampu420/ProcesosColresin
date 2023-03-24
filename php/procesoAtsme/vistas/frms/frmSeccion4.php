@@ -15,10 +15,10 @@
 
                         <div class="col-6 mx-auto">
                             <label>Si <input type="radio" id="confirmInicioDestilacion" name="confirmInicioDestilacion"
-                                    value="1" required>
+                                    value="1">
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="confirmInicioDestilacion" value="0" required>
+                            <label>No<input type="radio" name="confirmInicioDestilacion" value="0">
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-4 mx-auto">
                                 <label>TOD100(kg): </label>
-                                <input type="number" step="0.01" placeholder="Kg" name="kgTOD100" required />
+                                <input type="number" step="0.01" placeholder="Kg" name="kgTOD100"/>
                             </div>
                         </div>
                     </div>
@@ -103,10 +103,10 @@
                     <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
                         <p class="fs-4 text-center">¿Puso enfriamento para bajar temperatura a 70 - 75°C?</p>
                         <div class="col-2 mt-3">
-                            <label>Si <input type="radio" name="reactorEnEnfriamiento" value="1" required>
+                            <label>Si <input type="radio" name="reactorEnEnfriamiento" value="1">
                         </div>
                         <div class="col-2 mt-3">
-                            <label>No<input type="radio" name="reactorEnEnfriamiento" value="0" required>
+                            <label>No<input type="radio" name="reactorEnEnfriamiento" value="0">
                         </div>
                     </div>
 

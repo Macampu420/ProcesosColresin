@@ -6,42 +6,33 @@ const NumLote = urlParams.get('NumLote');
 lote = NumLote;
 
 fetchDatos = async () => {
-    let responseProceso = await fetch(`./../controladores/registroFrm.php?NumLote=${NumLote}`);
-    let jsonProceso = await responseProceso.text();
-    
-    let responseSegs = await fetch(`./../controladores/registroFrm.php?muestras=${NumLote}`);
-    let jsonSegs = await responseSegs.text();
+    try {
+        const responseProceso = await fetch(`./../controladores/registroFrm.php?NumLote=${NumLote}`);
+        const jsonProceso = await responseProceso.json();
 
-    console.log(jsonProceso, jsonSegs);
+        const responseSegs = await fetch(`./../controladores/registroFrm.php?muestras=${NumLote}`);
+        const jsonSegs = await responseSegs.json();
 
+        console.log(jsonProceso, jsonSegs);
+
+        for (let clave in jsonProceso[0]) {
+            // verifica que el input y su valor existan
+            if (jsonProceso[0][clave] != null) {
+                console.log(`la claves es ${clave } y el valor es: ${jsonProceso[0][clave]} y el elemento es:`, document.getElementById(clave));
+
+                objConsulta.prepararFrm(jsonProceso[0]);
+                objConsulta.llenarSeccion1(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion2(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion3(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion4(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion5(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion6(clave, jsonProceso[0]);
+                objConsulta.llenarSeccion7(clave, jsonProceso[0]);
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 fetchDatos();
-
-// fetch(`./../controladores/registroFrm.php?NumLote=${NumLote}`)
-// .then(response => response.json())
-// .then((datosProceso) => {
-
-//     for(let clave in datosProceso[0]) {
-//         // console.log(`La clave es: ${clave} );
-
-//         // verifica que el input y su valor existan
-//         if(datosProceso[0][clave] != null){
-
-//             console.log(`la claves es ${clave } y el valor es: ${datosProceso[0][clave]} y el elemento es:`, document.getElementById(clave));
-            
-//             // document.getElementById(`${clave}`).value = datosProceso[0][clave];
-//             objConsulta.prepararFrm(datosProceso[0]);
-//             objConsulta.llenarSeccion1(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion2(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion3(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion4(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion5(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion6(clave, datosProceso[0]);
-//             objConsulta.llenarSeccion7(clave, datosProceso[0]);
-
-//         }
-//     }
-
-//     console.log(datosProceso);
-// })

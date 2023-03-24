@@ -414,7 +414,7 @@ class RegistroFrm {
         if($swDest == 1){
             $this->stmtRegDest->bind_param("issiisssss", $confirmInicioDestilacion, $inicioDestilacion, $finDestilacion, $kgTOD100, 
             $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $NumLote);
-            
+                        
             $resRegDest = $this->stmtRegDest->execute();
             $resCrearSegs = $this->registrarSegumientosDest($arrayDatos['lote']);
             $resultadoSeguimientos = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
@@ -448,16 +448,26 @@ class RegistroFrm {
             return true;
             
         } else {
+
+            $this->stmtActualizarFinalDest = $this->conexion->prepare("UPDATE `tbl_destilacion_tod100` SET `finDestilacion`=?,`kgTOD100`=?, `reactorEnEnfriamiento`=?,`inicioEnfriamiento`=?,`finEnfriamiento`=?,`inicioSostener`=?,`finSostener`=? WHERE `NumLote` = ?");
+            $this->stmtActualizarFinalDest->bind_param('siisssss', $finDestilacion, $kgTOD100, $reactorEnEnfriamiento, $inicioEnfriamiento, $finEnfriamiento, $inicioSostener, $finSostener, $NumLote);
+           
+            $resultActualizarFinalDest = $this->stmtActualizarFinalDest->execute();
             $resultRegSegs = $this->actualizarSeguimientosDest($arrayDatos['arraySeguimientos'], $arrayDatos['lote']);
             if(!$resultRegSegs){
-                echo "err actualizar ". $this->stmtActualizSegsDest->error;
+                echo "err actualizar dest: ". $this->stmtActualizSegsDest->error;
                 $this->conexion->rollback();
                 return false;
-            } else {
-                echo "registro segs destilacion exitoso";
-                $this->conexion->commit();
-                return true;
             }
+            if(!$resultActualizarFinalDest){
+                echo "err actualizar finDest: ". $this->stmtActualizarFinalDest->error;
+                $this->conexion->rollback();
+                return false;
+            }
+            echo "registro segs destilacion exitoso";
+            $this->conexion->commit();
+            return true;
+
         }
 
     }
