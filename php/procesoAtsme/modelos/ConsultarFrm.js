@@ -3,12 +3,25 @@ let ConsultarFrm = {
     prepararFrm: function (datosProceso) {
         for (let clave in datosProceso) {
             switch (clave) {
+                case 'seccion1':
                 case 'seccion2':
-                case 'seccion3':
-                case 'seccion4':
                 case 'seccion5':
                 case 'seccion6':
                 case 'seccion7':
+                    if (datosProceso[clave] == 1) {
+                        let form = document.getElementById(`frmSeccion${clave.slice(-1)}`);
+                        let camposFrm = form.querySelectorAll('input, textarea, button');
+    
+                        camposFrm.forEach((campo) => {
+                            campo.disabled = true;
+                        });
+                        document.getElementById(clave).classList.remove('d-none');
+                        if (document.getElementById(clave).nextElementSibling) document.getElementById(clave).nextElementSibling.classList.remove('d-none');
+                        continue; // Salta a la siguiente iteración
+                    }
+                    break;
+                case 'seccion3':
+                case 'seccion4':
                     if (datosProceso[clave] == 1) {
                         document.getElementById(clave).classList.remove('d-none');
                         if (document.getElementById(clave).nextElementSibling) document.getElementById(clave).nextElementSibling.classList.remove('d-none');
@@ -128,6 +141,7 @@ let ConsultarFrm = {
 
             case 'inicioCargaSWF098':
             case 'finCargaSWF098':
+            case 'inicioReflujo':
             case 'finReflujo':
             case 'totalAguaDestilada':
                 document.querySelector(`input[name='${clave}']`).value = datosProceso[clave];
@@ -206,7 +220,7 @@ let ConsultarFrm = {
                 if (datosProceso[clave] == 1) document.getElementById('problemaEscamado').classList.remove('d-none');
                 break;
 
-            case 'comentarioProblema':
+            case 'comentarioProblemaEscamado':
                 document.getElementById('frmSeccion5').querySelector('input[name="comentarioProblema"]').value = datosProceso[clave];
                 break;
 
@@ -253,7 +267,7 @@ let ConsultarFrm = {
         arraySeguimientosSwf.forEach((seguimiento, indice) => {
 
             document.getElementById('containerReflujo').classList.remove('d-none');
-    
+
             //renderiza el seguimiento con temperatura, presion y kg agua destilada
             if ((seguimiento.nroHoraSeguimiento == 3) || (seguimiento.nroHoraSeguimiento == 5) || (seguimiento.nroHoraSeguimiento == 9)) {
                 divSeguimientos.insertAdjacentHTML('beforeend', `
@@ -283,11 +297,11 @@ let ConsultarFrm = {
                 <hr>`);
             }
             //renderiza el seguimiento con pregunta sobre la muestra
-            else if(seguimiento.nroHoraSeguimiento >= 10 && seguimiento.nroHoraSeguimiento <=15){
+            else if (seguimiento.nroHoraSeguimiento >= 10 && seguimiento.nroHoraSeguimiento <= 15) {
 
                 let muestra = arrayMuestras.find(muestra => muestra.nroHora == seguimiento.nroHoraSeguimiento);
 
-                if(muestra.muestraCumple == 1) document.getElementById('btnAgregarSeguimientoSwf').disabled = true;
+                if (muestra.muestraCumple == 1) document.getElementById('btnAgregarSeguimientoSwf').disabled = true;
 
                 divSeguimientos.insertAdjacentHTML('beforeend', `
                 <div>
@@ -355,7 +369,7 @@ let ConsultarFrm = {
                 <hr>
                 `);
                 document.querySelector(`input[name="muestraNecesaria${seguimiento.nroHoraSeguimiento}"][value="${muestra.muestraNecesaria}"]`).checked = true;
-                document.querySelector(`input[name="muestraCumple${seguimiento.nroHoraSeguimiento}"][value="${muestra.muestraCumple}"]`).checked = true;    
+                document.querySelector(`input[name="muestraCumple${seguimiento.nroHoraSeguimiento}"][value="${muestra.muestraCumple}"]`).checked = true;
             }
             //renderiza el seguimiento "sencillo" (solo con temperatura y presion)
             else {
@@ -381,8 +395,6 @@ let ConsultarFrm = {
                 </div>
                 <hr>`);
             };
-
-            console.log(`El indice es ${indice} y el valor`, seguimiento);
         });
 
         numeroHoraSeguimSwf = arraySeguimientosSwf.length + 1;
@@ -391,94 +403,94 @@ let ConsultarFrm = {
     renderSegsDest: function (arraySeguimientosDest) {
 
         let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
-        divSeguimientos.innerHTML = '';
         document.getElementById('containerSeguimientoDestilado').classList.remove('d-none');
 
         arraySeguimientosDest.forEach((seguimiento, indice) => {
 
-            if(seguimiento.temperatura != '' && seguimiento.presion != ''){
+            if(seguimiento.nroHoraSeguimiento == 1){
+                divSeguimientos.innerHTML = '';
+            }
+
+            if (seguimiento.temperatura != 0 && seguimiento.presion != 0) {
                 nroHoraDest = indice + 2;
-            }
-
-            if ((seguimiento.nroHoraSeguimiento == 5) || (seguimiento.nroHoraSeguimiento == 8)) {
-                divSeguimientos.insertAdjacentHTML('beforeend', `
-                        <div>
-                            <div class="row text-center">
-                                <p class="fs-2 col-4">Hora ${seguimiento.nroHoraSeguimiento}:</p>
-                            </div>
-                        
-                            <div class="row">
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4">Temperatura: </label>
-                                    <input id="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.temperatura}"type="number" placeholder="°C" name="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
-                                </div>
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4" for="swf098">Presion: </label>
-                                    <input id="presionDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.presion}"type="number" placeholder="DPI" name="presionDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
-                                </div>
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4" for="swf098">TOD100: </label>
-                                    <input id="kgTOD100DestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.kgTOD100}"type="number" placeholder="Kg" name="kgTOD100DestilacionHora${seguimiento.nroHoraSeguimiento}"  />
-                                </div>
-                            </div>
-                        
-                            <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                                <p class="fs-4 text-center">¿Vacio?</p>
-                                <div class="col-2">
-                                    <label>Si <input  type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="1" >
-                                </div>
-                                <div class="col-2">
-                                    <label>No<input  type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="0" >
-                                </div>
-                            </div>
-                        
-                            <div class="row">
-                                <textarea id="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}">${seguimiento.observaciones}</textarea>
-                            </div>
-                        </div>
-    
-                        <hr>
-                `)
-            } else {
+                console.log(seguimiento, nroHoraDest);
+                if ((seguimiento.nroHoraSeguimiento == 5) || (seguimiento.nroHoraSeguimiento == 8)) {
                     divSeguimientos.insertAdjacentHTML('beforeend', `
-                        <div>
-                            <div class="row text-center">
-                                <p class="fs-2 col-4">Hora ${seguimiento.nroHoraSeguimiento}:</p>
-                            </div>
-                        
-                            <div class="row">
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4">Temperatura: </label>
-                                    <input id="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.temperatura}"type="number" placeholder="°C" name="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                            <div>
+                                <div class="row text-center">
+                                    <p class="fs-2 col-4">Hora ${seguimiento.nroHoraSeguimiento}:</p>
                                 </div>
-                                <div class="col-4 mx-auto">
-                                    <label class="fs4" for="swf098">Presion: </label>
-                                    <input id="presionDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.presion}"type="number" placeholder="DPI" name="presionDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                            
+                                <div class="row">
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4">Temperatura: </label>
+                                        <input id="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.temperatura}"type="number" placeholder="°C" name="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">Presion: </label>
+                                        <input id="presionDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.presion}"type="number" placeholder="DPI" name="presionDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">TOD100: </label>
+                                        <input id="kgTOD100DestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.kgTOD100}"type="number" placeholder="Kg" name="kgTOD100DestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                                    </div>
+                                </div>
+                            
+                                <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                                    <p class="fs-4 text-center">¿Vacio?</p>
+                                    <div class="col-2">
+                                        <label>Si <input  type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="1" >
+                                    </div>
+                                    <div class="col-2">
+                                        <label>No<input  type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="0" >
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <textarea id="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}">${seguimiento.observaciones}</textarea>
                                 </div>
                             </div>
-                        
-                            <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
-                                <p class="fs-4 text-center">¿Vacio?</p>
-                                <div class="col-2">
-                                    <label>Si <input id="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="1" >
-                                </div>
-                                <div class="col-2">
-                                    <label>No<input id="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="0" >
-                                </div>
-                            </div>
-                        
-                            <div class="row">
-                                <textarea id="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" placeholder="Observaciones:">${seguimiento.observaciones}</textarea>
-                            </div>
-                        </div>
-    
-                        <hr>
+        
+                            <hr>
                     `)
+                } else {
+                    divSeguimientos.insertAdjacentHTML('beforeend', `
+                            <div>
+                                <div class="row text-center">
+                                    <p class="fs-2 col-4">Hora ${seguimiento.nroHoraSeguimiento}:</p>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4">Temperatura: </label>
+                                        <input id="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.temperatura}"type="number" placeholder="°C" name="temperaturaDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                                    </div>
+                                    <div class="col-4 mx-auto">
+                                        <label class="fs4" for="swf098">Presion: </label>
+                                        <input id="presionDestilacionHora${seguimiento.nroHoraSeguimiento}" value="${seguimiento.presion}"type="number" placeholder="DPI" name="presionDestilacionHora${seguimiento.nroHoraSeguimiento}"  />
+                                    </div>
+                                </div>
+                            
+                                <div class="row mt-3 pt-3 d-flex justify-content-center mb-3">
+                                    <p class="fs-4 text-center">¿Vacio?</p>
+                                    <div class="col-2">
+                                        <label>Si <input id="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="1" >
+                                    </div>
+                                    <div class="col-2">
+                                        <label>No<input id="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" type="radio" name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}" value="0" >
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <textarea id="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" class="col-4 mx-auto h-50" name="observacionesDestilacionHora${seguimiento.nroHoraSeguimiento}" placeholder="Observaciones:">${seguimiento.observaciones}</textarea>
+                                </div>
+                            </div>
+        
+                            <hr>
+                        `)
+                }
+                document.querySelector(`input[name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}"][value="${seguimiento.vacio}"]`).checked = true;
             }
-
-            document.querySelector(`input[name="vacioDestilacionHora${seguimiento.nroHoraSeguimiento}"][value="${seguimiento.vacio}"]`).checked = true;
-
-            console.log(`El indice es ${indice} y el valor`, seguimiento);
         });
 
     }

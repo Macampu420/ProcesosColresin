@@ -13,7 +13,7 @@ let swReflujo = 0;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-// objRegistro.construirNuevoFormulario();
+objRegistro.construirNuevoFormulario();
 
 // control de formularios
 
@@ -144,18 +144,18 @@ frmParte3.addEventListener('submit', event => {
         method: 'POST',
         body: datosParte3
     }).then(response => {
-        // if (response.status === 200) {
+        if (response.status === 200) {
         return response.text();
-        // } else {
-        //   throw new Error('La respuesta de la API no fue exitosa');
-        // }
+        } else {
+          throw new Error('La respuesta de la API no fue exitosa');
+        }
     }).then((data) => {
-        console.log(data);
-
         swReflujo = 1;
 
         let finReflujo = document.getElementById('finReflujo');
         let totalAguaDestilada = document.getElementById('totalAguaDestilada');
+
+        window.alert('Seguimientos registrados');
 
         if (finReflujo.value && totalAguaDestilada.value) {
             document.getElementById('seccion4').classList.remove('d-none');
@@ -228,8 +228,16 @@ frmParte4.addEventListener('submit', event => {
         .then(response => {
 
             swDest = 0;
-            document.getElementById('seccion5').classList.remove('d-none');
-            objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
+
+            let inicioSostener = document.getElementById('frmSeccion4').querySelector('input[name=inicioSostener]');
+            let finSostener = document.getElementById('frmSeccion4').querySelector('input[name=finSostener]');
+    
+            window.alert('Seguimientos registrados');
+    
+            if (inicioSostener.value && finSostener.value) {
+                document.getElementById('seccion5').classList.remove('d-none');
+                objRegistro.focoSiguienteSeccion('fichaLeidaFrm5');
+            }
 
         }).catch(err => alert("ocurrió un error en el registro, por favor intentalo mas tarde"));
 });

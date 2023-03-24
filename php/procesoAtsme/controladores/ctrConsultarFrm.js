@@ -13,8 +13,6 @@ fetchDatos = async () => {
         const responseSegs = await fetch(`./../controladores/registroFrm.php?muestras=${NumLote}`);
         const jsonSegs = await responseSegs.json();
 
-        console.log(jsonProceso, jsonSegs.seguimientos);
-
         for (let clave in jsonProceso[0]) {
             // verifica que el input y su valor existan
             if (jsonProceso[0][clave] != null) {
