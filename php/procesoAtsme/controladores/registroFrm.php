@@ -82,6 +82,18 @@
         $objConsultar->consultarProceso($_GET['NumLote']);
     }
 
+    if(isset($_GET['muestras'])){
+        $objConsultar = new ConsultarFrm('localhost', 'root', '', 'altmannc_procesos');
+        $segs = $objConsultar->consultarSeguimientos($_GET['muestras']);
+        if($segs != null){
+            echo $segs;
+            http_response_code(200);
+        } else {
+            echo json_encode(array('error' => 'error en la consulta'));
+            http_response_code(500);
+        }
+    }
+
     //El array $_GET recibio el parametro eliminarNumLote entonces se actualiza el estado a eliminado
     if(isset($_GET['eliminarNumLote'])){
         $objRegistro = new RegistroFrm('localhost', 'root', '', 'altmannc_procesos');
