@@ -21,6 +21,23 @@ let ConsultarFrm = {
 
     llenarSeccion1: function (clave, datosProceso) {
         switch (clave) {
+            
+            case 'NumLote':
+                document.querySelector(`input[name='lote']`).value = datosProceso[clave];
+                break;
+
+            case 'torec0':
+                document.querySelector(`input[name='TORECO']`).value = datosProceso[clave];
+                break;
+
+            case 'too00': 
+            case 'swf098':
+            case 'stw000': 
+            case 'sso000': 
+            case 'glg000':
+                document.querySelector(`input[name='${clave.toUpperCase()}']`).value = datosProceso[clave];
+                break;
+
             // gestion equipo
             case 'dietrich1':
             case 'escamador':

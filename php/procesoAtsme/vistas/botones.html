@@ -9,6 +9,16 @@
 <body>
     <button><a href="./indexAtsme.php" target="blank">Nuevo Form</a></button>
     <button><a href="./continuarProcesoAtsme.php?NumLote=L01">Seguir Form</a></button>
-    <button href="./indexAtsme.php">Eliminar Form</button>
+    <button id="btnEliminar">Eliminar Form</button>
 </body>
+<script>
+    document.getElementById('btnEliminar').onclick = () => {
+        let confirm = window.confirm("Deseas eliminar este proceso?");
+        if (confirm) {
+            fetch('./../controladores/registroFrm.php?eliminarNumLote=L01')
+            .then(response => response.text())
+            .then(response => console.log(response));
+        }
+    }
+</script>
 </html>

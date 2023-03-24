@@ -3,8 +3,8 @@
     require_once './../modelos/RegistroFrm.php';
     require_once './../modelos/Consultarfrm.php';
 
+    // El array $_POST existe y tiene la posicion seccion, procesa los datos del formulario
     if (isset($_POST['seccion'])) {
-        // El array $_POST existe y tiene la posicion seccion, procesa los datos del formulario
 
         $objRegistro = new RegistroFrm('localhost', 'root', '', 'altmannc_procesos');
 
@@ -75,10 +75,18 @@
         }
     }
 
+    //El array $_GET recibio el parametro numLote entonces se abre sirve la info del frm iniciado
     if(isset($_GET['NumLote'])){
         $objConsultar = new ConsultarFrm('localhost', 'root', '', 'altmannc_procesos');
 
         $objConsultar->consultarProceso($_GET['NumLote']);
+    }
+
+    //El array $_GET recibio el parametro eliminarNumLote entonces se actualiza el estado a eliminado
+    if(isset($_GET['eliminarNumLote'])){
+        $objRegistro = new RegistroFrm('localhost', 'root', '', 'altmannc_procesos');
+
+        var_dump($objRegistro->eliminarProceso($_GET['eliminarNumLote']));
     }
 
 ?>

@@ -565,6 +565,13 @@ class RegistroFrm {
 
         return $resActualizarProceso;
     }
+
+    function eliminarProceso($NumLote){
+        $this->stmtEliminar = $this->conexion->prepare('UPDATE `procesos` SET `Estado`= 3 WHERE `NumLote` = ?');
+        $this->stmtEliminar->bind_param('s', $NumLote);
+        $resultado = $this->stmtEliminar->execute();
+        return $resultado;
+    }
 }
 
 ?>
