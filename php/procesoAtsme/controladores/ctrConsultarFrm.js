@@ -28,6 +28,8 @@ fetchDatos = async () => {
         }
         objConsulta.renderSegsSwf(jsonSegs.seguimientos.segsSwf, jsonSegs.seguimientos.muestrasSwf);
         objConsulta.renderSegsDest(jsonSegs.seguimientos.segsDest);
+        objConsulta.focoFrm(jsonProceso[0]);
+
     } catch (error) {
         console.error(error);
     }

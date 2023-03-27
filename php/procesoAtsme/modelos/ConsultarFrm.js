@@ -1,6 +1,28 @@
 let ConsultarFrm = {
 
+    focoFrm: function (datosProceso) {
+        for (const clave in datosProceso) {
+            switch (clave) {
+                case 'seccion1':
+                case 'seccion2':
+                case 'seccion3':
+                case 'seccion4':
+                case 'seccion5':
+                case 'seccion6':
+                case 'seccion7':
+                    if(datosProceso[clave] == 0){
+                        document.getElementById(clave).scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+            }
+        }
+        
+    },
+
     prepararFrm: function (datosProceso) {
+
         for (let clave in datosProceso) {
             switch (clave) {
                 case 'seccion1':
@@ -11,12 +33,14 @@ let ConsultarFrm = {
                     if (datosProceso[clave] == 1) {
                         let form = document.getElementById(`frmSeccion${clave.slice(-1)}`);
                         let camposFrm = form.querySelectorAll('input, textarea, button');
-    
+
                         camposFrm.forEach((campo) => {
                             campo.disabled = true;
                         });
                         document.getElementById(clave).classList.remove('d-none');
-                        if (document.getElementById(clave).nextElementSibling) document.getElementById(clave).nextElementSibling.classList.remove('d-none');
+                        if (document.getElementById(clave).nextElementSibling) {
+                            document.getElementById(clave).nextElementSibling.classList.remove('d-none');
+                        };
                         continue; // Salta a la siguiente iteración
                     }
                     break;
@@ -264,12 +288,16 @@ let ConsultarFrm = {
         divSeguimientos.innerHTML = '';
         document.getElementById('containerReflujo').classList.remove('d-none');
 
+        if(arraySeguimientosSwf.length > 0){
+            swReflujo = 1;
+        }
+
         arraySeguimientosSwf.forEach((seguimiento, indice) => {
 
             document.getElementById('containerReflujo').classList.remove('d-none');
 
             //renderiza el seguimiento con temperatura, presion y kg agua destilada
-            if ((seguimiento.nroHoraSeguimiento == 3) || (seguimiento.nroHoraSeguimiento == 5) || (seguimiento.nroHoraSeguimiento == 9)) {
+            if ((seguimiento.nroHoraSeguimiento == 10) || (seguimiento.nroHoraSeguimiento == 20)) {
                 divSeguimientos.insertAdjacentHTML('beforeend', `
                 <div>
                     <div class="row text-center">
@@ -279,15 +307,15 @@ let ConsultarFrm = {
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Temperatura: </label>
-                            <input required type="number"value="${seguimiento.nroHoraSeguimiento}" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Presion: </label>
-                            <input required type="number" value="${seguimiento.nroHoraSeguimiento}"id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Agua Destilada: </label>
-                            <input required type="number" value="${seguimiento.nroHoraSeguimiento}"id="kgAguaDestiladaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="Kg" name="kgAguaDestiladaCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="kgAguaDestiladaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="Kg" name="kgAguaDestiladaCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                     </div>
                     <div class="row">
@@ -297,7 +325,7 @@ let ConsultarFrm = {
                 <hr>`);
             }
             //renderiza el seguimiento con pregunta sobre la muestra
-            else if (seguimiento.nroHoraSeguimiento >= 10 && seguimiento.nroHoraSeguimiento <= 15) {
+            else if (seguimiento.nroHoraSeguimiento > 20 && seguimiento.nroHoraSeguimiento <= 30) {
 
                 let muestra = arrayMuestras.find(muestra => muestra.nroHora == seguimiento.nroHoraSeguimiento);
 
@@ -312,15 +340,15 @@ let ConsultarFrm = {
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Temperatura: </label>
-                            <input required type="number"value="${seguimiento.nroHoraSeguimiento}" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Presion: </label>
-                            <input required type="number" value="${seguimiento.nroHoraSeguimiento}"id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                     </div>
                     <div class="row">
-                        <textarea class="col-4 mx-auto h-50" value="${seguimiento.nroHoraSeguimiento}" id="observacionesCargaHora${seguimiento.nroHoraSeguimiento}" name="observacionesCargaHora${seguimiento.nroHoraSeguimiento}">${seguimiento.observaciones}</textarea>
+                        <textarea class="col-4 mx-auto h-50"  id="observacionesCargaHora${seguimiento.nroHoraSeguimiento}" name="observacionesCargaHora${seguimiento.nroHoraSeguimiento}">${seguimiento.observaciones}</textarea>
                     </div>
                 </div>
                 
@@ -382,11 +410,11 @@ let ConsultarFrm = {
                     <div class="row">
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Temperatura: </label>
-                            <input required type="number"value="${seguimiento.nroHoraSeguimiento}" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="°C" name="temperaturaCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                         <div class="col-4 mx-auto">
                             <label class="fs4" for="swf098">Presion: </label>
-                            <input required type="number" value="${seguimiento.nroHoraSeguimiento}"id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
+                            <input required type="number" id="presionCargaHora${seguimiento.nroHoraSeguimiento}" placeholder="DPI" name="presionCargaHora${seguimiento.nroHoraSeguimiento}"  />
                         </div>
                     </div>
                     <div class="row">
@@ -405,15 +433,16 @@ let ConsultarFrm = {
         let divSeguimientos = document.getElementById('containerSeguimientosDestilacionTod100');
         document.getElementById('containerSeguimientoDestilado').classList.remove('d-none');
 
+        if (arraySeguimientosDest.length > 0) swDest = 0;
+
         arraySeguimientosDest.forEach((seguimiento, indice) => {
 
-            if(seguimiento.nroHoraSeguimiento == 1){
+            if (seguimiento.nroHoraSeguimiento == 1) {
                 divSeguimientos.innerHTML = '';
             }
 
             if (seguimiento.temperatura != 0 && seguimiento.presion != 0) {
                 nroHoraDest = indice + 2;
-                console.log(seguimiento, nroHoraDest);
                 if ((seguimiento.nroHoraSeguimiento == 5) || (seguimiento.nroHoraSeguimiento == 8)) {
                     divSeguimientos.insertAdjacentHTML('beforeend', `
                             <div>

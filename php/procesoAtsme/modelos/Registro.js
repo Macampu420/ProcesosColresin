@@ -32,7 +32,7 @@ let RegistroForm = {
         let divSeguimientos = document.getElementById('containerSeguimientosSWF098');
 
         //renderiza el seguimiento con temperatura, presion y kg agua destilada
-        if ((numeroHoraSeguimSwf == 3) || (numeroHoraSeguimSwf == 5) || (numeroHoraSeguimSwf == 9)) {
+        if ((numeroHoraSeguimSwf == 10) || (numeroHoraSeguimSwf == 20)) {
             divSeguimientos.insertAdjacentHTML('beforeend', `
             <div>
                 <div class="row text-center">
@@ -42,26 +42,26 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Agua Destilada: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}" placeholder="Kg" name="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}" placeholder="Kg" name="kgAguaDestiladaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50"  id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             <hr>`);
             return numeroHoraSeguimSwf + 1;
         }
         //renderiza el seguimiento con pregunta sobre la muestra
-        else if(numeroHoraSeguimSwf >= 10 && numeroHoraSeguimSwf <=15){
+        else if(numeroHoraSeguimSwf > 20 && numeroHoraSeguimSwf <=30){
             divSeguimientos.insertAdjacentHTML('beforeend', `
             <div>
                 <div class="row text-center">
@@ -71,15 +71,15 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50"  id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             
@@ -130,8 +130,8 @@ let RegistroForm = {
             return numeroHoraSeguimSwf + 1;
         }
         //alerta sobre fin seguimientos
-        else if (numeroHoraSeguimSwf >= 16) {
-            alert('El limite de horas (15) ha sido alcanzado');
+        else if (numeroHoraSeguimSwf >= 31) {
+            alert('El limite de horas (30) ha sido alcanzado');
             return 16
         } 
         //renderiza el seguimiento "sencillo" (solo con temperatura y presion)
@@ -145,15 +145,15 @@ let RegistroForm = {
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Temperatura: </label>
-                        <input required type="number"value="${numeroHoraSeguimSwf}" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="temperaturaCargaHora${numeroHoraSeguimSwf}" placeholder="°C" name="temperaturaCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                     <div class="col-4 mx-auto">
                         <label class="fs4" for="swf098">Presion: </label>
-                        <input required type="number" value="${numeroHoraSeguimSwf}"id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
+                        <input required type="number" id="presionCargaHora${numeroHoraSeguimSwf}" placeholder="DPI" name="presionCargaHora${numeroHoraSeguimSwf}"  />
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="col-4 mx-auto h-50" value="${numeroHoraSeguimSwf}" id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
+                    <textarea class="col-4 mx-auto h-50"  id="observacionesCargaHora${numeroHoraSeguimSwf}" name="observacionesCargaHora${numeroHoraSeguimSwf}" placeholder="Observaciones:"></textarea>
                 </div>
             </div>
             <hr>`);

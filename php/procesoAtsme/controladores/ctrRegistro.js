@@ -95,7 +95,7 @@ frmParte3.addEventListener('submit', event => {
         let auxPres = document.getElementById(`presionCargaHora${i}`).value;
         let auxObs = document.getElementById(`observacionesCargaHora${i}`).value;
 
-        if ((i == 3) || (i == 5) || (i == 9)) {
+        if ((i == 10) || (i == 20)) {
             let auxAguaDest = document.getElementById(`kgAguaDestiladaCargaHora${i}`).value;
             arraySeguimientos.push({
                 auxTemp,
@@ -103,7 +103,7 @@ frmParte3.addEventListener('submit', event => {
                 auxObs,
                 auxAguaDest
             })
-        } else if (i >= 10 && i <= 15) {
+        } else if (i > 20 && i <= 30) {
             let muestraNecesaria = document.querySelector(`input[name="muestraNecesaria${i}"]:checked`);
             let resultadoMuestra = document.querySelector(`input[name="resultadoMuestra${i}"]`).value;
             let muestraCumple = document.querySelector(`input[name="muestraCumple${i}"]:checked`);
@@ -129,6 +129,8 @@ frmParte3.addEventListener('submit', event => {
             })
         }
     }
+
+    console.log(arraySeguimientos);
 
     //se agregan propiedades necesarias
     datosParte3.append('seccion', 3);

@@ -15,7 +15,7 @@
     document.getElementById('btnEliminar').onclick = () => {
         let confirm = window.confirm("Deseas eliminar este proceso?");
         if (confirm) {
-            fetch('./../controladores/registroFrm.php?eliminarNumLote=L01')
+            fetch('./../controladores/registroFrm.php?eliminarNumLote=L02')
             .then(response => response.text())
             .then(response => console.log(response));
         }
