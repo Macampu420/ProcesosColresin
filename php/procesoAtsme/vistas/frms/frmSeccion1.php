@@ -217,18 +217,28 @@
                 <div class="container">
                     <h2>Aprobacion final del inicio del proceso:</h2>
 
-                    <div class="row mt-5 pt-3">
+                    <div id="aprobacionInicio" class="row mt-5 pt-3">
                         <p class="fs-4 text-center">¿Aprueba el inicio del proceso?</p>
                         <p class="fs-5 text-decoration-underline text-center fw-bold">En caso de respuesta
                             negativa, indique las razones (contacte a mantenimiento y deje el proceso en
                             espera hasta dar solución)</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input id="aprobacionInicio" id="reactorLimpio" type="radio" id="aprobacionInicio" name="aprobacionInicio" value="1" required>
+                            <label>Si <input id="confirmAprobacionInicio" id="reactorLimpio" type="radio" id="aprobacionInicio" name="aprobacionInicio" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input id="aprobacionInicio" id="reactorLimpio" type="radio" name="aprobacionInicio" value="0" required>
+                            <label>No<input id="noAprobacionInicio" id="reactorLimpio" type="radio" name="aprobacionInicio" value="0" required>
                         </div>
                     </div>
+
+                    <!-- comentarioProblema -->
+
+                    <div id="comentarioDesaprueboInicio" class="row mt-3 pt-3 d-none">
+                        <p class="fs-4 text-center">Indica el problema:</p>
+                        <div class="col-3 mt-5 mx-auto">
+                            <input id="inpComentarioDesaprueboInicio" type="textarea" placeholder="Problema" name="comentarioDesaprueboInicio">
+                        </div>
+                    </div>
+
 
                     <button type="submit" id="btnPrimeraParteForm" class="boton boton-opcion rounded-3 p-3 mb-5">Guardar
                         y Continuar</button>

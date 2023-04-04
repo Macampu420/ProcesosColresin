@@ -13,7 +13,7 @@ let swReflujo = 0;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-objRegistro.construirNuevoFormulario();
+// objRegistro.construirNuevoFormulario();
 
 // control de formularios
 
@@ -381,4 +381,14 @@ document.getElementById('containerSeguimientosSWF098').addEventListener('input',
     } else if (event.target.id.includes('noMuestraNecesaria')) {
         event.target.parentElement.parentElement.nextElementSibling.classList.add('d-none');
     }
+})
+
+document.getElementById('aprobacionInicio').addEventListener('input', (event) => {
+
+    if(event.target.id.includes('noAprobacionInicio')){
+        document.getElementById('comentarioDesaprueboInicio').classList.remove('d-none');
+    } else {
+        document.getElementById('comentarioDesaprueboInicio').classList.add('d-none'); 
+    }
+
 })

@@ -132,7 +132,7 @@ let RegistroForm = {
         //alerta sobre fin seguimientos
         else if (numeroHoraSeguimSwf >= 31) {
             alert('El limite de horas (30) ha sido alcanzado');
-            return 16
+            return 31
         } 
         //renderiza el seguimiento "sencillo" (solo con temperatura y presion)
         else {
