@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 07:27 PM
+-- Generation Time: Apr 07, 2023 at 09:00 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -81,7 +81,9 @@ INSERT INTO `equipos` (`IdEquipo`, `dietrich2`, `fLukas`, `contOlor`, `dietrich1
 (39, '-1', '-1', '-1', 1, 0),
 (40, '-1', '-1', '-1', 1, 1),
 (41, '-1', '-1', '-1', 1, 1),
-(43, '-1', '-1', '-1', 1, 1);
+(43, '-1', '-1', '-1', 1, 1),
+(44, '-1', '-1', '-1', 1, 1),
+(45, '-1', '-1', '-1', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -938,7 +940,9 @@ INSERT INTO `materiaprima` (`IdRegMateriaPrima`, `nan000`, `fdo037`, `myo000`, `
 (39, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '10', '11', 12.00, 12.00, 11.50, 13.00),
 (40, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '14', '13', 12.00, 12.50, 13.20, 11.00),
 (41, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '12', 12.00, 12.00, 12.00, 12.00),
-(43, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '12', 12.00, 12.00, 12.00, 12.00);
+(43, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '12', 12.00, 12.00, 12.00, 12.00),
+(44, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '121', 12.00, 12.00, 21.00, 212.00),
+(45, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '121', 12.00, 12.00, 21.00, 212.00);
 
 -- --------------------------------------------------------
 
@@ -1121,7 +1125,9 @@ INSERT INTO `procesos` (`NumLote`, `FechaInicial`, `FechaFinal`, `HoraInicial`, 
 ('10', '2023-03-06', '2023-03-06', '16:56:23', '17:15:36', 2, '1019983876'),
 ('23123', '2023-03-06', NULL, '19:18:58', NULL, 3, '1019983876'),
 ('L221', '2023-04-04', NULL, '00:00:00', NULL, 1, '0'),
-('L04', '2023-04-07', NULL, '00:00:00', NULL, 1, '0');
+('L04', '2023-04-07', NULL, '00:00:00', NULL, 1, '0'),
+('L05', '2023-04-07', NULL, '13:09:26', NULL, 1, '0'),
+('L06', '2023-04-07', NULL, '13:28:00', NULL, 1, '1019983876');
 
 -- --------------------------------------------------------
 
@@ -1176,7 +1182,8 @@ CREATE TABLE `tbl_destilacion_tod100` (
 INSERT INTO `tbl_destilacion_tod100` (`idDestilacion`, `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `NumLote`) VALUES
 (1, 1, '2023-03-19 12:12:00', '2023-03-26 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L01'),
 (2, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L02'),
-(3, 1, '0000-00-00 00:00:00', '2023-03-21 12:12:00', 10.00, 1, '2023-03-21 12:12:00', '2023-03-21 10:10:00', '2023-03-21 12:12:00', '2023-03-21 01:00:00', 'L03');
+(3, 1, '0000-00-00 00:00:00', '2023-03-21 12:12:00', 10.00, 1, '2023-03-21 12:12:00', '2023-03-21 10:10:00', '2023-03-21 12:12:00', '2023-03-21 01:00:00', 'L03'),
+(4, 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 12.00, 0, '2023-04-07 12:12:00', '2023-04-07 12:12:00', '2023-04-07 12:12:00', '2023-04-07 12:12:00', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1207,7 +1214,9 @@ INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangue
 (3, 1, 1, 1, 1, 1, 1, 1, 1, 'L02'),
 (4, 1, 0, 1, 0, 1, 0, 1, 0, 'L03'),
 (5, 1, 1, 1, 1, 1, 1, 1, 1, 'L221'),
-(6, 1, 1, 1, 1, 1, 1, 1, 1, 'L04');
+(6, 1, 1, 1, 1, 1, 1, 1, 1, 'L04'),
+(7, 1, 1, 1, 1, 1, 1, 1, 1, 'L05'),
+(8, 1, 1, 1, 1, 1, 1, 1, 1, 'L06');
 
 -- --------------------------------------------------------
 
@@ -1249,7 +1258,8 @@ INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguir
 (27, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
 (28, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
 (29, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03'),
-(30, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03');
+(30, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03'),
+(31, 1, 1, 1, 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 1, 0, '', 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 20, 'L04');
 
 -- --------------------------------------------------------
 
@@ -1281,7 +1291,8 @@ INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`
 (1, 1, 1, 1, 0, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 'Se puso verde', 'L01'),
 (2, 1, 1, 1, 1, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 0, '', 'L02'),
 (3, 1, 1, 1, 1, 0, 0, 0, '2023-03-21 12:12:00', '2023-03-21 13:12:00', 0, '', 'L03'),
-(4, 1, 1, 1, 1, 1, 1, 1, '2023-04-04 12:12:00', '2023-04-04 12:12:00', 1, 'juan', 'L221');
+(4, 1, 1, 1, 1, 1, 1, 1, '2023-04-04 12:12:00', '2023-04-04 12:12:00', 1, 'juan', 'L221'),
+(5, 1, 1, 1, 1, 0, 0, 0, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 0, '', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1406,7 +1417,9 @@ INSERT INTO `tbl_proceso_atsme` (`NumLote`, `NombreProceso`, `separacionFp04`, `
 ('L01', 'ATSME', 1, 1, 0, '', 1, 38, 38, 1, 1, 1, 1, 1, 1, 1),
 ('L02', 'ATSME', 1, 1, 0, '', 1, 39, 39, 1, 1, 1, 1, 1, 1, 1),
 ('L03', 'ATSME', 1, 1, 0, '', 1, 40, 40, 1, 1, 1, 1, 1, 1, 1),
-('L04', 'ATSME', 1, 1, 1, 'panfilo', 1, 43, 43, 1, 0, 0, 0, 0, 0, 0),
+('L04', 'ATSME', 1, 1, 1, 'panfilo', 1, 43, 43, 1, 1, 1, 1, 0, 0, 0),
+('L05', 'ATSME', 1, 1, 1, ' juan', 1, 44, 44, 1, 0, 0, 0, 0, 0, 0),
+('L06', 'ATSME', 1, 1, 1, ' juan', 1, 45, 45, 1, 0, 0, 0, 0, 0, 0),
 ('L221', 'ATSME', 1, 1, 0, '', 0, 41, 41, 1, 1, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -1442,7 +1455,12 @@ INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`
 (10, 10, 10.00, 10.00, 0.00, '', 'L03'),
 (11, 11, 11.00, 11.00, 0.00, '', 'L03'),
 (12, 12, 12.00, 12.00, 0.00, '', 'L03'),
-(13, 13, 13.00, 13.00, 0.00, '', 'L03');
+(13, 13, 13.00, 13.00, 0.00, '', 'L03'),
+(14, 1, 1.00, 1.00, 0.00, '1', 'L04'),
+(15, 2, 2.00, 2.00, 0.00, '2', 'L04'),
+(16, 3, 3.00, 3.00, 0.00, '3', 'L04'),
+(17, 4, 4.00, 4.00, 0.00, '4', 'L04'),
+(18, 5, 5.00, 5.00, 0.00, '5', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1489,7 +1507,15 @@ INSERT INTO `tbl_seguimiento_desttod100` (`idSeguimiento`, `nroHoraSeguimiento`,
 (21, 5, 5.00, 5.00, 1, 5.00, '5', 'L03'),
 (22, 6, 6.00, 6.00, 1, 0.00, '6', 'L03'),
 (23, 7, 7.00, 7.00, 1, 0.00, '7', 'L03'),
-(24, 8, 8.00, 8.00, 1, 8.00, '8', 'L03');
+(24, 8, 8.00, 8.00, 1, 8.00, '8', 'L03'),
+(25, 1, 1.00, 1.00, 1, 0.00, '1 ', 'L04'),
+(26, 2, 2.00, 2.00, 1, 0.00, '2', 'L04'),
+(27, 3, 3.00, 3.00, 1, 0.00, '3', 'L04'),
+(28, 4, 4.00, 4.00, 1, 0.00, '4', 'L04'),
+(29, 5, 5.00, 5.00, 1, 5.00, '5', 'L04'),
+(30, 6, 6.00, 6.00, 1, 0.00, '6', 'L04'),
+(31, 7, 0.00, 0.00, 0, 0.00, '', 'L04'),
+(32, 8, 0.00, 0.00, 0, 0.00, '', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1542,6 +1568,8 @@ CREATE TABLE `vistaprocesoatsme` (
 ,`separacionFp04` tinyint(1)
 ,`materiaPrimaSeparada` tinyint(1)
 ,`aprobacionInicio` tinyint(1)
+,`problemaInicioProceso` tinyint(1)
+,`comentarioProblemaInicioProceso` varchar(100)
 ,`IdEquipo` int(11)
 ,`IdRegMateriaPrima` int(11)
 ,`seccion1` tinyint(1)
@@ -1633,7 +1661,7 @@ CREATE TABLE `vistaprocesoatsme` (
 --
 DROP TABLE IF EXISTS `vistaprocesoatsme`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistaprocesoatsme`  AS SELECT `tbl_proceso_atsme`.`NumLote` AS `NumLote`, `tbl_proceso_atsme`.`separacionFp04` AS `separacionFp04`, `tbl_proceso_atsme`.`materiaPrimaSeparada` AS `materiaPrimaSeparada`, `tbl_proceso_atsme`.`aprobacionInicio` AS `aprobacionInicio`, `tbl_proceso_atsme`.`IdEquipo` AS `IdEquipo`, `tbl_proceso_atsme`.`IdRegMateriaPrima` AS `IdRegMateriaPrima`, `tbl_proceso_atsme`.`seccion1` AS `seccion1`, `tbl_proceso_atsme`.`seccion2` AS `seccion2`, `tbl_proceso_atsme`.`seccion3` AS `seccion3`, `tbl_proceso_atsme`.`seccion4` AS `seccion4`, `tbl_proceso_atsme`.`seccion5` AS `seccion5`, `tbl_proceso_atsme`.`seccion6` AS `seccion6`, `tbl_proceso_atsme`.`seccion7` AS `seccion7`, `equipos`.`dietrich1` AS `dietrich1`, `equipos`.`escamador` AS `escamador`, `materiaprima`.`too00` AS `too00`, `materiaprima`.`torec0` AS `torec0`, `materiaprima`.`swf098` AS `swf098`, `materiaprima`.`stw000` AS `stw000`, `materiaprima`.`sso000` AS `sso000`, `materiaprima`.`glg000` AS `glg000`, `tbl_estado_equipo_atsme`.`reactorLimpio` AS `reactorLimpio`, `tbl_estado_equipo_atsme`.`bombaMangueraLineasLimpias` AS `bombaMangueraLineasLimpias`, `tbl_estado_equipo_atsme`.`hermeticidadReactorOk` AS `hermeticidadReactorOk`, `tbl_estado_equipo_atsme`.`reactorFuncionaOk` AS `reactorFuncionaOk`, `tbl_estado_equipo_atsme`.`sistemaVacioOk` AS `sistemaVacioOk`, `tbl_estado_equipo_atsme`.`sistemaVaporOk` AS `sistemaVaporOk`, `tbl_estado_equipo_atsme`.`sistemaEnfiramientoOk` AS `sistemaEnfiramientoOk`, `tbl_estado_equipo_atsme`.`condensadorSinFugas` AS `condensadorSinFugas`, `tbl_fase_carga_too000`.`fichaLeída` AS `fichaLeidaToo`, `tbl_fase_carga_too000`.`equipoSeguridad` AS `equipoSeguridadToo`, `tbl_fase_carga_too000`.`cargaBomba` AS `cargaBomba`, `tbl_fase_carga_too000`.`conexionesAcoplesTuberiasOk` AS `conexionesAcoplesTuberiasOk`, `tbl_fase_carga_too000`.`coloracionTOO` AS `coloracionTOO`, `tbl_fase_carga_too000`.`cargaConVacio` AS `cargaConVacio`, `tbl_fase_carga_too000`.`bloqueoAjusteVacio` AS `bloqueoAjusteVacio`, `tbl_fase_carga_too000`.`inicioCargaTOO000` AS `inicioCargaTOO000`, `tbl_fase_carga_too000`.`finCargaTOO000` AS `finCargaTOO000`, `tbl_fase_carga_too000`.`problemaCarga` AS `problemaCarga`, `tbl_fase_carga_too000`.`comentarioProblema` AS `comentarioProblemaCargaToo`, `tbl_fase_cargaswf098_atsme`.`fichaLeida` AS `fichaLeidaSwf`, `tbl_fase_cargaswf098_atsme`.`equipoSeguirdad` AS `equipoSeguirdad`, `tbl_fase_cargaswf098_atsme`.`swf098Transparente` AS `swf098Transparente`, `tbl_fase_cargaswf098_atsme`.`reactorEnEnfriamiento` AS `reactorEnfriamientoSwf`, `tbl_fase_cargaswf098_atsme`.`inicioCargaSWF098` AS `inicioCargaSWF098`, `tbl_fase_cargaswf098_atsme`.`finCargaSWF098` AS `finCargaSWF098`, `tbl_fase_cargaswf098_atsme`.`inicioVapor` AS `inicioVaporSwf`, `tbl_fase_cargaswf098_atsme`.`problemaAdicionAcido` AS `problemaAdicionAcido`, `tbl_fase_cargaswf098_atsme`.`comentarioProblema` AS `comentarioProblema`, `tbl_fase_cargaswf098_atsme`.`equipoEnReflujo` AS `equipoEnReflujo`, `tbl_fase_cargaswf098_atsme`.`inicioReflujo` AS `inicioReflujo`, `tbl_fase_cargaswf098_atsme`.`finReflujo` AS `finReflujo`, `tbl_fase_cargaswf098_atsme`.`totalAguaDestilada` AS `totalAguaDestilada`, `tbl_destilacion_tod100`.`confirmInicioDestilacion` AS `confirmInicioDestilacion`, `tbl_destilacion_tod100`.`inicioDestilacion` AS `inicioDestilacion`, `tbl_destilacion_tod100`.`finDestilacion` AS `finDestilacion`, `tbl_destilacion_tod100`.`kgTOD100` AS `kgTOD100`, `tbl_destilacion_tod100`.`reactorEnEnfriamiento` AS `reactorEnfriamientoDestilacion`, `tbl_destilacion_tod100`.`inicioEnfriamiento` AS `inicioEnfriamiento`, `tbl_destilacion_tod100`.`finEnfriamiento` AS `finEnfriamiento`, `tbl_destilacion_tod100`.`inicioSostener` AS `inicioSostener`, `tbl_destilacion_tod100`.`finSostener` AS `finSostener`, `tbl_fase_descarga`.`fichaLeída` AS `fichaLeidaDescarga`, `tbl_fase_descarga`.`equipoSeguridad` AS `equipoSeguridadDescarga`, `tbl_fase_descarga`.`RPMCilindro` AS `RPMCilindro`, `tbl_fase_descarga`.`frecuenciaVariador` AS `frecuenciaVariador`, `tbl_fase_descarga`.`temperaturaAgua` AS `temperaturaAgua`, `tbl_fase_descarga`.`telaFiltrante` AS `telaFiltrante`, `tbl_fase_descarga`.`inicioVapor` AS `inicioVaporDescarga`, `tbl_fase_descarga`.`finVapor` AS `finVapor`, `tbl_fase_descarga`.`inicioDescarga` AS `inicioDescarga`, `tbl_fase_descarga`.`finDescarga` AS `finDescarga`, `tbl_fase_descarga`.`kgAtsme0` AS `kgAtsme0`, `tbl_fase_descarga`.`kgAtsxxx` AS `kgAtsxxx`, `tbl_fase_descarga`.`problemaEscamado` AS `problemaEscamado`, `tbl_fase_descarga`.`comentarioProblema` AS `comentarioProblemaEscamado`, `tbl_conversion_tod100atoreco`.`cargoTod100` AS `cargoTod100`, `tbl_conversion_tod100atoreco`.`adicionSso000yGlg000` AS `adicionSso000yGlg000`, `tbl_conversion_tod100atoreco`.`homogenizarSuspenderReposar` AS `homogenizarSuspenderReposar`, `tbl_conversion_tod100atoreco`.`kgStw000` AS `kgStw000`, `tbl_conversion_tod100atoreco`.`KgToreco` AS `KgToreco`, `tbl_conversion_tod100atoreco`.`torecoEtiquetado` AS `torecoEtiquetado`, `tbl_lavado_equipo_atsme`.`inicioEnjuague` AS `inicioEnjuague`, `tbl_lavado_equipo_atsme`.`finEnjuague` AS `finEnjuague`, `tbl_lavado_equipo_atsme`.`tuberiasLimpias` AS `tuberiasLimpias`, `tbl_lavado_equipo_atsme`.`kgAguaLavada` AS `kgAguaLavada` FROM (((((((((`tbl_proceso_atsme` left join `equipos` on(`tbl_proceso_atsme`.`IdEquipo` = `equipos`.`IdEquipo`)) left join `materiaprima` on(`tbl_proceso_atsme`.`IdRegMateriaPrima` = `materiaprima`.`IdRegMateriaPrima`)) left join `tbl_estado_equipo_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_estado_equipo_atsme`.`NumLote`)) left join `tbl_conversion_tod100atoreco` on(`tbl_proceso_atsme`.`NumLote` = `tbl_conversion_tod100atoreco`.`NumLote`)) left join `tbl_destilacion_tod100` on(`tbl_proceso_atsme`.`NumLote` = `tbl_destilacion_tod100`.`NumLote`)) left join `tbl_fase_cargaswf098_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_cargaswf098_atsme`.`NumLote`)) left join `tbl_fase_carga_too000` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_carga_too000`.`NumLote`)) left join `tbl_fase_descarga` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_descarga`.`NumLote`)) left join `tbl_lavado_equipo_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_lavado_equipo_atsme`.`NumLote`)) GROUP BY `tbl_proceso_atsme`.`NumLote``NumLote`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistaprocesoatsme`  AS SELECT `tbl_proceso_atsme`.`NumLote` AS `NumLote`, `tbl_proceso_atsme`.`separacionFp04` AS `separacionFp04`, `tbl_proceso_atsme`.`materiaPrimaSeparada` AS `materiaPrimaSeparada`, `tbl_proceso_atsme`.`aprobacionInicio` AS `aprobacionInicio`, `tbl_proceso_atsme`.`problemaInicioProceso` AS `problemaInicioProceso`, `tbl_proceso_atsme`.`comentarioProblemaInicioProceso` AS `comentarioProblemaInicioProceso`, `tbl_proceso_atsme`.`IdEquipo` AS `IdEquipo`, `tbl_proceso_atsme`.`IdRegMateriaPrima` AS `IdRegMateriaPrima`, `tbl_proceso_atsme`.`seccion1` AS `seccion1`, `tbl_proceso_atsme`.`seccion2` AS `seccion2`, `tbl_proceso_atsme`.`seccion3` AS `seccion3`, `tbl_proceso_atsme`.`seccion4` AS `seccion4`, `tbl_proceso_atsme`.`seccion5` AS `seccion5`, `tbl_proceso_atsme`.`seccion6` AS `seccion6`, `tbl_proceso_atsme`.`seccion7` AS `seccion7`, `equipos`.`dietrich1` AS `dietrich1`, `equipos`.`escamador` AS `escamador`, `materiaprima`.`too00` AS `too00`, `materiaprima`.`torec0` AS `torec0`, `materiaprima`.`swf098` AS `swf098`, `materiaprima`.`stw000` AS `stw000`, `materiaprima`.`sso000` AS `sso000`, `materiaprima`.`glg000` AS `glg000`, `tbl_estado_equipo_atsme`.`reactorLimpio` AS `reactorLimpio`, `tbl_estado_equipo_atsme`.`bombaMangueraLineasLimpias` AS `bombaMangueraLineasLimpias`, `tbl_estado_equipo_atsme`.`hermeticidadReactorOk` AS `hermeticidadReactorOk`, `tbl_estado_equipo_atsme`.`reactorFuncionaOk` AS `reactorFuncionaOk`, `tbl_estado_equipo_atsme`.`sistemaVacioOk` AS `sistemaVacioOk`, `tbl_estado_equipo_atsme`.`sistemaVaporOk` AS `sistemaVaporOk`, `tbl_estado_equipo_atsme`.`sistemaEnfiramientoOk` AS `sistemaEnfiramientoOk`, `tbl_estado_equipo_atsme`.`condensadorSinFugas` AS `condensadorSinFugas`, `tbl_fase_carga_too000`.`fichaLeída` AS `fichaLeidaToo`, `tbl_fase_carga_too000`.`equipoSeguridad` AS `equipoSeguridadToo`, `tbl_fase_carga_too000`.`cargaBomba` AS `cargaBomba`, `tbl_fase_carga_too000`.`conexionesAcoplesTuberiasOk` AS `conexionesAcoplesTuberiasOk`, `tbl_fase_carga_too000`.`coloracionTOO` AS `coloracionTOO`, `tbl_fase_carga_too000`.`cargaConVacio` AS `cargaConVacio`, `tbl_fase_carga_too000`.`bloqueoAjusteVacio` AS `bloqueoAjusteVacio`, `tbl_fase_carga_too000`.`inicioCargaTOO000` AS `inicioCargaTOO000`, `tbl_fase_carga_too000`.`finCargaTOO000` AS `finCargaTOO000`, `tbl_fase_carga_too000`.`problemaCarga` AS `problemaCarga`, `tbl_fase_carga_too000`.`comentarioProblema` AS `comentarioProblemaCargaToo`, `tbl_fase_cargaswf098_atsme`.`fichaLeida` AS `fichaLeidaSwf`, `tbl_fase_cargaswf098_atsme`.`equipoSeguirdad` AS `equipoSeguirdad`, `tbl_fase_cargaswf098_atsme`.`swf098Transparente` AS `swf098Transparente`, `tbl_fase_cargaswf098_atsme`.`reactorEnEnfriamiento` AS `reactorEnfriamientoSwf`, `tbl_fase_cargaswf098_atsme`.`inicioCargaSWF098` AS `inicioCargaSWF098`, `tbl_fase_cargaswf098_atsme`.`finCargaSWF098` AS `finCargaSWF098`, `tbl_fase_cargaswf098_atsme`.`inicioVapor` AS `inicioVaporSwf`, `tbl_fase_cargaswf098_atsme`.`problemaAdicionAcido` AS `problemaAdicionAcido`, `tbl_fase_cargaswf098_atsme`.`comentarioProblema` AS `comentarioProblema`, `tbl_fase_cargaswf098_atsme`.`equipoEnReflujo` AS `equipoEnReflujo`, `tbl_fase_cargaswf098_atsme`.`inicioReflujo` AS `inicioReflujo`, `tbl_fase_cargaswf098_atsme`.`finReflujo` AS `finReflujo`, `tbl_fase_cargaswf098_atsme`.`totalAguaDestilada` AS `totalAguaDestilada`, `tbl_destilacion_tod100`.`confirmInicioDestilacion` AS `confirmInicioDestilacion`, `tbl_destilacion_tod100`.`inicioDestilacion` AS `inicioDestilacion`, `tbl_destilacion_tod100`.`finDestilacion` AS `finDestilacion`, `tbl_destilacion_tod100`.`kgTOD100` AS `kgTOD100`, `tbl_destilacion_tod100`.`reactorEnEnfriamiento` AS `reactorEnfriamientoDestilacion`, `tbl_destilacion_tod100`.`inicioEnfriamiento` AS `inicioEnfriamiento`, `tbl_destilacion_tod100`.`finEnfriamiento` AS `finEnfriamiento`, `tbl_destilacion_tod100`.`inicioSostener` AS `inicioSostener`, `tbl_destilacion_tod100`.`finSostener` AS `finSostener`, `tbl_fase_descarga`.`fichaLeída` AS `fichaLeidaDescarga`, `tbl_fase_descarga`.`equipoSeguridad` AS `equipoSeguridadDescarga`, `tbl_fase_descarga`.`RPMCilindro` AS `RPMCilindro`, `tbl_fase_descarga`.`frecuenciaVariador` AS `frecuenciaVariador`, `tbl_fase_descarga`.`temperaturaAgua` AS `temperaturaAgua`, `tbl_fase_descarga`.`telaFiltrante` AS `telaFiltrante`, `tbl_fase_descarga`.`inicioVapor` AS `inicioVaporDescarga`, `tbl_fase_descarga`.`finVapor` AS `finVapor`, `tbl_fase_descarga`.`inicioDescarga` AS `inicioDescarga`, `tbl_fase_descarga`.`finDescarga` AS `finDescarga`, `tbl_fase_descarga`.`kgAtsme0` AS `kgAtsme0`, `tbl_fase_descarga`.`kgAtsxxx` AS `kgAtsxxx`, `tbl_fase_descarga`.`problemaEscamado` AS `problemaEscamado`, `tbl_fase_descarga`.`comentarioProblema` AS `comentarioProblemaEscamado`, `tbl_conversion_tod100atoreco`.`cargoTod100` AS `cargoTod100`, `tbl_conversion_tod100atoreco`.`adicionSso000yGlg000` AS `adicionSso000yGlg000`, `tbl_conversion_tod100atoreco`.`homogenizarSuspenderReposar` AS `homogenizarSuspenderReposar`, `tbl_conversion_tod100atoreco`.`kgStw000` AS `kgStw000`, `tbl_conversion_tod100atoreco`.`KgToreco` AS `KgToreco`, `tbl_conversion_tod100atoreco`.`torecoEtiquetado` AS `torecoEtiquetado`, `tbl_lavado_equipo_atsme`.`inicioEnjuague` AS `inicioEnjuague`, `tbl_lavado_equipo_atsme`.`finEnjuague` AS `finEnjuague`, `tbl_lavado_equipo_atsme`.`tuberiasLimpias` AS `tuberiasLimpias`, `tbl_lavado_equipo_atsme`.`kgAguaLavada` AS `kgAguaLavada` FROM (((((((((`tbl_proceso_atsme` left join `equipos` on(`tbl_proceso_atsme`.`IdEquipo` = `equipos`.`IdEquipo`)) left join `materiaprima` on(`tbl_proceso_atsme`.`IdRegMateriaPrima` = `materiaprima`.`IdRegMateriaPrima`)) left join `tbl_estado_equipo_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_estado_equipo_atsme`.`NumLote`)) left join `tbl_conversion_tod100atoreco` on(`tbl_proceso_atsme`.`NumLote` = `tbl_conversion_tod100atoreco`.`NumLote`)) left join `tbl_destilacion_tod100` on(`tbl_proceso_atsme`.`NumLote` = `tbl_destilacion_tod100`.`NumLote`)) left join `tbl_fase_cargaswf098_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_cargaswf098_atsme`.`NumLote`)) left join `tbl_fase_carga_too000` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_carga_too000`.`NumLote`)) left join `tbl_fase_descarga` on(`tbl_proceso_atsme`.`NumLote` = `tbl_fase_descarga`.`NumLote`)) left join `tbl_lavado_equipo_atsme` on(`tbl_proceso_atsme`.`NumLote` = `tbl_lavado_equipo_atsme`.`NumLote`)) GROUP BY `tbl_proceso_atsme`.`NumLote``NumLote`  ;
 
 --
 -- Indexes for dumped tables
@@ -1751,13 +1779,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `IdEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `IdEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `materiaprima`
 --
 ALTER TABLE `materiaprima`
-  MODIFY `IdRegMateriaPrima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `IdRegMateriaPrima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `nfo`
@@ -1775,25 +1803,25 @@ ALTER TABLE `tbl_conversion_tod100atoreco`
 -- AUTO_INCREMENT for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
-  MODIFY `idDestilacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idDestilacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
-  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_descarga`
@@ -1817,13 +1845,13 @@ ALTER TABLE `tbl_muestra_segs_swf`
 -- AUTO_INCREMENT for table `tbl_seguimiento_cargaswf098`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_desttod100`
 --
 ALTER TABLE `tbl_seguimiento_desttod100`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `usuarios`

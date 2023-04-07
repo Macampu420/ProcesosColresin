@@ -76,7 +76,7 @@ frmParte2.addEventListener('submit', event => {
         })
         .then(data => {
 
-            alert("Seccion resitrada");
+            alert("Seccion registrada");
 
             document.getElementById('seccion3').classList.remove('d-none');
 
@@ -269,7 +269,7 @@ frmParte5.addEventListener('submit', event => {
         })
         .then(response => {
 
-            alert("Seccion resitrada");
+            alert("Seccion registrada");
 
             document.getElementById('seccion6').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte5);
@@ -298,7 +298,7 @@ frmParte6.addEventListener('submit', event => {
         })
         .then(response => {
 
-            alert("Seccion resitrada");
+            alert("Seccion registrada");
 
             document.getElementById('seccion7').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte6);
@@ -330,7 +330,7 @@ frmParte7.addEventListener('submit', event => {
             })
             .then(response => {
 
-                alert("Seccion resitrada");
+                alert("Seccion registrada");
 
                 objRegistro.deshabilitarForm(frmParte7);
 

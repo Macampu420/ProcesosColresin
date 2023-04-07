@@ -1,5 +1,4 @@
 <?php
-
     require_once './../modelos/RegistroFrm.php';
     require_once './../modelos/Consultarfrm.php';
 

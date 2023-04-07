@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class RegistroFrm {
     public $idProceso;
     private $conexion; // objeto mysqli que representa la conexión a la base de datos
@@ -101,7 +103,7 @@ class RegistroFrm {
             // Vincular los parámetros
             $this->stmtRegEquipo->bind_param("ii", $dietrich, $escamador);
             $this->stmtRegMatPrima->bind_param("dddddd", $TOO00, $TORECO, $SWF098, $STW000, $SSO000, $GLG000);
-            $this->stmtRegProceso = $this->conexion->prepare("INSERT INTO `procesos`(`NumLote`, `FechaInicial`, `Estado`, `Cedula`) VALUES (?,CURDATE(),1,?)");
+            $this->stmtRegProceso = $this->conexion->prepare("INSERT INTO `procesos`(`NumLote`, `FechaInicial`, `HoraInicial`, `Estado`, `Cedula`) VALUES (?,CURDATE(),CURTIME(),1,?)");
             $this->stmtRegProceso->bind_param('si', $arrayDatos['lote'], $cedula);
     
             // Iniciar la transacción

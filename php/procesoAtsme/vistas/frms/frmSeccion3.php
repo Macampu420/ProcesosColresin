@@ -197,17 +197,17 @@
                                 <div class="row">
                                     <div class="col-4 mx-auto">
                                         <label class="fs4" for="swf098">Temperatura: </label>
-                                        <input required type="number" value="1" id="temperaturaCargaHora1"
+                                        <input required type="number" id="temperaturaCargaHora1"
                                             placeholder="°C" name="temperaturaCargaHora1" />
                                     </div>
                                     <div class="col-4 mx-auto">
                                         <label class="fs4" for="swf098">Presion: </label>
-                                        <input required type="number" value="1" id="presionCargaHora1" placeholder="DPI"
+                                        <input required type="number" id="presionCargaHora1" placeholder="DPI"
                                             name="presionCargaHora1" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <textarea class="col-4 mx-auto h-50" value="1" id="observacionesCargaHora1"
+                                    <textarea class="col-4 mx-auto h-50" id="observacionesCargaHora1"
                                         name="observacionesCargaHora1" placeholder="Observaciones:"></textarea>
                                 </div>
                             </div>
