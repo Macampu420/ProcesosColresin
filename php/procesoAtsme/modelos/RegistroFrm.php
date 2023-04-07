@@ -22,8 +22,8 @@ class RegistroFrm {
         }
 
         // Preparar consulta INSERT utilizando la función prepare del objeto de conexión y asignarla a $stmtRegProcesoAtsme
-        $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`NumLote`,`separacionFp04`, `materiaPrimaSeparada`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
-             VALUES (?,?,?,?,?,?)");
+        $this->stmtRegProcesoAtsme = $this->conexion->prepare("INSERT INTO `tbl_proceso_atsme`(`NumLote`,`separacionFp04`, `materiaPrimaSeparada`, `problemaInicioProceso`, `comentarioProblemaInicioProceso`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`) 
+             VALUES (?,?,?,?,?,?,?,?)");
 
         $this->stmtRegEquipo = $this->conexion->prepare("INSERT INTO equipos (dietrich1, escamador)
              VALUES (?, ?);");
@@ -128,46 +128,48 @@ class RegistroFrm {
                 echo "Error en la consulta equipo met prima: " . $this->stmtRegMatPrima->error;
                 // Si ocurre un error, hacer un rollback para deshacer los cambios
                 $this->conexion->rollback();
-            } else {
-                // Unir los parámetros de la consulta preparada a los valores del array utilizando la función bind_param
-                $this -> stmtRegProcesoAtsme -> bind_param("siiiii", $arrayDatos['lote'], $arrayDatos["separacionFp04"], $arrayDatos["materiaPrimaSeparada"], $arrayDatos["aprobacionInicio"], $idEquipo, $idMatPrima);
-                // Ejecutar la consulta preparada utilizando la función execute
-                
-                $resultadoRegEncProceso = $this->stmtRegProcesoAtsme->execute();
-                
-                if (!$resultadoRegEncProceso) {
-                    echo "Error en la consulta encabezado: " . $this->stmtRegProcesoAtsme->error;
-                    // Si ocurre un error, puedes hacer un rollback para deshacer los cambios
-                    $this->conexion->rollback();
-                } else {
-                    // registro estado equipo
-    
-                    $reactorLimpio = isset($_POST['reactorLimpio']) ? $_POST['reactorLimpio'] : 0;
-                    $bombaMangueraLineasLimpias = isset($_POST['bombaMangueraLineasLimpias']) ? $_POST['bombaMangueraLineasLimpias'] : 0;
-                    $hermeticidadReactorOk = isset($_POST['hermeticidadReactorOk']) ? $_POST['hermeticidadReactorOk'] : 0;
-                    $reactorFuncionaOk = isset($_POST['reactorFuncionaOk']) ? $_POST['reactorFuncionaOk'] : 0;
-                    $sistemaVacioOk = isset($_POST['sistemaVacioOk']) ? $_POST['sistemaVacioOk'] : 0;
-                    $sistemaVaporOk = isset($_POST['sistemaVaporOk']) ? $_POST['sistemaVaporOk'] : 0;
-                    $sistemaEnfiramientoOk = isset($_POST['sistemaEnfiramientoOk']) ? $_POST['sistemaEnfiramientoOk'] : 0;
-                    $condensadorSinFugas = isset($_POST['condensadorSinFugas']) ? $_POST['condensadorSinFugas'] : 0;
-        
-                    $this->stmtRegEstadoEquipo->bind_param("iiiiiiiis", $reactorLimpio, $bombaMangueraLineasLimpias, $hermeticidadReactorOk, $reactorFuncionaOk,
-                    $sistemaVacioOk, $sistemaVaporOk, $sistemaEnfiramientoOk, $condensadorSinFugas, $arrayDatos['lote']);
+                return;
+            } 
 
-                    $resultadoEstEquipo = $this->stmtRegEstadoEquipo->execute();
+            // Unir los parámetros de la consulta preparada a los valores del array utilizando la función bind_param
+            $this -> stmtRegProcesoAtsme -> bind_param("siiisiii", $arrayDatos['lote'], $arrayDatos["separacionFp04"], $arrayDatos["materiaPrimaSeparada"], $arrayDatos['problemaInicioProceso'], $arrayDatos['comentarioProblemaInicio'], $arrayDatos["aprobacionInicio"], $idEquipo, $idMatPrima);
+            // Ejecutar la consulta preparada utilizando la función execute
+            
+            $resultadoRegEncProceso = $this->stmtRegProcesoAtsme->execute();
+            
+            if (!$resultadoRegEncProceso) {
+                echo "Error en la consulta encabezado: " . $this->stmtRegProcesoAtsme->error;
+                // Si ocurre un error, puedes hacer un rollback para deshacer los cambios
+                $this->conexion->rollback();
+                return;
+            }
+            // registro estado equipo
 
-                    if (!$resultadoEstEquipo) {
-                        echo "Error en la consulta estadoEquipo: " . $this->stmtRegEstadoEquipo->error;
-                        // Si ocurre un error, puedes hacer un rollback para deshacer los cambios
-                        $this->conexion->rollback();    
-                    } else {
-                        $this->conexion->commit();
-                        // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
-                        // de lo contrario, devolver null
-                        return true;
-                    }
-                }
-            }                
+            $reactorLimpio = isset($_POST['reactorLimpio']) ? $_POST['reactorLimpio'] : 0;
+            $bombaMangueraLineasLimpias = isset($_POST['bombaMangueraLineasLimpias']) ? $_POST['bombaMangueraLineasLimpias'] : 0;
+            $hermeticidadReactorOk = isset($_POST['hermeticidadReactorOk']) ? $_POST['hermeticidadReactorOk'] : 0;
+            $reactorFuncionaOk = isset($_POST['reactorFuncionaOk']) ? $_POST['reactorFuncionaOk'] : 0;
+            $sistemaVacioOk = isset($_POST['sistemaVacioOk']) ? $_POST['sistemaVacioOk'] : 0;
+            $sistemaVaporOk = isset($_POST['sistemaVaporOk']) ? $_POST['sistemaVaporOk'] : 0;
+            $sistemaEnfiramientoOk = isset($_POST['sistemaEnfiramientoOk']) ? $_POST['sistemaEnfiramientoOk'] : 0;
+            $condensadorSinFugas = isset($_POST['condensadorSinFugas']) ? $_POST['condensadorSinFugas'] : 0;
+
+            $this->stmtRegEstadoEquipo->bind_param("iiiiiiiis", $reactorLimpio, $bombaMangueraLineasLimpias, $hermeticidadReactorOk, $reactorFuncionaOk,
+            $sistemaVacioOk, $sistemaVaporOk, $sistemaEnfiramientoOk, $condensadorSinFugas, $arrayDatos['lote']);
+
+            $resultadoEstEquipo = $this->stmtRegEstadoEquipo->execute();
+
+            if (!$resultadoEstEquipo) {
+                echo "Error en la consulta estadoEquipo: " . $this->stmtRegEstadoEquipo->error;
+                // Si ocurre un error, puedes hacer un rollback para deshacer los cambios
+                $this->conexion->rollback();    
+                return;
+            } 
+
+            $this->conexion->commit();
+            // Si la consulta se ejecutó correctamente, devolver el valor del campo AUTO_INCREMENT utilizando la función insert_id
+            // de lo contrario, devolver null
+            return true;
 
         } catch (Exception $e) {
             // Rollback de transacción en caso de error

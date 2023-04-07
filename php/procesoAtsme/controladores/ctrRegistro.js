@@ -21,6 +21,11 @@ frmParte1.addEventListener('submit', event => {
 
     event.preventDefault();
 
+    if (!document.getElementById('confirmAprobacionInicio').checked) {
+        alert("Debes aprobar el inicio del proceso para continuar");
+        return
+    };
+
     let datosParte1 = new FormData(frmParte1);
     lote = document.getElementById("NumLote").value;
     datosParte1.append('seccion', 1);

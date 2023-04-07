@@ -230,7 +230,7 @@
                 <div id="comentarioDesaprueboInicio" class="row pt-3 d-none">
                     <p class="fs-4 text-center">Indica el problema:</p>
                     <div class="col-3 mt-3 mx-auto">
-                        <input id="inpComentarioDesaprueboInicio" type="textarea" placeholder="Problema" name="comentarioDesaprueboInicio">
+                        <input id="inpComentarioDesaprueboInicio" type="textarea" placeholder="Problema" name="comentarioProblemaInicio">
                     </div>
                 </div>
 
