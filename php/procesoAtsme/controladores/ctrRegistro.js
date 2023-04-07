@@ -13,18 +13,13 @@ let swReflujo = 0;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-// objRegistro.construirNuevoFormulario();
+objRegistro.construirNuevoFormulario();
 
 // control de formularios
 
 frmParte1.addEventListener('submit', event => {
 
     event.preventDefault();
-
-    if (!document.getElementById('aprobacionInicio').checked) {
-        alert("Debes aprobar el inicio del proceso para continuar");
-        return
-    };
 
     let datosParte1 = new FormData(frmParte1);
     lote = document.getElementById("NumLote").value;
@@ -34,15 +29,17 @@ frmParte1.addEventListener('submit', event => {
             method: 'POST',
             body: datosParte1
         }).then(response => {
-            // if (response.status === 200) {
+            if (response.status === 200) {
                 return response.text();
-            // } else {
-            //     throw new Error('La respuesta de la API no fue exitosa');
-            // }
+            } else {
+                throw new Error('La respuesta de la API no fue exitosa');
+            }
         })
         .then(data => {
 
             console.log(data);
+
+            alert("El proceso de registro de fabricacion de 800ATSME0 ha iniciado")
 
             document.getElementById('seccion2').classList.remove('d-none');
 
@@ -73,6 +70,9 @@ frmParte2.addEventListener('submit', event => {
             }
         })
         .then(data => {
+
+            alert("Seccion resitrada");
+
             document.getElementById('seccion3').classList.remove('d-none');
 
             objRegistro.focoSiguienteSeccion('fichaLeidaFrm3');
@@ -264,6 +264,8 @@ frmParte5.addEventListener('submit', event => {
         })
         .then(response => {
 
+            alert("Seccion resitrada");
+
             document.getElementById('seccion6').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte5);
             objRegistro.focoSiguienteSeccion('cargoTod100');
@@ -290,6 +292,8 @@ frmParte6.addEventListener('submit', event => {
             }
         })
         .then(response => {
+
+            alert("Seccion resitrada");
 
             document.getElementById('seccion7').classList.remove('d-none');
             objRegistro.deshabilitarForm(frmParte6);
@@ -320,6 +324,8 @@ frmParte7.addEventListener('submit', event => {
                 }
             })
             .then(response => {
+
+                alert("Seccion resitrada");
 
                 objRegistro.deshabilitarForm(frmParte7);
 
@@ -383,9 +389,9 @@ document.getElementById('containerSeguimientosSWF098').addEventListener('input',
     }
 })
 
-document.getElementById('aprobacionInicio').addEventListener('input', (event) => {
+document.getElementById('problemaInicio').addEventListener('input', (event) => {
 
-    if(event.target.id.includes('noAprobacionInicio')){
+    if(event.target.id == 'confirmProblemaInicio'){
         document.getElementById('comentarioDesaprueboInicio').classList.remove('d-none');
     } else {
         document.getElementById('comentarioDesaprueboInicio').classList.add('d-none'); 
