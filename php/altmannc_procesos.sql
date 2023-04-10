@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 09:00 PM
+-- Generation Time: Apr 10, 2023 at 03:49 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -76,14 +76,7 @@ INSERT INTO `equipos` (`IdEquipo`, `dietrich2`, `fLukas`, `contOlor`, `dietrich1
 (33, '1', '', '1', 0, 0),
 (34, '', '', '', 0, 0),
 (35, '1', '1', '', 0, 0),
-(36, '1', '1', '', 0, 0),
-(38, '-1', '-1', '-1', 1, 1),
-(39, '-1', '-1', '-1', 1, 0),
-(40, '-1', '-1', '-1', 1, 1),
-(41, '-1', '-1', '-1', 1, 1),
-(43, '-1', '-1', '-1', 1, 1),
-(44, '-1', '-1', '-1', 1, 1),
-(45, '-1', '-1', '-1', 1, 1);
+(36, '1', '1', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -935,14 +928,7 @@ INSERT INTO `materiaprima` (`IdRegMateriaPrima`, `nan000`, `fdo037`, `myo000`, `
 (33, '21', '12', '212', '12', '21', '12', '21', '12', -1.00, -1.00, -1.00, -1.00),
 (34, '', '', '', '', '', '', '', '', -1.00, -1.00, -1.00, -1.00),
 (35, '10', '10', '10', '10', '10', '10', '10', '10', -1.00, -1.00, -1.00, -1.00),
-(36, '12', '12', '11', '12', '12', '12', '12', '12', -1.00, -1.00, -1.00, -1.00),
-(38, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12.5', '13', 12.00, 12.00, 14.20, 16.00),
-(39, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '10', '11', 12.00, 12.00, 11.50, 13.00),
-(40, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '14', '13', 12.00, 12.50, 13.20, 11.00),
-(41, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '12', 12.00, 12.00, 12.00, 12.00),
-(43, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '12', 12.00, 12.00, 12.00, 12.00),
-(44, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '121', 12.00, 12.00, 21.00, 212.00),
-(45, '-1', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '\'-1\'', '12', '121', 12.00, 12.00, 21.00, 212.00);
+(36, '12', '12', '11', '12', '12', '12', '12', '12', -1.00, -1.00, -1.00, -1.00);
 
 -- --------------------------------------------------------
 
@@ -1123,11 +1109,7 @@ INSERT INTO `procesos` (`NumLote`, `FechaInicial`, `FechaFinal`, `HoraInicial`, 
 ('Ensayo #4', '2023-03-01', '2023-03-01', '14:12:25', '14:21:34', 2, '1001463673'),
 ('', '2023-03-04', NULL, '15:16:27', NULL, 3, '112233'),
 ('10', '2023-03-06', '2023-03-06', '16:56:23', '17:15:36', 2, '1019983876'),
-('23123', '2023-03-06', NULL, '19:18:58', NULL, 3, '1019983876'),
-('L221', '2023-04-04', NULL, '00:00:00', NULL, 1, '0'),
-('L04', '2023-04-07', NULL, '00:00:00', NULL, 1, '0'),
-('L05', '2023-04-07', NULL, '13:09:26', NULL, 1, '0'),
-('L06', '2023-04-07', NULL, '13:28:00', NULL, 1, '1019983876');
+('23123', '2023-03-06', NULL, '19:18:58', NULL, 3, '1019983876');
 
 -- --------------------------------------------------------
 
@@ -1145,15 +1127,6 @@ CREATE TABLE `tbl_conversion_tod100atoreco` (
   `torecoEtiquetado` tinyint(1) DEFAULT NULL,
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_conversion_tod100atoreco`
---
-
-INSERT INTO `tbl_conversion_tod100atoreco` (`idConversion`, `cargoTod100`, `adicionSso000yGlg000`, `homogenizarSuspenderReposar`, `kgStw000`, `KgToreco`, `torecoEtiquetado`, `NumLote`) VALUES
-(1, 1, 1, 1, 24, 18, 1, 'L01'),
-(2, 1, 1, 1, 30, 32, 1, 'L02'),
-(3, 1, 1, 1, 20, 25, 1, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1175,16 +1148,6 @@ CREATE TABLE `tbl_destilacion_tod100` (
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_destilacion_tod100`
---
-
-INSERT INTO `tbl_destilacion_tod100` (`idDestilacion`, `confirmInicioDestilacion`, `inicioDestilacion`, `finDestilacion`, `kgTOD100`, `reactorEnEnfriamiento`, `inicioEnfriamiento`, `finEnfriamiento`, `inicioSostener`, `finSostener`, `NumLote`) VALUES
-(1, 1, '2023-03-19 12:12:00', '2023-03-26 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L01'),
-(2, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12.00, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 'L02'),
-(3, 1, '0000-00-00 00:00:00', '2023-03-21 12:12:00', 10.00, 1, '2023-03-21 12:12:00', '2023-03-21 10:10:00', '2023-03-21 12:12:00', '2023-03-21 01:00:00', 'L03'),
-(4, 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 12.00, 0, '2023-04-07 12:12:00', '2023-04-07 12:12:00', '2023-04-07 12:12:00', '2023-04-07 12:12:00', 'L04');
-
 -- --------------------------------------------------------
 
 --
@@ -1203,20 +1166,6 @@ CREATE TABLE `tbl_estado_equipo_atsme` (
   `condensadorSinFugas` tinyint(1) DEFAULT NULL,
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_estado_equipo_atsme`
---
-
-INSERT INTO `tbl_estado_equipo_atsme` (`idEstado`, `reactorLimpio`, `bombaMangueraLineasLimpias`, `hermeticidadReactorOk`, `reactorFuncionaOk`, `sistemaVacioOk`, `sistemaVaporOk`, `sistemaEnfiramientoOk`, `condensadorSinFugas`, `NumLote`) VALUES
-(1, 1, 0, 1, 0, 1, 1, 1, 1, 'L01'),
-(2, 1, 0, 1, 0, 1, 1, 1, 1, 'L01'),
-(3, 1, 1, 1, 1, 1, 1, 1, 1, 'L02'),
-(4, 1, 0, 1, 0, 1, 0, 1, 0, 'L03'),
-(5, 1, 1, 1, 1, 1, 1, 1, 1, 'L221'),
-(6, 1, 1, 1, 1, 1, 1, 1, 1, 'L04'),
-(7, 1, 1, 1, 1, 1, 1, 1, 1, 'L05'),
-(8, 1, 1, 1, 1, 1, 1, 1, 1, 'L06');
 
 -- --------------------------------------------------------
 
@@ -1242,25 +1191,6 @@ CREATE TABLE `tbl_fase_cargaswf098_atsme` (
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_fase_cargaswf098_atsme`
---
-
-INSERT INTO `tbl_fase_cargaswf098_atsme` (`idCarga`, `fichaLeida`, `equipoSeguirdad`, `swf098Transparente`, `reactorEnEnfriamiento`, `inicioCargaSWF098`, `finCargaSWF098`, `inicioVapor`, `problemaAdicionAcido`, `comentarioProblema`, `equipoEnReflujo`, `inicioReflujo`, `finReflujo`, `totalAguaDestilada`, `NumLote`) VALUES
-(1, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
-(2, 1, 1, 1, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 12, 'L01'),
-(3, 1, 1, 1, 1, '2023-03-19 12:12:00', '2023-03-12 12:12:00', 1, 0, '', 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1212, 'L02'),
-(4, 1, 1, 1, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 0, '', 1, '2023-03-21 12:12:00', '2023-03-21 12:12:00', 20, 'L03'),
-(5, 1, 1, 1, 1, '2023-03-22 12:12:00', '2023-03-22 12:12:00', 1, 0, 'ww', 1, '2023-03-22 12:12:00', '2023-03-22 11:11:00', 20, 'L03'),
-(12, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
-(15, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
-(26, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
-(27, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
-(28, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '0000-00-00 00:00:00', 0, 'L03'),
-(29, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03'),
-(30, 1, 1, 1, 1, '2023-03-22 11:01:00', '2023-03-22 11:01:00', 1, 0, '', 1, '2023-03-22 11:01:00', '2023-03-22 12:12:00', 20, 'L03'),
-(31, 1, 1, 1, 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 1, 0, '', 1, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 20, 'L04');
-
 -- --------------------------------------------------------
 
 --
@@ -1282,17 +1212,6 @@ CREATE TABLE `tbl_fase_carga_too000` (
   `comentarioProblema` varchar(256) DEFAULT NULL,
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_fase_carga_too000`
---
-
-INSERT INTO `tbl_fase_carga_too000` (`idCarga`, `fichaLeída`, `equipoSeguridad`, `cargaBomba`, `conexionesAcoplesTuberiasOk`, `coloracionTOO`, `cargaConVacio`, `bloqueoAjusteVacio`, `inicioCargaTOO000`, `finCargaTOO000`, `problemaCarga`, `comentarioProblema`, `NumLote`) VALUES
-(1, 1, 1, 1, 0, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 'Se puso verde', 'L01'),
-(2, 1, 1, 1, 1, 0, 0, 0, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 0, '', 'L02'),
-(3, 1, 1, 1, 1, 0, 0, 0, '2023-03-21 12:12:00', '2023-03-21 13:12:00', 0, '', 'L03'),
-(4, 1, 1, 1, 1, 1, 1, 1, '2023-04-04 12:12:00', '2023-04-04 12:12:00', 1, 'juan', 'L221'),
-(5, 1, 1, 1, 1, 0, 0, 0, '2023-04-07 12:12:00', '2023-04-07 12:12:00', 0, '', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1319,15 +1238,6 @@ CREATE TABLE `tbl_fase_descarga` (
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_fase_descarga`
---
-
-INSERT INTO `tbl_fase_descarga` (`idDescarga`, `fichaLeída`, `equipoSeguridad`, `RPMCilindro`, `frecuenciaVariador`, `temperaturaAgua`, `telaFiltrante`, `inicioVapor`, `finVapor`, `inicioDescarga`, `finDescarga`, `kgAtsme0`, `kgAtsxxx`, `problemaEscamado`, `comentarioProblema`, `NumLote`) VALUES
-(1, 1, 1, 6000, 90.000, 63.000, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-19 12:12:00', 26.00, 16.00, 0, '', 'L01'),
-(2, 1, 1, 6900, 87.000, 62.000, 1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', '2023-03-12 12:12:00', '2023-03-19 12:12:00', 50.00, 60.00, 0, '', 'L02'),
-(3, 1, 1, 6000, 90.000, 65.000, 1, '2023-03-21 12:12:00', '2023-03-21 01:12:00', '2023-03-21 12:12:00', '2023-03-21 01:12:00', 20.00, 25.00, 1, 'era verde', 'L03');
-
 -- --------------------------------------------------------
 
 --
@@ -1343,15 +1253,6 @@ CREATE TABLE `tbl_lavado_equipo_atsme` (
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_lavado_equipo_atsme`
---
-
-INSERT INTO `tbl_lavado_equipo_atsme` (`idLavado`, `inicioEnjuague`, `finEnjuague`, `tuberiasLimpias`, `kgAguaLavada`, `NumLote`) VALUES
-(1, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L01'),
-(2, '2023-03-19 12:12:00', '2023-03-19 12:12:00', 1, 20.00, 'L02'),
-(3, '2023-03-21 12:12:00', '2023-03-21 01:12:00', 1, 10.00, 'L03');
-
 -- --------------------------------------------------------
 
 --
@@ -1366,23 +1267,6 @@ CREATE TABLE `tbl_muestra_segs_swf` (
   `muestraCumple` tinyint(1) DEFAULT NULL,
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_muestra_segs_swf`
---
-
-INSERT INTO `tbl_muestra_segs_swf` (`idMuestra`, `nroHora`, `muestraNecesaria`, `resultadoMuestra`, `muestraCumple`, `NumLote`) VALUES
-(1, 10, 1, 15.000, 0, 'L03'),
-(2, 11, 1, 10.000, 0, 'L03'),
-(3, 12, 1, 9.500, 0, 'L03'),
-(4, 13, 1, 8.000, 0, 'L03'),
-(5, 14, 1, 7.800, 0, 'L03'),
-(6, 15, 1, 7.000, 1, 'L03'),
-(7, 10, 1, 12.000, 0, 'L03'),
-(8, 10, 1, 4545.000, 0, 'L03'),
-(9, 11, 1, 0.130, 1, 'L03'),
-(10, 12, 1, 44.000, 1, 'L03'),
-(11, 13, 1, 11.000, 1, 'L03');
 
 -- --------------------------------------------------------
 
@@ -1409,19 +1293,6 @@ CREATE TABLE `tbl_proceso_atsme` (
   `seccion7` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_proceso_atsme`
---
-
-INSERT INTO `tbl_proceso_atsme` (`NumLote`, `NombreProceso`, `separacionFp04`, `materiaPrimaSeparada`, `problemaInicioProceso`, `comentarioProblemaInicioProceso`, `aprobacionInicio`, `IdEquipo`, `IdRegMateriaPrima`, `seccion1`, `seccion2`, `seccion3`, `seccion4`, `seccion5`, `seccion6`, `seccion7`) VALUES
-('L01', 'ATSME', 1, 1, 0, '', 1, 38, 38, 1, 1, 1, 1, 1, 1, 1),
-('L02', 'ATSME', 1, 1, 0, '', 1, 39, 39, 1, 1, 1, 1, 1, 1, 1),
-('L03', 'ATSME', 1, 1, 0, '', 1, 40, 40, 1, 1, 1, 1, 1, 1, 1),
-('L04', 'ATSME', 1, 1, 1, 'panfilo', 1, 43, 43, 1, 1, 1, 1, 0, 0, 0),
-('L05', 'ATSME', 1, 1, 1, ' juan', 1, 44, 44, 1, 0, 0, 0, 0, 0, 0),
-('L06', 'ATSME', 1, 1, 1, ' juan', 1, 45, 45, 1, 0, 0, 0, 0, 0, 0),
-('L221', 'ATSME', 1, 1, 0, '', 0, 41, 41, 1, 1, 0, 0, 0, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -1437,30 +1308,6 @@ CREATE TABLE `tbl_seguimiento_cargaswf098` (
   `observaciones` varchar(256) DEFAULT '',
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_seguimiento_cargaswf098`
---
-
-INSERT INTO `tbl_seguimiento_cargaswf098` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `kgAguaDestilada`, `observaciones`, `NumLote`) VALUES
-(1, 1, 1.00, 1.00, 0.00, '', 'L03'),
-(2, 2, 2.00, 2.00, 0.00, '', 'L03'),
-(3, 3, 3.00, 3.00, 3.00, '', 'L03'),
-(4, 4, 4.00, 4.00, 0.00, '', 'L03'),
-(5, 5, 5.00, 5.00, 5.00, '', 'L03'),
-(6, 6, 6.00, 6.00, 0.00, '', 'L03'),
-(7, 7, 7.00, 7.00, 0.00, '', 'L03'),
-(8, 8, 8.00, 8.00, 0.00, '', 'L03'),
-(9, 9, 9.00, 9.00, 9.00, '', 'L03'),
-(10, 10, 10.00, 10.00, 0.00, '', 'L03'),
-(11, 11, 11.00, 11.00, 0.00, '', 'L03'),
-(12, 12, 12.00, 12.00, 0.00, '', 'L03'),
-(13, 13, 13.00, 13.00, 0.00, '', 'L03'),
-(14, 1, 1.00, 1.00, 0.00, '1', 'L04'),
-(15, 2, 2.00, 2.00, 0.00, '2', 'L04'),
-(16, 3, 3.00, 3.00, 0.00, '3', 'L04'),
-(17, 4, 4.00, 4.00, 0.00, '4', 'L04'),
-(18, 5, 5.00, 5.00, 0.00, '5', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1478,44 +1325,6 @@ CREATE TABLE `tbl_seguimiento_desttod100` (
   `observaciones` varchar(256) DEFAULT NULL,
   `NumLote` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_seguimiento_desttod100`
---
-
-INSERT INTO `tbl_seguimiento_desttod100` (`idSeguimiento`, `nroHoraSeguimiento`, `temperatura`, `presion`, `vacio`, `kgTOD100`, `observaciones`, `NumLote`) VALUES
-(1, 1, 1.00, 1.00, 1, 0.00, '1', 'L01'),
-(2, 2, 2.00, 2.00, 1, 0.00, '2', 'L01'),
-(3, 3, 3.00, 3.00, 1, 0.00, '3', 'L01'),
-(4, 4, 4.00, 4.00, 1, 0.00, '4', 'L01'),
-(5, 5, 5.00, 5.00, 1, 5.00, '5', 'L01'),
-(6, 6, 6.00, 6.00, 1, 0.00, '6', 'L01'),
-(7, 7, 7.00, 7.00, 1, 0.00, '7', 'L01'),
-(8, 8, 8.00, 8.00, 1, 8.00, '8', 'L01'),
-(9, 1, 1.00, 1.00, 1, 0.00, '1', 'L02'),
-(10, 2, 2.00, 2.00, 1, 0.00, '2', 'L02'),
-(11, 3, 3.00, -3.00, 1, 0.00, '3', 'L02'),
-(12, 4, 4.00, 4.00, 1, 0.00, '4', 'L02'),
-(13, 5, 5.00, 5.00, 1, 5.00, '5', 'L02'),
-(14, 6, 6.00, 6.00, 1, 0.00, '6', 'L02'),
-(15, 7, 7.00, 7.00, 1, 0.00, '7', 'L02'),
-(16, 8, 8.00, 8.00, 1, 8.00, '8', 'L02'),
-(17, 1, 1.00, 1.00, 1, 0.00, '1', 'L03'),
-(18, 2, 2.00, 2.00, 1, 0.00, '2', 'L03'),
-(19, 3, 3.00, 3.00, 1, 0.00, '3', 'L03'),
-(20, 4, 4.00, 4.00, 1, 0.00, '4', 'L03'),
-(21, 5, 5.00, 5.00, 1, 5.00, '5', 'L03'),
-(22, 6, 6.00, 6.00, 1, 0.00, '6', 'L03'),
-(23, 7, 7.00, 7.00, 1, 0.00, '7', 'L03'),
-(24, 8, 8.00, 8.00, 1, 8.00, '8', 'L03'),
-(25, 1, 1.00, 1.00, 1, 0.00, '1 ', 'L04'),
-(26, 2, 2.00, 2.00, 1, 0.00, '2', 'L04'),
-(27, 3, 3.00, 3.00, 1, 0.00, '3', 'L04'),
-(28, 4, 4.00, 4.00, 1, 0.00, '4', 'L04'),
-(29, 5, 5.00, 5.00, 1, 5.00, '5', 'L04'),
-(30, 6, 6.00, 6.00, 1, 0.00, '6', 'L04'),
-(31, 7, 0.00, 0.00, 0, 0.00, '', 'L04'),
-(32, 8, 0.00, 0.00, 0, 0.00, '', 'L04');
 
 -- --------------------------------------------------------
 
@@ -1779,13 +1588,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `IdEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `IdEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `materiaprima`
 --
 ALTER TABLE `materiaprima`
-  MODIFY `IdRegMateriaPrima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `IdRegMateriaPrima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `nfo`
@@ -1797,61 +1606,61 @@ ALTER TABLE `nfo`
 -- AUTO_INCREMENT for table `tbl_conversion_tod100atoreco`
 --
 ALTER TABLE `tbl_conversion_tod100atoreco`
-  MODIFY `idConversion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idConversion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_destilacion_tod100`
 --
 ALTER TABLE `tbl_destilacion_tod100`
-  MODIFY `idDestilacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idDestilacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_estado_equipo_atsme`
 --
 ALTER TABLE `tbl_estado_equipo_atsme`
-  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idEstado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_cargaswf098_atsme`
 --
 ALTER TABLE `tbl_fase_cargaswf098_atsme`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_carga_too000`
 --
 ALTER TABLE `tbl_fase_carga_too000`
-  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idCarga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_fase_descarga`
 --
 ALTER TABLE `tbl_fase_descarga`
-  MODIFY `idDescarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idDescarga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_lavado_equipo_atsme`
 --
 ALTER TABLE `tbl_lavado_equipo_atsme`
-  MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLavado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_muestra_segs_swf`
 --
 ALTER TABLE `tbl_muestra_segs_swf`
-  MODIFY `idMuestra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idMuestra` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_cargaswf098`
 --
 ALTER TABLE `tbl_seguimiento_cargaswf098`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_seguimiento_desttod100`
 --
 ALTER TABLE `tbl_seguimiento_desttod100`
-  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idSeguimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `usuarios`

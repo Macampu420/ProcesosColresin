@@ -13,7 +13,7 @@ let swReflujo = 0;
 let numeroHoraSeguimSwf = nroHoraDest = 2;
 
 
-objRegistro.construirNuevoFormulario();
+// objRegistro.construirNuevoFormulario();
 
 // control de formularios
 
@@ -380,10 +380,12 @@ document.getElementById('containerDestilacion').addEventListener('input', event 
 })
 
 document.getElementById('btnAgregarSeguimientoSwf').addEventListener('click', (event) => {
+    objRegistro.deshabilitarSegumientoSwf(numeroHoraSeguimSwf - 1);
     numeroHoraSeguimSwf = objRegistro.renderSegumientoReflujo(numeroHoraSeguimSwf);
 });
 
 document.getElementById('btnAgregarSeguimientoDest').addEventListener('click', () => {
+    objRegistro.deshabilitarSegumientoDest(nroHoraDest - 1);
     nroHoraDest = objRegistro.renderSeguimientosDestilacion(nroHoraDest);
 });
 

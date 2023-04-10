@@ -255,12 +255,45 @@ let RegistroForm = {
         inputs.forEach(input => input.disabled = true);
     },
 
+    deshabilitarSegumientoSwf: (nroHora) => {
+        let inputs = [
+            document.getElementById(`temperaturaCargaHora${nroHora}`),
+            document.getElementById(`presionCargaHora${nroHora}`),
+            document.getElementById(`observacionesCargaHora${nroHora}`),
+            document.getElementById(`kgAguaDestiladaCargaHora${nroHora}`)
+        ];
+
+        if(nroHora != 0) {
+            inputs.forEach(input =>  {
+                if(input != null)input.disabled = true
+            });
+        }
+        
+    },
+
+    deshabilitarSegumientoDest: (nroHora) => {
+        let inputs = [
+            document.getElementById(`temperaturaDestilacionHora${nroHora}`),
+            document.getElementById(`presionDestilacionHora${nroHora}`),
+            document.getElementById(`kgTOD100DestilacionHora${nroHora}`),
+            document.getElementById(`observacionesDestilacionHora${nroHora}`)
+        ];
+
+        let inputsVacio = document.querySelectorAll(`input[name="vacioDestilacionHora${nroHora}"]`);
+
+        if(nroHora != 0) {
+            inputs.forEach(input =>  {
+                if(input != null)input.disabled = true
+            });
+
+            inputsVacio.forEach(input =>  input.disabled = true);
+        }
+    },
+
     deshabilitarForm: form => {
         let camposFrm = form.querySelectorAll('input, textarea, button');
 
-        camposFrm.forEach((campo) => {
-            campo.disabled = true;
-        });
+        camposFrm.forEach((campo) => campo.disabled = true);
     },
 
     focoSiguienteSeccion: seccion => {
