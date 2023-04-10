@@ -162,6 +162,7 @@ frmParte3.addEventListener('submit', event => {
         let finReflujo = document.getElementById('finReflujo');
         let totalAguaDestilada = document.getElementById('totalAguaDestilada');
 
+        objRegistro.deshabilitarInpPorClase('inpSwf');
         window.alert('Seguimientos registrados');
 
         if (finReflujo.value && totalAguaDestilada.value) {

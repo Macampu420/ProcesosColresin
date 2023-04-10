@@ -28,10 +28,10 @@
                         </div>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="fichaLeidaFrm3" name="fichaLeida" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" id="fichaLeidaFrm3" name="fichaLeida" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="fichaLeida" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="fichaLeida" value="0" required>
                         </div>
                     </div>
 
@@ -46,10 +46,10 @@
                             negativa, contactar a Salud Ocupacional para reemplazo o entrega del EPP
                             apropiado.</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="equipoSeguridad" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" name="equipoSeguridad" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="equipoSeguridad" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="equipoSeguridad" value="0" required>
                         </div>
                     </div>
 
@@ -63,10 +63,10 @@
                             negativa, contactar a control calidad / I+D para su correspondiente revision.
                         </p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="swf098Transparente" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" name="swf098Transparente" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="swf098Transparente" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="swf098Transparente" value="0" required>
                         </div>
                     </div>
 
@@ -77,10 +77,10 @@
                     <div class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Puso enfriemiento al reactor?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="reactorEnEnfriamiento" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" name="reactorEnEnfriamiento" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="reactorEnEnfriamiento" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="reactorEnEnfriamiento" value="0" required>
                         </div>
                     </div>
 
@@ -92,10 +92,10 @@
                         <p class="fs-4 text-center">¿Cargo directamente al reactor (2) SWF098 (garrafas) mediante vacío
                             desde el 3 nivel del módulo?</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Inicio carga:<input type="datetime-local" name="inicioCargaSWF098">
+                            <label>Inicio carga:<input type="datetime-local" class="inpSwf" name="inicioCargaSWF098">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Fin carga:<input type="datetime-local" name="finCargaSWF098">
+                            <label>Fin carga:<input type="datetime-local" class="inpSwf" name="finCargaSWF098">
                         </div>
                     </div>
 
@@ -106,10 +106,10 @@
                     <div class="row mt-3 pt-3">
                         <p class="fs-4 text-center">¿Inicio vapor a la camisa con una P = 20-25 psi?</p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="inicioVapor" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" name="inicioVapor" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="inicioVapor" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="inicioVapor" value="0" required>
                         </div>
                     </div>
 
@@ -123,10 +123,10 @@
                             afirmativa, mencione lo ocurrido y notifique al area encargada para dar
                             solucion.</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>Si <input type="radio" value="1" id="siProblemaCargaSwf098" name="problemaAdicionAcido">
+                            <label>Si <input type="radio" class="inpSwf" value="1" id="siProblemaCargaSwf098" name="problemaAdicionAcido">
                         </div>
                         <div class="col-3 mt-5 mx-auto">
-                            <label>No<input type="radio" value="0" name="problemaAdicionAcido">
+                            <label>No<input type="radio" class="inpSwf" value="0" name="problemaAdicionAcido">
                         </div>
                     </div>
 
@@ -135,7 +135,7 @@
                     <div id="comentarioProblemaCargaSwf098" class="row mt-3 pt-3 d-none">
                         <p class="fs-4 text-center">Indica el problema:</p>
                         <div class="col-3 mt-5 mx-auto">
-                            <input type="textarea" placeholder="Problema" name="comentarioProblema">
+                            <input type="textarea" class="inpSwf" placeholder="Problema" name="comentarioProblema">
                         </div>
                     </div>
 
@@ -147,10 +147,10 @@
                         <p class="fs-4 text-center">¿Puso a reflujo el equipo para retornar TOO000 a la reacción?
                         </p>
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" name="equipoEnReflujo" value="1" required>
+                            <label>Si <input type="radio" class="inpSwf" name="equipoEnReflujo" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="equipoEnReflujo" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="equipoEnReflujo" value="0" required>
                         </div>
                     </div>
 
@@ -162,11 +162,10 @@
                         <p class="fs-4 text-center">¿Se dio inicio al reflujo?</p>
 
                         <div class="col-6 mx-auto">
-                            <label>Si <input type="radio" id="confirmInicioReflujo" name="inicioCarga" value="1"
-                                    required>
+                            <label>Si <input type="radio" class="inpSwf" id="confirmInicioReflujo" name="inicioCarga" value="1" required>
                         </div>
                         <div class="col-6 mx-auto">
-                            <label>No<input type="radio" name="inicioCarga" value="0" required>
+                            <label>No<input type="radio" class="inpSwf" name="inicioCarga" value="0" required>
                         </div>
                     </div>
 
@@ -176,7 +175,7 @@
 
                         <div id="containerInicioReflujo" class="row">
                             <div class="col-3 mx-auto">
-                                <label>Inicio reflujo:<input type="datetime-local" name="inicioReflujo">
+                                <label>Inicio reflujo:<input type="datetime-local" class="inpSwf" name="inicioReflujo">
                             </div>
                         </div>
 

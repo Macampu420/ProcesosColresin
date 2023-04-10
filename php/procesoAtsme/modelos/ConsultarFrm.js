@@ -16,6 +16,7 @@ let ConsultarFrm = {
                             block: 'center'
                         });
                     }
+                    break;
             }
         }
         
@@ -198,6 +199,7 @@ let ConsultarFrm = {
         }
     },
 
+    //llena la seccion 4 sin segs
     llenarSeccion4: function (clave, datosProceso) {
 
         switch (clave) {

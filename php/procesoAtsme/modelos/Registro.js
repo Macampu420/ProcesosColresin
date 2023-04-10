@@ -249,6 +249,12 @@ let RegistroForm = {
 
     },
 
+    deshabilitarInpPorClase: clase => {
+        let inputs = document.querySelectorAll(`.${clase}`);
+
+        inputs.forEach(input => input.disabled = true);
+    },
+
     deshabilitarForm: form => {
         let camposFrm = form.querySelectorAll('input, textarea, button');
 
